@@ -1,0 +1,82 @@
+PROBLEM STATEMENT
+You have built an above-ground pool and you want to know how much water it will hold.  The pool structure is built out of stacks of cubes aligned on a grid.  layout gives an overhead view showing the height of the cubes in each position of the grid.  Here is an example pool:
+
+
+    16661
+    61116
+    16661
+
+
+This pool can hold a total of 15 units of water: 5 units on each of the 3 middle grid locations.  After that, any water added to the middle would flow out over the walls (the grid locations of height 6), and any water added to the walls or corners would flow out onto the surrounding ground.  When it can, water will always flow to areas of lower height, and no water will "stand" on surfaces such as the pool walls shown here.  Water cannot flow through diagonals, so it won't leak out of the middle via the corners.  The ground surrounding the pool is at height 0 and can absorb an infinite amount of water.  Return the total number of water units that can be held by the pool.
+
+DEFINITION
+Class:PoolFiller
+Method:getCapacity
+Parameters:String[]
+Returns:int
+Method signature:int getCapacity(String[] layout)
+
+
+CONSTRAINTS
+-layout will contain between 1 and 50 elements, inclusive.
+-Each element of layout will contain between 1 and 50 characters, inclusive.
+-Each element of layout will be the same length.
+-Each character in each element of layout will be a digit between '1' and '9', inclusive.
+
+
+EXAMPLES
+
+0)
+{
+"16661",
+"61116",
+"16661"
+}
+
+Returns: 15
+
+The example from the problem statement.
+
+1)
+{
+"999999",
+"955119",
+"955119",
+"999999"
+}
+
+Returns: 48
+
+This pool has high walls, with a shallow end on the left and a deeper end on the right.  The shallow end has a capacity of 4*4=16, and the deep end has a capacity of 8*4=32.
+
+2)
+{
+"111111111",
+"115111611",
+"131516161",
+"115111611",
+"111111111"
+}
+
+Returns: 7
+
+In this case, we have two separate mini-pools.  The one on the right holds 5 units, and the one on the left holds 2 (any more than 2 would leak out of the left side).  
+
+3)
+{
+"1111111111111",
+"1555555555551",
+"1511111111151",
+"1511199911151",
+"1511192911151",
+"1511199911151",
+"1511111111151",
+"1555555555551",
+"1111111111111"
+}
+
+
+
+Returns: 151
+
+Now we have a small, tall pool in the middle of a larger pool.  The main pool holds 36*4=144 units.  The pool in the middle holds 9-2=7 units.

@@ -1,0 +1,54 @@
+PROBLEM STATEMENT
+Petya likes spiders. He put a spider in each cell of a rectangular grid. He has studied spiders for many years, so he predicted the behaviour of all of the spiders. At the beginning of each second, every spider will move from its cell to one of the adjacent cells (or off the grid). For each cell, he wrote the direction of its movement to matrix which is represented by a String[], A. The j-th character of i-th element of A will be either 'N', 'S', 'E' or 'W' and it will represent north, south, east and west directions of movement, respectively. If a spider moves outside the grid it falls to the floor. Return the number of free cells after 1 second.
+
+DEFINITION
+Class:SpidersOnTheGrid
+Method:find
+Parameters:String[]
+Returns:int
+Method signature:int find(String[] A)
+
+
+CONSTRAINTS
+-A will contain between 1 and 50 elements, inclusive.
+-Each element of A will contain between 1 and 50 characters, inclusive.
+-All elements of A will have the same number of characters.
+-Each character will be either 'N', 'E', 'S' or 'W'.
+
+
+EXAMPLES
+
+0)
+{"EW","NN"}
+
+Returns: 2
+
+
+
+1)
+{"EEEEEEEEEEEEEEEEEEEEEEEEEEEEEW"}
+
+Returns: 1
+
+
+
+2)
+{"EW"}
+
+Returns: 0
+
+
+
+3)
+{"ESW","ENW"}
+
+Returns: 4
+
+
+
+4)
+{"E"}
+
+Returns: 1
+
+

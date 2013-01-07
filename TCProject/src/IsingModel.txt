@@ -1,0 +1,77 @@
+PROBLEM STATEMENT
+
+The Ising model is a simple widespread model in statistical
+physics for simulating magnetic properties of matter.
+In this model, we consider a rectangular grid, and we associate
+each grid point with a value '+' or '-' (which physically
+represents the spin of the element positioned at that grid point).
+
+
+When we have such a spin configuration, the total energy of this
+configuration is computed by adding the values contributed by
+each pair of neighboring cells (only horizontal and vertical
+direct neighbors are considered). If the pair consists
+of two cells with the same spin (both '+' or both '-'), this pair
+contributes a value of -1 to the total energy. Otherwise (one cell
+is '+' and its neighbor is '-'), the pair contributes a value of +1
+to the total energy.
+
+
+See example 0 for a detailed computation of the energy value.
+
+
+
+You are given a String[] spins representing the
+spin configuration. You are to return the total energy of this
+configuration.
+
+
+
+DEFINITION
+Class:IsingModel
+Method:energy
+Parameters:String[]
+Returns:int
+Method signature:int energy(String[] spins)
+
+
+CONSTRAINTS
+-spins will have between 1 and 50 elements, inclusive.
+-Each element of spins will have between 1 and 50 characters, inclusive.
+-All elements of spins will have the same number of characters.
+-Each character of each element of spins will be either '+' or '-'.
+
+
+EXAMPLES
+
+0)
+{"-++",
+ "+-+"}
+
+Returns: 3
+
+There are a total of 7 neighboring pairs here: 4 horizontal (-+), (++),
+(+-) and (-+) and 3 vertical (-+), (+-) and (++). Pairs of type (+-) and (-+) contribute a value of +1 to the total energy, and pairs of type (--) and (++) contribute a value of -1.  The total energy of this configuration is thus: E = 1 - 1 + 1 + 1 + 1 + 1 - 1 = 3.
+
+1)
+{"+"}
+
+Returns: 0
+
+With just one element, there is no neighboring pair, so the total energy is 0.
+
+2)
+{"++-+",
+ "-++-",
+ "+-+-",
+ "++++"}
+
+Returns: 4
+
+3)
+{"----",
+ "---+",
+ "-+++",
+ "++++"}
+
+Returns: -12

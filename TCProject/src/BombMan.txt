@@ -1,0 +1,159 @@
+PROBLEM STATEMENT
+
+Bomb Man is trapped inside a maze shaped like a grid.
+You must help him find the exit as fast as possible.
+The maze will be given as a String[] where each element
+corresponds to a row in the grid and each character in an element
+corresponds to a cell in that row. '#' marks a wall,
+'.' an empty cell, 'B' the start position of Bomb Man
+and 'E' the exit. Below is an example of a maze in this format,
+given as a String[]:
+
+
+
+{".....B.",
+ ".#####.",
+ ".#...#.",
+ ".#E#.#.",
+ ".###.#.",
+ "......."}
+
+
+
+In each time unit, Bomb Man can move one cell up, down, left or right.
+Thus, in the maze above, he can reach the exit in 14 time units by just walking.
+
+
+
+To be able to reach the exit quicker, Bomb Man is in possession
+of a number of bombs, each of which can blow a hole in a wall and thus open
+up new passages. Instead of moving in any of the four cardinal directions,
+Bomb Man can (if he has bombs left) blow a hole in a wall located in any of
+the four neighboring squares. The bomb will go off in the time unit after he has placed the bomb, creating
+an empty cell that Bomb Man can enter in the time unit after that. That is,
+if he places a bomb in time unit t, he can enter the cell earliest in time unit t+2.
+In the maze above, Bomb Man can then reach the exit in 8 time units by first walking
+left, placing a bomb, waiting for the bomb to explode, and then walking down, down,
+left, left and down.
+
+
+
+Create a class BombMan containing the method shortestPath which
+takes a String[] maze, containing the maze in the
+format described above, and an int bombs, the number
+of bombs in Bomb Man's possession. The method should return an int, the
+least number of time units required for Bomb Man to reach the exit.
+If it's not possible for Bomb Man to reach the exit, return -1 (see example 1).
+
+
+DEFINITION
+Class:BombMan
+Method:shortestPath
+Parameters:String[], int
+Returns:int
+Method signature:int shortestPath(String[] maze, int bombs)
+
+
+CONSTRAINTS
+-maze will contain between 1 and 50 elements, inclusive.
+-Each element in maze will contain between 1 and 50 characters, inclusive.
+-Each element in maze will contain the same number of characters.
+-maze will only contain the characters '#', '.', 'B' and 'E'.
+-Exactly one character in maze will be a 'B'.
+-Exactly one character in maze will be a 'E'.
+-bombs will be between 0 and 100, inclusive.
+
+
+EXAMPLES
+
+0)
+{".....B.",
+ ".#####.",
+ ".#...#.",
+ ".#E#.#.",
+ ".###.#.",
+ "......."}
+
+1
+
+Returns: 8
+
+This is the example mentioned in the problem statement.
+
+1)
+{"B.#.#.#...E"}
+2
+
+Returns: -1
+
+Bomb Man can only blow through the first two walls, but not the third. Hence the method returns -1.
+
+2)
+{"..#####",
+ "B.#####",
+ "..#####",
+ "#######",
+ "####...",
+ "####.E."}
+
+4
+
+Returns: 17
+
+Here Bomb Man has just enough bombs to reach the exit. One way to do this is to walk
+down, right, down (bomb), down (bomb), right (bomb), right (bomb), right, right, down.
+This takes 1+1+3+3+3+3+1+1+1 = 17 time units.
+
+3)
+{".#.#.#.#B#...#.#...#.#...#.#...#.#...#.#.#.......",
+ ".#.#.#.#.#.###.###.#.###.#.#.###.###.#.#.#.###.##",
+ ".#.#.#...#.#.#.#.#.#...#.....#.#.#...#...#.#.#...",
+ ".#.#.###.#.#.#.#.#.###.#.#####.#.###.###.#.#.###.",
+ ".............#.#...#...#.....#.#.#...#.#.#.....#.",
+ "##.#######.###.#.#####.#.#####.#.###.#.#.#.#.####",
+ ".#.#.....#...#...#.#...#...#.#.#...#...#...#.....",
+ ".#######.#.#####.#.#.#.#.###.#.###.#.#####.#.####",
+ ".#.#.#.#...#.#.#.#.#.#.......#...#.#...#.#.#.....",
+ ".#.#.#.###.#.#.#.#.#####.#####.###.###.#.#.######",
+ ".....#...#.#...#...#...#...#...#...#.#.#.........",
+ "####.###.#.###.###.#.###.#.#.###.###.#.#.########",
+ ".......#.........#.#.#.#.#.#.#.#.........#...#...",
+ ".#.###.#########.#.#.#.#.###.#.#####.#.#.#.###.##",
+ ".#.#.........#.#.#.#.#.....#.#.#.....#.#.........",
+ "############.#.#.#.#.#.#####.#.#.################",
+ ".#...........#...#.#.#.#...#.#.#...#.#.#.....#...",
+ ".#####.#####.###.#.#.#.#.###.#.#.###.#.#.#####.##",
+ ".......#...#.#.#.....#...#...#.#.#.#.#...........",
+ "##########.#.#.#####.#.###.###.#.#.#.#.##########",
+ ".....#...#.....#.#...#.......#.#...#.......#.....",
+ "##.#.###.#.###.#.#.#.#.#####.#.#.###.#######.####",
+ "...#...#...#.......#.....#.#...#...#.......#.....",
+ "####.#.#.#########.#.###.#.#####.###.#.#######.##",
+ ".#...#...#.........#.#.....#.........#.#.#.#.....",
+ ".#####.#.#.###.#######.#.###.#.#########.#.#.####",
+ ".......#.#.#...#.......#.....#.#.#.......#.#.#.#.",
+ "########.#.#.#.#####.#.###.#.###.#.#######.#.#.#.",
+ ".........#.#.#.#.....#...#.#.........#.#.........",
+ "################.#.#.#.#.#.#.#.#######.#.########",
+ ".................#.#.#.#.#.#.#...........#.......",
+ "########.#####.#.###.#.#.#####.###.#.#####.###.##",
+ ".........#...#.#...#.#.#...#.....#.#.........#...",
+ ".#####.#####.#.###.#.###.#.#.#.#.#.#####.#.###.#.",
+ ".#.....#.........#.#.#...#.#.#.#.#.#.....#...#.#.",
+ "####.#####.###.#.#.#.#.#.#.###.###.#.#.#.#.#####.",
+ ".....#.....#.#.#.#.#.#.#.#.#...#...#.#.#.#...#...",
+ "####.#.#.###.#.#.###.#.###.#.#.#####.#.#.#.######",
+ ".....#.#.#.#...#...#.#...#.#.#...#...#.#.#.......",
+ "##########.#.#.#.#####.###.#.#.###.#.###.#####.##",
+ "...#.#...#...#.#.....#.#...#.#...#.#.#.......#...",
+ ".#.#.#.#.#.#.#.#.#.#.###.#.#########.###.#.#.#.#.",
+ ".#.#...#...#.#.#.#.#...#.#...#.......#...#.#.#.#.",
+ "##.###.#.#.###.#.#.#.#.#####.#.#.#.###.#.########",
+ ".......#.#...#.#.#.#.#.#.....#.#.#...#.#.........",
+ "####.#######.#.#####.#.###.#.#.###.#.#.#.########",
+ "E..#.......#.#.....#.#.#.#.#.#.#...#.#.#.........",
+ "##.#.#.#.###.###.###.###.#.#.###.#.#.#.#.#######.",
+ ".....#.#...#.#.....#.#.....#...#.#.#.#.#.....#..."}
+3
+
+Returns: 76

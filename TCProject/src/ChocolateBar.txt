@@ -1,0 +1,61 @@
+PROBLEM STATEMENT
+You just bought a very delicious chocolate bar from a local store. This chocolate bar consists of N squares, numbered 0 through N-1. All the squares are arranged in a single row. There is a letter carved on each square. You are given a String letters. The i-th character of letters denotes the letter carved on the i-th square (both indices are 0-based).
+
+You want to share this delicious chocolate bar with your best friend. At first, you want to give him the whole bar, but then you remembered that your friend only likes a chocolate bar without repeated letters. Therefore, you want to remove zero or more squares from the beginning of the bar, and then zero or more squares from the end of the bar, in such way that the remaining bar will contain no repeated letters.
+
+Return the maximum possible length of the remaining chocolate bar that contains no repeated letters.
+
+DEFINITION
+Class:ChocolateBar
+Method:maxLength
+Parameters:String
+Returns:int
+Method signature:int maxLength(String letters)
+
+
+CONSTRAINTS
+-letters will contain between 1 and 50 characters, inclusive.
+-Each character of letters will be a lowercase letter ('a' - 'z').
+
+
+EXAMPLES
+
+0)
+"srm"
+
+Returns: 3
+
+You can give the whole chocolate bar as it contains no repeated letters.
+
+1)
+"dengklek"
+
+Returns: 6
+
+Remove two squares from the end of the bar.
+
+2)
+"haha"
+
+Returns: 2
+
+There are three possible ways:
+
+Remove two squares from the beginning of the bar.
+Remove two squares from the end of the bar.
+Remove one square from the beginning of the bar and one square from the end of the bar.
+
+
+3)
+"www"
+
+Returns: 1
+
+
+
+4)
+"thisisansrmbeforetopcoderopenfinals"
+
+Returns: 9
+
+

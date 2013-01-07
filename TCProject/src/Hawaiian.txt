@@ -1,0 +1,41 @@
+PROBLEM STATEMENT
+
+Many languages, including English, French, Spanish, and German use Latin characters (a-z). Hawaiian, as well, uses these characters. However, only a small subset of these characters are used in the Hawaiian alphabet - the five vowels: 'a', 'e', 'i', 'o', 'u', and seven consonants: 'h', 'k', 'l', 'm', 'n', 'p', 'w'. Given a sentence of words, you are to determine which could possibly be Hawaiian words. Anything which contains a letter not in the Hawaiian alphabet cannot be Hawaiian; every other word can be.
+
+
+A word is defined as a contiguous sequence of letters. You will be given a sentence of words. You must tokenize them using a space (' ') as a delimiter, remove the words which cannot be Hawaiian, and return the rest in a String[], in the order in which they occur in the sentence, in the same case in which they appear in the sentence.
+
+
+DEFINITION
+Class:Hawaiian
+Method:getWords
+Parameters:String
+Returns:String[]
+Method signature:String[] getWords(String sentence)
+
+
+CONSTRAINTS
+-sentence will contain between 1 and 50 characters, inclusive.
+-Each character in sentence will be an uppercase or lowercase letter (A-Z, a-z), or a space.
+-sentence will not contain two consecutive spaces; that is, there will be exactly one space between words.
+-sentence will not begin or end with a space.
+
+
+EXAMPLES
+
+0)
+"Hawaii is an island"
+
+Returns: { "Hawaii",  "an" }
+
+'s' is not a valid letter in Hawaiian, so "is" and "island" cannot be Hawaiian words.
+
+1)
+"Mauna Kea and Mauna Koa are two mountains"
+
+Returns: { "Mauna",  "Kea",  "Mauna",  "Koa" }
+
+2)
+"Pineapple grows in Hawaii"
+
+Returns: { "Pineapple",  "in",  "Hawaii" }

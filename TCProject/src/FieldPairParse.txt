@@ -1,0 +1,77 @@
+PROBLEM STATEMENT
+You have been given a document header containing important data that will eventually get stored in a database.  The data is formatted as follows:
+Field Name     Data     Field Name     Data     ...
+Field Name     Data     Field Name     Data     ...
+...            ...      ...            ...      ...	
+ That is, each field name column will be followed by the corresponding data column.  If formatted correctly, the header should contain an even number of columns.  Each element of data will correspond to a row of values.  Since there are no terminating characters or field widths in use, it is not obvious where each column begins and ends.  We have decided to use rectangles of spaces to split each column.  These rectangles must cover all rows of data, be as wide as possible, and contain only space characters.  You will return how wide each delimiting rectangle is in a int[].  The return value should be ordered left-to-right based on the positions of the corresponding delimeters in data.  If the number of delimiting rectangles is even, return an empty int[] denoting an error.
+
+DEFINITION
+Class:FieldPairParse
+Method:getPairs
+Parameters:String[]
+Returns:int[]
+Method signature:int[] getPairs(String[] data)
+
+
+NOTES
+-The input is entirely composed of Xs and spaces since, as far as you are concerned, there are only 2 kinds of characters.
+
+
+CONSTRAINTS
+-data will contain between 1 and 50 elements inclusive.
+-Each element of data will contain between 1 and 50 characters inclusive.
+-Each element of data will contain the same number of characters.
+-Each character in each element of data will be 'X' or ' ' (quotes for clarity).
+-At least one element of data will not begin with a space.
+-At least one element of data will not end with a space.
+
+
+EXAMPLES
+
+0)
+{
+"XXXXX    XXXXX",
+"XXXX    XXXXX "
+}
+
+Returns: {3 }
+
+There is one divider here, and it is 3 characters wide.
+
+1)
+{
+"XXXXXXXXXX     XXXXXXXXXXX",
+"XXXXXXXXXXXXXXXXX    XXXXX"
+}
+
+Returns: { }
+
+No divider (which is an error).
+
+2)
+{
+"X X X",
+"X X X"
+}
+
+Returns: { }
+
+Two dividers is an error.
+
+3)
+{
+"XXXX      X  X           X X   X",
+"XX       XXX XX   X   X   X XXX "
+}
+
+Returns: {5, 1, 3, 3, 2 }
+
+4)
+{"XXXX      X  X           X X   X"}
+
+Returns: {6, 2, 11, 1, 3 }
+
+5)
+{"XXX XXX XXX XXX XXX"}
+
+Returns: { }

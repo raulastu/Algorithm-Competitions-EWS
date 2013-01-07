@@ -1,0 +1,155 @@
+PROBLEM STATEMENT
+Fox Ciel has recently visited the Tourist Kingdom.
+The people of this kingdom love to travel.
+
+
+
+The kingdom contains n cities, conveniently numbered 0 through n-1.
+There are exactly n-1 roads in the kingdom.
+Each road is bidirectional and connects exactly two cities.
+
+
+
+Let a simple path be a sequence of two or more cities such that no city is repeated in the sequence and each pair of consecutive cities is connected by a road.
+In our kingdom, for each pair of cities there is a simple path that starts with one of them and ends with the other.
+It follows that the road network always has to be a tree.
+
+
+
+You are given the roads as two int[]s A and B, each with n-1 elements.
+For each valid i, there is a road connecting the cities A[i] and B[i].
+
+
+
+There are m families in the kingdom.
+The families are numbered 0 through m-1.
+Each family lives in a single city.
+Multiple families may live in the same city.
+You are given a int[] f with m elements.
+For each i, family i lives in the city f[i].
+
+
+
+Before the next holidays, each family i will randomly choose a destination city x[i].
+The choice will be made uniformly at random from the set of all cities other than their home city f[i].
+The choices made by different families are mutually independent.
+During the holidays, each family will travel from their home city f[i] to the chosen destination city x[i] using the simple path that connects them.
+(Note that there is always exactly one such simple path.)
+
+
+
+Depending on all the random choices, it may happen that some roads will be used by all the traveling families.
+If a road is used by all families, we will call it full.
+The king of Tourist Kingdom will have all the full roads decorated for the families to enjoy.
+Given a particular set of choices made by the families, let L be the number of full roads (possibly zero).
+
+
+
+You are given the int[]s A, B, and f.
+Compute and return the expected value of L.
+
+DEFINITION
+Class:FoxAndTouristFamilies
+Method:expectedLength
+Parameters:int[], int[], int[]
+Returns:double
+Method signature:double expectedLength(int[] A, int[] B, int[] f)
+
+
+NOTES
+-Informally, the expected value of L can be seen as the average over very many rounds of the experiment.
+-In this case, the expected value of L is the same as the average value of L, where the average is taken over all possible sets of choices the families might make.
+
+
+CONSTRAINTS
+-n will be between 2 and 51, inclusive.
+-A and B will each contain exactly n-1 elements.
+-Each element of A and B will be between 0 and n-1, inclusive.
+-The roads defined by A and B will form a tree.
+-f will contain between 1 and 50 elements, inclusive.
+-Each element of f will be between 0 and n-1, inclusive.
+
+
+EXAMPLES
+
+0)
+{0, 1}
+{1, 2}
+{0}
+
+Returns: 1.5
+
+There is only one family.
+Their home is in city 0.
+With probability 50% they will pick x[0]=1.
+In this case, L=1, as the only full road is 0-1.
+And with probability 50% they will pick x[0]=2.
+In this case, L=2, as there are two full roads (0-1 and 1-2).
+The answer is the average of these two possibilities:
+0.5*1 + 0.5*2 = 1.5
+
+1)
+{0, 1}
+{1, 2}
+{0, 0}
+
+Returns: 1.25
+
+With probability 25%, both families decide to visit city 2.
+In that case L=2 and the full roads are 0-1 and 1-2.
+In all other cases L=1 and the only full road is 0-1.
+The answer is 0.25*2 + 0.75*1 = 1.25
+
+2)
+{0, 1}
+{1, 2}
+{0, 1}
+
+Returns: 0.75
+
+
+
+3)
+{0, 1}
+{1, 2}
+{0, 2}
+
+Returns: 1.0
+
+
+
+4)
+{0,0,0}
+{1,2,3}
+{0}
+
+Returns: 1.0
+
+
+
+5)
+{0,0,0}
+{1,2,3}
+{1,2}
+
+Returns: 0.7777777777777777
+
+
+
+6)
+{0,1,1,3,5,6}
+{1,2,3,4,4,4}
+{5,6,1}
+
+Returns: 0.4537037037037037
+
+
+
+7)
+{0,1,2,3,4,5,6,7,8,9}
+{1,2,3,4,5,6,7,8,9,10}
+{0,0,0,0,0,0,0,0,0,0}
+
+Returns: 1.4914341925000003
+
+

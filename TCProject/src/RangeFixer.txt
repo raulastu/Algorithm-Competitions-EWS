@@ -1,0 +1,77 @@
+PROBLEM STATEMENT
+Given a int[] values, return a int[] of the same size where the k-th element is an integer X such that low &lt= X &lt= high and the bit difference between X and values[k] is minimal. If there are multiple such int[]s, return the one that comes first lexicographically. A int[] a1 comes before a int[] a2 lexicographically if a1 has a lower value at the first position where they differ.
+
+To calculate the bit difference between two integers, first convert them to their binary representations. If their binary representations have different lengths, pad the shorter one with 0's on the left until they both have the same length. The bit difference is the number of positions where the two binary representations differ.
+
+
+DEFINITION
+Class:RangeFixer
+Method:closestValue
+Parameters:int, int, int[]
+Returns:int[]
+Method signature:int[] closestValue(int low, int high, int[] values)
+
+
+CONSTRAINTS
+-low will be between 0 and 2^30 - 1, inclusive.
+-high will be between low and 2^30 - 1, inclusive.
+-values will contain between 1 and 50 elements, inclusive.
+-Each element of values will be between 0 and 2^30 - 1, inclusive.
+
+
+EXAMPLES
+
+0)
+101
+105
+{71}
+
+Returns: {103 }
+
+
+
+1)
+98
+304
+{12, 65, 302, 1, 1000000}
+
+Returns: {140, 193, 302, 129, 192 }
+
+
+
+2)
+16
+16
+{1000000}
+
+Returns: {16 }
+
+There is only one value in the interval, so there is only one possible answer.
+
+3)
+83
+92
+{48}
+
+Returns: {84 }
+
+The bit difference between 48 and 84 is 3 and the bit difference between 48 and 88 is 3 too, so we return the lowest one.
+
+
+4)
+1
+4
+{5, 6, 7}
+
+Returns: {1, 2, 3 }
+
+
+
+5)
+10000000
+20000000
+{50382, 1234, 58126, 13952, 1475, 24, 1560}
+
+Returns: {16827598, 16778450, 16835342, 16791168, 16778691, 16777240, 16778776 }
+
+
