@@ -1,0 +1,102 @@
+PROBLEM STATEMENT
+
+Bob's father bought him a toy map of islands and seas.  The map is a two-dimensional grid where each cell is either 'x' or '.'.  A sea is defined as a maximal connected group of '.' cells, where two '.' cells are connected if they are vertically or horizontally adjacent.  An island is defined as a maximal connected group of 'x' cells, where two 'x' cells are connected if they are vertically, horizontally, or diagonally adjacent.
+An island has a level of 0 if it contains no other islands.  An island has a level of K+1 if it contains one or more islands and the highest level of a contained island is K.  An island A contains island B if A and B are different and, if you start sailing from any point of island B, you won't be able to sail out of island A (you can sail only horizontally and vertically, but not diagonally).
+
+
+For example, the given map below has 5 islands with level 0 (islands 0 - 4 on the right picture) and one island with level 1 (island 5). Please note that starting at island 3, you can not sail outside island 5 (you can not sail diagonally), but its possible get out of island 1 when starting at island 4.
+
+
+xxx.x...xxxxx        000.0...11111
+xxxx....x...x        0000....1...1
+........x.x.x        ........1.4.1
+..xxxxx.x...x        ..55555.1...1
+..x...x.xxx.x        ..5...5.111.1
+..x.x.x...x..        ..5.3.5...1..
+..x...x...xxx        ..5...5...111
+...xxxxxx....        ...555555....
+x............        2............
+
+
+
+Given a String[] seaMap, return a int[], where the k-th element is the number of islands of level k.  The int[] must contain exactly (m + 1) elements, where m is the highest level of an island in the map.
+
+
+DEFINITION
+Class:LandAndSea
+Method:howManyIslands
+Parameters:String[]
+Returns:int[]
+Method signature:int[] howManyIslands(String[] seaMap)
+
+
+CONSTRAINTS
+-seaMap will contain between 1 and 50 elements, inclusive.
+-Each element of seaMap will contain between 1 and 50 characters, inclusive.
+-Each element of seaMap will contain the same number of characters.
+-Each element of seaMap will contain only '.' and lowercase 'x' characters.
+
+
+EXAMPLES
+
+0)
+{"x"}
+
+Returns: {1 }
+
+
+
+1)
+{
+"xxxxx",
+"x...x",
+"x.x.x",
+"x...x",
+"xxxxx"
+}
+
+Returns: {1, 1 }
+
+
+
+2)
+{
+"xxxxx",
+"x...x",
+"x.x.x",
+"x...x",
+"xxxxx",
+"xxxxx",
+"x...x",
+"x.x.x",
+"x...x",
+"xxxxx"
+}
+
+Returns: {2, 1 }
+
+
+
+3)
+{
+"..",
+".."
+}
+
+Returns: { }
+
+
+
+4)
+{
+"............",
+".......xxxx.",
+"..xxx.x...x.",
+"..x..x..x.x.",
+"..x.x.x...x.",
+"..xx...xxx.."
+}
+
+Returns: {1, 1 }
+
+

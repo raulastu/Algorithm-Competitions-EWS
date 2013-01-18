@@ -8,31 +8,33 @@ import static java.util.Collections.*;
 import java.util.*;
 
 public class BadNeighbors {
+	int memo[][];
 	public int maxDonations(int[] donations) {
-		don=donations;
-		int N = donations.length;
-		int a = go(1,N);
-		int b = go(0,N-1);
-//		int c = go(1,N-1);
-//		return max(c,max(a,b));
-		return max(a,b);
+		memo=new int[2][donations.length];
+		int[]d1=new int[donations.length-1];
+		int[]d2=new int[donations.length-1];
+		int c1=0;
+		int c2=0;
+		for (int i = 0; i < donations.length; i++) {
+			memo[0][i]=-1;
+			memo[1][i]=-1;
+			if(i!=0)
+				d1[c1++]=donations[i];
+			if(i!=donations.length-1)
+				d2[c2++]=donations[i];
+		}
+		return Math.max(go(d1,0,0), go(d2,0,1));
 	}
 	
-	int []don;
-	int go(int ix, int N){
-		int dp[]= new int[N];
-		for (int i = ix; i < N; i++) {
-			dp[i]=don[i];
-			for (int j = ix; j <= i; j++) {
-				if(i-j>1)
-					dp[i]=max(dp[i],dp[j]+don[i]);
-			}
-			
-		}
-		print(dp,don);
-		sort(dp);
-		return dp[N-1];
+	private int go(int[] d, int i,int k) {
+		if(i>=d.length)return 0;
+		if(memo[k][i]!=-1)return memo[k][i];
+		int a=d[i]+go(d, i+2,k);
+		int b=go(d, i+1,k);
+		memo[k][i]=Math.max(a, b);
+		return memo[k][i];
 	}
+
 	// BEGIN CUT HERE
 	public static void main(String[] args) {
 		if (args.length == 0) {

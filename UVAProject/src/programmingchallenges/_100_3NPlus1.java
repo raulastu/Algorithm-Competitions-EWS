@@ -53,7 +53,7 @@ public class _100_3NPlus1 {
 	// 999999 1000000
 	// 1 999999
 	
-	static void print(Object... ob){
-		System.err.println(Arrays.deepToString(ob));
+	private static void print(Object... rs) {
+		System.err.println(Arrays.deepToString(rs).replace("]", "]\n"));
 	}
 }

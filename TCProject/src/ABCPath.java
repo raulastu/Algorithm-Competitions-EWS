@@ -164,15 +164,7 @@ public class ABCPath {
             }
         System.err.println("Case "+n+" passed.");
     }
-    private static void print( int a ) {
-        System.err.print(a+" ");
-    }
-    private static void print( long a ) {
-        System.err.print(a+"L ");
-    }
-    private static void print( String s ) {
-        System.err.print("\""+s+"\" ");
-    }
+    
     private static void print( int[] rs ) {
         if ( rs == null) return;
         System.err.print('{');
