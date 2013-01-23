@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<templates>
+	<template autoinsert="true" context="java" deleted="false"
+		description="" enabled="true" name="di4">int di4[]={0,0,1,-1};
+		int dj4[]={-1,1,0,0};
+	</template>
+	<template autoinsert="true" context="java" deleted="false"
+		description="" enabled="true" name="di8">int di8[]={0,0,1,-1,1,-1,1,-1};
+		int dj8[]={-1,1,0,0,1,-1,-1,1};
+	</template>
+	<template autoinsert="true" context="java" deleted="false"
+		description="" enabled="true" name="dik">int dik[]={1,1,-1,-1,2,2,-2,-2};
+		int djk[]={2,-2,2,-2,1,-1,1,-1};
+	</template>
+</templates>

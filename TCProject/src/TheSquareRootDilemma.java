@@ -6,50 +6,29 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.util.*;
 
-public class MonstersValley2 {
-	final long INF = 51 * 1000000000000L;
-
-	public int minimumPrice(int[] dread, int[] price) {
-		int n = dread.length;
-		long[][] maxDread = new long[2 * n + 1][n + 1];
-		// maxDread[p][t] : Maximum dread we can get out of the first
-		// t monsters when we have p price units
-		// available to spend. Negative if impossible.
-		//
-
-		for (int p = 0; p <= 2 * n; p++) {
-			maxDread[p][0] = 0;
-			
-			for (int i = 1; i <= n; i++) {
-				maxDread[p][i] = -INF;
-				// bribe the monster
-				if (p >= price[i - 1]) {
-					maxDread[p][i] = maxDread[p - price[i - 1]][i - 1] + dread[i - 1];
-					print("bribe");
-					print(maxDread);
-				}
-				
-				// Do not bribe the monster
-				if (maxDread[p][i - 1] >= dread[i - 1]) {
-					maxDread[p][i] = Math.max(maxDread[p][i],maxDread[p][i - 1]);
-					print("dont bribe");
-					print(maxDread);
-				}
-				
+public class TheSquareRootDilemma {
+	public int countPairs(int N, int M) {
+		int rc = 0;
+		for (int i = 1; i <= N; i++) {
+			for (int j = 1; j <= M; j++) {
+//				if(i==j){
+//					rc++;
+//					continue;
+//				}
+//				double ax = sqrt(i)*sqrt(j);
+//				double bx = (int)(sqrt(i)*sqrt(j));
+////				if(i==3){
+////					print(i,j,ax,bx,'x');
+////				}
+//				if (abs(ax - bx)<0.0000000009){
+////					print(i,j,ax,bx);
+//					rc++;
+//				}
+				rc++;
 			}
 		}
-		// Pick the minimum price that yields a valid maximum dread:
-		for (int p = 0; p <= 2 * n; p++) {
-			if (maxDread[p][n] >= 0) {
-				return p;
-			}
-		}
-		return 2 * n;
+		return rc;
 	}
-
-	int dp[][];
-	int prices[];
-	int dread[];
 
 	// BEGIN CUT HERE
 
@@ -90,10 +69,10 @@ public class MonstersValley2 {
 
 	public static void main(String[] args) {
 		if (args.length == 0) {
-			MonstersValley2Harness.run_test(-1);
+			TheSquareRootDilemmaHarness.run_test(-1);
 		} else {
 			for (int i = 0; i < args.length; ++i)
-				MonstersValley2Harness.run_test(Integer.valueOf(args[i]));
+				TheSquareRootDilemmaHarness.run_test(Integer.valueOf(args[i]));
 		}
 	}
 
@@ -101,7 +80,7 @@ public class MonstersValley2 {
 }
 
 // BEGIN CUT HERE
-class MonstersValley2Harness {
+class TheSquareRootDilemmaHarness {
 	public static void run_test(int casenum) {
 		if (casenum != -1) {
 			if (runTestCase(casenum) == -1)
@@ -156,68 +135,66 @@ class MonstersValley2Harness {
 	static int runTestCase(int casenum__) {
 		switch (casenum__) {
 		case 0: {
-			int[] dread = { 8, 5, 10 };
-			int[] price = { 1, 1, 2 };
+			int N = 2;
+			int M = 2;
 			int expected__ = 2;
 
 			return verifyCase(casenum__, expected__,
-					new MonstersValley2().minimumPrice(dread, price));
+					new TheSquareRootDilemma().countPairs(N, M));
 		}
 		case 1: {
-			int[] dread = { 1, 2, 4, 1000000000 };
-			int[] price = { 1, 1, 1, 2 };
-			int expected__ = 5;
+			int N = 10;
+			int M = 1;
+			int expected__ = 3;
 
 			return verifyCase(casenum__, expected__,
-					new MonstersValley2().minimumPrice(dread, price));
+					new TheSquareRootDilemma().countPairs(N, M));
 		}
 		case 2: {
-			int[] dread = { 200, 107, 105, 206, 307, 400 };
-			int[] price = { 1, 2, 1, 1, 1, 2 };
-			int expected__ = 2;
-
-			return verifyCase(casenum__, expected__,
-					new MonstersValley2().minimumPrice(dread, price));
-		}
-		case 3: {
-			int[] dread = { 5216, 12512, 613, 1256, 66, 17202, 30000, 23512,
-					2125, 33333 };
-			int[] price = { 2, 2, 1, 1, 1, 1, 2, 1, 2, 1 };
+			int N = 3;
+			int M = 8;
 			int expected__ = 5;
 
 			return verifyCase(casenum__, expected__,
-					new MonstersValley2().minimumPrice(dread, price));
+					new TheSquareRootDilemma().countPairs(N, M));
 		}
-		case 4: {
-			int d = 2000000000;
-			int[] dread = { d - 1, d, d };
-			// fill(dread,d);
-			int[] price = { 2, 2, 2 };
-			int expected__ = 4;
+		
+		case 3: {
+			int N = 100;
+			int M = 100;
+			int expected__ = 310;
 
 			return verifyCase(casenum__, expected__,
-					new MonstersValley2().minimumPrice(dread, price));
+					new TheSquareRootDilemma().countPairs(N, M));
+		}
+		case 4: {
+			int N = 77777;
+			int M = 77777;
+			int expected__ = 310;
+
+			return verifyCase(casenum__, expected__,
+					new TheSquareRootDilemma().countPairs(N, M));
 		}
 
 		// custom cases
 
 		/*
-		 * case 4: { int[] dread = ; int[] price = ; int expected__ = ;
+		 * case 4: { int N = ; int M = ; int expected__ = ;
 		 * 
 		 * return verifyCase(casenum__, expected__, new
-		 * MonstersValley2().minimumPrice(dread, price)); }
+		 * TheSquareRootDilemma().countPairs(N, M)); }
 		 */
 		/*
-		 * case 5: { int[] dread = ; int[] price = ; int expected__ = ;
+		 * case 5: { int N = ; int M = ; int expected__ = ;
 		 * 
 		 * return verifyCase(casenum__, expected__, new
-		 * MonstersValley2().minimumPrice(dread, price)); }
+		 * TheSquareRootDilemma().countPairs(N, M)); }
 		 */
 		/*
-		 * case 6: { int[] dread = ; int[] price = ; int expected__ = ;
+		 * case 6: { int N = ; int M = ; int expected__ = ;
 		 * 
 		 * return verifyCase(casenum__, expected__, new
-		 * MonstersValley2().minimumPrice(dread, price)); }
+		 * TheSquareRootDilemma().countPairs(N, M)); }
 		 */
 		default:
 			return -1;

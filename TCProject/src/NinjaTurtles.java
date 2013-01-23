@@ -6,20 +6,27 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.util.*;
 
-public class PenguinTiles {
-   public int minMoves(String[] tiles) {
-	   int x=0,y=0;
-	   for (int i = 0; i < tiles.length; i++) {
-		   if(tiles[i].indexOf(".")>=0){
-			  x=i;y= tiles[i].indexOf(".");
-			  break;
+public class NinjaTurtles {
+   public int countOpponents(int P, int K) {
+	   int h=Integer.MAX_VALUE;
+	   int l=0;
+	   int min=Integer.MAX_VALUE;
+	   while(l<h){
+		   int m = (h+l+1)/2;
+//		   print(l,h,m);
+		   int x=(m/K)*3+(m/3);
+		   if(x==P && min > m){
+//			   print(lç,h,m,'x');
+			   h=m;
+			   min=min(min,m);
+		   }else if(x<P){
+			   l=m;
+		   }else{
+			   h=m-1;
 		   }
+		   
 	   }
-	   
-	   int a = ((tiles.length-1-x)>=1?1:0);
-	   int b = (tiles[0].length()-1-y)>=1?1:0;
-//	   print(x,y,a,b);
-	   return a+b;
+	   return min==Integer.MAX_VALUE?-1:min;
    }
 
 
@@ -47,10 +54,10 @@ public class PenguinTiles {
 
 public static void main(String[] args) {
 		if (args.length == 0) {
-			PenguinTilesHarness.run_test(-1);
+			NinjaTurtlesHarness.run_test(-1);
 		} else {
 			for (int i=0; i<args.length; ++i)
-				PenguinTilesHarness.run_test(Integer.valueOf(args[i]));
+				NinjaTurtlesHarness.run_test(Integer.valueOf(args[i]));
 		}
 	}
 
@@ -61,7 +68,7 @@ public static void main(String[] args) {
 }
 
 // BEGIN CUT HERE
-class PenguinTilesHarness {
+class NinjaTurtlesHarness {
 	public static void run_test(int casenum) {
 		if (casenum != -1) {
 			if (runTestCase(casenum) == -1)
@@ -110,65 +117,63 @@ class PenguinTilesHarness {
 	static int runTestCase(int casenum__) {
 		switch(casenum__) {
 		case 0: {
-			String[] tiles            = {"PP",
- "P."};
-			int expected__            = 0;
+			int P                     = 5;
+			int K                     = 4;
+			int expected__            = 6;
 
-			return verifyCase(casenum__, expected__, new PenguinTiles().minMoves(tiles));
+			return verifyCase(casenum__, expected__, new NinjaTurtles().countOpponents(P, K));
 		}
 		case 1: {
-			String[] tiles            = {"PPPPPPPP",
- ".PPPPPPP"};
-			int expected__            = 1;
+			int P                     = 1;
+			int K                     = 4;
+			int expected__            = 3;
 
-			return verifyCase(casenum__, expected__, new PenguinTiles().minMoves(tiles));
+			return verifyCase(casenum__, expected__, new NinjaTurtles().countOpponents(P, K));
 		}
 		case 2: {
-			String[] tiles            = {"PPP",
- "P.P",
- "PPP"};
-			int expected__            = 2;
+			int P                     = 13;
+			int K                     = 6;
+			int expected__            = -1;
 
-			return verifyCase(casenum__, expected__, new PenguinTiles().minMoves(tiles));
+			return verifyCase(casenum__, expected__, new NinjaTurtles().countOpponents(P, K));
 		}
 		case 3: {
-			String[] tiles            = {"P.",
- "PP",
- "PP",
- "PP"};
-			int expected__            = 1;
+			int P                     = 13;
+			int K                     = 17;
+			int expected__            = 30;
 
-			return verifyCase(casenum__, expected__, new PenguinTiles().minMoves(tiles));
+			return verifyCase(casenum__, expected__, new NinjaTurtles().countOpponents(P, K));
 		}
 		case 4: {
-			String[] tiles            = {".PPP",
- "PPPP",
- "PPPP",
- "PPPP"};
-			int expected__            = 2;
+			int P                     = 122;
+			int K                     = 21;
+			int expected__            = 258;
 
-			return verifyCase(casenum__, expected__, new PenguinTiles().minMoves(tiles));
+			return verifyCase(casenum__, expected__, new NinjaTurtles().countOpponents(P, K));
 		}
 
 		// custom cases
 
 /*      case 5: {
-			String[] tiles            = ;
+			int P                     = ;
+			int K                     = ;
 			int expected__            = ;
 
-			return verifyCase(casenum__, expected__, new PenguinTiles().minMoves(tiles));
+			return verifyCase(casenum__, expected__, new NinjaTurtles().countOpponents(P, K));
 		}*/
 /*      case 6: {
-			String[] tiles            = ;
+			int P                     = ;
+			int K                     = ;
 			int expected__            = ;
 
-			return verifyCase(casenum__, expected__, new PenguinTiles().minMoves(tiles));
+			return verifyCase(casenum__, expected__, new NinjaTurtles().countOpponents(P, K));
 		}*/
 /*      case 7: {
-			String[] tiles            = ;
+			int P                     = ;
+			int K                     = ;
 			int expected__            = ;
 
-			return verifyCase(casenum__, expected__, new PenguinTiles().minMoves(tiles));
+			return verifyCase(casenum__, expected__, new NinjaTurtles().countOpponents(P, K));
 		}*/
 		default:
 			return -1;

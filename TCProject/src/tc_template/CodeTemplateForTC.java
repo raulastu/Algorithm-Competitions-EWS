@@ -1,3 +1,4 @@
+
 import java.util.regex.*;
 import static java.lang.Math.*;
 import static java.util.Arrays.*;
@@ -6,7 +7,6 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.util.*;
 
-import Util.treeDrawing.TreeDrawing;
 
 public class $CLASSNAME$ {
     public $RC$ $METHODNAME$($METHODPARMS$) {
@@ -16,6 +16,16 @@ public class $CLASSNAME$ {
 $WRITERCODE$
 $BEGINCUT$
 
+
+
+    public static void main(String[] args) {
+        try {
+$MAINBODY$
+        } catch( Exception exx) {
+            System.err.println(exx);
+            exx.printStackTrace(System.err);
+        }
+    }
 	private static void print(Object... rs) {
 		System.err.println(Arrays.deepToString(rs).replace("]", "]\n"));
 	}
@@ -36,14 +46,6 @@ $BEGINCUT$
 	private static void tne(){tl+="]";}
 
 
-    public static void main(String[] args) {
-        try {
-$MAINBODY$
-        } catch( Exception exx) {
-            System.err.println(exx);
-            exx.printStackTrace(System.err);
-        }
-    }
    private static void eq(int n, int a, int b) {
         if (a == b) {
             System.err.println("Case " + n + " passed.");
