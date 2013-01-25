@@ -7,19 +7,23 @@ import static java.util.Collections.*;
 import java.util.*;
 
 
-public class $CLASSNAME$ {
-    public $RC$ $METHODNAME$($METHODPARMS$) {
-        $RC$ res;
+public class InterestingDigits {
+    public int[] digits(int base) {
+        int[] res;
         return res;
     }
-$WRITERCODE$
-$BEGINCUT$
+
+// BEGIN CUT HERE
 
 
 
     public static void main(String[] args) {
         try {
-$MAINBODY$
+            eq(0,(new InterestingDigits()).digits(10),new int[] { 3,  9 });
+            eq(1,(new InterestingDigits()).digits(3),new int[] { 2 });
+            eq(2,(new InterestingDigits()).digits(9),new int[] { 2,  4,  8 });
+            eq(3,(new InterestingDigits()).digits(26),new int[] { 5,  25 });
+            eq(4,(new InterestingDigits()).digits(30),new int[] { 29 });
         } catch( Exception exx) {
             System.err.println(exx);
             exx.printStackTrace(System.err);
@@ -153,9 +157,9 @@ $MAINBODY$
     
     static String expected = "  expe";
     static String received = "  rc";
-$ENDCUT$
+// END CUT HERE
 }
 
-$BEGINCUT$
-$PROBLEMDESC$
-$ENDCUT$
+// BEGIN CUT HERE
+
+// END CUT HERE

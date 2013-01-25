@@ -7,19 +7,28 @@ import static java.util.Collections.*;
 import java.util.*;
 
 
-public class $CLASSNAME$ {
-    public $RC$ $METHODNAME$($METHODPARMS$) {
-        $RC$ res;
+public class WhichData {
+    public int[] bestVariance(int[] sampleData, int varNum, int varDen) {
+        int[] res;
         return res;
     }
-$WRITERCODE$
-$BEGINCUT$
+
+// BEGIN CUT HERE
 
 
 
     public static void main(String[] args) {
         try {
-$MAINBODY$
+            eq(0,(new WhichData()).bestVariance(new int[] {1,2,3,4,5,6,7,8}, 40, 20),new int[] { 1,  2,  3,  4,  5 });
+            eq(1,(new WhichData()).bestVariance(new int[] {1,2,3,4,5,6,7,8}, 6, 1),new int[] { 1,  2,  4,  5,  8 });
+            eq(2,(new WhichData()).bestVariance(new int[] {-10000,10000,-9999,9999,-9998,9000}, 10000, 1),new int[] { -10000,  -9998 });
+            eq(3,(new WhichData()).bestVariance(new int[] {-10000,10000,-9999,9999,-9998,9998,1,1,2,2}, 9999, 10000),new int[] { -10000,  -9998 });
+            eq(4,(new WhichData()).bestVariance(new int[] {500,500,500,500,500,500,500,580,
+                100,100,100,100,100,100,100,180}, 700, 1),new int[] { 100,  100,  100,  100,  100,  100,  100,  180 });
+            eq(5,(new WhichData()).bestVariance(new int[] {10,10,10,10,10,10}, 0, 9999),new int[] { 10 });
+            eq(6,(new WhichData()).bestVariance(new int[] {2,5,8,15,-14,0,-2,3,0,-10,-3,-9,6,-13,4,-1}, 5787, 170),new int[] { -14,  -10,  -3,  -1,  0,  0,  2,  3,  4,  5 });
+            eq(7,(new WhichData()).bestVariance(new int[] {-14,-3,-1,10,-5,0,13,6,11,9,5,6,3,-2,0,2}, 5061, 225),new int[] { -5,  -3,  -2,  -1,  0,  2,  5,  6,  6,  11 });
+            eq(8,(new WhichData()).bestVariance(new int[] {0,-13,15,5,5,-7,-6,-7,-8,4,-12,-13,14,9,-3,-1}, 9262, 197),new int[] { -13,  -13,  -12,  -7,  -7,  -6,  -3,  4,  5,  5 });
         } catch( Exception exx) {
             System.err.println(exx);
             exx.printStackTrace(System.err);
@@ -153,9 +162,9 @@ $MAINBODY$
     
     static String expected = "  expe";
     static String received = "  rc";
-$ENDCUT$
+// END CUT HERE
 }
 
-$BEGINCUT$
-$PROBLEMDESC$
-$ENDCUT$
+// BEGIN CUT HERE
+
+// END CUT HERE

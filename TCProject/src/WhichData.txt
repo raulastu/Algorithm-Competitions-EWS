@@ -1,0 +1,99 @@
+PROBLEM STATEMENT
+You have just received a int[] sampleData from the laboratory.  You know that the variance of this data should be varNum/varDen, where varNum and varDen are ints.  Note that varNum/varDen need not be an integer.  Your method will return which nonempty subset of the elements from sampleData produces a variance closest to the variance you expected.  This subset may be the entire sampleData.  The variance of a subset of the sampleData can be calculated via the following formula.
+Let s(i) denote the ith element of the subset (assuming some method of indexing into the subset), and let n denote the size of the subset.  Then 
+     mean = ( s(0) + s(1) + s(2) + ... + s(n-1) )/n
+     varsum = (mean-s(0))^2 + (mean-s(1))^2 + ... + (mean-s(n-1))^2
+     variance = varsum/n
+The subset will be returned as a int[], whose elements are the values of the subset, sorted in nondescending order.  If two subsets are equally far from the expected variance, choose the one whose return value comes first lexicographically.  A int[] X comes lexicographically before a int[] Y if there is a position j such that, X[i]=Y[i] for all i<j, and X[j]<Y[j].  If X is a proper prefix of Y, it occurs lexicographically before it.
+
+DEFINITION
+Class:WhichData
+Method:bestVariance
+Parameters:int[], int, int
+Returns:int[]
+Method signature:int[] bestVariance(int[] sampleData, int varNum, int varDen)
+
+
+NOTES
+-doubles will provide enough precision to properly solve this problem.  Given two subsets, s1 and s2, the difference between |variance(s1)-varNum/varDen| and |variance(s2)-varNum/varDen| will be either 0, or greater than 1e-9, where variance(x) is the variance of subset x.
+
+
+CONSTRAINTS
+-varNum will be between 0 and 10000 inclusive.
+-varDen will be between 1 and 10000 inclusive.
+-sampleData will contain between 2 and 16 elements inclusive.
+-Each element of sampleData will be between -10000 and 10000 inclusive.
+
+
+EXAMPLES
+
+0)
+{1,2,3,4,5,6,7,8}
+40
+20
+
+Returns: { 1,  2,  3,  4,  5 }
+
+The variance should be 40/20 = 2.  The set of numbers {1,2,3,4,5} has
+
+	mean = (1+2+3+4+5)/5 = 3
+	varsum = 2^2 + 1^2 + 0^2 + 1^2 + 2^2 = 10
+	variance = 10/5 = 2
+
+
+1)
+{1,2,3,4,5,6,7,8}
+6
+1
+
+Returns: { 1,  2,  4,  5,  8 }
+
+2)
+{-10000,10000,-9999,9999,-9998,9000}
+10000
+1
+
+Returns: { -10000,  -9998 }
+
+3)
+{-10000,10000,-9999,9999,-9998,9998,1,1,2,2}
+9999
+10000
+
+Returns: { -10000,  -9998 }
+
+4)
+{500,500,500,500,500,500,500,580,
+ 100,100,100,100,100,100,100,180}
+700
+1
+
+Returns: { 100,  100,  100,  100,  100,  100,  100,  180 }
+
+5)
+{10,10,10,10,10,10}
+0
+9999
+
+Returns: { 10 }
+
+6)
+{2,5,8,15,-14,0,-2,3,0,-10,-3,-9,6,-13,4,-1}
+5787
+170
+
+Returns: { -14,  -10,  -3,  -1,  0,  0,  2,  3,  4,  5 }
+
+7)
+{-14,-3,-1,10,-5,0,13,6,11,9,5,6,3,-2,0,2}
+5061
+225
+
+Returns: { -5,  -3,  -2,  -1,  0,  2,  5,  6,  6,  11 }
+
+8)
+{0,-13,15,5,5,-7,-6,-7,-8,4,-12,-13,14,9,-3,-1}
+9262
+197
+
+Returns: { -13,  -13,  -12,  -7,  -7,  -6,  -3,  4,  5,  5 }

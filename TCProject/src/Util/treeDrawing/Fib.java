@@ -43,6 +43,8 @@ public class Fib {
 	private static void tb(){tl+="[]";}
 	private static void tns(){tl+="[";}
 	private static void tne(){tl+="]";}
+	
+	
 
 	
 	

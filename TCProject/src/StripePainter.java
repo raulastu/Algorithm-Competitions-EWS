@@ -7,19 +7,23 @@ import static java.util.Collections.*;
 import java.util.*;
 
 
-public class $CLASSNAME$ {
-    public $RC$ $METHODNAME$($METHODPARMS$) {
-        $RC$ res;
+public class StripePainter {
+    public int minStrokes(String stripes) {
+        int res;
         return res;
     }
-$WRITERCODE$
-$BEGINCUT$
+
+// BEGIN CUT HERE
 
 
 
     public static void main(String[] args) {
         try {
-$MAINBODY$
+            eq(0,(new StripePainter()).minStrokes("RGBGR"),3);
+            eq(1,(new StripePainter()).minStrokes("RGRG"),3);
+            eq(2,(new StripePainter()).minStrokes("ABACADA"),4);
+            eq(3,(new StripePainter()).minStrokes("AABBCCDDCCBBAABBCCDD"),7);
+            eq(4,(new StripePainter()).minStrokes("BECBBDDEEBABDCADEAAEABCACBDBEECDEDEACACCBEDABEDADD"),26);
         } catch( Exception exx) {
             System.err.println(exx);
             exx.printStackTrace(System.err);
@@ -153,9 +157,9 @@ $MAINBODY$
     
     static String expected = "  expe";
     static String received = "  rc";
-$ENDCUT$
+// END CUT HERE
 }
 
-$BEGINCUT$
-$PROBLEMDESC$
-$ENDCUT$
+// BEGIN CUT HERE
+
+// END CUT HERE

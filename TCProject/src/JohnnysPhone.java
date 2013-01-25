@@ -21,21 +21,7 @@ public class JohnnysPhone {
 	}
 	
 	static String tl="";
-	private static void printTree() {
-		try{
-			String[] drawing = new Util.treeDrawing.TreeDrawing().draw(new String[]{tl});
-			System.err.println(Arrays.deepToString(drawing).replaceAll("\\[|\\]", "").replaceAll(", ", "\n")+"\n");
-		}catch (Exception ex){
-			System.err.println("invalid tree>"+tl);
-		}	
-		tl="";
-	}
-	private static void tn(Object...o){tl+="("+Arrays.deepToString(o).replaceAll(" |\\[|\\]", "")+")";}
-	private static void tb(){tl+="[]";}
-	private static void tns(){tl+="[";}
-	private static void tne(){tl+="]";}
-
-
+	
     public static void main(String[] args) {
         try {
             eq(0,(new JohnnysPhone()).minimizePushes(new String[] { "age messagd messagd message" }, "message"),8);

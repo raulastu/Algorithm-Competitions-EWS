@@ -7,19 +7,22 @@ import static java.util.Collections.*;
 import java.util.*;
 
 
-public class $CLASSNAME$ {
-    public $RC$ $METHODNAME$($METHODPARMS$) {
-        $RC$ res;
+public class Containers {
+    public int wastedSpace(int[] containers, int[] packages) {
+        int res;
         return res;
     }
-$WRITERCODE$
-$BEGINCUT$
+
+// BEGIN CUT HERE
 
 
 
     public static void main(String[] args) {
         try {
-$MAINBODY$
+            eq(0,(new Containers()).wastedSpace(new int[] { 5, 5, 5 }, new int[] { 5, 5, 5 }),0);
+            eq(1,(new Containers()).wastedSpace(new int[] { 5, 6, 7 }, new int[] { 5, 5, 5 }),3);
+            eq(2,(new Containers()).wastedSpace(new int[] { 2, 3, 5 }, new int[] { 3 }),7);
+            eq(3,(new Containers()).wastedSpace(new int[] { 3, 4, 5, 6 }, new int[] { 3, 3, 3, 3, 3 }),3);
         } catch( Exception exx) {
             System.err.println(exx);
             exx.printStackTrace(System.err);
@@ -153,9 +156,9 @@ $MAINBODY$
     
     static String expected = "  expe";
     static String received = "  rc";
-$ENDCUT$
+// END CUT HERE
 }
 
-$BEGINCUT$
-$PROBLEMDESC$
-$ENDCUT$
+// BEGIN CUT HERE
+
+// END CUT HERE
