@@ -7,10 +7,10 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.util.*;
 
-public class BottomUpUnboundedKnapsack {
+public class UnboundedKnapsack_BottomUp {
 	public int maximize(int[] values, int weights[], int max) {
 
-		int[] m=new int[60];
+		int[] m=new int[max+1];
 		for (int i = 1; i <= max; i++) {
 			m[i]=0;
 			for (int j = 0; j < values.length; j++) {
@@ -19,7 +19,6 @@ public class BottomUpUnboundedKnapsack {
 			}
 		}
 		print(m);
-		
 		return m[max];
 	}
 	
@@ -28,16 +27,16 @@ public class BottomUpUnboundedKnapsack {
 
 	public static void main(String[] args) {
 		try {
-			eq(0, (new BottomUpUnboundedKnapsack()).maximize(
+			eq(0, (new UnboundedKnapsack_BottomUp()).maximize(
 					new int[] { 4,  2,  2, 10, 1},
 					new int[] { 12, 1, 2, 4,  1}, 15), 36);
-			eq(1, (new BottomUpUnboundedKnapsack()).maximize(
+			eq(1, (new UnboundedKnapsack_BottomUp()).maximize(
 					new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 					new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, 15), 15);
-			eq(1, (new BottomUpUnboundedKnapsack()).maximize(
+			eq(1, (new UnboundedKnapsack_BottomUp()).maximize(
 					new int[] { 1,1},
 					new int[] { 5,6}, 4), 0);
-			eq(1, (new BottomUpUnboundedKnapsack()).maximize(
+			eq(1, (new UnboundedKnapsack_BottomUp()).maximize(
 					new int[] { 1,1},
 					new int[] { 5,6}, 7), 1);
 			
