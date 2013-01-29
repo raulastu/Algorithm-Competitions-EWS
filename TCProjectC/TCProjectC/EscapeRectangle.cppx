@@ -1,0 +1,33 @@
+#include <cmath>
+#include <ctime>
+#include <iostream>
+#include <cstring>
+#include <vector>
+#include <map>
+#include <set>
+#include <algorithm>
+#include <cstdio>
+#include <map>
+
+using namespace std;
+
+int main(){
+    
+    freopen("/Users/rc/test1/Escape del Rectangulo_in.txt", "r", stdin);
+    freopen("/Users/rc/test1/escape.txt", "w", stdout);
+    
+    int n = 0;
+    cin>>n;
+    for (int i = 0; i<n; i++) {
+        int x,y,w,h;
+        cin>>x>>y>>w>>h;
+        int res = min(y,min(x,min(h-y,w-x)));
+        cout<<res<<endl;
+//        cin>>y;
+//        cin>>y;
+    }
+//    cout<<n;
+    
+    return 0;
+    
+}

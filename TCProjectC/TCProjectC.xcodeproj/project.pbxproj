@@ -1,0 +1,259 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		51021263162BA37C00CA7899 /* IncubatorEasy.cppx in Sources */ = {isa = PBXBuildFile; fileRef = 51021262162BA37C00CA7899 /* IncubatorEasy.cppx */; };
+		512E09E2163D961600AF2C79 /* BallAndHats.cppx in Sources */ = {isa = PBXBuildFile; fileRef = 512E09E1163D961600AF2C79 /* BallAndHats.cppx */; };
+		512E09E4163DA56500AF2C79 /* MinimalTriangle.cppx in Sources */ = {isa = PBXBuildFile; fileRef = 512E09E3163DA56500AF2C79 /* MinimalTriangle.cppx */; };
+		512E09E6163DAC7500AF2C79 /* ContestWinner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 512E09E5163DAC7500AF2C79 /* ContestWinner.cpp */; };
+		514E7C001634A92600F61BD4 /* Acronimo.cppx in Sources */ = {isa = PBXBuildFile; fileRef = 514E7BFF1634A92600F61BD4 /* Acronimo.cppx */; };
+		519468A81633560500FAA3F5 /* EscapeRectangle.cppx in Sources */ = {isa = PBXBuildFile; fileRef = 519468A61633560500FAA3F5 /* EscapeRectangle.cppx */; };
+		519468AB1633618B00FAA3F5 /* SurroundingGameEasy.cppx in Sources */ = {isa = PBXBuildFile; fileRef = 519468AA1633618B00FAA3F5 /* SurroundingGameEasy.cppx */; };
+		51C9A8E7162A0AB800603DA4 /* main.cppx in Sources */ = {isa = PBXBuildFile; fileRef = 51C9A8E6162A0AB800603DA4 /* main.cppx */; };
+		51C9A8E9162A0AB800603DA4 /* TCProjectC.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51C9A8E8162A0AB800603DA4 /* TCProjectC.1 */; };
+		51C9A8F3162A40D700603DA4 /* RGBColor.cppx in Sources */ = {isa = PBXBuildFile; fileRef = 51C9A8F2162A40D700603DA4 /* RGBColor.cppx */; };
+		51C9A8F5162A49E000603DA4 /* Matching.cppx in Sources */ = {isa = PBXBuildFile; fileRef = 51C9A8F4162A49E000603DA4 /* Matching.cppx */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		51C9A8E0162A0AB800603DA4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				51C9A8E9162A0AB800603DA4 /* TCProjectC.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		51021262162BA37C00CA7899 /* IncubatorEasy.cppx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = IncubatorEasy.cppx; sourceTree = "<group>"; };
+		512E09E1163D961600AF2C79 /* BallAndHats.cppx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BallAndHats.cppx; sourceTree = "<group>"; };
+		512E09E3163DA56500AF2C79 /* MinimalTriangle.cppx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MinimalTriangle.cppx; sourceTree = "<group>"; };
+		512E09E5163DAC7500AF2C79 /* ContestWinner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ContestWinner.cpp; sourceTree = "<group>"; };
+		514E7BFF1634A92600F61BD4 /* Acronimo.cppx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Acronimo.cppx; sourceTree = "<group>"; };
+		519468A61633560500FAA3F5 /* EscapeRectangle.cppx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EscapeRectangle.cppx; sourceTree = "<group>"; };
+		519468AA1633618B00FAA3F5 /* SurroundingGameEasy.cppx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SurroundingGameEasy.cppx; sourceTree = "<group>"; };
+		51C9A8E2162A0AB800603DA4 /* TCProjectC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TCProjectC; sourceTree = BUILT_PRODUCTS_DIR; };
+		51C9A8E6162A0AB800603DA4 /* main.cppx */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.cppx; sourceTree = "<group>"; };
+		51C9A8E8162A0AB800603DA4 /* TCProjectC.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = TCProjectC.1; sourceTree = "<group>"; };
+		51C9A8F2162A40D700603DA4 /* RGBColor.cppx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RGBColor.cppx; sourceTree = "<group>"; };
+		51C9A8F4162A49E000603DA4 /* Matching.cppx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Matching.cppx; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		51C9A8DF162A0AB800603DA4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		51C9A8D7162A0AB800603DA4 = {
+			isa = PBXGroup;
+			children = (
+				51C9A8E5162A0AB800603DA4 /* TCProjectC */,
+				51C9A8E3162A0AB800603DA4 /* Products */,
+				51C9A8F1162A3FEF00603DA4 /* New Group */,
+			);
+			sourceTree = "<group>";
+		};
+		51C9A8E3162A0AB800603DA4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				51C9A8E2162A0AB800603DA4 /* TCProjectC */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		51C9A8E5162A0AB800603DA4 /* TCProjectC */ = {
+			isa = PBXGroup;
+			children = (
+				512E09E5163DAC7500AF2C79 /* ContestWinner.cpp */,
+				512E09E3163DA56500AF2C79 /* MinimalTriangle.cppx */,
+				512E09E1163D961600AF2C79 /* BallAndHats.cppx */,
+				514E7BFF1634A92600F61BD4 /* Acronimo.cppx */,
+				519468AA1633618B00FAA3F5 /* SurroundingGameEasy.cppx */,
+				51021262162BA37C00CA7899 /* IncubatorEasy.cppx */,
+				51C9A8F4162A49E000603DA4 /* Matching.cppx */,
+				51C9A8F2162A40D700603DA4 /* RGBColor.cppx */,
+				51C9A8E8162A0AB800603DA4 /* TCProjectC.1 */,
+				519468A61633560500FAA3F5 /* EscapeRectangle.cppx */,
+			);
+			path = TCProjectC;
+			sourceTree = "<group>";
+		};
+		51C9A8F1162A3FEF00603DA4 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				51C9A8E6162A0AB800603DA4 /* main.cppx */,
+			);
+			name = "New Group";
+			path = TCProjectC;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		51C9A8E1162A0AB800603DA4 /* TCProjectC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 51C9A8EC162A0AB800603DA4 /* Build configuration list for PBXNativeTarget "TCProjectC" */;
+			buildPhases = (
+				51C9A8DE162A0AB800603DA4 /* Sources */,
+				51C9A8DF162A0AB800603DA4 /* Frameworks */,
+				51C9A8E0162A0AB800603DA4 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TCProjectC;
+			productName = TCProjectC;
+			productReference = 51C9A8E2162A0AB800603DA4 /* TCProjectC */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		51C9A8D9162A0AB800603DA4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "Raul Ramirez";
+			};
+			buildConfigurationList = 51C9A8DC162A0AB800603DA4 /* Build configuration list for PBXProject "TCProjectC" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 51C9A8D7162A0AB800603DA4;
+			productRefGroup = 51C9A8E3162A0AB800603DA4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				51C9A8E1162A0AB800603DA4 /* TCProjectC */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		51C9A8DE162A0AB800603DA4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51C9A8E7162A0AB800603DA4 /* main.cppx in Sources */,
+				51C9A8F3162A40D700603DA4 /* RGBColor.cppx in Sources */,
+				51C9A8F5162A49E000603DA4 /* Matching.cppx in Sources */,
+				51021263162BA37C00CA7899 /* IncubatorEasy.cppx in Sources */,
+				519468A81633560500FAA3F5 /* EscapeRectangle.cppx in Sources */,
+				519468AB1633618B00FAA3F5 /* SurroundingGameEasy.cppx in Sources */,
+				514E7C001634A92600F61BD4 /* Acronimo.cppx in Sources */,
+				512E09E2163D961600AF2C79 /* BallAndHats.cppx in Sources */,
+				512E09E4163DA56500AF2C79 /* MinimalTriangle.cppx in Sources */,
+				512E09E6163DAC7500AF2C79 /* ContestWinner.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		51C9A8EA162A0AB800603DA4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		51C9A8EB162A0AB800603DA4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		51C9A8ED162A0AB800603DA4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		51C9A8EE162A0AB800603DA4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		51C9A8DC162A0AB800603DA4 /* Build configuration list for PBXProject "TCProjectC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				51C9A8EA162A0AB800603DA4 /* Debug */,
+				51C9A8EB162A0AB800603DA4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		51C9A8EC162A0AB800603DA4 /* Build configuration list for PBXNativeTarget "TCProjectC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				51C9A8ED162A0AB800603DA4 /* Debug */,
+				51C9A8EE162A0AB800603DA4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 51C9A8D9162A0AB800603DA4 /* Project object */;
+}

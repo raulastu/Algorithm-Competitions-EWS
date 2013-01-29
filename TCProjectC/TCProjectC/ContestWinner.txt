@@ -1,0 +1,66 @@
+PROBLEM STATEMENT
+
+Exactly one million contestants, numbered 1 through 1,000,000, took part in a programming contest.
+The rules of the contest are simple: the winner is the contestant who solves the largest number of tasks.
+If there are more contestants tied for most tasks solved, the winner is the one who was the first to have all of their tasks solved.
+
+
+During the contest the judges were keeping a log of all accepted solutions.
+You are given this log as a int[] events.
+The i-th element of events is the number of the contestant who submitted the i-th accepted solution (both indices are 0-based).
+
+
+For example, if events = {4, 7, 4, 1}, this is what happened during the contest:
+
+
+Contestant 4 solved her first task.
+Contestant 7 solved his first task.
+Contestant 4 solved her second task.
+Contestant 1 solved his first task.
+
+
+Compute and return the number of the contestant who won the contest.
+
+
+DEFINITION
+Class:ContestWinner
+Method:getWinner
+Parameters:int[]
+Returns:int
+Method signature:int getWinner(int[] events)
+
+
+CONSTRAINTS
+-events will contain between 1 and 50 elements, inclusive.
+-Each element of events will be between 1 and 1,000,000, inclusive.
+
+
+EXAMPLES
+
+0)
+{4,7,4,1}
+
+Returns: 4
+
+Example from the problem statement.
+
+1)
+{10,20,30,40,50}
+
+Returns: 10
+
+
+
+2)
+{123,123,456,456,456,123}
+
+Returns: 456
+
+
+
+3)
+{1,2,2,3,3,3,4,4,4,4}
+
+Returns: 4
+
+

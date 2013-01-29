@@ -1,0 +1,52 @@
+PROBLEM STATEMENT
+You are given a vector <int> S containing a set of pairwise distinct positive integers.
+
+Return the size of the largest subset T of S such that any two numbers from T are relatively prime.
+
+DEFINITION
+Class:RelativelyPrimeSubset
+Method:findSize
+Parameters:vector <int>
+Returns:int
+Method signature:int findSize(vector <int> S)
+
+
+NOTES
+-Two integers A and B are relatively prime if and only if their greatest common divisor equals to 1.
+
+
+CONSTRAINTS
+-S will contain between 1 and 50 elements, inclusive.
+-Each element of S will be between 1 and 100, inclusive.
+-All elements in S will be distinct.
+
+
+EXAMPLES
+
+0)
+{2,3,7,11,4}
+
+Returns: 4
+
+One such subset T is {2,3,7,11}, another is {3,4,7,11}.
+
+1)
+{4,8,12,16}
+
+Returns: 1
+
+
+
+2)
+{100,17,81,82}
+
+Returns: 3
+
+
+
+3)
+{2,3,4,5,6}
+
+Returns: 3
+
+
