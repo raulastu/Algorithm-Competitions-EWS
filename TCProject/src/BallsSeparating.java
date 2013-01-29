@@ -1,4 +1,3 @@
-
 import java.util.regex.*;
 import static java.lang.Math.*;
 import static java.util.Arrays.*;
@@ -7,194 +6,82 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.util.*;
 
-public class LandAndSea {
-    public int[] howManyIslands(String[] seaMap) {
-        N=seaMap.length+2;
-        M=seaMap[0].length()+2;
-        sea = new char[N][M];
-        char[]fillers=new char[M];
-        fill(fillers,'.');
-        sea[0]=fillers;
-        sea[sea.length-1]=fillers;
-        for (int i = 0; i < seaMap.length; i++) {
-        	sea[i+1]=("."+seaMap[i]+".").toCharArray();
-		}
-        vals = new int [N][M];
-        memo= new boolean[N][M];
-        map=new Object[N][M];
+
+public class BallsSeparating {
+    public int minOperations(int[] red, int[] green, int[] blue) {
+        int res=0;
+        r=red;
+        g=green;
+        b=blue;
+//        for (int i = 0; i < blue.length; i++) {
+//        	int max = max(red[i],max(green[i],blue[i]));
+//        	print(max);
+//			res+=red[i]+blue[i]+green[i]-max;
+////			int max=
+//		}
         
-        water root=new water(0);
-        ff(0,0,'.',0, root);
-        int c=1;
-        for (int i = 0; i < vals.length; i++) {
-			for (int j = 0; j < vals[i].length; j++) {
-				if(!memo[i][j] && sea[i][j]=='x'){
-					water father=(water)map[i][j-1];
-					island isl= new island(c);
-					ff(i,j,sea[i][j],c++,isl);
-					father.children.add(isl);
-				}else if(!memo[i][j] && sea[i][j]=='.'){
-					island father=(island)map[i][j-1];
-					water wat= new water(c);
-					ff(i,j,sea[i][j],c++,wat);
-					father.children.add(wat);
-				}
-			}
+        for (int i = 0; i < memo.length; i++) {
+        	memo[i][0][0][0]=
+        	memo[i][1][0][0]=
+        	memo[i][0][1][0]=
+        	memo[i][0][0][1]=
+        	memo[i][1][1][0]=
+        	memo[i][0][1][1]=
+        	memo[i][1][0][1]=
+        	memo[i][1][1][0]=
+        	memo[i][1][1][1]=-1;
 		}
-        
-//        print(root);
-        r = new int[2502];
-        go(root);
-//        print(vals);
-//        print(r);
-        if(max==0 && r[0]==0)
-        	return new int[0];
-        int res[]= new int[max+1];
-        for (int i = 0; i < res.length; i++) {
-			res[i]=r[i];
-		}
-        return res;
+        int r = go(0,0,0,0);
+        return r>inf?-1:r;
     }
-    int r[];
-    int max=0;
-    int go(Object node){
-//    	print(node);
-    	if(node==null)
-    		return 0;
-    	if(node instanceof water){
-    		water w = (water)node;
-    		int rr = 0;
-    		for (int i = 0; i < w.children.size(); i++) {
-    			rr = max(rr,1+go(w.children.get(i)));
-			}
-    		return rr;
-    	}else{
-    		island isl = (island)node;
-    		int rr=0;
-    		for (water wat : isl.children) {
-				rr=max(rr,go(wat));
-			}
-    		r[rr]++;
-    		max=max(rr,max);
-    		return rr;
+    int []r;
+    int []g;
+    int []b;
+    int inf=100000001;
+    int memo[][][][]=new int[51][2][2][2];
+    int go(int i, int rp, int gb, int pb){
+    	if(i==r.length){
+//    		print(1<<30);
+    		if(rp==1&&gb==1&&pb==1)
+    			return 0;
+    		return inf;
+    	}	
+    	if(memo[i][rp][gb][pb]==-1){
+    		int rc = go(i+1,1,gb,pb)+g[i]+b[i];
+        	int gc = r[i]+go(i+1,rp,1,pb)+b[i];
+        	int bc = r[i]+g[i]+go(i+1,rp,gb,1);
+        	memo[i][rp][gb][pb]= min(rc,min(gc,bc));
     	}
-//    	return 0;
+    	return memo[i][rp][gb][pb];
     }
-    
-    class water{
-    	int name;
-    	ArrayList<island> children = new ArrayList<island>();
-    	public water(int name) {
-			this.name=name;
-		}
-    	@Override
-    	public String toString() {
-    		return name+" "+children;
-    	}
-    }
-    class island{
-    	int name;
-    	ArrayList<water> children = new ArrayList<water>();
-    	public island(int name) {
-			this.name=name;
-		}
-    	@Override
-    	public String toString() {
-    		return name+""+children;
-    	}
-    }
-    Object map[][];
-    int N,M;
-    char[][]sea;
-    int[][] vals;
-//    int di4[] = { 0, 0, 1, -1 };
-//	int dj4[] = { -1, 1, 0, 0 };
-	int di8[] = { 0, 0, 1, -1, 1, -1, 1, -1 };
-	int dj8[] = { -1, 1, 0, 0, 1, -1, -1, 1 };
-	boolean [][]memo;
-	void ff(int x, int y, char c, int val, Object ob){
-		map[x][y]=ob;
-		memo[x][y]=true;
-		vals[x][y]=val;
-		for (int i = 0; i < (c=='x'?8:4); i++) {
-			int X=x+di8[i];
-			int Y=y+dj8[i];
-			if(X>=0 && X<sea.length && Y>=0 && Y<sea[X].length && !memo[X][Y] && sea[X][Y]==c){
-//				memo[X][Y]=true;
-				vals [X][Y]= val;
-				
-				ff(X,Y,c,val,ob);
-			}
-		}
-	}
-    
 
 // BEGIN CUT HERE
 
-	private static void print(Object... rs) {
-		System.err.println(Arrays.deepToString(rs).replace("]", "]\n"));
-	}
+
 
     public static void main(String[] args) {
         try {
-            eq(0,(new LandAndSea()).howManyIslands(new String[] {"x"}),new int[] {1 });
-            eq(1,(new LandAndSea()).howManyIslands(new String[] {
-               "xxxxx",
-               "x...x",
-               "x.x.x",
-               "x...x",
-               "xxxxx"
-               }),new int[] {1, 1 });
-            eq(2,(new LandAndSea()).howManyIslands(new String[] {
-               "xxxxx",
-               "x...x",
-               "x.x.x",
-               "x...x",
-               "xxxxx",
-               "xxxxx",
-               "x...x",
-               "x.x.x",
-               "x...x",
-               "xxxxx"
-               }),new int[] {2, 1 });
-            eq(3,(new LandAndSea()).howManyIslands(new String[] {
-               "..",
-               ".."
-               }),new int[] { });
-            eq(4,(new LandAndSea()).howManyIslands(new String[] {
-               "............",
-               ".......xxxx.",
-               "..xxx.x...x.",
-               "..x..x..x.x.",
-               "..x.x.x...x.",
-               "..xx...xxx.."
-               }),new int[] {1, 1 });
-            eq(2,(new LandAndSea()).howManyIslands(new String[] {
-                    "xxxxxxxxx",
-                    "x.......x",
-                    "x.xxxxx.x",
-                    "x.x...x.x",
-                    "x.x.x.x.x",
-                    "x.x...x.x",
-                    "x.x.x.x.x",
-                    "x.x...x.x",
-                    "x.xxxxx.x",
-                    "x.......x",
-                    "xxxxxxxxx"
-                    }),new int[] {2,1,1});
-            eq(2,(new LandAndSea()).howManyIslands(new String[] {
-            		"xxxxxxxx", 
-            		"x..x...x", 
-            		"x.xxx..x", 
-            		"x..x...x", 
-            		"x......x", 
-            		"xxxxxxxx"}),new int[] {1});
-            
+            eq(0,(new BallsSeparating()).minOperations(new int[] {1, 1, 1}, new int[] {1, 1, 1}, new int[] {1, 1, 1}),6);
+            eq(1,(new BallsSeparating()).minOperations(new int[] {5}, new int[] {6}, new int[] {8}),-1);
+            eq(2,(new BallsSeparating()).minOperations(new int[] {4, 6, 5, 7}, new int[] {7, 4, 6, 3}, new int[] {6, 5, 3, 8}),37);
+            eq(3,(new BallsSeparating()).minOperations(new int[] {7, 12, 9, 9, 7}, new int[] {7, 10, 8, 8, 9}, new int[] {8, 9, 5, 6, 13}),77);
+            eq(4,(new BallsSeparating()).minOperations(new int[] {842398, 491273, 958925, 849859, 771363, 67803, 184892, 391907, 256150, 75799}, new int[] {268944, 342402, 894352, 228640, 903885, 908656, 414271, 292588, 852057, 889141}, new int[] {662939, 340220, 600081, 390298, 376707, 372199, 435097, 40266, 145590, 505103}),7230607);
+            int []a=new int[50];
+            int []b=new int[50];
+            int []c=new int[50];
+            fill(a,1);
+            fill(b,1);
+            fill(c,1);
+            eq(5,(new BallsSeparating()).minOperations(a,b,c),7230607);
         } catch( Exception exx) {
             System.err.println(exx);
             exx.printStackTrace(System.err);
         }
     }
+	private static void print(Object... rs) {
+		System.err.println(Arrays.deepToString(rs).replace("]", "]\n"));
+	}
+
    private static void eq(int n, int a, int b) {
         if (a == b) {
             System.err.println("Case " + n + " passed.");

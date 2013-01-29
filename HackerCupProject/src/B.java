@@ -47,13 +47,13 @@ public class B {
 		return r;
 	}
 	B(){
-//		in = new Scanner(System.in);
-//		out = new PrintWriter(System.out);
+		in = new Scanner(System.in);
+		out = new PrintWriter(System.out);
 		try {
 //			in = new Scanner(new File("B_in.txt"));
-			in = new Scanner(new File("balanced_smileystxt.txt"));
+//			in = new Scanner(new File("balanced_smileystxt.txt"));
 			
-			out = new PrintWriter(new File("B_out.txt"));
+//			out = new PrintWriter(new File("B_out.txt"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
