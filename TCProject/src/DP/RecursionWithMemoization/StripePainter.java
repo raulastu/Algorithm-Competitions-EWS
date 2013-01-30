@@ -1,3 +1,4 @@
+package DP.RecursionWithMemoization;
 import java.util.regex.*;
 import static java.lang.Math.*;
 import static java.util.Arrays.*;
@@ -8,6 +9,7 @@ import java.util.*;
 
 
 public class StripePainter {
+//	didnt get it
     public int minStrokes(String stripes) {
     	this.S=stripes.toCharArray();
         int res;

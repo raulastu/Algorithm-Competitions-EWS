@@ -1,3 +1,4 @@
+package DP.RecursionWithMemoization;
 import java.util.regex.*;
 import static java.lang.Math.*;
 import static java.util.Arrays.*;
@@ -7,61 +8,65 @@ import static java.util.Collections.*;
 import java.util.*;
 
 
-public class StripePainter {
-    public int minStrokes(String stripes) {
-    	this.S=stripes.toCharArray();
-        int res;
-        memo=new int[51][51];
+public class BallsSeparating {
+    public int minOperations(int[] red, int[] green, int[] blue) {
+        r=red;
+        g=green;
+        b=blue;
+        
         for (int i = 0; i < memo.length; i++) {
-        	fill(memo[i],-1);
+        	memo[i][0][0][0]=
+        	memo[i][1][0][0]=
+        	memo[i][0][1][0]=
+        	memo[i][0][0][1]=
+        	memo[i][1][1][0]=
+        	memo[i][0][1][1]=
+        	memo[i][1][0][1]=
+        	memo[i][1][1][0]=
+        	memo[i][1][1][1]=-1;
 		}
-        res=go(0,S.length-1);
-//        print(memo[1][1]);
-        return res;
+        int r = go(0,0,0,0);
+        return r>inf?-1:r;
     }
-    char []S;
-    int memo[][];
-    int go(int l, int r){
-//    	print(l,r);
-    	if(l>r)return 0;
-    	if(memo[l][r]==-1){
-    		if(S[l]!=S[r]){
-    			int res=min(go(l+1,r),go(l,r-1))+1;
-    			for (int i = l+1; i < r; i++) {
-					if(S[i]==S[l]){
-						res=min(res,go(l,i)+go(i+1,r));
-					}
-					if(S[i]==S[r]){
-						res=min(res,go(l,i-1)+go(i,r));
-					}
-				}
-    			memo[l][r]=res;
-    			return res;
-    		}
-    		int res = go(l+1,r-1)+1;
-//    		print(res);
-    		for (int i = l+1; i < r; i++) {
-    			if(S[i]==S[l]){
-    				res=min(res,go(l+1,i)+go(i,r)-1);
-//    				print(res);
-    			}
-			}
-    		memo[l][r]=res;
+    int []r;
+    int []g;
+    int []b;
+    int inf=100000001;
+    int memo[][][][]=new int[51][2][2][2];
+    int go(int i, int rp, int gb, int pb){
+    	if(i==r.length){
+//    		print(1<<30);
+    		if(rp==1&&gb==1&&pb==1)
+    			return 0;
+    		return inf;
+    	}	
+    	if(memo[i][rp][gb][pb]==-1){
+    		int rc = go(i+1,1,gb,pb)+g[i]+b[i];
+        	int gc = r[i]+go(i+1,rp,1,pb)+b[i];
+        	int bc = r[i]+g[i]+go(i+1,rp,gb,1);
+        	memo[i][rp][gb][pb]= min(rc,min(gc,bc));
     	}
-    	return memo[l][r];
+    	return memo[i][rp][gb][pb];
     }
+
 // BEGIN CUT HERE
 
 
 
     public static void main(String[] args) {
         try {
-        	eq(0,(new StripePainter()).minStrokes("AAA"),1);
-            eq(0,(new StripePainter()).minStrokes("RGBGR"),3);
-            eq(1,(new StripePainter()).minStrokes("RGRG"),3);
-            eq(2,(new StripePainter()).minStrokes("ABACADA"),4);
-            eq(3,(new StripePainter()).minStrokes("AABBCCDDCCBBAABBCCDD"),7);
-            eq(4,(new StripePainter()).minStrokes("BECBBDDEEBABDCADEAAEABCACBDBEECDEDEACACCBEDABEDADD"),26);
+            eq(0,(new BallsSeparating()).minOperations(new int[] {1, 1, 1}, new int[] {1, 1, 1}, new int[] {1, 1, 1}),6);
+            eq(1,(new BallsSeparating()).minOperations(new int[] {5}, new int[] {6}, new int[] {8}),-1);
+            eq(2,(new BallsSeparating()).minOperations(new int[] {4, 6, 5, 7}, new int[] {7, 4, 6, 3}, new int[] {6, 5, 3, 8}),37);
+            eq(3,(new BallsSeparating()).minOperations(new int[] {7, 12, 9, 9, 7}, new int[] {7, 10, 8, 8, 9}, new int[] {8, 9, 5, 6, 13}),77);
+            eq(4,(new BallsSeparating()).minOperations(new int[] {842398, 491273, 958925, 849859, 771363, 67803, 184892, 391907, 256150, 75799}, new int[] {268944, 342402, 894352, 228640, 903885, 908656, 414271, 292588, 852057, 889141}, new int[] {662939, 340220, 600081, 390298, 376707, 372199, 435097, 40266, 145590, 505103}),7230607);
+            int []a=new int[50];
+            int []b=new int[50];
+            int []c=new int[50];
+            fill(a,1);
+            fill(b,1);
+            fill(c,1);
+            eq(5,(new BallsSeparating()).minOperations(a,b,c),7230607);
         } catch( Exception exx) {
             System.err.println(exx);
             exx.printStackTrace(System.err);

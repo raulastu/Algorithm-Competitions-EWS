@@ -9,16 +9,9 @@ import java.util.*;
 
 public class BallsSeparating {
     public int minOperations(int[] red, int[] green, int[] blue) {
-        int res=0;
         r=red;
         g=green;
         b=blue;
-//        for (int i = 0; i < blue.length; i++) {
-//        	int max = max(red[i],max(green[i],blue[i]));
-//        	print(max);
-//			res+=red[i]+blue[i]+green[i]-max;
-////			int max=
-//		}
         
         for (int i = 0; i < memo.length; i++) {
         	memo[i][0][0][0]=
