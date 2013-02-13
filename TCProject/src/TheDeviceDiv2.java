@@ -6,57 +6,38 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.util.*;
 
-public class Jewelry {
-	public long howMany(int[] values) {
-		long res;
-		this.values = values;
-
-		return go(0, 0, 0, 0, Integer.MAX_VALUE,"","");
-	}
-
-	int[] values;
-	String trace="";
-	long go(int i, int a, int b, int maxa, int minb, String al, String bl) {
-//		print(i, a, b, maxa, minb, al,bl);
-		if (i == values.length){
-			return 0;
+public class TheDeviceDiv2 {
+	public String identify(String[] plates) {
+		for (int i = 0; i < plates[0].length(); i++) {
+			int nr1=0;
+			for (int j = 0; j < plates.length; j++) {
+				if(plates[j].charAt(i)=='1')
+				nr1++;
+			}
+			if(nr1<2)
+				return "NO";
 		}
-			
-		long r = 0;
-		if (a == b && maxa <= minb && a > 0) {
-			print(i, a, b, maxa, minb, al,bl);
-			print("xxx");
-			r++;
-		}
-//		int nwa=values[i]+a;
-//		int nwb=values[i]+b;
-
-		long ax = go(i + 1, values[i] + a, b, max(maxa, values[i]), minb,al+"."+values[i],bl);
-		long bx = go(i + 1, a, b + values[i], maxa, min(minb, values[i]),al,bl+"."+values[i]);
-		long cx = go(i + 1, a, b, maxa, minb,al,bl);
-		r += ax + bx + cx;
-		// r=min(r,r);
-		return r;
+		return "YES";
 	}
 
 	// BEGIN CUT HERE
 
 	public static void main(String[] args) {
 		try {
-			eq(0, (new Jewelry()).howMany(new int[] { 1, 2, 5, 3, 4, 5 }), 9L);
+			eq(0,
+					(new TheDeviceDiv2()).identify(new String[] { "010", "011",
+							"000" }), "NO");
 			eq(1,
-					(new Jewelry()).howMany(new int[] { 1000, 1000, 1000, 1000,
-							1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000,
-							1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000,
-							1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000,
-							1000, 1000 }), 18252025766940L);
-			eq(2, (new Jewelry()).howMany(new int[] { 1, 2, 3, 4, 5 }), 4L);
+					(new TheDeviceDiv2()).identify(new String[] { "1", "0",
+							"1", "0" }), "YES");
+			eq(2, (new TheDeviceDiv2()).identify(new String[] { "11111" }),
+					"NO");
 			eq(3,
-					(new Jewelry()).howMany(new int[] { 7, 7, 8, 9, 10, 11, 1,
-							2, 2, 3, 4, 5, 6 }), 607L);
-			eq(4,
-					(new Jewelry()).howMany(new int[] { 123, 217, 661, 678,
-							796, 964, 54, 111, 417, 526, 917, 923 }), 0L);
+					(new TheDeviceDiv2()).identify(new String[] { "0110011",
+							"0101001", "1111010", "1010010" }), "NO");
+			eq(4, (new TheDeviceDiv2()).identify(new String[] { "101001011",
+					"011011010", "010110010", "111010100", "111111111" }),
+					"YES");
 		} catch (Exception exx) {
 			System.err.println(exx);
 			exx.printStackTrace(System.err);

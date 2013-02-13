@@ -12,40 +12,33 @@ public class BallsSeparating {
         r=red;
         g=green;
         b=blue;
-        
+//        print(1 | 2);
+        print(2 & 2);
+//        print(1<<1);
         for (int i = 0; i < memo.length; i++) {
-        	memo[i][0][0][0]=
-        	memo[i][1][0][0]=
-        	memo[i][0][1][0]=
-        	memo[i][0][0][1]=
-        	memo[i][1][1][0]=
-        	memo[i][0][1][1]=
-        	memo[i][1][0][1]=
-        	memo[i][1][1][0]=
-        	memo[i][1][1][1]=-1;
+        	fill(memo[i],-1);
 		}
-        int r = go(0,0,0,0);
+        int r = go(0,0);
         return r>inf?-1:r;
     }
     int []r;
     int []g;
     int []b;
     int inf=100000001;
-    int memo[][][][]=new int[51][2][2][2];
-    int go(int i, int rp, int gb, int pb){
+    int memo[][] = new int[51][1<<3];
+    int go(int i, int color){
     	if(i==r.length){
-//    		print(1<<30);
-    		if(rp==1&&gb==1&&pb==1)
+    		if(color==7)
     			return 0;
     		return inf;
     	}	
-    	if(memo[i][rp][gb][pb]==-1){
-    		int rc = go(i+1,1,gb,pb)+g[i]+b[i];
-        	int gc = r[i]+go(i+1,rp,1,pb)+b[i];
-        	int bc = r[i]+g[i]+go(i+1,rp,gb,1);
-        	memo[i][rp][gb][pb]= min(rc,min(gc,bc));
+    	if(memo[i][color]==-1){
+    		int rc = go(i+1,color|1)+g[i]+b[i];
+        	int gc = r[i]+go(i+1,color|2)+b[i];
+        	int bc = r[i]+g[i]+go(i+1,color|4);
+        	memo[i][color]= min(rc,min(gc,bc));
     	}
-    	return memo[i][rp][gb][pb];
+    	return memo[i][color];
     }
 
 // BEGIN CUT HERE

@@ -1,3 +1,4 @@
+package DP.RecursionWithMemoization;
 import java.util.regex.*;
 import static java.lang.Math.*;
 import static java.util.Arrays.*;
@@ -7,15 +8,45 @@ import static java.util.Collections.*;
 import java.util.*;
 
 
-public class TheSimilarNumbers {
-    public int find(int lower, int upper) {
-        int res=0;
-        int n=lower;
-        while(n<=upper){
-        	n=n*10+1;
-        	res++;
-        }
-        return res;
+public class BallsSeparating_2 {
+    public int minOperations(int[] red, int[] green, int[] blue) {
+        r=red;
+        g=green;
+        b=blue;
+        
+        for (int i = 0; i < memo.length; i++) {
+        	memo[i][0][0][0]=
+        	memo[i][1][0][0]=
+        	memo[i][0][1][0]=
+        	memo[i][0][0][1]=
+        	memo[i][1][1][0]=
+        	memo[i][0][1][1]=
+        	memo[i][1][0][1]=
+        	memo[i][1][1][0]=
+        	memo[i][1][1][1]=-1;
+		}
+        int r = go(0,0,0,0);
+        return r>inf?-1:r;
+    }
+    int []r;
+    int []g;
+    int []b;
+    int inf=100000001;
+    int memo[][][][]=new int[51][2][2][2];
+    int go(int i, int rp, int gb, int pb){
+    	if(i==r.length){
+//    		print(1<<30);
+    		if(rp==1&&gb==1&&pb==1)
+    			return 0;
+    		return inf;
+    	}	
+    	if(memo[i][rp][gb][pb]==-1){
+    		int rc = go(i+1,1,gb,pb)+g[i]+b[i];
+        	int gc = r[i]+go(i+1,rp,1,pb)+b[i];
+        	int bc = r[i]+g[i]+go(i+1,rp,gb,1);
+        	memo[i][rp][gb][pb]= min(rc,min(gc,bc));
+    	}
+    	return memo[i][rp][gb][pb];
     }
 
 // BEGIN CUT HERE
@@ -24,11 +55,18 @@ public class TheSimilarNumbers {
 
     public static void main(String[] args) {
         try {
-            eq(0,(new TheSimilarNumbers()).find(1, 10),1);
-            eq(1,(new TheSimilarNumbers()).find(5, 511),3);
-            eq(2,(new TheSimilarNumbers()).find(5, 4747),3);
-            eq(3,(new TheSimilarNumbers()).find(1, 1000000),6);
-            eq(4,(new TheSimilarNumbers()).find(10, 10110),3);
+            eq(0,(new BallsSeparating_2()).minOperations(new int[] {1, 1, 1}, new int[] {1, 1, 1}, new int[] {1, 1, 1}),6);
+            eq(1,(new BallsSeparating_2()).minOperations(new int[] {5}, new int[] {6}, new int[] {8}),-1);
+            eq(2,(new BallsSeparating_2()).minOperations(new int[] {4, 6, 5, 7}, new int[] {7, 4, 6, 3}, new int[] {6, 5, 3, 8}),37);
+            eq(3,(new BallsSeparating_2()).minOperations(new int[] {7, 12, 9, 9, 7}, new int[] {7, 10, 8, 8, 9}, new int[] {8, 9, 5, 6, 13}),77);
+            eq(4,(new BallsSeparating_2()).minOperations(new int[] {842398, 491273, 958925, 849859, 771363, 67803, 184892, 391907, 256150, 75799}, new int[] {268944, 342402, 894352, 228640, 903885, 908656, 414271, 292588, 852057, 889141}, new int[] {662939, 340220, 600081, 390298, 376707, 372199, 435097, 40266, 145590, 505103}),7230607);
+            int []a=new int[50];
+            int []b=new int[50];
+            int []c=new int[50];
+            fill(a,1);
+            fill(b,1);
+            fill(c,1);
+            eq(5,(new BallsSeparating_2()).minOperations(a,b,c),7230607);
         } catch( Exception exx) {
             System.err.println(exx);
             exx.printStackTrace(System.err);

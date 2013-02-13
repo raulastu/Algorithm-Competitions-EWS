@@ -1,0 +1,79 @@
+PROBLEM STATEMENT
+Your friend has recently been looking through a catalog, and has selected several items she wishes to buy.  Because of a sales promotion, she has earned credit towards free or discounted products.  Each item has a cost, and a point value.  For her referrals, your friend has earned a certain number of points which may be redeemed for items, and a certain number of "half price" items.  Additionally, she receives a fixed percentage discount on all other items (this is not cumulative with half-price items).  All prices are rounded up after applying discounts.
+
+Your friend's order is subject to the following restrictions:
+
+Each item must be purchased with points, purchased at half price, or purchased at the fixed discount rate.
+Purchasing an item with points is all or nothing; you cannot, for instance, pay for an item partially with points and pay the remainder in cash.
+All points must be used.
+All half-price items must be used.
+All items on the wishlist must be purchased.
+
+
+Your friend is very excited to place her order, but is very frustrated with what she has found to be a confusing incentive system.  Being frugal-minded, she wants to get everything on her wishlist at the least possible out-of-pocket expense.  Knowing your enjoyment of these type of problems, she has come to you for assistance.
+
+You are given an int, points, indicating the number of points your friend must spend; an int, halfPrice, indicating the number of items which are to be purchased at half price; and an int, discount, indicating the fixed discount percentage on all remaining items.  Finally, you are given a String[], items, indicating the list of items on your friend's wishlist.  Each element of items will be in the form "pointValue price" (quotes added for clarity), where pointValue and price are both positive integers with no leading zeros.  pointValue and will be between 1 and 9999, inclusive.  price will be between 1 and 99999, inclusive.  You are to return an int indicating the minimum out of pocket expense your friend must pay to get the items on her wishlist.
+
+
+DEFINITION
+Class:SalesPromotion
+Method:bestPrice
+Parameters:int, int, int, String[]
+Returns:int
+Method signature:int bestPrice(int points, int halfPrice, int discount, String[] items)
+
+
+NOTES
+-The cost of an individual item purchased at half price or the fixed discount rate should always round up when necessary.
+
+
+CONSTRAINTS
+-points will be between 0 and 15000, inclusive.
+-halfPrice will be between 0 and n, inclusive, where n is the number of elements of items.
+-discount will be between 0 and 49, inclusive.
+-items will contain between 1 and 50 elements, inclusive.
+-Each element of items will be in the form described in the problem statement.
+-There will be at least one way to place the order that uses all of the points and half price items.
+
+
+EXAMPLES
+
+0)
+500
+1
+10
+{"150 500", "350 1000", "500 600", "450 800"}
+
+Returns: 940
+
+Here, we're better to use our 500 points on the first two items, rather than the third item.  Then, we use our half price discount on the item priced 800 (since it's more expensive than the item priced 600), which costs 400.  Finally the item priced 600 we buy for 540 (10% discount), totalling 940.
+
+1)
+500
+1
+10
+{"150 450", "350 700", "500 1200", "450 800"}
+
+Returns: 1320
+
+The best solution is to buy items 0 and 1 with points, item 2 at half price, and pay full price (less the discount) for item 3.
+
+2)
+1000
+0
+0
+{"200 500", "300 700", "400 900", "500 1100", "600 1300"}
+
+Returns: 2200
+
+There's more than one way to use our points, so we have to find the most cost effective.
+
+3)
+0
+0
+0
+{"100 100", "100 200", "100 150", "150 300"}
+
+Returns: 750
+
+With no points or discounts of any kind, we just need to add up the total cost.

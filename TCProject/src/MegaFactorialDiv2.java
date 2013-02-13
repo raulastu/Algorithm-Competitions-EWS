@@ -7,9 +7,9 @@ import static java.util.Collections.*;
 import java.util.*;
 
 
-public class InterestingDigits {
-    public int[] digits(int base) {
-        int[] res;
+public class MegaFactorialDiv2 {
+    public int countDivisors(int N, int K) {
+        int res;
         return res;
     }
 
@@ -19,11 +19,11 @@ public class InterestingDigits {
 
     public static void main(String[] args) {
         try {
-            eq(0,(new InterestingDigits()).digits(10),new int[] { 3,  9 });
-            eq(1,(new InterestingDigits()).digits(3),new int[] { 2 });
-            eq(2,(new InterestingDigits()).digits(9),new int[] { 2,  4,  8 });
-            eq(3,(new InterestingDigits()).digits(26),new int[] { 5,  25 });
-            eq(4,(new InterestingDigits()).digits(30),new int[] { 29 });
+            eq(0,(new MegaFactorialDiv2()).countDivisors(3, 1),4);
+            eq(1,(new MegaFactorialDiv2()).countDivisors(3, 2),6);
+            eq(2,(new MegaFactorialDiv2()).countDivisors(4, 2),18);
+            eq(3,(new MegaFactorialDiv2()).countDivisors(6, 3),1392);
+            eq(4,(new MegaFactorialDiv2()).countDivisors(100, 2),321266186);
         } catch( Exception exx) {
             System.err.println(exx);
             exx.printStackTrace(System.err);
