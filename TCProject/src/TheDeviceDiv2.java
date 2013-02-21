@@ -8,6 +8,7 @@ import java.util.*;
 
 public class TheDeviceDiv2 {
 	public String identify(String[] plates) {
+		
 		for (int i = 0; i < plates[0].length(); i++) {
 			int nr1=0;
 			for (int j = 0; j < plates.length; j++) {

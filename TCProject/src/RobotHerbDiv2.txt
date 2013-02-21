@@ -1,0 +1,72 @@
+PROBLEM STATEMENT
+Robot Herb is playing on an infinite square grid.
+At any moment, Herb stands on one of the squares and he faces one of the four cardinal directions.
+In his memory, Herb has a program.
+The program is a sequence of commands.
+For each i, the i-th of these commands has the following form:
+
+First move forward a[i] tiles.
+Then turn 90 degrees to the right, a[i] times in a row.
+
+Herb has decided to run the program T times.
+You are given the int T and the int[] a that describes Herb's program.
+Let A be the initial position of Herb and B be his position after the program was executed T times. Return the Manhattan distance between tiles A and B.
+
+DEFINITION
+Class:RobotHerbDiv2
+Method:getdist
+Parameters:int, int[]
+Returns:int
+Method signature:int getdist(int T, int[] a)
+
+
+NOTES
+-Let's introduce a Cartesian coordinate system on the grid so that each cardinal direction is parallel to one of the axes. The Manhattan distance between two tiles with centers at points (x1, y1) and (x2, y2) is defined as |x1-x2| + |y1-y2|.
+
+
+CONSTRAINTS
+-T will be between 1 and 100, inclusive.
+-a will contain between 1 and 50 elements, inclusive.
+-Each element of a will be between 1 and 400,000, inclusive.
+
+
+EXAMPLES
+
+0)
+1
+{1,2,3}
+
+Returns: 2
+
+Suppose that initially Herb stands on the tile with center at (0, 0) and faces the positive y direction. The program will get executed as follows:
+
+                       tile         direction
+After 1st command:     (0, 1)       positive x
+After 2nd command:     (2, 1)       negative x
+After 3rd command:     (-1, 1)      negative y
+
+The manhattan distance between the initial and the final positions is |-1| + |1| = 2.
+
+1)
+100
+{1}
+
+Returns: 0
+
+
+
+2)
+5
+{1,1,2}
+
+Returns: 10
+
+
+
+3)
+100
+{400000}
+
+Returns: 40000000
+
+

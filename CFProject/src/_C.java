@@ -10,28 +10,31 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _A_Games {
+import javax.xml.stream.events.StartDocument;
+
+public class _C {
 
 	public void solve() {
 		int N = readInt();
-		int team[][] = new int[N][2];
-		
-		
-		for (int i = 0; i < N; i++) {
-			team[i][0]=readInt();
-			team[i][1]=readInt();
+		int[] stairs = new int[N];
+		for (int i = 0; i < stairs.length; i++) {
+			stairs[i]=readInt();
 		}
-		int r=0;
-		for (int i = 0; i < team.length; i++) {
-			for (int j = 0; j < team.length; j++) {
-				if(i!=j)
-					if(team[i][0]==team[j][1])
-						r++;
-			}
+		int B = readInt();
+//		int [][] boxes = new int[B][2];
+		int max=-1;
+		long res=0;
+		for (int i = 0; i < B; i++) {
+			int w = readInt();
+			int h = readInt();
+			max=max(max,w);
+//			long h = max(stairs[max-1],res);
+			res=max(res,stairs[max-1]);
+			System.out.println(res);
+			res+=h;
 		}
-		out.println(r);
 	}
-	_A_Games(){
+	_C(){
 		in = new Scanner(System.in);
 		out = new PrintWriter(System.out);
 	}
@@ -40,7 +43,7 @@ public class _A_Games {
 		out.close();
 	}
 	public static void main(String[] args) throws Exception {
-		new _A_Games().solve();
+		new _C().solve();
 		close();
 	}
 
