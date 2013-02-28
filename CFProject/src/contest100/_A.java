@@ -1,4 +1,8 @@
+package contest100;
+
+
 import java.util.*;
+
 import java.util.regex.*;
 import static java.lang.Math.*;
 import static java.util.Arrays.*;
@@ -7,16 +11,24 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class Maxim_and_Increasing_Subsequence {
-
+public class _A {
+	int []di={0,0,1,-1};
+	int []dj={-1,1,0,0};
 	public void solve() {
-		int r = readInt();
-		
-		
-		
-		out.println(r);
+		int n = in.nextInt();
+		int k= in.nextInt();
+		int r=-Integer.MAX_VALUE;
+		for (int i = 0; i < n; i++) {
+			int f = in.nextInt();
+			int t =in.nextInt();
+			if(t>k)
+				r = max(r,f-(t-k));
+			else
+				r = max(r,f);
+		}
+		System.out.println(r);
 	}
-	Maxim_and_Increasing_Subsequence(){
+	_A(){
 		in = new Scanner(System.in);
 		out = new PrintWriter(System.out);
 	}
@@ -25,7 +37,7 @@ public class Maxim_and_Increasing_Subsequence {
 		out.close();
 	}
 	public static void main(String[] args) throws Exception {
-		new Maxim_and_Increasing_Subsequence().solve();
+		new _A().solve();
 		close();
 	}
 
@@ -33,7 +45,8 @@ public class Maxim_and_Increasing_Subsequence {
 	static PrintWriter out;
 
 	static int readInt(){
-		return parseInt(in.nextLine());
+		return in.nextInt();
+//		return parseInt(in.nextInt());
 	}
 	static int[] readIntArray(){
 		String l[] = in.nextLine().split(" ");
@@ -48,4 +61,3 @@ public class Maxim_and_Increasing_Subsequence {
 		System.out.println(Arrays.deepToString(ob).replace("],", "],\n"));
 	}
 }
-

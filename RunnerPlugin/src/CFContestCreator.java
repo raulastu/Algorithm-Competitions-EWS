@@ -9,6 +9,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.xml.crypto.NodeSetData;
 import javax.xml.parsers.DocumentBuilder;
@@ -24,29 +26,96 @@ import org.w3c.dom.xpath.XPathExpression;
 
 
 public class CFContestCreator {
-	String contestNumber="261";
+
 	
 	public void start() throws Exception{
-		String html = getHTML();
+		createContest("/Users/rc/Eclipse-Workspaces/Algorithm-Competitions-EWS/CFProject/src","278");
+//		ArrayList<String> l = getInputTests("http://codeforces.com/contest/278/problem/B");
+//		System.err.println(l);
+//		createClassRunner("src","templateRunner","B",l);
+//		ArrayList<String> l = getInputTests("http://codeforces.com/contest/276/problem/A");
+		new AutoCompiler("/Users/rc/Eclipse-Workspaces/Algorithm-Competitions-EWS/CFProject/src/");
+//		compiler.loadSnapshot();
+//		compiler.check();
+	}
+	
+	private void createContest(String folderName, String contestNumber) throws Exception{
+		String html = getHTML("http://codeforces.com/contest/"+contestNumber);
 //		System.err.println(html);
 		String table= getProblemsTable(html);
-		System.err.println(table);
+//		System.err.println(table);
 		String[]no=getProblemNames(table);
 		fixNames(no);
 		for (int i = 0; i < no.length; i++) {
-			createClass("src","templateCLass",no[i]);
+			createClass(folderName,"templateCLass",(char)('A'+i)+"");
+			ArrayList<String> l = getInputTests("http://codeforces.com/contest/"+contestNumber+"/problem/"+(char)('A'+i));
+			createClassRunner(folderName,"templateRunner",(char)('A'+i)+"",l);
 		}
 		System.err.println();
 	}
+	
+	private ArrayList<String> getInputTests(String contestURL) throws Exception{
+		String html = getHTML(contestURL);
+//		System.err.println(html);
+		String pat = "<div class=\"title\">Input</div><pre>";
+		Pattern p = Pattern.compile(pat);
+		Matcher mat = p.matcher(html);
+		ArrayList<String> inputs = new ArrayList<String>();
+		while(mat.find()){
+			int end = html.indexOf("</pre>", mat.start());
+			String input = html.substring(mat.start()+pat.length(),end);
+			input =  input.replace("<br />", "\n");
+			inputs.add(input);
+//			System.err.println(input);
+		}
+		return inputs;
+	}
+	
+	private void createClassRunner(String path, String templatePath, String className, ArrayList<String> inputCases) throws Exception{
+		Scanner sc = new Scanner(new File("src/"+templatePath));
+		String rc="";
+		String allInputs="";
+		for (String string : inputCases) {
+			String ri = "\t\tr.INPUT=\n";
+			String [] inputLines = string.split("\n");
+			for (int i = 0; i < inputLines.length; i++) {
+				ri+="\t\t\""+inputLines[i]+" \"+\n";
+			}
+			ri=ri.substring(0,ri.length()-2)+";\n";
+			ri+="\t\tr.run();\n";
+			allInputs+=ri;
+		}
+		
+		while(sc.hasNextLine()){
+			String line = sc.nextLine();
+//			System.err.println(line);
+//			String className = ((char)'A'+nbr)+"";
+			
+			if(line.contains("{ProblemLetter}")){
+				rc += line.replace("{ProblemLetter}", className)+"\n";
+			}else if(line.contains("{input-run}")){
+				rc += line.replace("{input-run}",allInputs)+"\n";
+			}else{
+				rc += line+"\n";
+			}
+		}
+		String fullPath=path+"/_"+className+"_Runner.java";
+		PrintWriter pw = new PrintWriter(new File(fullPath));
+		pw.println(rc);
+		pw.close();
+		System.err.println(fullPath);
+		sc.close();
+	}
+	
 	private void createClass(String path, String templatePath, String className) throws Exception{
 		Scanner sc = new Scanner(new File("src/"+templatePath));
 		String rc="";
 		while(sc.hasNextLine()){
 			String line = sc.nextLine();
-			System.err.println(line);
+//			System.err.println(line);
 			rc += line.replace("{ClassName}", className)+"\n";
 		}
-		String fullPath=path+"/"+className+".java";
+		String fullPath=path+"/_"+className+".java";
 		PrintWriter pw = new PrintWriter(new File(fullPath));
 		pw.println(rc);
 		pw.close();
@@ -105,18 +174,18 @@ public class CFContestCreator {
 			rc[i]=list.item(i).getTextContent();
 			System.err.println(list.item(i).getTextContent());
 		}
-		System.err.println(list);
+//		System.err.println(list);
 		return rc;
 	}
 	
-	public String getHTML(){
+	public String getHTML(String urlString){
 		URL url;
 		InputStream is = null;
 		DataInputStream dis;
 		String line;
 		String rc="";
 		try {
-		    url = new URL("http://codeforces.com/contest/"+contestNumber);
+		    url = new URL(urlString);
 		    is = url.openStream();  // throws an IOException
 		    dis = new DataInputStream(new BufferedInputStream(is));
 

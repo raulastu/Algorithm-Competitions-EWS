@@ -7,7 +7,7 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _{ClassName} {
+public class _E {
 
 	public void solve() {
 		int r = ni();
@@ -27,7 +27,7 @@ public class _{ClassName} {
 		pr(System.currentTimeMillis() - s + "ms");
 	}
 
-	public static void main(String[] args) throws Exception {new _{ClassName}().run();}
+	public static void main(String[] args) throws Exception {new _E().run();}
 
 	InputStream in;
 	PrintWriter out;
@@ -135,3 +135,4 @@ public class _{ClassName} {
 		if (!oj)System.out.println(Arrays.deepToString(ob).replace("],", "],\n"));
 	}
 }
+

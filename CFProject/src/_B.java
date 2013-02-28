@@ -1,6 +1,4 @@
-
 import java.util.*;
-
 import java.util.regex.*;
 import static java.lang.Math.*;
 import static java.util.Arrays.*;
@@ -11,176 +9,130 @@ import java.io.*;
 
 public class _B {
 
-	int di[] = { 0, 0, -1, 1 };
-	int dj[] = { -1, 1, 0, 0 };
-
-	void go(int i, int j) {
-		for (int j2 = 0; j2 < 4; j2++) {
-			int X = i + di[j2];
-			int Y = j + dj[j2];
-			if (X >= 0 && X < memo.length && Y >= 0 && Y < memo[X].length
-					&& !memo[X][Y] && grid[X][Y] == 'B') {
-				memo[X][Y] = true;
-				go(X, Y);
-			}
-		}
-	}
-
-	char[][] grid;
-	boolean memo[][];
-
 	public void solve() {
-		int N = readInt();
-		int M = readInt();
-		grid = new char[N][M];
-		for (int i = 0; i < N; i++) {
-			grid[i] = in.next().toCharArray();
-		}
-		boolean no = false;
-		memo = new boolean[N][M];
-		int f = 0;
-		for (int i = 0; i < N; i++) {
-			for (int j = 0; j < M; j++) {
-				if (grid[i][j] == 'B' && !memo[i][j]) {
-					if (f == 1) {
-						System.out.println("NO");
-						return;
-					}
-					memo[i][j] = true;
-					f++;
-					go(i, j);
-				}
-			}
-		}
-
-		outer: for (int i = 0; i < M; i++) {
-			int w = 0, b = 0;
-			boolean blackfinished = false;
-			for (int j = 0; j < N; j++) {
-				if (grid[j][i] == 'W') {
-					if (b > 0)
-						blackfinished = true;
-					w++;
-				}
-				if (grid[j][i] == 'B') {
-					if (blackfinished) {
-						no = true;
-
-						break outer;
-					}
-					b++;
-				}
-			}
-		}
-		outer: for (int i = 0; i < N; i++) {
-			int w = 0, b = 0;
-			boolean blackfinished = false;
-			for (int j = 0; j < M; j++) {
-				if (grid[i][j] == 'W') {
-					if (b > 0)
-						blackfinished = true;
-					w++;
-				}
-				if (grid[i][j] == 'B') {
-					if (blackfinished) {
-						no = true;
-						break outer;
-					}
-					b++;
-				}
-			}
-		}
-
-		if (no) {
-			System.out.println("NO");
-			return;
-		}
-
-//		node[] nn = new node[M];
-		ArrayList<node> nn = new ArrayList<_B.node>();
-		for (int i = 0; i < M; i++) {
-			int a = Integer.MAX_VALUE, b = -1;
-			for (int j = 0; j < N; j++) {
-				if (grid[j][i] == 'B') {
-					a = min(j, a);
-					b = max(j, b);
-				}
-			}
-			if(a!=Integer.MAX_VALUE)
-				nn.add(new node(a, b));
-		}
-//		print(nn);
-		for (int i = 0; i < nn.size(); i++) {
-			for (int j = i + 1; j < nn.size(); j++) {
-				if (nn.get(i).a > nn.get(j).b) {
-					System.out.println("NO");
-					return;
-				}
-				if (nn.get(i).b < nn.get(j).a) {
-					System.out.println("NO");
-					return;
-				}
-				if (nn.get(i).b < nn.get(j).b && nn.get(i).a < nn.get(j).a) {
-					System.out.println("NO");
-					return;
-				}
-				if (nn.get(i).b > nn.get(j).b && nn.get(i).a > nn.get(j).a) {
-					System.out.println("NO");
-					return;
-				}
-			}
-		}
-		System.out.println("YES");
-	}
-
-	class node {
-		int a, b;
-
-		public node(int a, int b) {
-			this.a = a;
-			this.b = b;
-		}
-		@Override
-		public String toString() {
+		int r = ni();
 		
-			return a+" "+b;
-		}
+		out.println(r);
 	}
+	
 
-	_B() {
-		in = new Scanner(System.in);
+	void run() throws Exception {
+		in = oj ? System.in : new ByteArrayInputStream(INPUT.getBytes());
+		// print(oj);
 		out = new PrintWriter(System.out);
+
+		long s = System.currentTimeMillis();
+		solve();
+		out.flush();
+		pr(System.currentTimeMillis() - s + "ms");
 	}
 
-	public static void close() {
-		in.close();
-		out.close();
-	}
+	public static void main(String[] args) throws Exception {new _B().run();}
 
-	public static void main(String[] args) throws Exception {
-		new _B().solve();
-		close();
-	}
+	InputStream in;
+	PrintWriter out;
+	String INPUT = "";
+	
+	private boolean oj = System.getProperty("ONLINE_JUDGE") != null;
+	private byte[] inbuf = new byte[1024];
+	private int lenbuf = 0, ptrbuf = 0;
 
-	static Scanner in;
-	static PrintWriter out;
-
-	static int readInt() {
-		return in.nextInt();
-		// return parseInt(in.nextLine());
-	}
-
-	static int[] readIntArray() {
-		String l[] = in.nextLine().split(" ");
-		int[] r = new int[l.length];
-		for (int i = 0; i < l.length; i++) {
-			r[i] = parseInt(l[i]);
+	private int readByte() {
+		if (lenbuf == -1)
+			throw new InputMismatchException();
+		if (ptrbuf >= lenbuf) {
+			ptrbuf = 0;
+			try {
+				lenbuf = in.read(inbuf);
+			} catch (IOException e) {
+				throw new InputMismatchException();
+			}
+			if (lenbuf <= 0)
+				return -1;
 		}
-		return r;
+		return inbuf[ptrbuf++];
 	}
 
+	private boolean isSpaceChar(int c) {return !(c >= 33 && c <= 126);}
+	private int skip() {int b;while ((b = readByte()) != -1 && isSpaceChar(b));return b;}
 
-	static void print(Object... ob) {
-		System.out.println(Arrays.deepToString(ob).replace("],", "],\n"));
+	private String ns() {
+		int b = skip();
+		StringBuilder sb = new StringBuilder();
+		while (!(isSpaceChar(b))) { // when nextLine, (isSpaceChar(b) && b != // ' ')
+			sb.appendCodePoint(b);
+			b = readByte();
+		}
+		return sb.toString();
+	}
+	
+	private char[] ns(int n)
+	{
+		char[] buf = new char[n];
+		int b = skip(), p = 0;
+		while(p < n && !(isSpaceChar(b))){
+			buf[p++] = (char)b;
+			b = readByte();
+		}
+		return n == p ? buf : Arrays.copyOf(buf, p);
+	}
+	
+	private char[][] nm(int n, int m)
+	{
+		char[][] map = new char[n][];
+		for(int i = 0;i < n;i++)map[i] = ns(m);
+		return map;
+	}
+	
+	private int[] na(int n) {
+		int[] a = new int[n];
+		for (int i = 0; i < n; i++)
+			a[i] = ni();
+		return a;
+	}
+	
+	
+	private int ni() {
+		int num = 0, b;
+		boolean minus = false;
+		while ((b = readByte()) != -1 && !((b >= '0' && b <= '9') || b == '-'))
+			;
+		if (b == '-') {
+			minus = true;
+			b = readByte();
+		}
+
+		while (true) {
+			if (b >= '0' && b <= '9') {
+				num = num * 10 + (b - '0');
+			} else {
+				return minus ? -num : num;
+			}
+			b = readByte();
+		}
+	}
+	
+	private long nl(){
+		long num = 0;
+		int b;
+		boolean minus = false;
+		while((b = readByte()) != -1 && !((b >= '0' && b <= '9') || b == '-'));
+		if(b == '-'){
+			minus = true;
+			b = readByte();
+		}
+		while(true){
+			if(b >= '0' && b <= '9'){
+				num = num * 10 + (b - '0');
+			}else{
+				return minus ? -num : num;
+			}
+			b = readByte();
+		}
+	}
+
+	void pr(Object... ob) {
+		if (!oj)System.out.println(Arrays.deepToString(ob).replace("],", "],\n"));
 	}
 }
+

@@ -1,0 +1,6 @@
+public class _{ProblemLetter}_Runner {
+	public static void main(String[] args) throws Exception {
+		_{ProblemLetter} r = new _{ProblemLetter}();
+{input-run}
+	}
+}

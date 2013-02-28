@@ -1,75 +1,125 @@
 
 
+import java.util.*;
+
+import java.util.regex.*;
+import static java.lang.Math.*;
+import static java.util.Arrays.*;
+import static java.lang.Integer.*;
+import static java.lang.Double.*;
+import static java.util.Collections.*;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
 
 public class Main {
-	static char[][] grid;
-	int[][] memo;
-	int[] A = { 1, 1, 1, 0, 0, -1, -1, -1 };
-	int[] B = { 1, 0, -1, 1, -1, 1, 0, -1 };
-
-	public int countCell() {
-		memo = new int[grid.length][grid[0].length];
-		int mayor = 0;
-		for (int ind = 0; ind < grid.length; ind++) {
-			for (int j = 0; j < grid[ind].length; j++) {
-				if (memo[ind][j] == 0 && grid[ind][j] == '1') {
-					int cant = buscar(ind, j);
-					mayor = Math.max(mayor, cant);
-				}
+	public void solve() {
+		int N= in.nextInt();
+		int Q= in.nextInt();
+		A = new int[N];
+		int n = 2*1<<(int)((Math.log(N) / Math.log(2) + 1));
+//		print(n);
+		T = new int[n];
+		build(1,0,N-1);
+//		print(T);
+		for (int i = 0; i < Q; i++) {
+			int opt = in.nextInt();
+			int a = in.nextInt();
+			int b = in.nextInt();
+			if(opt==0){
+				update2(1,0,N-1,a,b);
+			}else{
+				System.out.println(query(1,0,N-1,a,b));
 			}
-		}
-		return mayor;
-	}
-
-	public int buscar(int x, int y) {
-
-		memo[x][y] = 1;
-		int cant = 1;
-		for (int i = 0; i < B.length; i++) {
-			int X = x + A[i];
-			int Y = y + B[i];
-			if (X >= 0 && Y >= 0 && X < grid.length && Y < grid[X].length && memo[X][Y] == 0
-					&& grid[X][Y] == '1') {
-				cant = cant + buscar(X, Y);
-			}
-		}
-		return cant;
-	}
-
-	public static void main(String[] args) throws Exception{
-
-//		Scanner sc = new Scanner(System.in);
-		Scanner sc = new Scanner(new File("/Users/rc/git/TCProject/src/Judges_HuaHCoding/input_temp_case"));
-		int numC = Integer.parseInt(sc.nextLine());
-		sc.nextLine();
-		for (int ind = 0; ind < numC; ind++) {
-			ArrayList<char[]> arr = new ArrayList<char[]>();
-			while (sc.hasNextLine()){
-				String lin = sc.nextLine();
-				if(lin.equals("")){
-					System.out.println();
-					break;
-				}
-					
-				arr.add(lin.toCharArray());
-			}
-			grid= new char[arr.size()][arr.get(0).length];
-			for (int i = 0; i < arr.size(); i++) {
-				grid[i]=arr.get(i);
-			}
-//			printm(grid);
-			Main m = new Main();
-			System.out.println(m.countCell());
+//			print(A,T);
 		}
 	}
-	static void print(Object... ob){
-		System.out.println(Arrays.deepToString(ob));
+	
+	class SegmentTree{
+		
 	}
-	static void printm(Object... ob){
+	int A[];
+	int T[];
+	void build(int node, int a, int b){
+//		print(node, a, b);
+		if(a==b){
+			T[node]=(A[b]%3==0?1:0);
+			return;
+		}
+		build(node*2,a,(a+b)/2);
+		build(node*2+1,(a+b)/2+1,b);
+		T[node]=T[node*2]+T[node*2+1];
+	}
+	
+	void update(int node, int a, int b, int i, int j){
+//		print(node, a, b);
+		if(b==a){
+			A[i]++;
+			T[node]=A[i]%3==0?1:0;
+		}else if(i>b || j<a)
+			return;
+		else{
+			update(node*2,a,(a+b)/2,i,j);
+			update(node*2+1,(a+b)/2+1,b,i,j);
+			T[node]=T[node*2]+T[node*2+1];
+		}
+	}
+	
+	void update2(int node, int a, int b, int i, int j){
+		if(b<i || a>j)
+			return ;
+		if(a==b){
+			T[node]=(++A[b])%3==0?1:0;
+			return;
+		}
+		update2(node*2, a,(a+b)/2,i,j);
+		update2(node*2+1, (a+b)/2+1,b,i,j);
+		T[node]=T[node*2]+T[node*2+1];
+	}
+	
+	int query(int node, int a, int b, int i, int j){
+		if(b<i || a>j)
+			return -1;
+		if(a>=i && b<=j)
+			return T[node];
+		int p1 = query(node*2, a,(a+b)/2,i,j);
+		int p2 = query(node*2+1, (a+b)/2+1,b,i,j);
+		if(p1==-1)
+			return p2;
+		if(p2==-1)
+			return p1;
+		return p2+p1;
+	}
+	
+	
+	Main(){
+		in = new Scanner(System.in);
+		out = new PrintWriter(System.out);
+	}
+	public static void close(){
+		in.close();
+		out.close();
+	}
+	public static void main(String[] args) throws Exception {
+		new Main().solve();
+		close();
+	}
+
+	static Scanner in;
+	static PrintWriter out;
+
+	static int readInt(){
+		return in.nextInt();
+//		return parseInt(in.nextInt());
+	}
+	static int[] readIntArray(){
+		String l[] = in.nextLine().split(" ");
+		int[] r=new int[l.length];
+		for (int i = 0; i < l.length; i++) {
+			r[i]=parseInt(l[i]);
+		}
+		return r;
+	}
+	
+	static void print(Object... ob) {
 		System.out.println(Arrays.deepToString(ob).replace("],", "],\n"));
 	}
 }
