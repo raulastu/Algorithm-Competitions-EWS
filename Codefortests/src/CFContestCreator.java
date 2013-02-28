@@ -29,12 +29,13 @@ public class CFContestCreator {
 
 	
 	public void start() throws Exception{
-		createContest("/Users/rc/Eclipse-Workspaces/Algorithm-Competitions-EWS/CFProject/src","278");
+		String resourcesPath="/Users/rc/Eclipse-Workspaces/Algorithm-Competitions-EWS/CFProject/src";
+		createContest(resourcesPath,"278");
 //		ArrayList<String> l = getInputTests("http://codeforces.com/contest/278/problem/B");
 //		System.err.println(l);
 //		createClassRunner("src","templateRunner","B",l);
 //		ArrayList<String> l = getInputTests("http://codeforces.com/contest/276/problem/A");
-		new AutoCompiler("/Users/rc/Eclipse-Workspaces/Algorithm-Competitions-EWS/CFProject/src/");
+		new AutoCompiler(resourcesPath);
 //		compiler.loadSnapshot();
 //		compiler.check();
 	}

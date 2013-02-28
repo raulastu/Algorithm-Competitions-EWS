@@ -23,8 +23,6 @@ public class AutoCompiler implements Runnable {
 		}
 	}
 
-//	String parentDir = "/Users/rc/Eclipse-Workspaces/Algorithm-Competitions-EWS/CFProject/src/";
-
 	void check() throws Exception {
 		File s = new File(folder);
 		for (File file : s.listFiles()) {
@@ -35,12 +33,8 @@ public class AutoCompiler implements Runnable {
 			String name = file.getName();
 			String runnerName = name.replaceAll("[\\.java]", "") + "_Runner";
 			if (snapshot.get(name) != myDate) {
-//				pr(file.getAbsolutePath());
 				runCommand("javac -cp " + folder + " " + folder
 						+ runnerName + ".java");
-				// runCommand("pwd");
-				// runCommand("cd " + parentDir);
-				// runCommand("pwd");
 				runCommand("java -cp " + folder + " " + runnerName);
 				snapshot.put(name, myDate);
 			}
@@ -51,9 +45,6 @@ public class AutoCompiler implements Runnable {
 		pr("running " + cmd);
 		Process proc = Runtime.getRuntime().exec(cmd);
 		Runtime.getRuntime().exec("java _C_runner");
-		// pr(name + " ran");
-		// snapshot.put(name, myDate);
-
 		BufferedReader stdInput = new BufferedReader(new InputStreamReader(
 				proc.getInputStream()));
 
