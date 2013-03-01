@@ -10,9 +10,8 @@ import java.io.*;
 public class _A {
 	public void solve() {
 		int r = ni();
-		 
-		     
-		out.println(r);
+		
+		out.println(01);
 	}
 	
 
@@ -130,8 +129,6 @@ public class _A {
 		}
 	}
 
-	void pr(Object... ob) {
-		if (!oj)System.out.println(Arrays.deepToString(ob).replace("],", "],\n"));
-	}
+	void pr(Object... ob) {if (!oj)System.out.println(Arrays.deepToString(ob).replace("],", "],\n"));}
 }
 

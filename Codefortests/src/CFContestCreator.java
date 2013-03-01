@@ -33,11 +33,7 @@ public class CFContestCreator {
 		createContest(resourcesPath,"278");
 //		ArrayList<String> l = getInputTests("http://codeforces.com/contest/278/problem/B");
 //		System.err.println(l);
-//		createClassRunner("src","templateRunner","B",l);
-//		ArrayList<String> l = getInputTests("http://codeforces.com/contest/276/problem/A");
 		new AutoCompiler(resourcesPath);
-//		compiler.loadSnapshot();
-//		compiler.check();
 	}
 	
 	private void createContest(String folderName, String contestNumber) throws Exception{

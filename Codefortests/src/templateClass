@@ -129,7 +129,5 @@ public class _{ClassName} {
 		}
 	}
 
-	void pr(Object... ob) {
-		if (!oj)System.out.println(Arrays.deepToString(ob).replace("],", "],\n"));
-	}
+	void pr(Object... ob) {if (!oj)System.out.println(Arrays.deepToString(ob).replace("],", "],\n"));}
 }
