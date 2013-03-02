@@ -1,3 +1,4 @@
+
 package segment_tree;
 import java.util.Arrays;
 
