@@ -7,25 +7,91 @@ import static java.util.Collections.*;
 import java.util.*;
 
 
-public class $CLASSNAME$ {
-    public $RC$ $METHODNAME$($METHODPARMS$) {
-        $RC$ res;
+public class EllysFigurines {
+    public int getMoves(String[] board, int R, int C) {
+        int res=Integer.MAX_VALUE;
+        int N = board[0].length();
+        char[][] copy = new char[board.length][board[0].length()];
+        for (int i = 0; i < copy.length; i++) {
+			copy[i]=board[i].toCharArray();
+		}
+        for (int mask = 0; mask < 1<<N; mask++) {
+        	int cand=0;
+        	int c=C;
+			for (int i = 0; i < N; i++) {
+				if(c<C){
+					if(--c==0)c=C;
+					continue;
+				}	
+				if((mask&(1<<i))>0){
+					if(--c==0)c=C;
+					cand++;
+				}
+			}
+//			print("x",Integer.toString(mask, 2));
+			int r=R;
+//			print("cand",cand);
+			for (int i = 0; i < copy.length; i++) {
+				if(r<R){
+					if(--r==0)r=R;
+					continue;
+				}
+				for (int j = 0; j < copy[i].length; j++) {
+					if((mask&1<<j)>0){
+						continue;
+					}
+					if(copy[i][j]=='X'){
+						cand++;
+						if(--r==0)r=R;
+						break;
+					}
+				}
+			}
+//			print("cand",cand);
+			res=min(cand,res);
+		}
         return res;
     }
-$WRITERCODE$
-$BEGINCUT$
+
+// BEGIN CUT HERE
 
 
 
     public static void main(String[] args) {
         try {
-$MAINBODY$
+            eq(0,(new EllysFigurines()).getMoves(new String[] {".X.X.",
+                "XX..X",
+                ".XXX.",
+                "...X.",
+                ".X.XX"}, 1, 2),3);
+            eq(1,(new EllysFigurines()).getMoves(new String[] {".X.X.",
+                "XX..X",
+                ".X.X.",
+                "...X.",
+                ".X.XX"}, 2, 2),2);
+            eq(2,(new EllysFigurines()).getMoves(new String[] {"XXXXXXX"}, 2, 3),1);
+            eq(3,(new EllysFigurines()).getMoves(new String[] {"XXXXX",
+                "X....",
+                "XXX..",
+                "X....",
+                "XXXXX"}, 1, 1),4);
+            eq(4,(new EllysFigurines()).getMoves(new String[] {"XXX..XXX..XXX.",
+                ".X..X....X...X",
+                ".X..X....X...X",
+                ".X..X....X...X",
+                ".X...XXX..XXX.",
+                "..............",
+                "...XX...XXX...",
+                "....X......X..",
+                "....X....XXX..",
+                "....X......X..",
+                "...XXX..XXX..."}, 1, 2),7);
         } catch( Exception exx) {
             System.err.println(exx);
             exx.printStackTrace(System.err);
         }
     }
-	private static void pr(Object... rs) {
+	private static void print(Object... rs) {
 		System.err.println(Arrays.deepToString(rs).replace("]", "]\n"));
 	}
 
@@ -148,12 +214,14 @@ $MAINBODY$
         }
         System.err.println("Case " + n + " passed.");
     }
+
+
     
     static String expected = "  expe";
     static String received = "  rc";
-$ENDCUT$
+// END CUT HERE
 }
 
-$BEGINCUT$
-$PROBLEMDESC$
-$ENDCUT$
+// BEGIN CUT HERE
+
+// END CUT HERE

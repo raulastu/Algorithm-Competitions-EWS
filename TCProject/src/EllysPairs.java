@@ -7,25 +7,35 @@ import static java.util.Collections.*;
 import java.util.*;
 
 
-public class $CLASSNAME$ {
-    public $RC$ $METHODNAME$($METHODPARMS$) {
-        $RC$ res;
-        return res;
+public class EllysPairs {
+    public int getDifference(int[] knowledge) {
+        int res;
+        sort(knowledge);
+        int max=-1;
+        int min=Integer.MAX_VALUE;
+        for (int i = 0; i < knowledge.length/2; i++) {
+			max=max(max,knowledge[i]+knowledge[knowledge.length-1-i]);
+			min=min(min,knowledge[i]+knowledge[knowledge.length-1-i]);
+		}
+        return max-min;
     }
-$WRITERCODE$
-$BEGINCUT$
+
+// BEGIN CUT HERE
 
 
 
     public static void main(String[] args) {
         try {
-$MAINBODY$
+            eq(0,(new EllysPairs()).getDifference(new int[] {2, 6, 4, 3}),1);
+            eq(1,(new EllysPairs()).getDifference(new int[] {1, 1, 1, 1, 1, 1}),0);
+            eq(2,(new EllysPairs()).getDifference(new int[] {4, 2, 4, 2, 1, 3, 3, 7}),2);
+            eq(3,(new EllysPairs()).getDifference(new int[] {5, 1, 8, 8, 13, 7, 6, 2, 1, 9, 5, 11, 3, 4}),3);
         } catch( Exception exx) {
             System.err.println(exx);
             exx.printStackTrace(System.err);
         }
     }
-	private static void pr(Object... rs) {
+	private static void print(Object... rs) {
 		System.err.println(Arrays.deepToString(rs).replace("]", "]\n"));
 	}
 
@@ -148,12 +158,14 @@ $MAINBODY$
         }
         System.err.println("Case " + n + " passed.");
     }
+
+
     
     static String expected = "  expe";
     static String received = "  rc";
-$ENDCUT$
+// END CUT HERE
 }
 
-$BEGINCUT$
-$PROBLEMDESC$
-$ENDCUT$
+// BEGIN CUT HERE
+
+// END CUT HERE
