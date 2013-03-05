@@ -29,8 +29,8 @@ public class CFContestCreator {
 
 	
 	public void start() throws Exception{
-		String resourcesPath="/Users/rc/Eclipse-Workspaces/Algorithm-Competitions-EWS/CFProject/src";
-		createContest(resourcesPath,"278");
+		String resourcesPath="/Users/rc/Eclipse-Workspaces/Algorithm-Competitions-EWS/CFProject/src/";
+//		createContest(resourcesPath,"279");
 //		ArrayList<String> l = getInputTests("http://codeforces.com/contest/278/problem/B");
 //		System.err.println(l);
 		new AutoCompiler(resourcesPath);

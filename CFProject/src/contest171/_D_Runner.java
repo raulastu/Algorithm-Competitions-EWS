@@ -1,14 +1,18 @@
-public class _E_Runner {
+package contest171;
+public class _D_Runner {
 	public static void main(String[] args) throws Exception {
-		_E r = new _E();
+		_D r = new _D();
 		r.INPUT=
-		"10 ";
+		"4 3 ";
 		r.run();
 		r.INPUT=
-		"111 ";
+		"6 3 ";
 		r.run();
 		r.INPUT=
-		"1101101 ";
+		"6 6 ";
+		r.run();
+		r.INPUT=
+		"7 4 ";
 		r.run();
 
 	}

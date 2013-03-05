@@ -18,9 +18,7 @@ public class _E {
 
 	void run() throws Exception {
 		in = oj ? System.in : new ByteArrayInputStream(INPUT.getBytes());
-		// print(oj);
 		out = new PrintWriter(System.out);
-
 		long s = System.currentTimeMillis();
 		solve();
 		out.flush();
@@ -131,8 +129,6 @@ public class _E {
 		}
 	}
 
-	void pr(Object... ob) {
-		if (!oj)System.out.println(Arrays.deepToString(ob).replace("],", "],\n"));
-	}
+	void pr(Object... ob) {if (!oj)System.out.println(Arrays.deepToString(ob).replace("],", "],\n"));}
 }
 

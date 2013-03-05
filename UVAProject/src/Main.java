@@ -1,125 +1,170 @@
-
-
 import java.util.*;
-
 import java.util.regex.*;
 import static java.lang.Math.*;
-import static java.util.Arrays.*;
 import static java.lang.Integer.*;
 import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
 public class Main {
+
 	public void solve() {
-		int N= in.nextInt();
-		int Q= in.nextInt();
-		A = new int[N];
-		int n = 2*1<<(int)((Math.log(N) / Math.log(2) + 1));
-//		print(n);
-		T = new int[n];
-		build(1,0,N-1);
-//		print(T);
-		for (int i = 0; i < Q; i++) {
-			int opt = in.nextInt();
-			int a = in.nextInt();
-			int b = in.nextInt();
-			if(opt==0){
-				update2(1,0,N-1,a,b);
-			}else{
-				System.out.println(query(1,0,N-1,a,b));
+		Scanner sc = new Scanner(System.in);
+		int n = Integer.parseInt(sc.nextLine());
+		while(n!=0){
+			String s = sc.nextLine();
+//			pr(s);
+			int a = 0;
+			HashMap<Character,Integer> set = new HashMap<Character,Integer>();
+//			int [] alf= new int[128];
+			int r = 0;
+			for (int i = 0; i < s.length(); i++) {
+//				pr(set);
+				char that = s.charAt(a);
+				char thix = s.charAt(i);
+				if(set.size()<n){
+					Integer ax = set.get(thix);
+					if(ax==null){
+						set.put(thix,1);
+					}else
+						set.put(thix,ax+1);
+					
+				}else if(set.size()==n){
+					if(!set.containsKey(thix)){
+						while(set.size()==n){
+							that = s.charAt(a);
+							if(set.get(that)>1)
+								set.put(that, set.get(that)-1);
+							else
+								set.remove(that);
+							a++;
+						}
+						set.put(thix,1);
+					}else
+						set.put(thix, set.get(thix)+1);
+				}
+				int newr=i-a+1;
+//				pr(newr, set,a,i,s.substring(a,i));
+				if(newr>r){
+//					pr()
+//					pr(set,a,i,s.substring(a,i));
+					r=newr;
+				}
+//				r=max(r,);
 			}
-//			print(A,T);
+			out.println(r);
+			n = Integer.parseInt(sc.nextLine());
 		}
-	}
-	
-	class SegmentTree{
 		
 	}
-	int A[];
-	int T[];
-	void build(int node, int a, int b){
-//		print(node, a, b);
-		if(a==b){
-			T[node]=(A[b]%3==0?1:0);
-			return;
-		}
-		build(node*2,a,(a+b)/2);
-		build(node*2+1,(a+b)/2+1,b);
-		T[node]=T[node*2]+T[node*2+1];
-	}
 	
-	void update(int node, int a, int b, int i, int j){
-//		print(node, a, b);
-		if(b==a){
-			A[i]++;
-			T[node]=A[i]%3==0?1:0;
-		}else if(i>b || j<a)
-			return;
-		else{
-			update(node*2,a,(a+b)/2,i,j);
-			update(node*2+1,(a+b)/2+1,b,i,j);
-			T[node]=T[node*2]+T[node*2+1];
-		}
-	}
-	
-	void update2(int node, int a, int b, int i, int j){
-		if(b<i || a>j)
-			return ;
-		if(a==b){
-			T[node]=(++A[b])%3==0?1:0;
-			return;
-		}
-		update2(node*2, a,(a+b)/2,i,j);
-		update2(node*2+1, (a+b)/2+1,b,i,j);
-		T[node]=T[node*2]+T[node*2+1];
-	}
-	
-	int query(int node, int a, int b, int i, int j){
-		if(b<i || a>j)
-			return -1;
-		if(a>=i && b<=j)
-			return T[node];
-		int p1 = query(node*2, a,(a+b)/2,i,j);
-		int p2 = query(node*2+1, (a+b)/2+1,b,i,j);
-		if(p1==-1)
-			return p2;
-		if(p2==-1)
-			return p1;
-		return p2+p1;
-	}
-	
-	
-	Main(){
-		in = new Scanner(System.in);
+
+	void run() throws Exception {
+		in = oj ? System.in : new ByteArrayInputStream(INPUT.getBytes());
 		out = new PrintWriter(System.out);
-	}
-	public static void close(){
-		in.close();
-		out.close();
-	}
-	public static void main(String[] args) throws Exception {
-		new Main().solve();
-		close();
+		long s = System.currentTimeMillis();
+		solve();
+		out.flush();
+//		pr(System.currentTimeMillis() - s + "ms");
 	}
 
-	static Scanner in;
-	static PrintWriter out;
+	public static void main(String[] args) throws Exception {new Main().run();}
 
-	static int readInt(){
-		return in.nextInt();
-//		return parseInt(in.nextInt());
-	}
-	static int[] readIntArray(){
-		String l[] = in.nextLine().split(" ");
-		int[] r=new int[l.length];
-		for (int i = 0; i < l.length; i++) {
-			r[i]=parseInt(l[i]);
+	InputStream in;
+	PrintWriter out;
+	String INPUT = "";
+	
+	private boolean oj = System.getProperty("ONLINE_JUDGE") != null;
+	private byte[] inbuf = new byte[1024];
+	private int lenbuf = 0, ptrbuf = 0;
+
+	private int readByte() {
+		if (lenbuf == -1)
+			throw new InputMismatchException();
+		if (ptrbuf >= lenbuf) {
+			ptrbuf = 0;
+			try {
+				lenbuf = in.read(inbuf);
+			} catch (IOException e) {
+				throw new InputMismatchException();
+			}
+			if (lenbuf <= 0)
+				return -1;
 		}
-		return r;
+		return inbuf[ptrbuf++];
+	}
+
+	private boolean isSpaceChar(int c) {return !(c >= 33 && c <= 126);}
+	private int skip() {int b;while ((b = readByte()) != -1 && isSpaceChar(b));return b;}
+
+	private String ns() {
+		int b = skip();
+		StringBuilder sb = new StringBuilder();
+		while (!(isSpaceChar(b))) { // when nextLine, (isSpaceChar(b) && b != // ' ')
+			sb.appendCodePoint(b);
+			b = readByte();
+		}
+		return sb.toString();
 	}
 	
-	static void print(Object... ob) {
-		System.out.println(Arrays.deepToString(ob).replace("],", "],\n"));
+	private String ns1() {
+		int b = skip();
+		StringBuilder sb = new StringBuilder();
+		while (!(isSpaceChar(b) && b != ' ')) { // when nextLine, 
+			sb.appendCodePoint(b);
+			b = readByte();
+		}
+		return sb.toString();
 	}
+	
+	
+	private int[] na(int n) {
+		int[] a = new int[n];
+		for (int i = 0; i < n; i++)
+			a[i] = ni();
+		return a;
+	}
+	
+	
+	private int ni() {
+		int num = 0, b;
+		boolean minus = false;
+		while ((b = readByte()) != -1 && !((b >= '0' && b <= '9') || b == '-'))
+			;
+		if (b == '-') {
+			minus = true;
+			b = readByte();
+		}
+
+		while (true) {
+			if (b >= '0' && b <= '9') {
+				num = num * 10 + (b - '0');
+			} else {
+				return minus ? -num : num;
+			}
+			b = readByte();
+		}
+	}
+	
+	private long nl(){
+		long num = 0;
+		int b;
+		boolean minus = false;
+		while((b = readByte()) != -1 && !((b >= '0' && b <= '9') || b == '-'));
+		if(b == '-'){
+			minus = true;
+			b = readByte();
+		}
+		while(true){
+			if(b >= '0' && b <= '9'){
+				num = num * 10 + (b - '0');
+			}else{
+				return minus ? -num : num;
+			}
+			b = readByte();
+		}
+	}
+
+	void pr(Object... ob) {if (!oj)System.out.println(Arrays.deepToString(ob).replace("],", "],\n"));}
 }
+

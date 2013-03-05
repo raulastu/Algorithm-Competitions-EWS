@@ -9,45 +9,29 @@ import java.util.*;
 
 public class EllysFigurines {
     public int getMoves(String[] board, int R, int C) {
-        int res=Integer.MAX_VALUE;
+        int res=1<<30;
         int N = board[0].length();
-        char[][] copy = new char[board.length][board[0].length()];
-        for (int i = 0; i < copy.length; i++) {
-			copy[i]=board[i].toCharArray();
-		}
         for (int mask = 0; mask < 1<<N; mask++) {
         	int cand=0;
-        	int c=C;
 			for (int i = 0; i < N; i++) {
-				if(c<C){
-					if(--c==0)c=C;
-					continue;
-				}	
 				if((mask&(1<<i))>0){
-					if(--c==0)c=C;
+					i+=(C-1);
 					cand++;
 				}
 			}
 //			print("x",Integer.toString(mask, 2));
-			int r=R;
 //			print("cand",cand);
-			for (int i = 0; i < copy.length; i++) {
-				if(r<R){
-					if(--r==0)r=R;
-					continue;
-				}
-				for (int j = 0; j < copy[i].length; j++) {
-					if((mask&1<<j)>0){
+			for (int i = 0; i < board.length; i++) {
+				for (int j = 0; j < board[i].length(); j++) {
+					if((mask&(1<<j))>0)
 						continue;
-					}
-					if(copy[i][j]=='X'){
+					if(board[i].charAt(j)=='X'){
 						cand++;
-						if(--r==0)r=R;
+						i+=(R-1);
 						break;
 					}
 				}
 			}
-//			print("cand",cand);
 			res=min(cand,res);
 		}
         return res;

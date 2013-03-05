@@ -1,36 +1,62 @@
+package two_pointers;
 import java.util.*;
 import java.util.regex.*;
 import static java.lang.Math.*;
-import static java.util.Arrays.*;
 import static java.lang.Integer.*;
 import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _B {
+public class Main {
 
 	public void solve() {
-		int n = ni(),t=ni();
-		int [] ts = na(n);
-		int atras = 0;
-		int totals = 0;
-		int r=0;
-		for (int adelante = 0; adelante < n; adelante++) {
-			totals+=ts[adelante];
-			if(totals<=t){
-				r=max((adelante+1)-atras,r);
-			}else{
-				for (; atras <= adelante;) {
-					totals -= ts[atras];
-					atras++;
-					if(totals<=t){
-						break;
-					}
+		Scanner sc = new Scanner(System.in);
+		int n = Integer.parseInt(sc.nextLine());
+		while(n!=0){
+			String s = sc.nextLine();
+//			pr(s);
+			int a = 0;
+			HashMap<Character,Integer> set = new HashMap<Character,Integer>();
+//			int [] alf= new int[128];
+			int r = 0;
+			for (int i = 0; i < s.length(); i++) {
+//				pr(set);
+				char that = s.charAt(a);
+				char thix = s.charAt(i);
+				if(set.size()<n){
+					Integer ax = set.get(thix);
+					if(ax==null){
+						set.put(thix,1);
+					}else
+						set.put(thix,ax+1);
 					
+				}else if(set.size()==n){
+					if(!set.containsKey(thix)){
+						while(set.size()==n){
+							that = s.charAt(a);
+							if(set.get(that)>1)
+								set.put(that, set.get(that)-1);
+							else
+								set.remove(that);
+							a++;
+						}
+						set.put(thix,1);
+					}else
+						set.put(thix, set.get(thix)+1);
 				}
+				int newr=i-a+1;
+//				pr(newr, set,a,i,s.substring(a,i));
+				if(newr>r){
+//					pr()
+//					pr(set,a,i,s.substring(a,i));
+					r=newr;
+				}
+//				r=max(r,);
 			}
+			out.println(r);
+			n = Integer.parseInt(sc.nextLine());
 		}
-		out.println(r);
+		
 	}
 	
 
@@ -40,10 +66,10 @@ public class _B {
 		long s = System.currentTimeMillis();
 		solve();
 		out.flush();
-		pr(System.currentTimeMillis() - s + "ms");
+//		pr(System.currentTimeMillis() - s + "ms");
 	}
 
-	public static void main(String[] args) throws Exception {new _B().run();}
+	public static void main(String[] args) throws Exception {new Main().run();}
 
 	InputStream in;
 	PrintWriter out;
@@ -82,23 +108,16 @@ public class _B {
 		return sb.toString();
 	}
 	
-	private char[] ns(int n)
-	{
-		char[] buf = new char[n];
-		int b = skip(), p = 0;
-		while(p < n && !(isSpaceChar(b))){
-			buf[p++] = (char)b;
+	private String ns1() {
+		int b = skip();
+		StringBuilder sb = new StringBuilder();
+		while (!(isSpaceChar(b) && b != ' ')) { // when nextLine, 
+			sb.appendCodePoint(b);
 			b = readByte();
 		}
-		return n == p ? buf : Arrays.copyOf(buf, p);
+		return sb.toString();
 	}
 	
-	private char[][] nm(int n, int m)
-	{
-		char[][] map = new char[n][];
-		for(int i = 0;i < n;i++)map[i] = ns(m);
-		return map;
-	}
 	
 	private int[] na(int n) {
 		int[] a = new int[n];

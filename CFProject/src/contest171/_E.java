@@ -1,3 +1,4 @@
+package contest171;
 import java.util.*;
 import java.util.regex.*;
 import static java.lang.Math.*;
@@ -7,43 +8,27 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _B {
+public class _E {
 
 	public void solve() {
-		int n = ni(),t=ni();
-		int [] ts = na(n);
-		int atras = 0;
-		int totals = 0;
-		int r=0;
-		for (int adelante = 0; adelante < n; adelante++) {
-			totals+=ts[adelante];
-			if(totals<=t){
-				r=max((adelante+1)-atras,r);
-			}else{
-				for (; atras <= adelante;) {
-					totals -= ts[atras];
-					atras++;
-					if(totals<=t){
-						break;
-					}
-					
-				}
-			}
-		}
+		int r = ni();
+		
 		out.println(r);
 	}
 	
 
 	void run() throws Exception {
 		in = oj ? System.in : new ByteArrayInputStream(INPUT.getBytes());
+		// print(oj);
 		out = new PrintWriter(System.out);
+
 		long s = System.currentTimeMillis();
 		solve();
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
 
-	public static void main(String[] args) throws Exception {new _B().run();}
+	public static void main(String[] args) throws Exception {new _E().run();}
 
 	InputStream in;
 	PrintWriter out;
@@ -147,6 +132,8 @@ public class _B {
 		}
 	}
 
-	void pr(Object... ob) {if (!oj)System.out.println(Arrays.deepToString(ob).replace("],", "],\n"));}
+	void pr(Object... ob) {
+		if (!oj)System.out.println(Arrays.deepToString(ob).replace("],", "],\n"));
+	}
 }
 
