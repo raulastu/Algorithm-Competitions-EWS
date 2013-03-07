@@ -9,10 +9,26 @@ import java.io.*;
 public class Main {
 
 	public void solve() {
-		Scanner sc = new Scanner(System.in);
-		int n = Integer.parseInt(sc.nextLine());
+//		Scanner sc = new Scanner(System.in);
+//		int n = Integer.parseInt(sc.nextLine());
+//		n = 10000;
+		pr("\n".getBytes());
+		int n = ni();
+//		int xx=100000;
 		while(n!=0){
-			String s = sc.nextLine();
+			String s = ns1();
+//			int size = (int)(Math.random()*10000);
+//			char [] axx = new char[size];
+//			for (int i = 0; i < axx.length; i++) {
+//				char ccc = (char)((Math.random()*('z'-'a'))+'a');
+////				pr(ccc);
+//				axx[i]=ccc;
+//			}
+//			String s =new String(axx);
+//			for (int i = 0; i < 1000000; i++) {
+//				s+='x';
+//			}
+//			int[] xa = new int[1000000000];
 //			pr(s);
 			int a = 0;
 			HashMap<Character,Integer> set = new HashMap<Character,Integer>();
@@ -20,7 +36,7 @@ public class Main {
 			int r = 0;
 			for (int i = 0; i < s.length(); i++) {
 //				pr(set);
-				char that = s.charAt(a);
+//				char that = s.charAt(a);
 				char thix = s.charAt(i);
 				if(set.size()<n){
 					Integer ax = set.get(thix);
@@ -31,9 +47,9 @@ public class Main {
 					
 				}else if(set.size()==n){
 					if(!set.containsKey(thix)){
-						while(set.size()==n){
-							that = s.charAt(a);
-							if(set.get(that)>1)
+						while(set.size()==n && a<s.length()){
+							char that = s.charAt(a);
+							if(set.containsKey(that) && set.get(that)>1)
 								set.put(that, set.get(that)-1);
 							else
 								set.remove(that);
@@ -53,7 +69,8 @@ public class Main {
 //				r=max(r,);
 			}
 			out.println(r);
-			n = Integer.parseInt(sc.nextLine());
+//			n = (int)(Math.random()*128);
+			n = ni();
 		}
 		
 	}

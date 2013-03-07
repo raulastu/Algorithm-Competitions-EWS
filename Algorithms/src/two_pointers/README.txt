@@ -8,3 +8,4 @@ http://codeforces.com/contest/279/problem/B
 sol: http://ideone.com/o48ke8
 
 http://acm.tju.edu.cn/toj/showp3014.html
+sol: http://ideone.com/clGeNZ

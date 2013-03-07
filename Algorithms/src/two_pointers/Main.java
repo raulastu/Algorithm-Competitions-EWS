@@ -16,39 +16,31 @@ public class Main {
 			String s = sc.nextLine();
 //			pr(s);
 			int a = 0;
-			HashMap<Character,Integer> set = new HashMap<Character,Integer>();
+			HashMap<Character,Integer> map = new HashMap<Character,Integer>();
 //			int [] alf= new int[128];
 			int r = 0;
 			for (int i = 0; i < s.length(); i++) {
 //				pr(set);
-				char that = s.charAt(a);
 				char thix = s.charAt(i);
-				if(set.size()<n){
-					Integer ax = set.get(thix);
-					if(ax==null){
-						set.put(thix,1);
-					}else
-						set.put(thix,ax+1);
-					
-				}else if(set.size()==n){
-					if(!set.containsKey(thix)){
-						while(set.size()==n){
-							that = s.charAt(a);
-							if(set.get(that)>1)
-								set.put(that, set.get(that)-1);
-							else
-								set.remove(that);
-							a++;
-						}
-						set.put(thix,1);
-					}else
-						set.put(thix, set.get(thix)+1);
+				while(map.size()==n && !map.containsKey((thix)){
+					char that = s.charAt(a);
+					if(map.get(that)>1)
+						map.put(that, map.get(that)-1);
+					else
+						map.remove(that);
+					a++;
 				}
+				Integer ax = map.get(thix);
+				if(ax==null){
+					map.put(thix,1);
+				}else
+					map.put(thix,ax+1);
+				
 				int newr=i-a+1;
 //				pr(newr, set,a,i,s.substring(a,i));
 				if(newr>r){
 //					pr()
-//					pr(set,a,i,s.substring(a,i));
+					pr(map,a,i,s.substring(a,i));
 					r=newr;
 				}
 //				r=max(r,);
