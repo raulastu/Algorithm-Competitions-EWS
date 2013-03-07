@@ -8,10 +8,14 @@ http://codeforces.com/blog/entry/3327
 
 Problems to Practice
 http://www.spoj.com/problems/HORRIBLE/
+
 http://www.spoj.com/problems/MULTQ3/
+sol:
+http://ideone.com/DBV0jU
+
 http://www.spoj.com/problems/KGSS/
 
-Problem Statement
+
 http://codeforces.com/contest/276/problem/C
-Solution
+sol:
 http://codeforces.com/contest/276/submission/3193222
