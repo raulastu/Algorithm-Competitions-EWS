@@ -1,4 +1,4 @@
-package UnionFind;
+package union_find;
 
 public class UnionFind {
 	class UF {
