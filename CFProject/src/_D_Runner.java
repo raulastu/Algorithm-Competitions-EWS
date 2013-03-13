@@ -2,18 +2,45 @@ public class _D_Runner {
 	public static void main(String[] args) throws Exception {
 		_D r = new _D();
 		r.INPUT=
-		"5 "+
-		"1 2 3 6 8 ";
+		"2 "+
+		"1 1 ";
+		r.run();
+		r.INPUT=
+		"2 "+
+		"1 2 ";
 		r.run();
 		r.INPUT=
 		"3 "+
-		"3 6 5 ";
+		"1 2 1 ";
 		r.run();
 		r.INPUT=
-		"6 "+
-		"2 4 8 6 10 18 ";
+		"2 "+
+		"0 1 ";
 		r.run();
-
+		r.INPUT=
+		"3 "+
+		"0 1 2 ";
+		r.run();
+		r.INPUT=
+		"2 "+
+		"8 10  ";
+		r.run();
+		r.INPUT=
+		"3 "+
+		"8 10 4 ";
+		r.run();
+		r.INPUT=
+		"2 "+
+		"3 5 ";
+		r.run();
+		r.INPUT=
+		"2 "+
+		"1 3 ";
+		r.run();
+		r.INPUT=
+		"2 "+
+		"123 125 ";         
+		r.run();
 	}
 }
 

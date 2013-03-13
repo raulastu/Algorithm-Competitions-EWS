@@ -1,3 +1,4 @@
+package last;
 import java.util.*;
 import java.util.regex.*;
 import static java.lang.Math.*;
@@ -7,72 +8,47 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _D {
-//	String p1="BitLGM";
+public class _A {
+
 	public void solve() {
-		int r = ni();
-		int []ar=new int[r];
-		int arr=0;
-		int zero=0;
-		int nonzero=0;
-		HashSet<Integer> set = new HashSet<Integer>();
-		for (int i = 0; i < r; i++) {
-			ar[i]=ni();
-			set.add(ar[i]);
-			arr+=ar[i];
-			if(ar[i]==0)
-				zero++;
-			else
-				nonzero++;
-		}
-		if(arr==0){
-			out.println("BitAryo");
+//		int r = ni();
+		int x=ni(),y=ni();
+		int x1=1,y1=0; 
+		int x2=1,y2=1;
+//		int incr=1;
+		if ((x==0 && y==0) || 
+				(x==1 && y==0)){
+			out.println(0);
 			return;
 		}
-		sort(ar);
-		if(r==2){
-			if(nonzero==2){
-				if(set.size()==2){
-					if(!win(ar[0],ar[1])){
-						out.println("BitAryo");
-						return;
-					}
-				}
-			}	
-		}
-		if(r==3){
-			if(zero==1){
-				if(set.size()==3){
-					if(!win(ar[1],ar[2])){
-						out.println("BitAryo");
-						return;
-					}
-				}	
+		for (int i = 0; i < 1000; i++) {
+//			pr(x1,y1,x2,y2);
+			int minx=min(x1,x2);
+			int maxx=max(x1,x2);
+			int miny=min(y1,y2);
+			int maxy=max(y1,y2);
+			if ((x>=minx && x<=maxx) && 
+					(y>=miny && y<=maxy)){
+				out.println(i+1);  
+				return;
 			}
-			if(zero==0){ 
-				if(!win(ar[0],ar[1])
-					|| !win(ar[1],ar[2])
-					|| !win(ar[0],ar[2])){
-				}else{        
-					out.println("BitAryo");
-					return;
+			x1=x2;
+			y1=y2;
+			if(i%2==1){
+				if(y2<0){
+					y2-=1;
 				}
-			} 
+				y2=-y2;
+			}else{
+				if(x2<0)
+					x2-=1;
+				x2=-x2;
+			}
+			
 		}
-		out.println("BitLGM");
+//		out.println(r);
 	}
-	boolean win(int a, int b){
-		if(a==1){
-			return (b>2);
-		}
-		if(b-a>=2){
-			if((a%2!=0 || b%2!=0))
-				return true;
-			return false;
-		}
-
-		return true;
-	}
+	
 
 	void run() throws Exception {
 		in = oj ? System.in : new ByteArrayInputStream(INPUT.getBytes());
@@ -83,7 +59,7 @@ public class _D {
 		pr(System.currentTimeMillis() - s + "ms");
 	}
 
-	public static void main(String[] args) throws Exception {new _D().run();}
+	public static void main(String[] args) throws Exception {new _A().run();}
 
 	InputStream in;
 	PrintWriter out;

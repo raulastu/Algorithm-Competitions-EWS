@@ -16,6 +16,7 @@ public class AutoCompiler implements Runnable {
 			if (!file.getName().endsWith(".java"))
 				continue;
 			String name = file.getName();
+			name=name.replaceAll("[\\.java]", "");
 			snapshot.put(name, file.lastModified());
 			String xx = file.getAbsolutePath().replaceAll("[\\.java]", "");
 			pr(xx);
@@ -28,14 +29,26 @@ public class AutoCompiler implements Runnable {
 		for (File file : s.listFiles()) {
 			if (!file.getName().endsWith(".java"))
 				continue;
-
+			
 			long myDate = file.lastModified();
-			String name = file.getName();
-			String runnerName = name.replaceAll("[\\.java]", "") + "_Runner";
+			String name = file.getName().replaceAll("[\\.java]", "");
 			if (snapshot.get(name) != myDate) {
-				runCommand("javac -cp " + folder + " " + folder
-						+ runnerName + ".java");
-				runCommand("java -cp " + folder + " " + runnerName);
+				pr(snapshot);
+				String runnerName =  name + "_Runner";
+				boolean isRunner=false;
+				if(name.endsWith("_Runner")){
+					System.err.println("isRunner");
+					isRunner=true;
+//					runnerName=name;
+//					name = name.replace("_Runner", "");
+				}
+				if(isRunner){
+					runCommand("javac -cp " + folder + " " + folder+ name + ".java");
+					runCommand("java -cp " + folder + " " + name);
+				}else{
+					runCommand("javac -cp " + folder + " " + folder + runnerName + ".java");
+					runCommand("java -cp " + folder + " " + runnerName);
+				}	
 				snapshot.put(name, myDate);
 			}
 		}

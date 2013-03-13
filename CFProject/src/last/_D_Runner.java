@@ -1,17 +1,18 @@
-public class _E_Runner {
+package last;
+public class _D_Runner {
 	public static void main(String[] args) throws Exception {
-		_E r = new _E();
+		_D r = new _D();
 		r.INPUT=
-		"2 "+
-		"1 2 ";
+		"5 "+
+		"1 2 3 6 8 ";
 		r.run();
 		r.INPUT=
 		"3 "+
-		"1 2 3 ";
+		"3 6 5 ";
 		r.run();
 		r.INPUT=
-		"2 "+
-		"1000 1000 ";
+		"6 "+
+		"2 4 8 6 10 18 ";
 		r.run();
 
 	}

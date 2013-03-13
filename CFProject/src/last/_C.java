@@ -1,3 +1,4 @@
+package last;
 import java.util.*;
 import java.util.regex.*;
 import static java.lang.Math.*;
@@ -7,71 +8,63 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _D {
-//	String p1="BitLGM";
+public class _C {
+
 	public void solve() {
-		int r = ni();
-		int []ar=new int[r];
-		int arr=0;
-		int zero=0;
-		int nonzero=0;
-		HashSet<Integer> set = new HashSet<Integer>();
-		for (int i = 0; i < r; i++) {
-			ar[i]=ni();
-			set.add(ar[i]);
-			arr+=ar[i];
-			if(ar[i]==0)
-				zero++;
-			else
-				nonzero++;
+		int n = ni(),m=ni();
+		A = na(n);
+		T = new int[n*4];
+		build(1,0,n-1);
+		for (int i = 0; i < m; i++) {
+			int a= ni();
+			int b= ni();
+			boolean ax = query(1,0,n-1,a-1,b-1);
+			if(ax)
+				out.println("Yes");
+			else 
+				out.println("No");
+			pr(T,A);
 		}
-		if(arr==0){
-			out.println("BitAryo");
+		
+	}
+	int T[];
+	int A[];
+	void build(int node, int b, int e){
+//		System.err.println(node);
+		int l=node<<1;int r=l+1; int m=(b+e)>>1;
+		if(b==e){
+			T[node]=b;
 			return;
 		}
-		sort(ar);
-		if(r==2){
-			if(nonzero==2){
-				if(set.size()==2){
-					if(!win(ar[0],ar[1])){
-						out.println("BitAryo");
-						return;
-					}
-				}
-			}	
-		}
-		if(r==3){
-			if(zero==1){
-				if(set.size()==3){
-					if(!win(ar[1],ar[2])){
-						out.println("BitAryo");
-						return;
-					}
-				}	
-			}
-			if(zero==0){ 
-				if(!win(ar[0],ar[1])
-					|| !win(ar[1],ar[2])
-					|| !win(ar[0],ar[2])){
-				}else{        
-					out.println("BitAryo");
-					return;
-				}
-			} 
-		}
-		out.println("BitLGM");
+		build(l,b,m);
+		build(r,m+1,e);
+		if(A[T[r]]<A[T[l]])
+			T[node]=T[r];
+		else 
+			T[node]=T[l];
 	}
-	boolean win(int a, int b){
-		if(a==1){
-			return (b>2);
-		}
-		if(b-a>=2){
-			if((a%2!=0 || b%2!=0))
-				return true;
+	boolean query(int node, int b, int e, int i, int j){
+		int l = node<<1; int r=l+1; int m=(b+e)>>1;
+//		push(node,b,e);
+		if(e<i||b>j)
 			return false;
+		if(i<=b && e<=j){
+			return T[node]==b || T[node]==e;
 		}
-
-		return true;
+		
+		boolean l1 = query(l,b,m,i,j);
+		boolean l2 = query(r,m+1,e,i,j);
+		return l1 || l2;
+//		pull(node,l,r);
+//		if(l1==-1)
+//			return l2;
+//		if(l2==-1)
+//			return l1;
+//		if(l1<l2)
+//			return l1;
+//		else 
+//			return l2;
+//		return l1+l2;
 	}
 
 	void run() throws Exception {
@@ -83,7 +76,7 @@ public class _D {
 		pr(System.currentTimeMillis() - s + "ms");
 	}
 
-	public static void main(String[] args) throws Exception {new _D().run();}
+	public static void main(String[] args) throws Exception {new _C().run();}
 
 	InputStream in;
 	PrintWriter out;

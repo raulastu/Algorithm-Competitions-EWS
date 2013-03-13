@@ -10,42 +10,16 @@ import java.io.*;
 public class _A {
 
 	public void solve() {
-//		int r = ni();
-		int x=ni(),y=ni();
-		int x1=1,y1=0; 
-		int x2=1,y2=1;
-//		int incr=1;
-		if ((x==0 && y==0) || 
-				(x==1 && y==0)){
-			out.println(0);
-			return;
+		int n = ni();
+		int xi=0;
+		for (int i = 0; i < n; i++) {
+			String s = ns();
+			if(s.contains("++")){
+				xi++;
+			}else
+				xi--;
 		}
-		for (int i = 0; i < 1000; i++) {
-//			pr(x1,y1,x2,y2);
-			int minx=min(x1,x2);
-			int maxx=max(x1,x2);
-			int miny=min(y1,y2);
-			int maxy=max(y1,y2);
-			if ((x>=minx && x<=maxx) && 
-					(y>=miny && y<=maxy)){
-				out.println(i+1);
-				return;
-			}
-			x1=x2;
-			y1=y2;
-			if(i%2==1){
-				if(y2<0){
-					y2-=1;
-				}
-				y2=-y2;
-			}else{
-				if(x2<0)
-					x2-=1;
-				x2=-x2;
-			}
-			
-		}
-//		out.println(r);
+		out.println(xi);
 	}
 	
 

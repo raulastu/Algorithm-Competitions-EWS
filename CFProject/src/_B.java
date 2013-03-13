@@ -10,27 +10,21 @@ import java.io.*;
 public class _B {
 
 	public void solve() {
-		int n = ni(),t=ni();
-		int [] ts = na(n);
-		int atras = 0;
-		int totals = 0;
-		int r=0;
-		for (int adelante = 0; adelante < n; adelante++) {
-			totals+=ts[adelante];
-			if(totals<=t){
-				r=max((adelante+1)-atras,r);
+		int r = ni();
+		int tA=0,tG=0;
+		char res []=new char[r];
+		for (int i = 0; i < r; i++) {
+			int A = ni();
+			int G = ni();
+			if(tA+A-tG<=500){
+				tA+=A;
+				res[i]='A';
 			}else{
-				for (; atras <= adelante;) {
-					totals -= ts[atras];
-					atras++;
-					if(totals<=t){
-						break;
-					}
-					
-				}
+				tG+=G;
+				res[i]='G';
 			}
 		}
-		out.println(r);
+		out.println(new String(res));
 	}
 	
 

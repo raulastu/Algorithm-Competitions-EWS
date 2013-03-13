@@ -10,61 +10,34 @@ import java.io.*;
 public class _C {
 
 	public void solve() {
-		int n = ni(),m=ni();
-		A = na(n);
-		T = new int[n*4];
-		build(1,0,n-1);
-		for (int i = 0; i < m; i++) {
-			int a= ni();
-			int b= ni();
-			boolean ax = query(1,0,n-1,a-1,b-1);
-			if(ax)
-				out.println("Yes");
-			else 
-				out.println("No");
-			pr(T,A);
-		}
-		
-	}
-	int T[];
-	int A[];
-	void build(int node, int b, int e){
-//		System.err.println(node);
-		int l=node<<1;int r=l+1; int m=(b+e)>>1;
-		if(b==e){
-			T[node]=b;
+//		int r = ni();
+		char []a = ns().toCharArray();
+		char [] b = ns().toCharArray();
+		if(a.length!=b.length){
+			out.println("NO");
 			return;
 		}
-		build(l,b,m);
-		build(r,m+1,e);
-		if(A[T[r]]<A[T[l]])
-			T[node]=T[r];
-		else 
-			T[node]=T[l];
-	}
-	boolean query(int node, int b, int e, int i, int j){
-		int l = node<<1; int r=l+1; int m=(b+e)>>1;
-//		push(node,b,e);
-		if(e<i||b>j)
-			return false;
-		if(i<=b && e<=j){
-			return T[node]==b || T[node]==e;
+		if(a.length==1){ 
+			if(a[0]=='1' && b[0]=='0'){
+				out.println("NO");
+				return;
+			}
 		}
-		
-		boolean l1 = query(l,b,m,i,j);
-		boolean l2 = query(r,m+1,e,i,j);
-		return l1 || l2;
-//		pull(node,l,r);
-//		if(l1==-1)
-//			return l2;
-//		if(l2==-1)
-//			return l1;
-//		if(l1<l2)
-//			return l1;
-//		else 
-//			return l2;
-//		return l1+l2;
+		int a1=0;
+		int b1=0;   
+		for (int i = 0; i < a.length; i++) { 
+			if(a[i]=='1')
+				a1++;
+			if(b[i]=='1')
+				b1++;
+		}
+		if(a1>0 && b1==0){
+			out.println("NO");
+			return;
+		}
+		out.println("YES");
 	}
+	
 
 	void run() throws Exception {
 		in = oj ? System.in : new ByteArrayInputStream(INPUT.getBytes());
@@ -120,6 +93,22 @@ public class _C {
 		int b = skip(), p = 0;
 		while(p < n && !(isSpaceChar(b))){
 			buf[p++] = (char)b;
+			b = readByte();
+		}
+		return n == p ? buf : Arrays.copyOf(buf, p);
+	}
+	int A=0;
+	int B=0;
+	private char[] ns2(int n)
+	{
+		char[] buf = new char[n];
+		int b = skip(), p = 0;
+		while(p < n && !(isSpaceChar(b))){
+			buf[p++] = (char)b;
+			if(b==1)
+				A++;
+			else
+				B++;
 			b = readByte();
 		}
 		return n == p ? buf : Arrays.copyOf(buf, p);

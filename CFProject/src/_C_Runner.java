@@ -2,14 +2,32 @@ public class _C_Runner {
 	public static void main(String[] args) throws Exception {
 		_C r = new _C();
 		r.INPUT=
-		"8 6 "+
-		"1 2 1 3 3 5 2 1 "+
-		"1 3 "+
-		"2 3 "+
-		"2 4 "+
-		"8 8 "+
-		"1 4 "+
-		"5 8 ";
+		"11 "+
+		"10 ";
+		r.run();
+		r.INPUT=
+		"1 "+
+		"01 ";
+		r.run();
+		r.INPUT=
+		"000 "+
+		"101 ";
+		r.run();
+		r.INPUT=
+		"101 "+
+		"000 ";
+		r.run();
+		r.INPUT=
+		"1 "+
+		"0 ";
+		r.run();
+		r.INPUT=
+		"111111 "+
+		"000001 ";
+		r.run();
+		r.INPUT=
+		"0 "+
+		"1 ";
 		r.run();
 
 	}
