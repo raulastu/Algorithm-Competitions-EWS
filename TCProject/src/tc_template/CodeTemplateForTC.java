@@ -21,7 +21,7 @@ $BEGINCUT$
         try {
 $MAINBODY$
         } catch( Exception exx) {
-            System.err.println(exx);
+            System.err.println(exx);d
             exx.printStackTrace(System.err);
         }
     }

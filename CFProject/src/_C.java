@@ -8,51 +8,23 @@ import static java.util.Collections.*;
 import java.io.*;
 
 public class _C {
-
+	
 	public void solve() {
-//		int r = ni();
-		char []a = ns().toCharArray();
-		char [] b = ns().toCharArray();
-		if(a.length!=b.length){
-			out.println("NO");
-			return;
-		}
-		if(a.length==1){ 
-			if(a[0]=='1' && b[0]=='0'){
-				out.println("NO");
-				return;
-			}
-		}
-		int a1=0;
-		int b1=0;   
-		for (int i = 0; i < a.length; i++) { 
-			if(a[i]=='1')
-				a1++;
-			if(b[i]=='1')
-				b1++;
-		}
-		if(a1>0 && b1==0){
-			out.println("NO");
-			return;
-		}
-		out.println("YES");
+		int r = ni();
+		
+		out.println(r);
 	}
 	
-
 	void run() throws Exception {
-		in = oj ? System.in : new ByteArrayInputStream(INPUT.getBytes());
-		out = new PrintWriter(System.out);
 		long s = System.currentTimeMillis();
 		solve();
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
-
 	public static void main(String[] args) throws Exception {new _C().run();}
 
-	InputStream in;
-	PrintWriter out;
-	String INPUT = "";
+	InputStream in=System.in;
+	PrintWriter out=new PrintWriter(System.out);
 	
 	private boolean oj = System.getProperty("ONLINE_JUDGE") != null;
 	private byte[] inbuf = new byte[1024];
@@ -77,7 +49,7 @@ public class _C {
 	private boolean isSpaceChar(int c) {return !(c >= 33 && c <= 126);}
 	private int skip() {int b;while ((b = readByte()) != -1 && isSpaceChar(b));return b;}
 
-	private String ns() {
+	public String ns() {
 		int b = skip();
 		StringBuilder sb = new StringBuilder();
 		while (!(isSpaceChar(b))) { // when nextLine, (isSpaceChar(b) && b != // ' ')
@@ -87,41 +59,25 @@ public class _C {
 		return sb.toString();
 	}
 	
-	private char[] ns(int n)
+	public char[] ns(int n)
 	{
 		char[] buf = new char[n];
 		int b = skip(), p = 0;
 		while(p < n && !(isSpaceChar(b))){
 			buf[p++] = (char)b;
-			b = readByte();
-		}
-		return n == p ? buf : Arrays.copyOf(buf, p);
-	}
-	int A=0;
-	int B=0;
-	private char[] ns2(int n)
-	{
-		char[] buf = new char[n];
-		int b = skip(), p = 0;
-		while(p < n && !(isSpaceChar(b))){
-			buf[p++] = (char)b;
-			if(b==1)
-				A++;
-			else
-				B++;
 			b = readByte();
 		}
 		return n == p ? buf : Arrays.copyOf(buf, p);
 	}
 	
-	private char[][] nm(int n, int m)
+	public char[][] nm(int n, int m)
 	{
 		char[][] map = new char[n][];
 		for(int i = 0;i < n;i++)map[i] = ns(m);
 		return map;
 	}
 	
-	private int[] na(int n) {
+	public int[] na(int n) {
 		int[] a = new int[n];
 		for (int i = 0; i < n; i++)
 			a[i] = ni();
@@ -129,7 +85,7 @@ public class _C {
 	}
 	
 	
-	private int ni() {
+	public int ni() {
 		int num = 0, b;
 		boolean minus = false;
 		while ((b = readByte()) != -1 && !((b >= '0' && b <= '9') || b == '-'))
@@ -149,7 +105,7 @@ public class _C {
 		}
 	}
 	
-	private long nl(){
+	public long nl(){
 		long num = 0;
 		int b;
 		boolean minus = false;

@@ -1,46 +1,64 @@
+import java.io.*;
 public class _D_Runner {
-	public static void main(String[] args) throws Exception {
-		_D r = new _D();
-		r.INPUT=
+	boolean testOutput=true;
+	public void runTestCases() throws Exception{
+		input=
 		"2 "+
 		"1 1 ";
-		r.run();
-		r.INPUT=
+		runTest(input,"BitLGM");
+		input=
 		"2 "+
 		"1 2 ";
-		r.run();
-		r.INPUT=
+		runTest(input,"BitAryo");
+		input=
 		"3 "+
 		"1 2 1 ";
-		r.run();
-		r.INPUT=
-		"2 "+
-		"0 1 ";
-		r.run();
-		r.INPUT=
-		"3 "+
-		"0 1 2 ";
-		r.run();
-		r.INPUT=
-		"2 "+
-		"8 10  ";
-		r.run();
-		r.INPUT=
-		"3 "+
-		"8 10 4 ";
-		r.run();
-		r.INPUT=
-		"2 "+
-		"3 5 ";
-		r.run();
-		r.INPUT=
-		"2 "+
-		"1 3 ";
-		r.run();
-		r.INPUT=
-		"2 "+
-		"123 125 ";         
-		r.run();
+		runTest(input,"BitLGM");
+
 	}
+	
+	public void compare(String rcAnswer, String realAnswer){
+		realAnswer=realAnswer.trim();
+		rcAnswer=rcAnswer.trim();
+		if(realAnswer.equals(rcAnswer)){
+			System.out.println("Case "+nroCases+" Passed");
+		}else{
+			failed=true;
+			System.out.println("rChi "+rcAnswer);
+			System.out.println("Expected "+realAnswer);
+			System.out.println("Case "+nroCases+" Failed");
+//			System.exit(0);
+		}
+		nroCases++;
+	}
+	
+	public void runTest(String input, String output) throws Exception{
+		r.in= new ByteArrayInputStream(input.getBytes());
+		r.run();
+		if(testOutput){
+			compare(baos.toString(), output);
+		}else{
+			System.out.println(baos.toString());
+		}
+		baos.reset();
+//		r.in.
+	}
+	_D r;
+	ByteArrayOutputStream baos = new ByteArrayOutputStream();
+	private void init() throws Exception{
+		r = new _D();
+		r.out = new PrintWriter(baos);
+		runTestCases();
+		if(testOutput && !failed){
+			System.out.println("All test cases Passed");
+		}
+	}
+	private String input;
+	private int nroCases=1;
+	private boolean failed=false;
+	public static void main(String[] args) throws Exception {
+		new _D_Runner().init();
+	}
+	
 }
 

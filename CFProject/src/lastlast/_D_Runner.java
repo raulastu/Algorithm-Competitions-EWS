@@ -1,11 +1,32 @@
-import java.io.*;
-public class _{ProblemLetter}_Runner {
+package lastlast;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintWriter;
+
+public class _D_Runner {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
-{input-run}
+		//Case N 1
+		String input=
+		"2 "+
+		"1 1 ";
+		runTest(input,"BitLGM"); 
+		
+		//Case N 2
+		input=
+		"2 "+
+		"1 2 ";
+		runTest(input,"BitAryo");
+		
+		//Case N 3
+		input=
+		"3 "+
+		"1 2 1 ";
+		runTest(input,"BitLGM");
 	}
-	
-	public void compare(String rcAnswer, String realAnswer){
+
+	public void compare(String realAnswer, String rcAnswer){
 		realAnswer=realAnswer.trim();
 		rcAnswer=rcAnswer.trim();
 		if(realAnswer.equals(rcAnswer)){
@@ -31,21 +52,21 @@ public class _{ProblemLetter}_Runner {
 		baos.reset();
 //		r.in.
 	}
-	_{ProblemLetter} r;
+	_D r;
 	ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	private void init() throws Exception{
-		r = new _{ProblemLetter}();
+		r = new _D();
 		r.out = new PrintWriter(baos);
 		runTestCases();
 		if(testOutput && !failed){
 			System.out.println("All test cases Passed");
 		}
 	}
-	private String input;
-	private int nroCases=1;
-	private boolean failed=false;
+	int nroCases=1;
+	boolean failed=false;
 	public static void main(String[] args) throws Exception {
-		new _{ProblemLetter}_Runner().init();
+		new _D_Runner().init();
 	}
 	
 }
+

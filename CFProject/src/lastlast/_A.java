@@ -1,3 +1,4 @@
+package lastlast;
 import java.util.*;
 import java.util.regex.*;
 import static java.lang.Math.*;
@@ -7,24 +8,36 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _{ClassName} {
-	
+public class _A {
+
 	public void solve() {
-		int r = ni();
-		
-		out.println(r);
+		int n = ni();
+		int xi=0;
+		for (int i = 0; i < n; i++) {
+			String s = ns();
+			if(s.contains("++")){
+				xi++;
+			}else
+				xi--;
+		}
+		out.println(xi);
 	}
 	
+
 	void run() throws Exception {
+		in = oj ? System.in : new ByteArrayInputStream(INPUT.getBytes());
+		out = new PrintWriter(System.out);
 		long s = System.currentTimeMillis();
 		solve();
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
-	public static void main(String[] args) throws Exception {new _{ClassName}().run();}
 
-	InputStream in=System.in;
-	PrintWriter out=new PrintWriter(System.out);
+	public static void main(String[] args) throws Exception {new _A().run();}
+
+	InputStream in;
+	PrintWriter out;
+	String INPUT = "";
 	
 	private boolean oj = System.getProperty("ONLINE_JUDGE") != null;
 	private byte[] inbuf = new byte[1024];
@@ -49,7 +62,7 @@ public class _{ClassName} {
 	private boolean isSpaceChar(int c) {return !(c >= 33 && c <= 126);}
 	private int skip() {int b;while ((b = readByte()) != -1 && isSpaceChar(b));return b;}
 
-	public String ns() {
+	private String ns() {
 		int b = skip();
 		StringBuilder sb = new StringBuilder();
 		while (!(isSpaceChar(b))) { // when nextLine, (isSpaceChar(b) && b != // ' ')
@@ -59,7 +72,7 @@ public class _{ClassName} {
 		return sb.toString();
 	}
 	
-	public char[] ns(int n)
+	private char[] ns(int n)
 	{
 		char[] buf = new char[n];
 		int b = skip(), p = 0;
@@ -70,14 +83,14 @@ public class _{ClassName} {
 		return n == p ? buf : Arrays.copyOf(buf, p);
 	}
 	
-	public char[][] nm(int n, int m)
+	private char[][] nm(int n, int m)
 	{
 		char[][] map = new char[n][];
 		for(int i = 0;i < n;i++)map[i] = ns(m);
 		return map;
 	}
 	
-	public int[] na(int n) {
+	private int[] na(int n) {
 		int[] a = new int[n];
 		for (int i = 0; i < n; i++)
 			a[i] = ni();
@@ -85,7 +98,7 @@ public class _{ClassName} {
 	}
 	
 	
-	public int ni() {
+	private int ni() {
 		int num = 0, b;
 		boolean minus = false;
 		while ((b = readByte()) != -1 && !((b >= '0' && b <= '9') || b == '-'))
@@ -105,7 +118,7 @@ public class _{ClassName} {
 		}
 	}
 	
-	public long nl(){
+	private long nl(){
 		long num = 0;
 		int b;
 		boolean minus = false;
@@ -126,3 +139,4 @@ public class _{ClassName} {
 
 	void pr(Object... ob) {if (!oj)System.out.println(Arrays.deepToString(ob).replace("],", "],\n"));}
 }
+

@@ -30,7 +30,8 @@ public class CFContestCreator {
 	
 	public void start() throws Exception{
 		String resourcesPath="/Users/rc/Eclipse-Workspaces/Algorithm-Competitions-EWS/CFProject/src/";
-//		createContest(resourcesPath,"282");
+		createContest(resourcesPath,"282");
+//		System.err.println(getIOTests("http://codeforces.com/contest/282/problem/A"));;
 		new AutoCompiler(resourcesPath);
 	}
 	
@@ -43,42 +44,67 @@ public class CFContestCreator {
 		fixNames(no);
 		for (int i = 0; i < no.length; i++) {
 			createClass(folderName,"templateCLass",(char)('A'+i)+"");
-			ArrayList<String> l = getInputTests("http://codeforces.com/contest/"+contestNumber+"/problem/"+(char)('A'+i));
+			ArrayList<IO> l = getIOTests("http://codeforces.com/contest/"+contestNumber+"/problem/"+(char)('A'+i));
 			createClassRunner(folderName,"templateRunner",(char)('A'+i)+"",l);
 		}
 		System.err.println();
 	}
 	
-	private ArrayList<String> getInputTests(String contestURL) throws Exception{
+	private ArrayList<IO> getIOTests(String contestURL) throws Exception{
 		String html = getHTML(contestURL);
 //		System.err.println(html);
+		//Getting Input
 		String pat = "<div class=\"title\">Input</div><pre>";
 		Pattern p = Pattern.compile(pat);
 		Matcher mat = p.matcher(html);
-		ArrayList<String> inputs = new ArrayList<String>();
+		ArrayList<IO> ios = new ArrayList<IO>();
 		while(mat.find()){
 			int end = html.indexOf("</pre>", mat.start());
 			String input = html.substring(mat.start()+pat.length(),end);
 			input =  input.replace("<br />", "\n");
-			inputs.add(input);
+			
+//			System.err.println("remaining "+html.substring(mat.end()));
+			String htmlForOutput=html.substring(mat.end());
+			String patOut = "<div class=\"title\">Output</div><pre>";
+			Pattern pOut = Pattern.compile(patOut);
+			Matcher matOut = pOut.matcher(htmlForOutput);
+			if(matOut.find()){
+				int endOut = htmlForOutput.indexOf("</pre>", matOut.start());
+				String output = htmlForOutput.substring(matOut.start()+patOut.length(),endOut);
+				output =  output.replace("<br />", "\n");
+				ios.add(new IO(input, output));
+			}
+//			ios.add(new IO(input, ""));
 //			System.err.println(input);
 		}
-		return inputs;
+		return ios;
+	}
+	class IO{
+		String input;
+		String output;
+		public IO(String input, String output) {
+			this.input=input;
+			this.output=output;
+		}
+		@Override
+		public String toString() {
+			return input+" "+output;
+		}
 	}
 	
-	private void createClassRunner(String path, String templatePath, String className, ArrayList<String> inputCases) throws Exception{
+	private void createClassRunner(String path, String templatePath, String className, ArrayList<IO> inputCases) throws Exception{
 		Scanner sc = new Scanner(new File("src/"+templatePath));
 		String rc="";
-		String allInputs="";
-		for (String string : inputCases) {
-			String ri = "\t\tr.INPUT=\n";
-			String [] inputLines = string.split("\n");
+		String alltestCases="";
+		for (IO io: inputCases) {
+			String ri = "\t\tinput=\n";
+			String [] inputLines = io.input.split("\n");
 			for (int i = 0; i < inputLines.length; i++) {
 				ri+="\t\t\""+inputLines[i]+" \"+\n";
 			}
 			ri=ri.substring(0,ri.length()-2)+";\n";
-			ri+="\t\tr.run();\n";
-			allInputs+=ri;
+			ri+="\t\trunTest(input,\""+io.output.substring(0,io.output.length()-1)+"\");\n";
+			alltestCases+=ri;
 		}
 		
 		while(sc.hasNextLine()){
@@ -89,7 +115,7 @@ public class CFContestCreator {
 			if(line.contains("{ProblemLetter}")){
 				rc += line.replace("{ProblemLetter}", className)+"\n";
 			}else if(line.contains("{input-run}")){
-				rc += line.replace("{input-run}",allInputs)+"\n";
+				rc += line.replace("{input-run}",alltestCases)+"\n";
 			}else{
 				rc += line+"\n";
 			}
