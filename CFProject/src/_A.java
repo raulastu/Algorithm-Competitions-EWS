@@ -6,13 +6,46 @@ import static java.lang.Integer.*;
 import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
+import java.math.BigInteger;
 
 public class _A {
 	
+	int pow(int a, int n, int m){
+		if(n==1)return a;
+		if((n&1)!=0){
+			return (a*pow((a*a)%m,(n-1)>>1,m))%m;
+		}else{
+			return (pow((a*a)%m,n>>1,m))%m;
+		}
+	}
 	public void solve() {
-		int r = ni();
+		int p = ni();
+//		int p=0;
+		int res=0;
 		
-		out.println("1");
+		for (int x = 1; x < p; x++) {
+			int is= pow(x,p-1,p);
+			pr(x,is);
+			if((is-1)%p==0){
+				pr(x,is);
+				int p1=1;
+				boolean nondiv=true;
+				while(p1<=p-2){
+					int other = pow(x,p1,p);
+					pr("other ",other,p1);
+					if((other-1)%p==0){
+						nondiv=false;
+						break;
+					}
+					p1++;
+				}
+				if(nondiv){
+					pr(x);
+					res++;
+				}
+			}
+		}
+		out.println(res);
 	}
 	
 	void run() throws Exception {

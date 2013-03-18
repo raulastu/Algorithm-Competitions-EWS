@@ -11,8 +11,33 @@ public class _B {
 	
 	public void solve() {
 		int r = ni();
-		
-		out.println(r);
+		String s = ns();
+		int ii=0;
+		int a=0;
+		int f=0;
+		for (int i = 0; i < s.length(); i++) {
+			if(s.charAt(i)=='I'){
+				ii++;
+			}
+			if(s.charAt(i)=='A'){
+				a++; 
+			}
+			if(s.charAt(i)=='F'){
+				f++;
+			}
+		}
+		if(ii<=0){
+			out.println(a);
+			return;
+		}
+		if(ii==1){
+			out.println(1);
+			return;
+		}
+		if(ii>=2){
+			out.println(0);
+			return;
+		}
 	}
 	
 	void run() throws Exception {

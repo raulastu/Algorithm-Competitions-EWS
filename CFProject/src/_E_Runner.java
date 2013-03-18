@@ -3,17 +3,23 @@ public class _E_Runner {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 		input=
-		"2 "+
-		"1 2 ";
+		"4 2 17 "+
+		"3 1 2 5 "+
+		"4 2 "+
+		"3 4 ";
 		runTest(input,"3");
 		input=
-		"3 "+
-		"1 2 3 ";
-		runTest(input,"3");
+		"3 2 6 "+
+		"3 1 1 "+
+		"1 2 "+
+		"2 3 ";
+		runTest(input,"0");
 		input=
-		"2 "+
-		"1000 1000 ";
-		runTest(input,"1000");
+		"3 2 10 "+
+		"1 2 3 "+
+		"1 2 "+
+		"2 1 ";
+		runTest(input,"0");
 
 	}
 	

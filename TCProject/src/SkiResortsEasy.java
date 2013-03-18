@@ -7,20 +7,18 @@ import static java.util.Collections.*;
 import java.util.*;
 
 
-public class FoxAndMp3Easy {
-    public String[] playList(int n) {
-        String[] res=new String[n];
-        for (int i = 0; i < n; i++) {
-//        	if(n)
-			res[i]=(i+1)+".mp3";
+public class SkiResortsEasy {
+    public int minCost(int[] altitude) {
+        int res=0;
+        for (int i = 1; i < altitude.length; i++) {
+			if(altitude[i]>altitude[i-1]){
+				res+=altitude[i]-altitude[i-1];
+				altitude[i]=altitude[i-1];
+				
+			}
 		}
-        int min  = min(50,res.length);
-        sort(res);
-        String[]r=new String[min];
-        for (int i = 0; i < min; i++) {
-			r[i]=res[i];
-		}
-        return r;
+        pr(altitude);
+        return res;
     }
 
 // BEGIN CUT HERE
@@ -29,17 +27,18 @@ public class FoxAndMp3Easy {
 
     public static void main(String[] args) {
         try {
-            eq(0,(new FoxAndMp3Easy()).playList(3),new String[] {"1.mp3", "2.mp3", "3.mp3" });
-            eq(1,(new FoxAndMp3Easy()).playList(10),new String[] {"1.mp3", "10.mp3", "2.mp3", "3.mp3", "4.mp3", "5.mp3", "6.mp3", "7.mp3", "8.mp3", "9.mp3" });
-            eq(2,(new FoxAndMp3Easy()).playList(16),new String[] {"1.mp3", "10.mp3", "11.mp3", "12.mp3", "13.mp3", "14.mp3", "15.mp3", "16.mp3", "2.mp3", "3.mp3", "4.mp3", "5.mp3", "6.mp3", "7.mp3", "8.mp3", "9.mp3" });
-            eq(3,(new FoxAndMp3Easy()).playList(32),new String[] {"1.mp3", "10.mp3", "11.mp3", "12.mp3", "13.mp3", "14.mp3", "15.mp3", "16.mp3", "17.mp3", "18.mp3", "19.mp3", "2.mp3", "20.mp3", "21.mp3", "22.mp3", "23.mp3", "24.mp3", "25.mp3", "26.mp3", "27.mp3", "28.mp3", "29.mp3", "3.mp3", "30.mp3", "31.mp3", "32.mp3", "4.mp3", "5.mp3", "6.mp3", "7.mp3", "8.mp3", "9.mp3" });
-            eq(4,(new FoxAndMp3Easy()).playList(109),new String[] {"1.mp3", "10.mp3", "100.mp3", "101.mp3", "102.mp3", "103.mp3", "104.mp3", "105.mp3", "106.mp3", "107.mp3", "108.mp3", "109.mp3", "11.mp3", "12.mp3", "13.mp3", "14.mp3", "15.mp3", "16.mp3", "17.mp3", "18.mp3", "19.mp3", "2.mp3", "20.mp3", "21.mp3", "22.mp3", "23.mp3", "24.mp3", "25.mp3", "26.mp3", "27.mp3", "28.mp3", "29.mp3", "3.mp3", "30.mp3", "31.mp3", "32.mp3", "33.mp3", "34.mp3", "35.mp3", "36.mp3", "37.mp3", "38.mp3", "39.mp3", "4.mp3", "40.mp3", "41.mp3", "42.mp3", "43.mp3", "44.mp3", "45.mp3" });
+            eq(0,(new SkiResortsEasy()).minCost(new int[] {30, 20, 20, 10}),0);
+            eq(0,(new SkiResortsEasy()).minCost(new int[] {1,2,3,3,3}),0);
+            eq(1,(new SkiResortsEasy()).minCost(new int[] {5, 7, 3}),2);
+            eq(2,(new SkiResortsEasy()).minCost(new int[] {6, 8, 5, 4, 7, 4, 2, 3, 1}),6);
+            eq(3,(new SkiResortsEasy()).minCost(new int[] {749, 560, 921, 166, 757, 818, 228, 584, 366, 88}),2284);
+            eq(4,(new SkiResortsEasy()).minCost(new int[] {712, 745, 230, 200, 648, 440, 115, 913, 627, 621, 186, 222, 741, 954, 581, 193, 266, 320, 798, 745}),6393);
         } catch( Exception exx) {
             System.err.println(exx);
             exx.printStackTrace(System.err);
         }
     }
-	private static void print(Object... rs) {
+	private static void pr(Object... rs) {
 		System.err.println(Arrays.deepToString(rs).replace("]", "]\n"));
 	}
 

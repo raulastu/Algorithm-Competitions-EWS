@@ -3,17 +3,31 @@ public class _C_Runner {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 		input=
-		"11 "+
-		"10 ";
-		runTest(input,"YES");
+		"5 "+
+		"2 1 "+
+		"3 "+
+		"2 3 "+
+		"2 1 "+
+		"3 ";
+		runTest(input,"0.500000"+
+"0.000000"+
+"1.500000"+
+"1.333333"+
+"1.500000");
 		input=
-		"1 "+
-		"01 ";
-		runTest(input,"NO");
-		input=
-		"000 "+
-		"101 ";
-		runTest(input,"NO");
+		"6 "+
+		"2 1 "+
+		"1 2 20 "+
+		"2 2 "+
+		"1 2 -3 "+
+		"3 "+
+		"3 ";
+		runTest(input,"0.500000"+
+"20.500000"+
+"14.333333"+
+"12.333333"+
+"17.500000"+
+"17.000000");
 
 	}
 	

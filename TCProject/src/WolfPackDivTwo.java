@@ -7,29 +7,15 @@ import static java.util.Collections.*;
 import java.util.*;
 
 
-public class RobotHerbDiv2 {
-    public int getdist(int T, int[] a) {
+public class WolfPackDivTwo {
+    public int calc(int[] x, int[] y, int m) {
         int res;
-        long X=0;
-        long Y=0;
-        int x=0;
-//        int t = 2000000000;
-        for (int xi = 0; xi < T; xi++) {
-        	for (int i = 0; i < a.length; i++) {
-    			X+=di[x]*a[i];
-    			Y+=dj[x]*a[i];
-//    			print(x,X,Y);
-//            	print(newdir,XX,YY);
-//    			x=(x+a[i])%4;
-    			for (int j = 0; j < 400000; j++) {
-					x=(x+1)%4;
-				}
-    		}
+        for (int i = 0; i < y.length; i++) {
+			int startx=x[i];
+			Queue Q = new LinkedList<>
 		}
-        return (int)abs(X)+(int)abs(Y);
+        return res;
     }
-    int di[]={0,1,0,-1};
-    int dj[]={1,0,-1,0};
 
 // BEGIN CUT HERE
 
@@ -37,20 +23,22 @@ public class RobotHerbDiv2 {
 
     public static void main(String[] args) {
         try {
-            eq(0,(new RobotHerbDiv2()).getdist(1, new int[] {1,2,3}),2);
-            eq(1,(new RobotHerbDiv2()).getdist(100, new int[] {1}),0);
-            eq(2,(new RobotHerbDiv2()).getdist(5, new int[] {1,1,2}),10);
-            eq(3,(new RobotHerbDiv2()).getdist(100, new int[] {400000}),40000000);
-            eq(3,(new RobotHerbDiv2()).getdist(100, new int[] {400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000,400000}),40000000);
-            int []a=new int[50];
-            fill(a,400000);
-            eq(3,(new RobotHerbDiv2()).getdist(100, a),40000000);	
+            eq(0,(new WolfPackDivTwo()).calc(new int[] {3,5}, new int[] {0,0}, 1),1);
+            eq(1,(new WolfPackDivTwo()).calc(new int[] {0,1}, new int[] {0,0}, 1),0);
+            eq(2,(new WolfPackDivTwo()).calc(new int[] {0,2,4}, new int[] {0,0,0}, 2),4);
+            eq(3,(new WolfPackDivTwo()).calc(new int[] {7,8}, new int[] {8,7}, 1),2);
+            eq(4,(new WolfPackDivTwo()).calc(new int[] {0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2,2,2,2,2,4,4,4,4,4,4,4,4,4,4,6,6,6,6,6,6,6,6,6,6,8,8,8,8,8,8,8,8,8,8}
+               , new int[] {0,2,4,6,8,10,12,14,16,18,0,2,4,6,8,10,12,14,16,18,0,2,4,6,8,10,12,14,16,18,0,2,4,6,8,10,12,14,16,18,0,2,4,6,8,10,12,14,16,18}
+               , 12),0);
+            eq(5,(new WolfPackDivTwo()).calc(new int[] {0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2,2,2,2,2,4,4,4,4,4,4,4,4,4,4,6,6,6,6,6,6,6,6,6,6,8,8,8,8,8,8,8,8,8,8}
+               , new int[] {0,2,4,6,8,10,12,14,16,18,0,2,4,6,8,10,12,14,16,18,0,2,4,6,8,10,12,14,16,18,0,2,4,6,8,10,12,14,16,18,0,2,4,6,8,10,12,14,16,18}
+               , 31),573748580);
         } catch( Exception exx) {
             System.err.println(exx);
             exx.printStackTrace(System.err);
         }
     }
-	private static void print(Object... rs) {
+	private static void pr(Object... rs) {
 		System.err.println(Arrays.deepToString(rs).replace("]", "]\n"));
 	}
 

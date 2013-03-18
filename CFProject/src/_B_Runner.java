@@ -3,16 +3,13 @@ public class _B_Runner {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 		input=
-		"2 "+
-		"1 999 "+
-		"999 1 ";
-		runTest(input,"AG");
+		"6 "+
+		"AFFAAA ";
+		runTest(input,"4");
 		input=
 		"3 "+
-		"400 600 "+
-		"400 600 "+
-		"400 600 ";
-		runTest(input,"AGA");
+		"AFI ";
+		runTest(input,"1");
 
 	}
 	

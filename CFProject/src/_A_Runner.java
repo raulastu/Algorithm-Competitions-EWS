@@ -3,15 +3,17 @@ public class _A_Runner {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 		input=
-		"1 "+
-		"++X ";
+		"3 ";
 		runTest(input,"1");
 		input=
-		"2 "+
-		"X++ "+
-		"--X ";
-		runTest(input,"0");
-
+		"5 ";
+		runTest(input,"2");
+		input=
+		"11 ";
+		runTest(input,"4");
+		input=
+		"17 ";
+		runTest(input,"8");
 	}
 	
 	public void compare(String rcAnswer, String realAnswer){

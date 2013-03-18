@@ -3,17 +3,16 @@ public class _D_Runner {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 		input=
-		"2 "+
-		"1 1 ";
-		runTest(input,"BitLGM");
-		input=
-		"2 "+
-		"1 2 ";
-		runTest(input,"BitAryo");
+		"4 "+
+		"2 4 1 ";
+		runTest(input,"3
+6
+8");
 		input=
 		"3 "+
-		"1 2 1 ";
-		runTest(input,"BitLGM");
+		"1 2 ";
+		runTest(input,"-1
+-1");
 
 	}
 	
