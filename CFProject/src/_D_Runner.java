@@ -3,16 +3,13 @@ public class _D_Runner {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 		input=
-		"4 "+
-		"2 4 1 ";
-		runTest(input,"3
-6
-8");
+		"5 "+
+		"5 2 1 4 3 ";
+		runTest(input,"7");
 		input=
-		"3 "+
-		"1 2 ";
-		runTest(input,"-1
--1");
+		"5 "+
+		"9 8 3 5 7 ";
+		runTest(input,"15");
 
 	}
 	

@@ -3,13 +3,11 @@ public class _B_Runner {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 		input=
-		"6 "+
-		"AFFAAA ";
-		runTest(input,"4");
+		"3 7 6 ";
+		runTest(input,"2/5");
 		input=
-		"3 "+
-		"AFI ";
-		runTest(input,"1");
+		"7 2 4 ";
+		runTest(input,"7/2");
 
 	}
 	

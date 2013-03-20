@@ -1,16 +1,16 @@
+package lastlastlast;
 import java.io.*;
-public class _E_Runner {
+public class _B_Runner {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 		input=
-		"2 "+
-		"1 2 ";
-		runTest(input,"1.50000000000000000000");
+		"6 "+
+		"AFFAAA ";
+		runTest(input,"4");
 		input=
 		"3 "+
-		"1 2 "+
-		"1 3 ";
-		runTest(input,"2.00000000000000000000");
+		"AFI ";
+		runTest(input,"1");
 
 	}
 	
@@ -40,10 +40,10 @@ public class _E_Runner {
 		baos.reset();
 //		r.in.
 	}
-	_E r;
+	_B r;
 	ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	private void init() throws Exception{
-		r = new _E();
+		r = new _B();
 		r.out = new PrintWriter(baos);
 		runTestCases();
 		if(testOutput && !failed){
@@ -54,7 +54,7 @@ public class _E_Runner {
 	private int nroCases=1;
 	private boolean failed=false;
 	public static void main(String[] args) throws Exception {
-		new _E_Runner().init();
+		new _B_Runner().init();
 	}
 	
 }

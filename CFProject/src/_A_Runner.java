@@ -3,17 +3,12 @@ public class _A_Runner {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 		input=
-		"3 ";
-		runTest(input,"1");
+		"ApPLe ";
+		runTest(input,"ApPLe");
 		input=
-		"5 ";
-		runTest(input,"2");
-		input=
-		"11 ";
-		runTest(input,"4");
-		input=
-		"17 ";
-		runTest(input,"8");
+		"konjac ";
+		runTest(input,"Konjac");
+
 	}
 	
 	public void compare(String rcAnswer, String realAnswer){

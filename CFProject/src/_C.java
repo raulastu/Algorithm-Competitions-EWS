@@ -9,44 +9,10 @@ import java.io.*;
 
 public class _C {
 	
-	
 	public void solve() {
-		int n = ni();
-		int last = 0;
-		double mean =0;
-		int l=1;
-		int s=0;
-		int [] ar= new int[2*(int)10e5+1];
-		int ari=0;
-		HashMap<Integer,Integer> map = new HashMap<Integer, Integer>();
-		for (int i = 0; i < n; i++) {
-			int t=ni();
-			if(t==1){
-				int x=ni();
-				int b=ni();
-				s+=x*b;
-				mean = s/(double)l;
-			}if(t==2){
-				int x=ni();
-				ar[ari++]=x;
-				s+=(x);
-				l++;
-				mean=s/(double)l;
-			}if(t==3){
-				int x = ar[ari-1];
-				pr(ar[ari-1]);
-				for (int j : map.keySet()) {
-					if(map.get(j)<=ari-1){
-						
-					}
-				}
-				s-=x;
-				ari--;
-				l--;
-				mean=s/(double)l;
-			}
-			out.println(mean);
-		}
+		int r = ni();
+		
+		out.println(r);
 	}
 	
 	void run() throws Exception {

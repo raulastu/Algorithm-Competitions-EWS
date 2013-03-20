@@ -1,16 +1,26 @@
+package lastlastlast;
 import java.io.*;
 public class _E_Runner {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 		input=
-		"2 "+
-		"1 2 ";
-		runTest(input,"1.50000000000000000000");
+		"4 2 17 "+
+		"3 1 2 5 "+
+		"4 2 "+
+		"3 4 ";
+		runTest(input,"3");
 		input=
-		"3 "+
+		"3 2 6 "+
+		"3 1 1 "+
 		"1 2 "+
-		"1 3 ";
-		runTest(input,"2.00000000000000000000");
+		"2 3 ";
+		runTest(input,"0");
+		input=
+		"3 2 10 "+
+		"1 2 3 "+
+		"1 2 "+
+		"2 1 ";
+		runTest(input,"0");
 
 	}
 	

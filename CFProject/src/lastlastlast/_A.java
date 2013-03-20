@@ -1,3 +1,4 @@
+package lastlastlast;
 import java.util.*;
 import java.util.regex.*;
 import static java.lang.Math.*;
@@ -6,60 +7,32 @@ import static java.lang.Integer.*;
 import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
+import java.math.BigInteger;
 
-public class _B {
+public class _A {
 	
-	public void solve() {
-		int r = ni(), b=ni(), n=ni();
-
-		if(n>b){
-			int g=gcd(r,b);
-			r=r/g;
-			b=b/g;
-			out.println(r+"/"+b);
-			return;
+	int pow(int a, int n, int m){
+		if(n==1)return a;
+		if((n&1)!=0){
+			return (a*pow((a*a)%m,(n-1)>>1,m))%m;
+		}else{
+			return (pow((a*a)%m,n>>1,m))%m;
 		}
-		int g=gcd(r,b);
-		r=r/g;
-		b=b/g;
-		double min = Double.MAX_VALUE;;
-		double onedayatatime=r/(double)b;
-		int mina=0,minb=0;
-		for(int j=n-1;j>-2;j--){
-			if(j==0)continue;
-			for (int i = 100005; i>=-10; i--) {
-				double ab = i/(double)(j);
-				if(abs(onedayatatime-ab)<min){
-					min=abs(onedayatatime-ab);
-					mina=i;
-					minb=j;
-					int gx=gcd(mina,minb);
-					mina=mina/gx;
-					minb=minb/gx;
-				}
-			}
-		}
-		
-		out.print(mina+"/"+minb);
 	}
-	int compare(int a,int b, int a1, int b1){
-		int g1=gcd(a,b);
-		a=a/g1;
-		b=b/g1;
-		int g2=gcd(a1,b1);
-		a1=a1/g2;
-		b1=b1/g2;
-		if(a1==a && b1==b)return 0;
-		double aa=a/(double)b;
-		double bb=a1/(double)b1;
-		if(aa>bb)
-			return 1;
-		return -1;
-	}
-	int gcd(int a,int b){
-		if(b==0)
+	int gcd(int a, int b){
+		if(0==b)
 			return a;
 		return gcd(b,a%b);
+	}
+	public void solve() {
+		int p = ni()-1;
+		int res=0;
+		for (int i = 0; i < p-1; i++) {
+			if(gcd(i,p-1)==1){
+				res++;
+			}
+		}
+		out.println(res);
 	}
 	
 	void run() throws Exception {
@@ -68,7 +41,7 @@ public class _B {
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
-	public static void main(String[] args) throws Exception {new _B().run();}
+	public static void main(String[] args) throws Exception {new _A().run();}
 
 	InputStream in=System.in;
 	PrintWriter out=new PrintWriter(System.out);

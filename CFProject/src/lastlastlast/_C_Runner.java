@@ -1,16 +1,34 @@
+package lastlastlast;
 import java.io.*;
-public class _E_Runner {
+public class _C_Runner {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 		input=
-		"2 "+
-		"1 2 ";
-		runTest(input,"1.50000000000000000000");
-		input=
+		"5 "+
+		"2 1 "+
 		"3 "+
-		"1 2 "+
-		"1 3 ";
-		runTest(input,"2.00000000000000000000");
+		"2 3 "+
+		"2 1 "+
+		"3 ";
+		runTest(input,"0.500000"+
+"0.000000"+
+"1.500000"+
+"1.333333"+
+"1.500000");
+		input=
+		"6 "+
+		"2 1 "+
+		"1 2 20 "+
+		"2 2 "+
+		"1 2 -3 "+
+		"3 "+
+		"3 ";
+		runTest(input,"0.500000"+
+"20.500000"+
+"14.333333"+
+"12.333333"+
+"17.500000"+
+"17.000000");
 
 	}
 	
@@ -40,10 +58,10 @@ public class _E_Runner {
 		baos.reset();
 //		r.in.
 	}
-	_E r;
+	_C r;
 	ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	private void init() throws Exception{
-		r = new _E();
+		r = new _C();
 		r.out = new PrintWriter(baos);
 		runTestCases();
 		if(testOutput && !failed){
@@ -54,7 +72,7 @@ public class _E_Runner {
 	private int nroCases=1;
 	private boolean failed=false;
 	public static void main(String[] args) throws Exception {
-		new _E_Runner().init();
+		new _C_Runner().init();
 	}
 	
 }
