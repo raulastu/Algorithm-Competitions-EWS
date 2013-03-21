@@ -2,12 +2,38 @@ import java.io.*;
 public class _C_Runner {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
+//		Case 0
 		input=
-		"1 1 45 ";
-		runTest(input,"0.828427125");
+		"5 "+
+		"2 1 "+
+		"3 "+
+		"2 3 "+
+		"2 1 "+
+		"3 ";
+		runTest(input,
+		"0.500000 "+
+		"0.000000 "+
+		"1.500000 "+
+		"1.333333 "+
+		"1.500000 ");
+
+//		Case 1
 		input=
-		"6 4 30 ";
-		runTest(input,"19.668384925");
+		"6 "+
+		"2 1 "+
+		"1 2 20 "+
+		"2 2 "+
+		"1 2 -3 "+
+		"3 "+
+		"3 ";
+		runTest(input,
+		"0.500000 "+
+		"20.500000 "+
+		"14.333333 "+
+		"12.333333 "+
+		"17.500000 "+
+		"17.000000 ");
+
 
 	}
 	
@@ -15,12 +41,12 @@ public class _C_Runner {
 		realAnswer=realAnswer.trim();
 		rcAnswer=rcAnswer.trim();
 		if(realAnswer.equals(rcAnswer)){
-			System.out.println("Case "+nroCases+" Passed");
+			System.out.println("[Passed] Case "+nroCases);
 		}else{
 			failed=true;
 			System.out.println("rChi "+rcAnswer);
 			System.out.println("Expected "+realAnswer);
-			System.out.println("Case "+nroCases+" Failed");
+			System.out.println("[Failed] Case "+nroCases);
 //			System.exit(0);
 		}
 		nroCases++;

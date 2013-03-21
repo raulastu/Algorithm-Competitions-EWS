@@ -2,14 +2,23 @@ import java.io.*;
 public class _D_Runner {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
+//		Case 0
 		input=
-		"5 "+
-		"5 2 1 4 3 ";
-		runTest(input,"7");
+		"4 "+
+		"2 4 1 ";
+		runTest(input,
+		"3 "+
+		"6 "+
+		"8 ");
+
+//		Case 1
 		input=
-		"5 "+
-		"9 8 3 5 7 ";
-		runTest(input,"15");
+		"3 "+
+		"1 2 ";
+		runTest(input,
+		"-1 "+
+		"-1 ");
+
 
 	}
 	
@@ -17,12 +26,12 @@ public class _D_Runner {
 		realAnswer=realAnswer.trim();
 		rcAnswer=rcAnswer.trim();
 		if(realAnswer.equals(rcAnswer)){
-			System.out.println("Case "+nroCases+" Passed");
+			System.out.println("[Passed] Case "+nroCases);
 		}else{
 			failed=true;
 			System.out.println("rChi "+rcAnswer);
 			System.out.println("Expected "+realAnswer);
-			System.out.println("Case "+nroCases+" Failed");
+			System.out.println("[Failed] Case "+nroCases);
 //			System.exit(0);
 		}
 		nroCases++;

@@ -2,12 +2,18 @@ import java.io.*;
 public class _A_Runner {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
+//		Case 0
 		input=
-		"ApPLe ";
-		runTest(input,"ApPLe");
+		"3 ";
+		runTest(input,
+		"1 ");
+
+//		Case 1
 		input=
-		"konjac ";
-		runTest(input,"Konjac");
+		"5 ";
+		runTest(input,
+		"2 ");
+
 
 	}
 	
@@ -15,12 +21,12 @@ public class _A_Runner {
 		realAnswer=realAnswer.trim();
 		rcAnswer=rcAnswer.trim();
 		if(realAnswer.equals(rcAnswer)){
-			System.out.println("Case "+nroCases+" Passed");
+			System.out.println("[Passed] Case "+nroCases);
 		}else{
 			failed=true;
 			System.out.println("rChi "+rcAnswer);
 			System.out.println("Expected "+realAnswer);
-			System.out.println("Case "+nroCases+" Failed");
+			System.out.println("[Failed] Case "+nroCases);
 //			System.exit(0);
 		}
 		nroCases++;

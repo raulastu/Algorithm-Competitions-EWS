@@ -10,56 +10,9 @@ import java.io.*;
 public class _B {
 	
 	public void solve() {
-		int r = ni(), b=ni(), n=ni();
-
-		if(n>b){
-			int g=gcd(r,b);
-			r=r/g;
-			b=b/g;
-			out.println(r+"/"+b);
-			return;
-		}
-		int g=gcd(r,b);
-		r=r/g;
-		b=b/g;
-		double min = Double.MAX_VALUE;;
-		double onedayatatime=r/(double)b;
-		int mina=0,minb=0;
-		for(int j=n-1;j>-2;j--){
-			if(j==0)continue;
-			for (int i = 100005; i>=-10; i--) {
-				double ab = i/(double)(j);
-				if(abs(onedayatatime-ab)<min){
-					min=abs(onedayatatime-ab);
-					mina=i;
-					minb=j;
-					int gx=gcd(mina,minb);
-					mina=mina/gx;
-					minb=minb/gx;
-				}
-			}
-		}
+		int r = ni();
 		
-		out.print(mina+"/"+minb);
-	}
-	int compare(int a,int b, int a1, int b1){
-		int g1=gcd(a,b);
-		a=a/g1;
-		b=b/g1;
-		int g2=gcd(a1,b1);
-		a1=a1/g2;
-		b1=b1/g2;
-		if(a1==a && b1==b)return 0;
-		double aa=a/(double)b;
-		double bb=a1/(double)b1;
-		if(aa>bb)
-			return 1;
-		return -1;
-	}
-	int gcd(int a,int b){
-		if(b==0)
-			return a;
-		return gcd(b,a%b);
+		out.println(r);
 	}
 	
 	void run() throws Exception {

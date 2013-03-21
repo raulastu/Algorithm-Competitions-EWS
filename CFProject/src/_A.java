@@ -10,9 +10,9 @@ import java.io.*;
 public class _A {
 	
 	public void solve() {
-		String r = ns();
-		String rr = r.substring(0, 1).toUpperCase()+r.substring(1);
-		out.println(rr);
+		int r = ni();
+		
+		out.println(1);
 	}
 	
 	void run() throws Exception {

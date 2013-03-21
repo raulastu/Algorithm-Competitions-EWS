@@ -30,9 +30,9 @@ public class CFContestCreator {
 	
 	public void start() throws Exception{
 		String resourcesPath="/Users/rc/Eclipse-Workspaces/Algorithm-Competitions-EWS/CFProject/src/";
-		createContest(resourcesPath,"281");
+		createContest(resourcesPath,"284");
 //		System.err.println(getIOTests("http://codeforces.com/contest/282/problem/A"));;
-		new AutoCompiler(resourcesPath);
+//		new AutoCompiler(resourcesPath);
 	}
 	
 	private void createContest(String folderName, String contestNumber) throws Exception{
@@ -91,19 +91,25 @@ public class CFContestCreator {
 			return input+" "+output;
 		}
 	}
-	
+	String splitIO(String i_or_o){
+		 String [] res = i_or_o.split("\n");
+		 String ri="";
+		 for (int i = 0; i < res.length; i++) {
+				ri+="\t\t\""+res[i]+" \"+\n";
+			}
+		 return ri.substring(0,ri.length()-2);
+	}
 	private void createClassRunner(String path, String templatePath, String className, ArrayList<IO> inputCases) throws Exception{
 		Scanner sc = new Scanner(new File("src/"+templatePath));
 		String rc="";
+		int casenr=0;
 		String alltestCases="";
 		for (IO io: inputCases) {
-			String ri = "\t\tinput=\n";
-			String [] inputLines = io.input.split("\n");
-			for (int i = 0; i < inputLines.length; i++) {
-				ri+="\t\t\""+inputLines[i]+" \"+\n";
-			}
-			ri=ri.substring(0,ri.length()-2)+";\n";
-			ri+="\t\trunTest(input,\""+io.output.substring(0,io.output.length()-1)+"\");\n";
+			String ri ="//\t\tCase "+casenr+++"\n";
+			ri+= "\t\tinput=\n";
+			ri+=splitIO(io.input)+";\n";
+			ri+="\t\trunTest(input,\n"+splitIO(io.output)+");\n\n";
+			
 			alltestCases+=ri;
 		}
 		
