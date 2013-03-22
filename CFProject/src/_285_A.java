@@ -1,18 +1,24 @@
 import java.io.*;
-public class _A_Runner {
+public class _285_A {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 //		Case 0
 		input=
-		"3 ";
+		"5 2 ";
 		runTest(input,
-		"1 ");
+		"1 5 2 4 3 ");
 
 //		Case 1
 		input=
-		"5 ";
+		"3 0 ";
 		runTest(input,
-		"2 ");
+		"1 2 3 ");
+
+//		Case 2
+		input=
+		"3 2 ";
+		runTest(input,
+		"3 2 1 ");
 
 
 	}
@@ -43,21 +49,21 @@ public class _A_Runner {
 		baos.reset();
 //		r.in.
 	}
-	_A r;
+	_285_A_Slightly_Decreasing_Permutations r;
 	ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	private void init() throws Exception{
-		r = new _A();
+		r = new _285_A_Slightly_Decreasing_Permutations();
 		r.out = new PrintWriter(baos);
 		runTestCases();
 		if(testOutput && !failed){
-			System.out.println("All test cases Passed");
+			System.out.println("All test cases [Passed]");
 		}
 	}
 	private String input;
 	private int nroCases=1;
 	private boolean failed=false;
 	public static void main(String[] args) throws Exception {
-		new _A_Runner().init();
+		new _285_A().init();
 	}
 	
 }

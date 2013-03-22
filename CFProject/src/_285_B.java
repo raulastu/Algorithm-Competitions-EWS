@@ -1,38 +1,34 @@
 import java.io.*;
-public class _C_Runner {
+public class _285_B {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 //		Case 0
 		input=
-		"5 "+
-		"2 1 "+
-		"3 "+
-		"2 3 "+
-		"2 1 "+
-		"3 ";
+		"4 2 1 "+
+		"2 3 4 1 ";
 		runTest(input,
-		"0.500000 "+
-		"0.000000 "+
-		"1.500000 "+
-		"1.333333 "+
-		"1.500000 ");
+		"3 ");
 
 //		Case 1
 		input=
-		"6 "+
-		"2 1 "+
-		"1 2 20 "+
-		"2 2 "+
-		"1 2 -3 "+
-		"3 "+
-		"3 ";
+		"4 3 3 "+
+		"4 1 3 2 ";
 		runTest(input,
-		"0.500000 "+
-		"20.500000 "+
-		"14.333333 "+
-		"12.333333 "+
-		"17.500000 "+
-		"17.000000 ");
+		"0 ");
+
+//		Case 2
+		input=
+		"4 3 4 "+
+		"1 2 3 4 ";
+		runTest(input,
+		"-1 ");
+
+//		Case 3
+		input=
+		"3 1 3 "+
+		"2 1 3 ";
+		runTest(input,
+		"-1 ");
 
 
 	}
@@ -63,21 +59,21 @@ public class _C_Runner {
 		baos.reset();
 //		r.in.
 	}
-	_C r;
+	_285_B_Find_Marble r;
 	ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	private void init() throws Exception{
-		r = new _C();
+		r = new _285_B_Find_Marble();
 		r.out = new PrintWriter(baos);
 		runTestCases();
 		if(testOutput && !failed){
-			System.out.println("All test cases Passed");
+			System.out.println("All test cases [Passed]");
 		}
 	}
 	private String input;
 	private int nroCases=1;
 	private boolean failed=false;
 	public static void main(String[] args) throws Exception {
-		new _C_Runner().init();
+		new _285_B().init();
 	}
 	
 }

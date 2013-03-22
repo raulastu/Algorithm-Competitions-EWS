@@ -1,4 +1,3 @@
-package lastlast;
 import java.util.*;
 import java.util.regex.*;
 import static java.lang.Math.*;
@@ -8,41 +7,46 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _B {
 
-	public void solve() {
-		int r = ni();
-		int tA=0,tG=0;
-		char res []=new char[r];
-		for (int i = 0; i < r; i++) {
-			int A = ni();
-			int G = ni();
-			if(tA+A-tG<=500){
-				tA+=A;
-				res[i]='A';
-			}else{
-				tG+=G;
-				res[i]='G';
-			}
-		}
-		out.println(new String(res));
-	}
+public class _285_B_Find_Marble {
 	
-
+	public void solve() {
+		int n = ni(),s=ni(),t=ni();
+		int [] moves=na(n);
+		Queue<node> Q = new LinkedList<node>();
+		Q.add(new node(s,0));
+		boolean memo[]= new boolean[n+1];
+		memo[s]=true;
+		while(!Q.isEmpty()){
+			node p = Q.poll();
+			if(p.c==t){
+				out.println(p.count);
+				return;
+			}
+//			memo=true;
+			if(!memo[moves[p.c-1]])
+				Q.add(new node(moves[p.c-1],p.count+1)); 
+		}
+		out.println(-1);
+	}
+	class node{
+		int c;
+		int count;
+		public node(int c,int count) {
+			this.c=c;
+			this.count=count;
+		}
+	}
 	void run() throws Exception {
-		in = oj ? System.in : new ByteArrayInputStream(INPUT.getBytes());
-		out = new PrintWriter(System.out);
 		long s = System.currentTimeMillis();
 		solve();
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
+	public static void main(String[] args) throws Exception {new _285_B_Find_Marble().run();}
 
-	public static void main(String[] args) throws Exception {new _B().run();}
-
-	InputStream in;
-	PrintWriter out;
-	String INPUT = "";
+	InputStream in=System.in;
+	PrintWriter out=new PrintWriter(System.out);
 	
 	private boolean oj = System.getProperty("ONLINE_JUDGE") != null;
 	private byte[] inbuf = new byte[1024];
@@ -67,7 +71,7 @@ public class _B {
 	private boolean isSpaceChar(int c) {return !(c >= 33 && c <= 126);}
 	private int skip() {int b;while ((b = readByte()) != -1 && isSpaceChar(b));return b;}
 
-	private String ns() {
+	public String ns() {
 		int b = skip();
 		StringBuilder sb = new StringBuilder();
 		while (!(isSpaceChar(b))) { // when nextLine, (isSpaceChar(b) && b != // ' ')
@@ -77,7 +81,7 @@ public class _B {
 		return sb.toString();
 	}
 	
-	private char[] ns(int n)
+	public char[] ns(int n)
 	{
 		char[] buf = new char[n];
 		int b = skip(), p = 0;
@@ -88,14 +92,14 @@ public class _B {
 		return n == p ? buf : Arrays.copyOf(buf, p);
 	}
 	
-	private char[][] nm(int n, int m)
+	public char[][] nm(int n, int m)
 	{
 		char[][] map = new char[n][];
 		for(int i = 0;i < n;i++)map[i] = ns(m);
 		return map;
 	}
 	
-	private int[] na(int n) {
+	public int[] na(int n) {
 		int[] a = new int[n];
 		for (int i = 0; i < n; i++)
 			a[i] = ni();
@@ -103,7 +107,7 @@ public class _B {
 	}
 	
 	
-	private int ni() {
+	public int ni() {
 		int num = 0, b;
 		boolean minus = false;
 		while ((b = readByte()) != -1 && !((b >= '0' && b <= '9') || b == '-'))
@@ -123,7 +127,7 @@ public class _B {
 		}
 	}
 	
-	private long nl(){
+	public long nl(){
 		long num = 0;
 		int b;
 		boolean minus = false;

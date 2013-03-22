@@ -7,12 +7,12 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _{ClassName} {
+public class _{ProblemClassName} {
 	
 	public void solve() {
-		int r = ni();
+		int n = ni();
 		
-		out.println(r);
+		out.println(res);
 	}
 	
 	void run() throws Exception {
@@ -21,7 +21,7 @@ public class _{ClassName} {
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
-	public static void main(String[] args) throws Exception {new _{ClassName}().run();}
+	public static void main(String[] args) throws Exception {new _{ProblemClassName}().run();}
 
 	InputStream in=System.in;
 	PrintWriter out=new PrintWriter(System.out);

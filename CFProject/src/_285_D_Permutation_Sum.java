@@ -1,4 +1,3 @@
-package lastlast;
 import java.util.*;
 import java.util.regex.*;
 import static java.lang.Math.*;
@@ -8,52 +7,73 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _C {
-
-	public void solve() {
-//		int r = ni();
-		char []a = ns().toCharArray();
-		char [] b = ns().toCharArray();
-		if(a.length!=b.length){
-			out.println("NO");
-			return;
-		}
-		if(a.length==1){ 
-			if(a[0]=='1' && b[0]=='0'){
-				out.println("NO");
-				return;
-			}
-		}
-		int a1=0;
-		int b1=0;   
-		for (int i = 0; i < a.length; i++) { 
-			if(a[i]=='1')
-				a1++;
-			if(b[i]=='1')
-				b1++;
-		}
-		if(a1>0 && b1==0){
-			out.println("NO");
-			return;
-		}
-		out.println("YES");
-	}
+public class _285_D_Permutation_Sum {
 	
-
+	public void solve() {
+		n = ni();
+		int a [] = new int[n];
+		int b [] = new int[n];
+		for (int i = 0; i < a.length; i++) {
+			a[i]=i+1;
+			b[i]=i+1;
+		}
+		int res = 0;
+		sort(a);
+		do{
+			sort(b);
+			do{
+				if(check(a,b)){
+					res++;
+					res%=1000000007;
+//					pr(a,b);
+				}
+			}while(nextPermutation(b));
+		}while(nextPermutation(a));
+		out.println(res);
+	}
+	int n = 1;
+	boolean check(int[]a,int[]b){
+		int x[]=new int[n+1];
+		for (int i = 0; i < n; i++) {
+			int xx = (a[i]-1+b[i]-1)%n+1;
+			if(x[xx-1]!=0){
+				return false;
+			}
+			x[xx-1]++;
+		}
+//		if(!distinct)return false;
+		return true;
+	}
+	static boolean nextPermutation(int[] src) {
+		int i;
+		for(i = src.length - 2;i >= 0 && src[i] > src[i + 1];i--)
+			;
+		if(i == -1)
+			return false;
+		int j;
+		for(j = i + 1;j < src.length && src[i] < src[j];j++)
+			;
+		int d = src[i];
+		src[i] = src[j - 1];
+		src[j - 1] = d;
+		for(int p = i + 1, q = src.length - 1;p < q;p++, q--){
+			d = src[p];
+			src[p] = src[q];
+			src[q] = d;
+		}
+		return true;
+	}
+    
 	void run() throws Exception {
-		in = oj ? System.in : new ByteArrayInputStream(INPUT.getBytes());
-		out = new PrintWriter(System.out);
 		long s = System.currentTimeMillis();
 		solve();
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
+	public static void main(String[] args) throws Exception {new _285_D_Permutation_Sum().run();}
 
-	public static void main(String[] args) throws Exception {new _C().run();}
-
-	InputStream in;
-	PrintWriter out;
-	String INPUT = "";
+	InputStream in=System.in;
+	PrintWriter out=new PrintWriter(System.out);
 	
 	private boolean oj = System.getProperty("ONLINE_JUDGE") != null;
 	private byte[] inbuf = new byte[1024];
@@ -78,7 +98,7 @@ public class _C {
 	private boolean isSpaceChar(int c) {return !(c >= 33 && c <= 126);}
 	private int skip() {int b;while ((b = readByte()) != -1 && isSpaceChar(b));return b;}
 
-	private String ns() {
+	public String ns() {
 		int b = skip();
 		StringBuilder sb = new StringBuilder();
 		while (!(isSpaceChar(b))) { // when nextLine, (isSpaceChar(b) && b != // ' ')
@@ -88,41 +108,25 @@ public class _C {
 		return sb.toString();
 	}
 	
-	private char[] ns(int n)
+	public char[] ns(int n)
 	{
 		char[] buf = new char[n];
 		int b = skip(), p = 0;
 		while(p < n && !(isSpaceChar(b))){
 			buf[p++] = (char)b;
-			b = readByte();
-		}
-		return n == p ? buf : Arrays.copyOf(buf, p);
-	}
-	int A=0;
-	int B=0;
-	private char[] ns2(int n)
-	{
-		char[] buf = new char[n];
-		int b = skip(), p = 0;
-		while(p < n && !(isSpaceChar(b))){
-			buf[p++] = (char)b;
-			if(b==1)
-				A++;
-			else
-				B++;
 			b = readByte();
 		}
 		return n == p ? buf : Arrays.copyOf(buf, p);
 	}
 	
-	private char[][] nm(int n, int m)
+	public char[][] nm(int n, int m)
 	{
 		char[][] map = new char[n][];
 		for(int i = 0;i < n;i++)map[i] = ns(m);
 		return map;
 	}
 	
-	private int[] na(int n) {
+	public int[] na(int n) {
 		int[] a = new int[n];
 		for (int i = 0; i < n; i++)
 			a[i] = ni();
@@ -130,7 +134,7 @@ public class _C {
 	}
 	
 	
-	private int ni() {
+	public int ni() {
 		int num = 0, b;
 		boolean minus = false;
 		while ((b = readByte()) != -1 && !((b >= '0' && b <= '9') || b == '-'))
@@ -150,7 +154,7 @@ public class _C {
 		}
 	}
 	
-	private long nl(){
+	public long nl(){
 		long num = 0;
 		int b;
 		boolean minus = false;

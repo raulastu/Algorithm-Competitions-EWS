@@ -1,32 +1,64 @@
 import java.io.*;
-public class _D_Runner {
+public class _285_D {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 //		Case 0
 		input=
-		"4 "+
-		"2 4 1 ";
+		"1 ";
 		runTest(input,
-		"3 "+
-		"6 "+
-		"8 ");
+		"18 ");
+		
+		input=
+		"2 ";
+		runTest(input,
+		"18 ");
+		
+		input=
+		"3 ";
+		runTest(input,
+		"18 ");
+		
+		input=
+		"4 ";
+		runTest(input,
+		"18 ");
 
 //		Case 1
 		input=
-		"3 "+
-		"1 2 ";
+		"5 ";
 		runTest(input,
-		"-1 "+
-		"-1 ");
+		"1800 ");
 
+//		Case 1
+		input=
+		"6 ";
+		runTest(input,
+		"1800 ");
 
+//		Case 1 670320
+		input=
+		"7 ";
+		runTest(input,
+		"1800 ");
+		
+//		Case 1 0
+		input=
+		"8 ";
+//		runTest(input,
+//		"1800 ");
+		
+//		Case 1 0
+//		input=
+//		"9 ";
+//		runTest(input,
+//		"9 ");
 	}
 	
 	public void compare(String rcAnswer, String realAnswer){
 		realAnswer=realAnswer.trim();
 		rcAnswer=rcAnswer.trim();
 		if(realAnswer.equals(rcAnswer)){
-			System.out.println("[Passed] Case "+nroCases);
+			System.out.println("[Passed] Case "+nroCases+" "+rcAnswer);
 		}else{
 			failed=true;
 			System.out.println("rChi "+rcAnswer);
@@ -48,21 +80,21 @@ public class _D_Runner {
 		baos.reset();
 //		r.in.
 	}
-	_D r;
+	_285_D_Permutation_Sum r;
 	ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	private void init() throws Exception{
-		r = new _D();
+		r = new _285_D_Permutation_Sum();
 		r.out = new PrintWriter(baos);
 		runTestCases();
 		if(testOutput && !failed){
-			System.out.println("All test cases Passed");
+			System.out.println("All test cases [Passed]");
 		}
 	}
 	private String input;
 	private int nroCases=1;
 	private boolean failed=false;
 	public static void main(String[] args) throws Exception {
-		new _D_Runner().init();
+		new _285_D().init();
 	}
 	
 }

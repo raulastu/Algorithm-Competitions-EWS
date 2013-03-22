@@ -1,5 +1,5 @@
 import java.io.*;
-public class _{ProblemLetter}_Runner {
+public class _{RunnerClassName} {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 {input-run}
@@ -31,21 +31,21 @@ public class _{ProblemLetter}_Runner {
 		baos.reset();
 //		r.in.
 	}
-	_{ProblemLetter} r;
+	_{ProblemClassName} r;
 	ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	private void init() throws Exception{
-		r = new _{ProblemLetter}();
+		r = new _{ProblemClassName}();
 		r.out = new PrintWriter(baos);
 		runTestCases();
 		if(testOutput && !failed){
-			System.out.println("All test cases Passed");
+			System.out.println("All test cases [Passed]");
 		}
 	}
 	private String input;
 	private int nroCases=1;
 	private boolean failed=false;
 	public static void main(String[] args) throws Exception {
-		new _{ProblemLetter}_Runner().init();
+		new _{RunnerClassName}().init();
 	}
 	
 }

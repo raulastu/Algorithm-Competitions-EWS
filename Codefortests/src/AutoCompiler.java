@@ -16,9 +16,10 @@ public class AutoCompiler implements Runnable {
 			if (!file.getName().endsWith(".java"))
 				continue;
 			String name = file.getName();
-			name=name.replaceAll("[\\.java]", "");
+			pr(name);
+			name=name.replaceAll("\\.java$", "");
 			snapshot.put(name, file.lastModified());
-			String xx = file.getAbsolutePath().replaceAll("[\\.java]", "");
+			String xx = file.getAbsolutePath().replaceAll("\\.java$", "");
 			pr(xx);
 			pr(name + " loaded");
 		}
@@ -31,7 +32,7 @@ public class AutoCompiler implements Runnable {
 				continue;
 			
 			long myDate = file.lastModified();
-			String name = file.getName().replaceAll("[\\.java]", "");
+			String name = file.getName().replaceAll("\\.java$", "");
 			if (snapshot.get(name) != myDate) {
 //				pr(snapshot);
 				String runnerName =  name + "_Runner";

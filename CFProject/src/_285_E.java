@@ -1,19 +1,37 @@
-package lastlastlast;
 import java.io.*;
-public class _D_Runner {
+public class _285_E {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
+//		Case 0
 		input=
-		"4 "+
-		"2 4 1 ";
-		runTest(input,"3
-6
-8");
+		"1 0 ";
+		runTest(input,
+		"1 ");
+
+//		Case 1
 		input=
-		"3 "+
-		"1 2 ";
-		runTest(input,"-1
--1");
+		"2 1 ";
+		runTest(input,
+		"0 ");
+
+//		Case 2
+		input=
+		"3 2 ";
+		runTest(input,
+		"4 ");
+
+//		Case 3
+		input=
+		"4 1 ";
+		runTest(input,
+		"6 ");
+
+//		Case 4
+		input=
+		"7 4 ";
+		runTest(input,
+		"328 ");
+
 
 	}
 	
@@ -21,12 +39,12 @@ public class _D_Runner {
 		realAnswer=realAnswer.trim();
 		rcAnswer=rcAnswer.trim();
 		if(realAnswer.equals(rcAnswer)){
-			System.out.println("Case "+nroCases+" Passed");
+			System.out.println("[Passed] Case "+nroCases);
 		}else{
 			failed=true;
 			System.out.println("rChi "+rcAnswer);
 			System.out.println("Expected "+realAnswer);
-			System.out.println("Case "+nroCases+" Failed");
+			System.out.println("[Failed] Case "+nroCases);
 //			System.exit(0);
 		}
 		nroCases++;
@@ -43,21 +61,21 @@ public class _D_Runner {
 		baos.reset();
 //		r.in.
 	}
-	_D r;
+	_285_E_Positions_in_Permutations r;
 	ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	private void init() throws Exception{
-		r = new _D();
+		r = new _285_E_Positions_in_Permutations();
 		r.out = new PrintWriter(baos);
 		runTestCases();
 		if(testOutput && !failed){
-			System.out.println("All test cases Passed");
+			System.out.println("All test cases [Passed]");
 		}
 	}
 	private String input;
 	private int nroCases=1;
 	private boolean failed=false;
 	public static void main(String[] args) throws Exception {
-		new _D_Runner().init();
+		new _285_E().init();
 	}
 	
 }

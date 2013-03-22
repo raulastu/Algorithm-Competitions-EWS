@@ -30,12 +30,12 @@ public class CFContestCreator {
 	
 	public void start() throws Exception{
 		String resourcesPath="/Users/rc/Eclipse-Workspaces/Algorithm-Competitions-EWS/CFProject/src/";
-		createContest(resourcesPath,"284");
+		createContest(resourcesPath, 285);
 //		System.err.println(getIOTests("http://codeforces.com/contest/282/problem/A"));;
 //		new AutoCompiler(resourcesPath);
 	}
 	
-	private void createContest(String folderName, String contestNumber) throws Exception{
+	private void createContest(String folderName, int contestNumber) throws Exception{
 		String html = getHTML("http://codeforces.com/contest/"+contestNumber);
 //		System.err.println(html);
 		String table= getProblemsTable(html);
@@ -43,9 +43,12 @@ public class CFContestCreator {
 		String[]no=getProblemNames(table);
 		fixNames(no);
 		for (int i = 0; i < no.length; i++) {
-			createClass(folderName,"templateCLass",(char)('A'+i)+"");
+			String problemClassName = contestNumber+"_"+(char)('A'+i)+"_"+no[i];
+			createClass(folderName,"templateCLass",problemClassName );
+//			createClass(folderName,"templateCLass",(char)('A'+i)+"");
 			ArrayList<IO> l = getIOTests("http://codeforces.com/contest/"+contestNumber+"/problem/"+(char)('A'+i));
-			createClassRunner(folderName,"templateRunner",(char)('A'+i)+"",l);
+			createClassRunner(folderName,"templateRunner",contestNumber+"_"+(char)('A'+i)+"", problemClassName, l);
+//			createClassRunner(folderName,"templateRunner",(char)('A'+i)+"",l);
 		}
 		System.err.println();
 	}
@@ -99,7 +102,7 @@ public class CFContestCreator {
 			}
 		 return ri.substring(0,ri.length()-2);
 	}
-	private void createClassRunner(String path, String templatePath, String className, ArrayList<IO> inputCases) throws Exception{
+	private void createClassRunner(String path, String templatePath, String className, String problemClassName, ArrayList<IO> inputCases) throws Exception{
 		Scanner sc = new Scanner(new File("src/"+templatePath));
 		String rc="";
 		int casenr=0;
@@ -109,7 +112,6 @@ public class CFContestCreator {
 			ri+= "\t\tinput=\n";
 			ri+=splitIO(io.input)+";\n";
 			ri+="\t\trunTest(input,\n"+splitIO(io.output)+");\n\n";
-			
 			alltestCases+=ri;
 		}
 		
@@ -118,15 +120,17 @@ public class CFContestCreator {
 //			System.err.println(line);
 //			String className = ((char)'A'+nbr)+"";
 			
-			if(line.contains("{ProblemLetter}")){
-				rc += line.replace("{ProblemLetter}", className)+"\n";
+			if(line.contains("{RunnerClassName}")){
+				rc += line.replace("{RunnerClassName}", className)+"\n";
 			}else if(line.contains("{input-run}")){
 				rc += line.replace("{input-run}",alltestCases)+"\n";
+			}else if(line.contains("{ProblemClassName}")){
+				rc += line.replace("{ProblemClassName}", problemClassName)+"\n";
 			}else{
 				rc += line+"\n";
 			}
 		}
-		String fullPath=path+"/_"+className+"_Runner.java";
+		String fullPath=path+"/_"+className+".java";
 		PrintWriter pw = new PrintWriter(new File(fullPath));
 		pw.println(rc);
 		pw.close();
@@ -140,7 +144,7 @@ public class CFContestCreator {
 		while(sc.hasNextLine()){
 			String line = sc.nextLine();
 //			System.err.println(line);
-			rc += line.replace("{ClassName}", className)+"\n";
+			rc += line.replace("{ProblemClassName}", className)+"\n";
 		}
 		String fullPath=path+"/_"+className+".java";
 		PrintWriter pw = new PrintWriter(new File(fullPath));
