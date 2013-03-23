@@ -1,24 +1,21 @@
+package _285;
 import java.io.*;
-public class _285_A {
+public class _285_C {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 //		Case 0
 		input=
-		"5 2 ";
+		"2 "+
+		"3 0 ";
 		runTest(input,
-		"1 5 2 4 3 ");
+		"2 ");
 
 //		Case 1
 		input=
-		"3 0 ";
+		"3 "+
+		"-1 -1 2 ";
 		runTest(input,
-		"1 2 3 ");
-
-//		Case 2
-		input=
-		"3 2 ";
-		runTest(input,
-		"3 2 1 ");
+		"6 ");
 
 
 	}
@@ -49,10 +46,10 @@ public class _285_A {
 		baos.reset();
 //		r.in.
 	}
-	_285_A_Slightly_Decreasing_Permutations r;
+	_285_C_Building_Permutation r;
 	ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	private void init() throws Exception{
-		r = new _285_A_Slightly_Decreasing_Permutations();
+		r = new _285_C_Building_Permutation();
 		r.out = new PrintWriter(baos);
 		runTestCases();
 		if(testOutput && !failed){
@@ -63,7 +60,7 @@ public class _285_A {
 	private int nroCases=1;
 	private boolean failed=false;
 	public static void main(String[] args) throws Exception {
-		new _285_A().init();
+		new _285_C().init();
 	}
 	
 }

@@ -1,3 +1,4 @@
+package _285;
 import java.util.*;
 import java.util.regex.*;
 import static java.lang.Math.*;
@@ -7,18 +8,12 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _285_A_Slightly_Decreasing_Permutations {
+public class _285_E_Positions_in_Permutations {
 	
 	public void solve() {
-		int n = ni(), k=ni();
-		Integer []ar=new Integer[n];
-		for (int i = 0; i < ar.length; i++) {
-			ar[i]=ar.length-i; 
-		}
-		sort(ar,0,n-k);
-		for (int i = 0; i < ar.length; i++) {
-			out.print(ar[i]+" ");
-		}
+		int r = ni();
+		
+		out.println(r);
 	}
 	
 	void run() throws Exception {
@@ -27,7 +22,7 @@ public class _285_A_Slightly_Decreasing_Permutations {
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
-	public static void main(String[] args) throws Exception {new _285_A_Slightly_Decreasing_Permutations().run();}
+	public static void main(String[] args) throws Exception {new _285_E_Positions_in_Permutations().run();}
 
 	InputStream in=System.in;
 	PrintWriter out=new PrintWriter(System.out);

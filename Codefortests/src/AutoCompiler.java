@@ -35,9 +35,11 @@ public class AutoCompiler implements Runnable {
 			String name = file.getName().replaceAll("\\.java$", "");
 			if (snapshot.get(name) != myDate) {
 //				pr(snapshot);
-				String runnerName =  name + "_Runner";
+				String runnerName =  name.replaceAll("(^_[0-9]+_[ABCDE]).+", "$1");
+				pr("runnerName",runnerName);
 				boolean isRunner=false;
-				if(name.endsWith("_Runner")){
+				if(name.matches("_[0-9]_[ABCDE]$")){
+					runnerName=name;
 //					System.err.println("isRunner");
 					isRunner=true;
 //					runnerName=name;

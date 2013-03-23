@@ -7,70 +7,21 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _285_D_Permutation_Sum {
+public class _287_D_Shifting {
 	
 	public void solve() {
-		n = ni();
-		int a [] = new int[n];
-		int b [] = new int[n];
-		for (int i = 0; i < a.length; i++) {
-			a[i]=i+1;
-			b[i]=i+1;
-		}
-		int res = 0;
-		sort(a);
-		do{
-			sort(b);
-			do{
-				if(check(a,b)){
-					res++;
-					res%=1000000007;
-//					pr(a,b);
-				}
-			}while(nextPermutation(b));
-		}while(nextPermutation(a));
+		int n = ni();
+		
 		out.println(res);
 	}
-	int n = 1;
-	boolean check(int[]a,int[]b){
-		int x[]=new int[n+1];
-		for (int i = 0; i < n; i++) {
-			int xx = (a[i]-1+b[i]-1)%n+1;
-			if(x[xx-1]!=0){
-				return false;
-			}
-			x[xx-1]++;
-		}
-//		if(!distinct)return false;
-		return true;
-	}
-	static boolean nextPermutation(int[] src) {
-		int i;
-		for(i = src.length - 2;i >= 0 && src[i] > src[i + 1];i--)
-			;
-		if(i == -1)
-			return false;
-		int j;
-		for(j = i + 1;j < src.length && src[i] < src[j];j++)
-			;
-		int d = src[i];
-		src[i] = src[j - 1];
-		src[j - 1] = d;
-		for(int p = i + 1, q = src.length - 1;p < q;p++, q--){
-			d = src[p];
-			src[p] = src[q];
-			src[q] = d;
-		}
-		return true;
-	}
-    
+	
 	void run() throws Exception {
 		long s = System.currentTimeMillis();
 		solve();
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
-	public static void main(String[] args) throws Exception {new _285_D_Permutation_Sum().run();}
+	public static void main(String[] args) throws Exception {new _287_D_Shifting().run();}
 
 	InputStream in=System.in;
 	PrintWriter out=new PrintWriter(System.out);

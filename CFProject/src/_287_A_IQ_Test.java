@@ -7,36 +7,24 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _285_C_Building_Permutation {
+public class _287_A_IQ_Test {
 	
 	public void solve() {
-		int n = ni();
-		int [] ar = na(n);
-		shuffle(ar);
-		sort(ar);
-		long r=0;
-		for (int i = 0; i < ar.length; i++) {
-			r+=abs(ar[i]-(i+1));
+		char [] c[] = new char[4][4];
+		for (int i = 0; i < 4; i++) {
+			c[i]= ns(4);
 		}
-		out.println(r);
+		pr(c);
+		out.println("NO");
 	}
-    void shuffle(int ar[]){
-        for (int i = ar.length-1; i>=0;i--){
-                int j = (int)(Math.random()*i);
-	      	      int t = ar[i];
-	      	      ar[i]=ar[j];
-	      	      ar[j]=t;
-        }    
-    }
-    
-    
+	
 	void run() throws Exception {
 		long s = System.currentTimeMillis();
 		solve();
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
-	public static void main(String[] args) throws Exception {new _285_C_Building_Permutation().run();}
+	public static void main(String[] args) throws Exception {new _287_A_IQ_Test().run();}
 
 	InputStream in=System.in;
 	PrintWriter out=new PrintWriter(System.out);

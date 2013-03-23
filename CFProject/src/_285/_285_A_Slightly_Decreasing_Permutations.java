@@ -1,3 +1,4 @@
+package _285;
 import java.util.*;
 import java.util.regex.*;
 import static java.lang.Math.*;
@@ -7,43 +8,27 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-
-public class _285_B_Find_Marble {
+public class _285_A_Slightly_Decreasing_Permutations {
 	
 	public void solve() {
-		int n = ni(),s=ni(),t=ni();
-		int [] moves=na(n);
-		Queue<node> Q = new LinkedList<node>();
-		Q.add(new node(s,0));
-		boolean memo[]= new boolean[n+1];
-		memo[s]=true;
-		while(!Q.isEmpty()){
-			node p = Q.poll();
-			if(p.c==t){
-				out.println(p.count);
-				return;
-			}
-//			memo=true;
-			if(!memo[moves[p.c-1]])
-				Q.add(new node(moves[p.c-1],p.count+1)); 
+		int n = ni(), k=ni();
+		Integer []ar=new Integer[n];
+		for (int i = 0; i < ar.length; i++) {
+			ar[i]=ar.length-i; 
 		}
-		out.println(-1);
-	}
-	class node{
-		int c;
-		int count;
-		public node(int c,int count) {
-			this.c=c;
-			this.count=count;
+		sort(ar,0,n-k);
+		for (int i = 0; i < ar.length; i++) {
+			out.print(ar[i]+" ");
 		}
 	}
+	
 	void run() throws Exception {
 		long s = System.currentTimeMillis();
 		solve();
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
-	public static void main(String[] args) throws Exception {new _285_B_Find_Marble().run();}
+	public static void main(String[] args) throws Exception {new _285_A_Slightly_Decreasing_Permutations().run();}
 
 	InputStream in=System.in;
 	PrintWriter out=new PrintWriter(System.out);

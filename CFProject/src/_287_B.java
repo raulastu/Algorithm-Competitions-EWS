@@ -1,64 +1,54 @@
 import java.io.*;
-public class _285_D {
+import static java.util.Arrays.fill;
+public class _287_B {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 //		Case 0
 		input=
-		"1 ";
+		"4 3 ";
 		runTest(input,
-		"18 ");
-		
-		input=
-		"2 ";
-		runTest(input,
-		"18 ");
-		
-		input=
-		"3 ";
-		runTest(input,
-		"18 ");
-		
-		input=
-		"4 ";
-		runTest(input,
-		"18 ");
+		"2 ");
 
 //		Case 1
 		input=
-		"5 ";
+		"5 5 ";
 		runTest(input,
-		"1800 ");
+		"1 ");
 
-//		Case 1
+//		Case 2
 		input=
-		"6 ";
+		"8 4 ";
 		runTest(input,
-		"1800 ");
+		"-1 ");
 
-//		Case 1 670320
+//		Case 2
+		char[] x= new char[18];
+		fill(x,'0');
+		String bil="1"+new String(x);
 		input=
-		"7 ";
+		bil+" 3434242333333 ";
 		runTest(input,
-		"1800 ");
-		
-//		Case 1 0
+		"1340874132989 ");
+
+//		Case 2
 		input=
-		"8 ";
-//		runTest(input,
-//		"1800 ");
-		
-//		Case 1 0
-//		input=
-//		"9 ";
-//		runTest(input,
-//		"9 ");
+		"28 10 ";
+		runTest(input,
+		"4 ");
+
+//		Case 2
+		input=
+		"33 10 ";
+		runTest(input,
+		"4 ");
+
 	}
 	
 	public void compare(String rcAnswer, String realAnswer){
 		realAnswer=realAnswer.trim();
 		rcAnswer=rcAnswer.trim();
 		if(realAnswer.equals(rcAnswer)){
-			System.out.println("[Passed] Case "+nroCases+" "+rcAnswer);
+			System.out.println("[Passed] Case "+nroCases);
 		}else{
 			failed=true;
 			System.out.println("rChi "+rcAnswer);
@@ -80,10 +70,10 @@ public class _285_D {
 		baos.reset();
 //		r.in.
 	}
-	_285_D_Permutation_Sum r;
+	_287_B_Pipeline r;
 	ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	private void init() throws Exception{
-		r = new _285_D_Permutation_Sum();
+		r = new _287_B_Pipeline();
 		r.out = new PrintWriter(baos);
 		runTestCases();
 		if(testOutput && !failed){
@@ -94,7 +84,7 @@ public class _285_D {
 	private int nroCases=1;
 	private boolean failed=false;
 	public static void main(String[] args) throws Exception {
-		new _285_D().init();
+		new _287_B().init();
 	}
 	
 }

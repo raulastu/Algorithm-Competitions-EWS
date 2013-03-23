@@ -1,35 +1,43 @@
 import java.io.*;
-public class _285_B {
+public class _287_A {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 //		Case 0
 		input=
-		"4 2 1 "+
-		"2 3 4 1 ";
+		"#### "+
+		".#.. "+
+		"#### "+
+		".... ";
 		runTest(input,
-		"3 ");
+		"YES ");
 
 //		Case 1
 		input=
-		"4 3 3 "+
-		"4 1 3 2 ";
+		"#### "+
+		".... "+
+		"#### "+
+		".... ";
 		runTest(input,
-		"0 ");
+		"NO ");
 
-//		Case 2
+
+//		Case 1
 		input=
-		"4 3 4 "+
-		"1 2 3 4 ";
+		"#### "+
+		".... "+
+		"#### "+
+		"...# ";
 		runTest(input,
-		"-1 ");
+		"YES ");
 
-//		Case 3
+//		Case 1
 		input=
-		"3 1 3 "+
-		"2 1 3 ";
+		"##.. "+
+		"...# "+
+		"...# "+
+		"###. ";
 		runTest(input,
-		"-1 ");
-
+		"YES ");
 
 	}
 	
@@ -59,10 +67,10 @@ public class _285_B {
 		baos.reset();
 //		r.in.
 	}
-	_285_B_Find_Marble r;
+	_287_A_IQ_Test r;
 	ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	private void init() throws Exception{
-		r = new _285_B_Find_Marble();
+		r = new _287_A_IQ_Test();
 		r.out = new PrintWriter(baos);
 		runTestCases();
 		if(testOutput && !failed){
@@ -73,7 +81,7 @@ public class _285_B {
 	private int nroCases=1;
 	private boolean failed=false;
 	public static void main(String[] args) throws Exception {
-		new _285_B().init();
+		new _287_A().init();
 	}
 	
 }
