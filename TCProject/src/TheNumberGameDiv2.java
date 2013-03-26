@@ -1,3 +1,4 @@
+import java.awt.Point;
 import java.util.regex.*;
 import static java.lang.Math.*;
 import static java.util.Arrays.*;
@@ -7,50 +8,58 @@ import static java.util.Collections.*;
 import java.util.*;
 
 
-public class TheJediTestDiv2 {
-    public int countSupervisors(int[] students, int Y, int J) {
-        int res;
-//        sort(students);
-//        int n= students.length;
-        res=Integer.MAX_VALUE;
-        for (int i = 0; i < students.length; i++) {
-        	int r =0;
-			for (int k = 0; k < students.length; k++) {
-				int rm1=students[k];
-				if(k==i){
-					if(students[k]>0){
-						rm1 =max(0,rm1-Y);
-					}
-				}
-//				print(rm1);
-				int a = rm1/J;
-				int b = (rm1%J)>0?1:0;
-//				print(a,b);
-				r+=a+b;
-			}
-//			print(r);
-			res=min(res,r);
-		}
-        return res;
+public class TheNumberGameDiv2 {
+    public int minimumMoves(int A, int B) {
+        Queue<Point> Q = new LinkedList<Point>();
+        Q.add(new Point(A,0));
+        HashSet<Integer> memo=new HashSet<Integer>();
+        while(!Q.isEmpty()){
+//        	pr(Q);
+        	Point p=Q.poll();
+        	if(p.x==B){
+        		return p.y;
+        	}
+        	int rev=rev(p.x);
+        	
+        	if(!memo.contains(rev)){
+        		memo.add(rev);
+        		Q.add(new Point(rev,p.y+1));
+        	}
+        	int di=p.x/10;
+        	if(!memo.contains(di)){
+        		memo.add(di);
+        		Q.add(new Point(di,p.y+1));
+        	}
+        }
+        return -1;
     }
-
+    int rev(int a){
+    	int r=0;
+    	while(a>0){
+    		int d=a%10;
+    		a/=10;
+    		r=r*10+d;
+    	}
+    	return r;
+    }
 // BEGIN CUT HERE
 
 
 
     public static void main(String[] args) {
         try {
-            eq(0,(new TheJediTestDiv2()).countSupervisors(new int[] {10, 15}, 12, 5),3);
-            eq(1,(new TheJediTestDiv2()).countSupervisors(new int[] {11, 13, 15}, 9, 5),7);
-            eq(2,(new TheJediTestDiv2()).countSupervisors(new int[] {10}, 100, 2),0);
-            eq(3,(new TheJediTestDiv2()).countSupervisors(new int[] {0, 0, 0, 0, 0}, 145, 21),0);
-            eq(4,(new TheJediTestDiv2()).countSupervisors(new int[] {4, 7, 10, 5, 6, 55, 2}, 20, 3),26);
+            eq(0,(new TheNumberGameDiv2()).minimumMoves(25, 5),2);
+            eq(1,(new TheNumberGameDiv2()).minimumMoves(5162, 16),4);
+            eq(2,(new TheNumberGameDiv2()).minimumMoves(334, 12),-1);
+            eq(3,(new TheNumberGameDiv2()).minimumMoves(218181918, 9181),6);
+            eq(4,(new TheNumberGameDiv2()).minimumMoves(9798147, 79817),-1);
+            eq(4,(new TheNumberGameDiv2()).minimumMoves(932213299, 342),-1);
         } catch( Exception exx) {
             System.err.println(exx);
             exx.printStackTrace(System.err);
         }
     }
-	private static void print(Object... rs) {
+	private static void pr(Object... rs) {
 		System.err.println(Arrays.deepToString(rs).replace("]", "]\n"));
 	}
 

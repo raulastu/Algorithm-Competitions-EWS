@@ -1,4 +1,5 @@
 import java.util.regex.*;
+
 import static java.lang.Math.*;
 import static java.util.Arrays.*;
 import static java.lang.Integer.*;
@@ -7,40 +8,97 @@ import static java.util.Collections.*;
 import java.util.*;
 
 
-public class TheFrog {
-    public double getMinimum(int D, int[] L, int[] R) {
-        double res;
-        int min=0;
-        for (int i = 0; i < R.length; i++) {
-			min=min(R[i]-L[i],min);
+public class PolygonTraversal2 {
+	static boolean debug=false;
+    public int count(int N, int[] points) {
+        int res=0;
+        int[] co=new int[N];
+        fill(co,-1);
+        for (int i = 1; i < points.length; i++) {
+			co[points[i-1]-1]=points[i]-1;
 		}
-        double l=1,h=1000;
-        while(l<h){
-        	
-        }
-        return h;
+        int []not=new int[N-points.length+1];
+        int nx=1;
+        pr(co);
+        for (int i = 1; i < co.length; i++) {
+        	boolean found=false;
+        	for (int j = 0; j < points.length; j++) {
+				if(points[j]-1==i)
+					found=true;
+			}
+			if(!found){
+				not[nx++]=i;
+			}
+		}
+        pr(not);
+        not[0]=points[points.length-1]-1;
+        ar=not;
+        res = go(0,1,co,points[0]-1);
+        return res;
     }
-//    boolean check(douible)
+    int ar[];
+    int go(int i, int memo, int [] co, int last){
+    	if(memo==(1<<(ar.length))-1){
+    		if(check(ar[i],last,co)){
+    			return 1;
+    		}
+    		else return 0;
+    	}
+    		
+    	int r=0;
+    	for (int j = 0; j < ar.length; j++) {
+    		if(i==j)continue;
+    		if((memo&(1<<j))!=0)continue;
+    		if(check(ar[i], ar[j], co)){
+				co[ar[i]]=ar[j];
+				r+=go(j, memo|(1<<j),co,last);
+				co[ar[i]]=-1;
+			}
+		}
+    	return r;
+    }
+    boolean check(int a, int b, int [] x){
+		for (int i = 0; i < x.length; i++) {
+			if(x[i]<0){
+				continue;
+			}
+			if(inter(a,b,i,x[i]) || inter(a,b,x[i],i)){
+				return true;
+			}
+		}
+		return false;
+    }
+    
+    boolean inter(int a, int b, int x, int y){
+    	int max=max(a,b);
+    	int min=min(a,b);
+    	return (min<x && x<max) && (y<min || max<y);
+    }
 
+	private static void pr(Object... rs) {
+		if(debug)
+			System.err.println(Arrays.deepToString(rs).replace("]", "]\n"));
+	}
 // BEGIN CUT HERE
 
 
 
     public static void main(String[] args) {
         try {
-            eq(0,(new TheFrog()).getMinimum(16, new int[] {2}, new int[] {7}),7.0);
-            eq(1,(new TheFrog()).getMinimum(25, new int[] {11, 3}, new int[] {21, 7}),10.5);
-            eq(2,(new TheFrog()).getMinimum(100, new int[] {0}, new int[] {100}),100.0);
-            eq(3,(new TheFrog()).getMinimum(100, new int[] {0, 50}, new int[] {50, 100}),50.0);
-            eq(4,(new TheFrog()).getMinimum(30000, new int[] {17, 25281, 5775, 2825, 14040}, new int[] {55, 26000, 5791, 3150, 14092}),787.8787878787879);
+            eq(0,(new PolygonTraversal2()).count(5, new int[] {1, 3, 5}),1);
+            eq(1,(new PolygonTraversal2()).count(6, new int[] {1, 4, 2}),1);
+            eq(2,(new PolygonTraversal2()).count(7, new int[] {2, 4, 7}),2);
+            eq(3,(new PolygonTraversal2()).count(7, new int[] {1, 2, 3, 4, 6, 5}),0);
+            eq(4,(new PolygonTraversal2()).count(11, new int[] {1, 5, 10}),1412);
+            long a = System.currentTimeMillis();
+            eq(4,(new PolygonTraversal2()).count(13, new int[] {1, 2}),0);
+            pr(System.currentTimeMillis()-a);
         } catch( Exception exx) {
             System.err.println(exx);
             exx.printStackTrace(System.err);
         }
     }
-	private static void print(Object... rs) {
-		System.err.println(Arrays.deepToString(rs).replace("]", "]\n"));
-	}
+	
 
    private static void eq(int n, int a, int b) {
         if (a == b) {
@@ -154,7 +212,7 @@ public class TheFrog {
         for (int i = 0; i < a.length; i++) {
             if (!a[i].equals(b[i])) {
                 System.err.println("Case " + n + " failed. " + received + " and " + expected + " array differ in position " + i);
-                print(received, (Object[]) a);
+                pr(received, (Object[]) a);
                 print(expected, (Object[]) b);
                 return;
             }

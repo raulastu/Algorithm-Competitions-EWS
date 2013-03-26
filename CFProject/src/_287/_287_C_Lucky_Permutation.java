@@ -1,3 +1,4 @@
+package _287;
 import java.util.*;
 import java.util.regex.*;
 import static java.lang.Math.*;

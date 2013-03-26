@@ -7,7 +7,7 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _287_D_Shifting {
+public class _276_E_Little_Girl_and_Problem_on_Trees {
 	
 	public void solve() {
 		int n = ni();
@@ -21,7 +21,7 @@ public class _287_D_Shifting {
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
-	public static void main(String[] args) throws Exception {new _287_D_Shifting().run();}
+	public static void main(String[] args) throws Exception {new _276_E_Little_Girl_and_Problem_on_Trees().run();}
 
 	InputStream in=System.in;
 	PrintWriter out=new PrintWriter(System.out);

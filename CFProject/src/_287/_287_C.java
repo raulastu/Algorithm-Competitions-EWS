@@ -1,26 +1,61 @@
+package _287;
 import java.io.*;
-public class _287_D {
+public class _287_C {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 //		Case 0
 		input=
-		"2 ";
+		"1 ";
 		runTest(input,
-		"2 1  ");
+		"1  ");
 
 //		Case 1
 		input=
+		"2 ";
+		runTest(input,
+		"-1 ");
+
+//		Case 2
+		input=
 		"3 ";
 		runTest(input,
-		"1 3 2  ");
-
+		"-1 ");
+		
 //		Case 2
 		input=
 		"4 ";
 		runTest(input,
-		"4 2 3 1  ");
+		"2 4 1 3  ");
 
+//		Case 3
+		input=
+		"5 ";
+		runTest(input,
+		"2 5 3 1 4  ");
 
+//		Case 3
+		input=
+		"6 ";
+		runTest(input,
+		"-1  ");
+		
+//		Case 3
+		input=
+		"7 ";
+		runTest(input,
+		"-1 ");
+
+//		Case 3
+		input=
+		"8 ";
+		runTest(input,
+		"2 8 4 6 3 5 1 7 ");
+		
+//		Case 3
+		input=
+		"9 ";
+		runTest(input,
+		"2 9 4 7 5 3 6 1 8 "); 
 	}
 	
 	public void compare(String rcAnswer, String realAnswer){
@@ -49,10 +84,10 @@ public class _287_D {
 		baos.reset();
 //		r.in.
 	}
-	_287_D_Shifting r;
+	_287_C_Lucky_Permutation r;
 	ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	private void init() throws Exception{
-		r = new _287_D_Shifting();
+		r = new _287_C_Lucky_Permutation();
 		r.out = new PrintWriter(baos);
 		runTestCases();
 		if(testOutput && !failed){
@@ -63,7 +98,7 @@ public class _287_D {
 	private int nroCases=1;
 	private boolean failed=false;
 	public static void main(String[] args) throws Exception {
-		new _287_D().init();
+		new _287_C().init();
 	}
 	
 }

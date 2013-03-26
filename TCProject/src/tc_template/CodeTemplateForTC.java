@@ -80,15 +80,15 @@ $MAINBODY$
     private static void eq(int n, int[] a, int[] b) {
         if (a.length != b.length) {
             System.err.println("Case " + n + " failed: different lengths");
-            print(received + "<" + a.length + "> ", a);
-            print(expected + "<" + b.length + "> ", b);
+            pr(received + "<" + a.length + "> ", a);
+            pr(expected + "<" + b.length + "> ", b);
             return;
         }
         for (int i = 0; i < a.length; i++) {
             if (a[i] != b[i]) {
                 System.err.println("Case " + n + " failed. " + received + " and " + expected + " array differ in position " + i);
-                print(received + " ", a);
-                print(expected + " ", b);
+                pr(received + " ", a);
+                pr(expected + " ", b);
                 return;
             }
         }
@@ -98,15 +98,15 @@ $MAINBODY$
     private static void eq(int n, long[] a, long[] b) {
         if (a.length != b.length) {
             System.err.println("Case " + n + " failed: different lengths");
-            print(received + "<" + a.length + "> ", a);
-            print(expected + "<" + b.length + "> ", b);
+            pr(received + "<" + a.length + "> ", a);
+            pr(expected + "<" + b.length + "> ", b);
             return;
         }
         for (int i = 0; i < a.length; i++) {
             if (a[i] != b[i]) {
                 System.err.println("Case " + n + " failed. " + received + " and " + expected + " array differ in position " + i);
-                print(received, a);
-                print(expected, b);
+                pr(received, a);
+                pr(expected, b);
                 return;
             }
         }
@@ -116,15 +116,15 @@ $MAINBODY$
     private static void eq(int n, double[] a, double[] b) {
         if (a.length != b.length) {
             System.err.println("Case " + n + " failed: different lengths");
-            print(received + "<" + a.length + "> ", a);
-            print(expected + "<" + b.length + "> ", b);
+            pr(received + "<" + a.length + "> ", a);
+            pr(expected + "<" + b.length + "> ", b);
             return;
         }
         for (int i = 0; i < a.length; i++) {
             if (a[i] != b[i]) {
                 System.err.println("Case " + n + " failed. " + received + " and " + expected + " array differ in position " + i);
-                print(received, a);
-                print(expected, b);
+                pr(received, a);
+                pr(expected, b);
                 return;
             }
         }
@@ -134,15 +134,15 @@ $MAINBODY$
     private static void eq(int n, String[] a, String[] b) {
         if (a.length != b.length) {
             System.err.println("Case " + n + " failed: different lengths");
-            print(received + "<" + a.length + "> ", (Object[]) a);
-            print(expected + "<" + b.length + "> ", (Object[]) b);
+            pr(received + "<" + a.length + "> ", (Object[]) a);
+            pr(expected + "<" + b.length + "> ", (Object[]) b);
             return;
         }
         for (int i = 0; i < a.length; i++) {
             if (!a[i].equals(b[i])) {
                 System.err.println("Case " + n + " failed. " + received + " and " + expected + " array differ in position " + i);
-                print(received, (Object[]) a);
-                print(expected, (Object[]) b);
+                pr(received, (Object[]) a);
+                pr(expected, (Object[]) b);
                 return;
             }
         }

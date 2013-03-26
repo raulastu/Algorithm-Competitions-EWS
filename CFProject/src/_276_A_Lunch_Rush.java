@@ -7,25 +7,21 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _{ProblemClassName} {
+public class _276_A_Lunch_Rush {
 	
 	public void solve() {
 		int n = ni();
-		long res = 0;
 		
 		out.println(res);
 	}
 	
-	
-	// IO methods
-		
 	void run() throws Exception {
 		long s = System.currentTimeMillis();
 		solve();
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
-	public static void main(String[] args) throws Exception {new _{ProblemClassName}().run();}
+	public static void main(String[] args) throws Exception {new _276_A_Lunch_Rush().run();}
 
 	InputStream in=System.in;
 	PrintWriter out=new PrintWriter(System.out);
@@ -130,3 +126,4 @@ public class _{ProblemClassName} {
 
 	void pr(Object... ob) {if (!oj)System.out.println(Arrays.deepToString(ob).replace("],", "],\n"));}
 }
+

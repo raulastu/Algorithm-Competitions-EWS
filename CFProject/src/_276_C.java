@@ -1,60 +1,28 @@
 import java.io.*;
-public class _287_C {
+public class _276_C {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 //		Case 0
 		input=
-		"1 ";
+		"3 3 "+
+		"5 3 2 "+
+		"1 2 "+
+		"2 3 "+
+		"1 3 ";
 		runTest(input,
-		"1  ");
+		"25 ");
 
 //		Case 1
 		input=
-		"2 ";
+		"5 3 "+
+		"5 2 4 1 3 "+
+		"1 5 "+
+		"2 3 "+
+		"2 3 ";
 		runTest(input,
-		"-1 ");
+		"33 ");
 
-//		Case 2
-		input=
-		"3 ";
-		runTest(input,
-		"-1 ");
-		
-//		Case 2
-		input=
-		"4 ";
-		runTest(input,
-		"2 4 1 3  ");
 
-//		Case 3
-		input=
-		"5 ";
-		runTest(input,
-		"2 5 3 1 4  ");
-
-//		Case 3
-		input=
-		"6 ";
-		runTest(input,
-		"-1  ");
-		
-//		Case 3
-		input=
-		"7 ";
-		runTest(input,
-		"-1 ");
-
-//		Case 3
-		input=
-		"8 ";
-		runTest(input,
-		"2 8 4 6 3 5 1 7 ");
-		
-//		Case 3
-		input=
-		"9 ";
-		runTest(input,
-		"2 9 4 7 5 3 6 1 8 "); 
 	}
 	
 	public void compare(String rcAnswer, String realAnswer){
@@ -83,10 +51,10 @@ public class _287_C {
 		baos.reset();
 //		r.in.
 	}
-	_287_C_Lucky_Permutation r;
+	_276_C_Little_Girl_and_Maximum_Sum r;
 	ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	private void init() throws Exception{
-		r = new _287_C_Lucky_Permutation();
+		r = new _276_C_Little_Girl_and_Maximum_Sum();
 		r.out = new PrintWriter(baos);
 		runTestCases();
 		if(testOutput && !failed){
@@ -97,7 +65,7 @@ public class _287_C {
 	private int nroCases=1;
 	private boolean failed=false;
 	public static void main(String[] args) throws Exception {
-		new _287_C().init();
+		new _276_C().init();
 	}
 	
 }

@@ -7,7 +7,7 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _287_E_Main_Sequence {
+public class _276_D_Little_Girl_and_Maximum_XOR {
 	
 	public void solve() {
 		int n = ni();
@@ -21,7 +21,7 @@ public class _287_E_Main_Sequence {
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
-	public static void main(String[] args) throws Exception {new _287_E_Main_Sequence().run();}
+	public static void main(String[] args) throws Exception {new _276_D_Little_Girl_and_Maximum_XOR().run();}
 
 	InputStream in=System.in;
 	PrintWriter out=new PrintWriter(System.out);

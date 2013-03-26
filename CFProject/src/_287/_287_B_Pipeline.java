@@ -1,3 +1,4 @@
+package _287;
 import java.util.*;
 import java.util.regex.*;
 import static java.lang.Math.*;
@@ -10,37 +11,25 @@ import java.io.*;
 public class _287_B_Pipeline {
 	
 	public void solve() {
-		long l = nl(), k=nl();
+		long n = nl(), k=ni();
 		long max = k*(k+1)/2-(k-1);
-		if(l>max){
+		if(n>max){
 			pr(max);
 			out.print("-1");
 			return;
 		}
-//		pr(max,k);
-		long kk=k;
-		if(k>l)
-			k=l;
-		max = k*(k+1)/2-(k-1);
-		long lo=1,hi=k;
-		boolean exact=false;
-		
-		while(lo<hi) {
-			long m = lo+(hi+1)/2;
-			long xm=m*(m+1)/2-(m-1);
-			long xxm=max-xm;
-			pr(m,"max",max,"xm",xm,xxm);
-			if(xxm<l){
-				hi=m;
-			}else if(xxm>l){
-				lo=m;
-			}else{
-				exact=true;
-				break;
-			}
+		long r = 0;
+		long res = 0;
+		if(k>n){
+			out.print(-1);
+			return;
 		}
-		pr(exact);
-		out.println(k-lo-1+(exact?0:1));
+		while(r<n) {
+			res++;
+			r+=k;
+			k--;
+		}
+		out.println(res);
 	}
 	public final static boolean isPerfectSquare(long n)
 	{

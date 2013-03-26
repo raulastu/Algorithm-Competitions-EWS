@@ -1,3 +1,4 @@
+package _287;
 import java.io.*;
 import static java.util.Arrays.fill;
 public class _287_B {
@@ -26,7 +27,7 @@ public class _287_B {
 		fill(x,'0');
 		String bil="1"+new String(x);
 		input=
-		bil+" 3434242333333 ";
+		"499999998500000001 1000000000 ";
 		runTest(input,
 		"1340874132989 ");
 
