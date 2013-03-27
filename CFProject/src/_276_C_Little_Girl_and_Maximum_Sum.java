@@ -21,12 +21,15 @@ public class _276_C_Little_Girl_and_Maximum_Sum {
 			update(b+1,-1);
 		}
 		int [] RT = new int [T.length];
-		for (int i = 0; i < RT.length; i++) {
+		pr("T",T);
+		RT[0]=read(1);
+		for (int i = 1; i < RT.length; i++) {
 			RT[i]=read(i+1);
 		}
 		pr("RT",RT); 
 		RT= radixSort(RT);
 		ar =radixSort(ar);
+		pr("RT",RT); 
 		for (int i = 0; i < ar.length; i++) {
 			res+=((long)ar[i]*(long)RT[i]);
 		}

@@ -27,19 +27,20 @@ public class BIT {
 		
 		tree= new int[17];
 		//START - building the tree naively;
-		for (int i = 1; i < tree.length; i++) {
-			tree[i]=f[i-1];
-			int j=i-(i&-i)+1;
-			int s=0;
-			for (; j<=i; j++) { //(idx - 2^r + 1) to index idx 
-				s+=f[j-1];
-			}
-			tree[i]=s;
-		}
+//		for (int i = 1; i < tree.length; i++) {
+//			tree[i]=f[i-1];
+//			int j=i-(i&-i)+1;
+//			int s=0;
+//			for (; j<=i; j++) { //(idx - 2^r + 1) to index idx 
+//				s+=f[j-1];
+//			}
+//			tree[i]=s;
+//		}
 		// END - building the tree naively;
 		
 		for (int i = 1; i < tree.length; i++) {
-//			update(i,f[i-1]);
+			update(i,f[i-1]);
+			update(i+1,-f[i-1]);
 		}
 		//reading values
 		pr(read(13,tree));
