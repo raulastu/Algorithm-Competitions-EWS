@@ -11,6 +11,8 @@ public class _284_C_Cows_and_Sequence {
 	
 	long T[];
 	public void solve() {
+		pr(Integer.toBinaryString(6));
+		pr(Integer.toBinaryString(-6));
 		int n = ni();
 		long res = 0;
 		T = new long[MAX];

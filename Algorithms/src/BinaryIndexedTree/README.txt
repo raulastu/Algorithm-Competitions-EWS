@@ -26,3 +26,5 @@ Task PLAĆE
 http://codeforces.com/contest/284/problem/C
 sol:
 http://ideone.com/miWBFj
+
+http://ahmed-aly.com/Category.jsp?ID=26

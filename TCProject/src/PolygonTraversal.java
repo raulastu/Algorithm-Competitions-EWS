@@ -8,8 +8,8 @@ import static java.util.Collections.*;
 import java.util.*;
 
 
-public class PolygonTraversal2 {
-	static boolean debug=false;
+public class PolygonTraversal {
+	static boolean debug=true;
     public int count(int N, int[] points) {
         int res=0;
         int[] co=new int[N];
@@ -92,7 +92,10 @@ public class PolygonTraversal2 {
             eq(4,(new PolygonTraversal2()).count(11, new int[] {1, 5, 10}),1412);
             
             long a = System.currentTimeMillis();
-            eq(4,(new PolygonTraversal2()).count(18, new int[] {1, 2}),0);
+//            eq(4,(new PolygonTraversal2()).count(18, new int[] {17, 1, 2,3,4}),0);
+            pr(System.currentTimeMillis()-a);
+            a = System.currentTimeMillis();
+            eq(4,(new PolygonTraversal2()).count(18, new int[]{17, 16, 2, 8, 1}),0);
             pr(System.currentTimeMillis()-a);
         } catch( Exception exx) {
             System.err.println(exx);
