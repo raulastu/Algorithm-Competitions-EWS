@@ -7,13 +7,54 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _{ProblemClassName} {
+public class _289_B_Polo_the_Penguin_and_Matrix {
 	//->solution screencast http://youtu.be/oHg5SJYRHA0
 	public void solve() {
-		int n = ni();
+		int n = ni(),m=ni(),d=ni();
 		long res = 0;
-		
-		out.println(res);
+		int [][]ma=new int[n][m];
+		for (int i = 0; i < n; i++) {
+			ma[i]=na(m);
+		}
+		pr("1%7",1%7);
+		boolean dif=false,not=false;
+		int dx=ma[0][0];
+		for (int i = 0; i < ma.length; i++) {
+			
+			for (int j = 0; j < ma[i].length; j++) {
+				if(ma[i][j]!=dx){
+					dif=true;
+				}
+				if(abs(ma[i][j]-dx)%d!=0){
+					pr("ij",i,j);
+					not=true;
+				}	
+			}
+		}
+		if(!dif){
+			out.print(0);
+			return;
+		}
+		if(not){
+			out.print(-1);
+			return;
+		}
+		long min=1<<30;
+		pr(ma); 
+		for (int i = 0; i < ma.length; i++) {
+			for (int j = 0; j < ma[i].length; j++) {
+				int dxx= ma[i][j];
+				long res1=0;
+				for (int k = 0; k < ma.length; k++) {
+					for (int k2 = 0; k2 < ma[i].length; k2++) {
+						res1+=(abs(ma[k][k2]-dxx)/d);
+					}
+				}
+				min=min(res1,min);
+			}
+		}
+		pr(min);
+		out.println(min);
 	}
 	
 	
@@ -25,7 +66,7 @@ public class _{ProblemClassName} {
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
-	public static void main(String[] args) throws Exception {new _{ProblemClassName}().run();}
+	public static void main(String[] args) throws Exception {new _289_B_Polo_the_Penguin_and_Matrix().run();}
 
 	InputStream in=System.in;
 	PrintWriter out=new PrintWriter(System.out);
@@ -130,3 +171,4 @@ public class _{ProblemClassName} {
 
 	void pr(Object... ob) {if (!oj)System.out.println(Arrays.deepToString(ob).replace("],", "],\n"));}
 }
+

@@ -1,3 +1,4 @@
+package _276;
 import java.util.*;
 import java.util.regex.*;
 import static java.lang.Math.*;
@@ -7,25 +8,80 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _{ProblemClassName} {
-	//->solution screencast http://youtu.be/oHg5SJYRHA0
+public class _276_C_Little_Girl_and_Maximum_Sum {
+	
 	public void solve() {
-		int n = ni();
+		int n = ni(),q=ni();
+		int [] ar = na(n); 
 		long res = 0;
-		
+		T= new int[n];
+		MAX=n;
+		for (int i = 0; i < q; i++) {
+			int a=ni(),b=ni();
+			update(a,1);
+			update(b+1,-1);
+		}
+		int [] RT = new int [T.length];
+		pr("T",T);
+		RT[0]=read(1);
+		for (int i = 1; i < RT.length; i++) {
+			RT[i]=read(i+1);
+		}
+		pr("RT",RT); 
+		RT= radixSort(RT);
+		ar =radixSort(ar);
+		pr("RT",RT); 
+		for (int i = 0; i < ar.length; i++) {
+			res+=((long)ar[i]*(long)RT[i]);
+		}
 		out.println(res);
 	}
 	
+	int [] T;
+	int MAX;
+	void update(int idx, int val){
+		while(idx<=MAX){
+			T[idx-1]+=val;
+			idx+=(idx&-idx);
+		}
+	}
+	int read(int idx){
+		int r=0;
+		while(idx>0){
+			r+=T[idx-1];
+			idx-=(idx&-idx);
+		}
+		return r;
+	}
 	
+	public static int[] radixSort(int[] f)
+	{
+		int[] to = new int[f.length];
+		{
+			int[] b = new int[65537];
+			for(int i = 0;i < f.length;i++)b[1+(f[i]&0xffff)]++;
+			for(int i = 1;i <= 65536;i++)b[i]+=b[i-1];
+			for(int i = 0;i < f.length;i++)to[b[f[i]&0xffff]++] = f[i];
+			int[] d = f; f = to;to = d;
+		}
+		{
+			int[] b = new int[65537];
+			for(int i = 0;i < f.length;i++)b[1+(f[i]>>>16)]++;
+			for(int i = 1;i <= 65536;i++)b[i]+=b[i-1];
+			for(int i = 0;i < f.length;i++)to[b[f[i]>>>16]++] = f[i];
+			int[] d = f; f = to;to = d;
+		}
+		return f;
+	}
+	// END - solution
 	// IO methods
-		
 	void run() throws Exception {
 		long s = System.currentTimeMillis();
 		solve();
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
-	public static void main(String[] args) throws Exception {new _{ProblemClassName}().run();}
+	public static void main(String[] args) throws Exception {new _276_C_Little_Girl_and_Maximum_Sum().run();}
 
 	InputStream in=System.in;
 	PrintWriter out=new PrintWriter(System.out);
@@ -92,8 +148,7 @@ public class _{ProblemClassName} {
 	public int ni() {
 		int num = 0, b;
 		boolean minus = false;
-		while ((b = readByte()) != -1 && !((b >= '0' && b <= '9') || b == '-'))
-			;
+		while ((b = readByte()) != -1 && !((b >= '0' && b <= '9') || b == '-'));
 		if (b == '-') {
 			minus = true;
 			b = readByte();
@@ -130,3 +185,4 @@ public class _{ProblemClassName} {
 
 	void pr(Object... ob) {if (!oj)System.out.println(Arrays.deepToString(ob).replace("],", "],\n"));}
 }
+

@@ -1,3 +1,4 @@
+package _284;
 import java.util.*;
 import java.util.regex.*;
 import static java.lang.Math.*;
@@ -7,15 +8,69 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _{ProblemClassName} {
-	//->solution screencast http://youtu.be/oHg5SJYRHA0
+public class _284_C_Cows_and_Sequence {
+	
+	long T[];
 	public void solve() {
+		pr(Integer.toBinaryString(6));
+		pr(Integer.toBinaryString(-6));
 		int n = ni();
 		long res = 0;
-		
-		out.println(res);
+		T = new long[MAX];
+		int max=1;
+		double total=0;
+		for (int i = 0; i < n; i++) {
+			int opt=ni();
+			if(opt==1){//add tho the first x;
+				int a=ni(),x=ni();
+				update(1,x);
+//				printall(max);
+				update(a+1,-x);
+//				printall(max);
+				total+=(long)((double)x*(double)a);
+			}else if(opt==2){
+				long k=ni();
+				update(max+1,k);
+				update(max+2,-k);
+				max++;
+				total+=k;
+			}else if(opt==3){
+				long x = read(max);
+				total-=x;
+				update(max,-x);
+				update(max+1,x);
+				max--;
+			}
+//			pr("x");
+//			printall(max);
+//			out.println(String.format("%.6f",(total/(double)max)));
+			out.println(total/(double)max);
+		}
 	}
-	
+//	void printall(int m){
+//		long r[]= new long[m+1];
+//		for (int i = 1; i <= m; i++) {
+//			r[i]=read(i)-read(i-1);
+//		}
+//		pr("ar",r,"BIT",T);
+//	}
+
+	int MAX=200005;
+//	int MAX=30;
+	void update(int idx,long val){
+		while(idx<=MAX){
+			T[idx-1]+=val;
+			idx+=(idx&-idx);
+		}
+	}
+	long read(int idx){
+		long r=0;
+		while(idx>0){
+			r+=T[idx-1];
+			idx-=(idx&-idx);
+		}
+		return r;
+	}
 	
 	// IO methods
 		
@@ -25,7 +80,7 @@ public class _{ProblemClassName} {
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
-	public static void main(String[] args) throws Exception {new _{ProblemClassName}().run();}
+	public static void main(String[] args) throws Exception {new _284_C_Cows_and_Sequence().run();}
 
 	InputStream in=System.in;
 	PrintWriter out=new PrintWriter(System.out);
@@ -130,3 +185,4 @@ public class _{ProblemClassName} {
 
 	void pr(Object... ob) {if (!oj)System.out.println(Arrays.deepToString(ob).replace("],", "],\n"));}
 }
+

@@ -30,7 +30,7 @@ public class CFContestCreator {
 	
 	public void start() throws Exception{
 		String resourcesPath="/Users/rc/Eclipse-Workspaces/Algorithm-Competitions-EWS/CFProject/src/";
-		createContest(resourcesPath, 284);
+		createContest(resourcesPath, 289);
 //		System.err.println(getIOTests("http://codeforces.com/contest/282/problem/A"));;
 		new AutoCompiler(resourcesPath);
 	}

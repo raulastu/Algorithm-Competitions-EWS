@@ -7,13 +7,22 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _{ProblemClassName} {
+public class _289_A_Polo_the_Penguin_and_Segments_ {
 	//->solution screencast http://youtu.be/oHg5SJYRHA0
 	public void solve() {
-		int n = ni();
+		int n = ni(),k=ni();
 		long res = 0;
-		
-		out.println(res);
+		for (int i = 0; i < n; i++) {
+			int a = ni();
+			int b=ni();
+			res+=(b-a)+1;
+		}
+		pr(res);
+		if(res%k==0){
+			out.println(0);
+			return;
+		}		
+		out.println(k-res%k);
 	}
 	
 	
@@ -25,7 +34,7 @@ public class _{ProblemClassName} {
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
-	public static void main(String[] args) throws Exception {new _{ProblemClassName}().run();}
+	public static void main(String[] args) throws Exception {new _289_A_Polo_the_Penguin_and_Segments_().run();}
 
 	InputStream in=System.in;
 	PrintWriter out=new PrintWriter(System.out);
@@ -130,3 +139,4 @@ public class _{ProblemClassName} {
 
 	void pr(Object... ob) {if (!oj)System.out.println(Arrays.deepToString(ob).replace("],", "],\n"));}
 }
+

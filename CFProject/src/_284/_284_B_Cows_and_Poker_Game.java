@@ -1,3 +1,4 @@
+package _284;
 import java.util.*;
 import java.util.regex.*;
 import static java.lang.Math.*;
@@ -7,8 +8,8 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _{ProblemClassName} {
-	//->solution screencast http://youtu.be/oHg5SJYRHA0
+public class _284_B_Cows_and_Poker_Game {
+	
 	public void solve() {
 		int n = ni();
 		long res = 0;
@@ -25,7 +26,7 @@ public class _{ProblemClassName} {
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
-	public static void main(String[] args) throws Exception {new _{ProblemClassName}().run();}
+	public static void main(String[] args) throws Exception {new _284_B_Cows_and_Poker_Game().run();}
 
 	InputStream in=System.in;
 	PrintWriter out=new PrintWriter(System.out);
@@ -130,3 +131,4 @@ public class _{ProblemClassName} {
 
 	void pr(Object... ob) {if (!oj)System.out.println(Arrays.deepToString(ob).replace("],", "],\n"));}
 }
+

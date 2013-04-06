@@ -1,3 +1,4 @@
+package _276;
 import java.util.*;
 import java.util.regex.*;
 import static java.lang.Math.*;
@@ -7,25 +8,21 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _{ProblemClassName} {
-	//->solution screencast http://youtu.be/oHg5SJYRHA0
+public class _276_E_Little_Girl_and_Problem_on_Trees {
+	
 	public void solve() {
 		int n = ni();
-		long res = 0;
 		
 		out.println(res);
 	}
 	
-	
-	// IO methods
-		
 	void run() throws Exception {
 		long s = System.currentTimeMillis();
 		solve();
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
-	public static void main(String[] args) throws Exception {new _{ProblemClassName}().run();}
+	public static void main(String[] args) throws Exception {new _276_E_Little_Girl_and_Problem_on_Trees().run();}
 
 	InputStream in=System.in;
 	PrintWriter out=new PrintWriter(System.out);
@@ -130,3 +127,4 @@ public class _{ProblemClassName} {
 
 	void pr(Object... ob) {if (!oj)System.out.println(Arrays.deepToString(ob).replace("],", "],\n"));}
 }
+

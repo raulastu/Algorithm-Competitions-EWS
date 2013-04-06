@@ -1,0 +1,62 @@
+PROBLEM STATEMENT
+Lucy always wanted to have a big traditional wedding.  Right now, she is sitting on her bed and looking at all the stuff she has.  There's just one thought in her mind: "I have to choose something old, something new, something borrowed, and something blue."  In a couple of hours (yes, she has a lot of stuff), she made a list of all the items she can wear or carry.  She wants to minimize the total weight of all the items she takes.  Help her!
+You are given a vector <string> properties, and a vector <int> weight.  properties[i] is a comma-separated list of the i-th item's properties, and weight[i] is the weight of the i-th item.
+
+You must choose some items such that the following two conditions hold:
+
+At least one item must have the property "new", at least one must have the property "old", at least one must have the property "borrowed", and at least one must have the property "blue" (all quotes for clarity).
+
+The total weight of the chosen items must be minimal.
+
+Return the weight of the chosen items. If there is no way to satisfy the requirements, return -1.
+
+DEFINITION
+Class:TraditionalMarriage
+Method:getLuckyItems
+Parameters:vector <string>, vector <int>
+Returns:int
+Method signature:int getLuckyItems(vector <string> properties, vector <int> weight)
+
+
+CONSTRAINTS
+-properties will contain between 1 and 50 elements, inclusive.
+-properties and weights will contain the same number of elements.
+-Each element of properties will contain between 1 and 50 characters, inclusive.
+-Each element of properties will contain a comma-separated list of words, where each word contains between 1 and 10 lowercase letters ('a'-'z'), inclusive.
+-Each element of properties will contain at least one word, and will contain no duplicate words.
+-Each element of weight will be between 1 and 10^6, inclusive.
+
+
+EXAMPLES
+
+0)
+{"blue,suede,old","red","white,borrowed","new,white,cool,good,anything","new"}
+{10,4,15,3,4}
+
+Returns: 28
+
+Lucy must take the first and the third items. To get something "new" she can take the fourth or the fifth one. But in order to minimize the total weight she must choose the fourth.
+
+1)
+{"new,borrowed,blue,old,nice"}
+{1}
+
+Returns: 1
+
+Lucy has one item which has all the needed properties.
+
+2)
+{"old","new","borrowed","blue","old,new,borrowed,blue"}
+{1,1,1,1,5}
+
+Returns: 4
+
+It is better to take the first four items than the fifth one.
+
+3)
+{"new","old,red","borrowed"}
+{1,2,3}
+
+Returns: -1
+
+There is no item with the property "blue", so there is no way to satisfy the requirements.

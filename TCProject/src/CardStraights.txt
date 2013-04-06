@@ -1,0 +1,49 @@
+PROBLEM STATEMENT
+
+You are playing a card game where the goal is to make straights.  Each card  in the deck has a number between 1 and 1000000, inclusive.  A straight is a sequence of cards with consecutive values.  Values do not wrap around, so 1 does not come after 1000000.  In addition to regular cards, the deck also contains jokers.  Each joker can be used as any valid number (between 1 and 1000000, inclusive).
+
+You will be given a vector <int> cards containing the cards in your hand.  Jokers are represented by 0s, and other cards are represented by their values.  Return the number of cards in the longest straight that can be formed using one or more cards from your hand.
+
+
+DEFINITION
+Class:CardStraights
+Method:longestStraight
+Parameters:vector <int>
+Returns:int
+Method signature:int longestStraight(vector <int> cards)
+
+
+CONSTRAINTS
+-cards will contain between 1 and 50 elements, inclusive.
+-Each element of cards will be between 0 and 1000000, inclusive.
+
+
+EXAMPLES
+
+0)
+{0,6,5,10,3,0,11}
+
+Returns: 5
+
+You can make 3-4-5-6-7 using one of your jokers as a 4 and the other one as a 7.
+
+1)
+{100,100,100,101,100,99,97,103}
+
+Returns: 3
+
+Not a very lucky hand.
+
+2)
+{0,0,0,1,2,6,8,1000}
+
+Returns: 6
+
+You can make 1-2-3-4-5-6 using your jokers cleverly.
+
+3)
+{1,9,5,7,3,4,0,0,0,10}
+
+Returns: 10
+
+
