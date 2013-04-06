@@ -13,10 +13,10 @@
 using namespace std;
 #define all(v) (v).begin(),(v).end()
 #define rall(v) (v).rbegin(),(v).rend()
-#define debug(a) cerr << #a << ": " << a << endl;
-#define debugv(b) cerr << #b << ":\n"; for(int countvec = 0; countvec < b.size(); countvec++) {cerr << b[countvec] << "    ";} cerr << endl;
-#define debuga(b) cerr << #b << ":\n"; for(int countvec = 0; countvec < sizeof(b)/sizeof(int); countvec++) {cerr << b[countvec] << "    ";} cerr << endl;
-#define debugm(c) cerr << #c << ":\n"; for(int countmat = 0; countmat < c.size(); countmat++) {for(int countbb = 0; countbb < c[countmat].size(); countbb++) { cerr << c[countmat][countbb] << "    "; } cerr << endl; }
+#define pr(a) cerr << #a << ": " << a << endl;
+#define prv(b) cerr << #b << ":\n"; for(int countvec = 0; countvec < b.size(); countvec++) {cerr << b[countvec] << "    ";} cerr << endl;
+#define pra(b) cerr << #b << ":\n"; for(int countvec = 0; countvec < sizeof(b)/sizeof(int); countvec++) {cerr << b[countvec] << "    ";} cerr << endl;
+#define prm(c) cerr << #c << ":\n"; for(int countmat = 0; countmat < c.size(); countmat++) {for(int countbb = 0; countbb < c[countmat].size(); countbb++) { cerr << c[countmat][countbb] << "    "; } cerr << endl; }
 #define fill(a , value) memset(a , value , sizeof(a))
 #define FOREACH(i,c) for (typeof((c).end()) i = (c).begin(); i != (c).end(); ++i)
 string tos(int a) {ostringstream os(""); os << a; return os.str();}
@@ -111,23 +111,6 @@ static void eq( int n, string have, string need ) {
     }
 }
 // END CUT HERE
-void divisors(int n){
-    // int n;
-   int i=2;
-   scanf("%d",&n);
-   while(i < sqrt(n))
-    {
-        if(n%i==0) {
-                  printf("%d,",i);
-                  printf("%d,",n/i);
-        }
-
-        i++;
-    }
-   if(i*i == n)
-        printf("%d,",i); 
-    printf("\n,"); 
-}
 int isPrime(int n){
     if(n<=2)return 1;
     for (int i = 2; i*i <=n; ++i)
@@ -138,87 +121,28 @@ int isPrime(int n){
     return 1;
 }
 int dp[1001];
-int go(int n, int j){
-    
-    if(isPrime(n)==1 || n<=1 ){
+int go(int n){
+    if(isPrime(n)){
         return 1;
     }
     int win=0;
-    int i=2;
     if(dp[n]==-1){
-        while(i < sqrt(n))
+        for(int i = 2; i*i <=n;i++)
         {
             if(n%i==0) {
-                win+=go(n-i,j==0?1:0);
-                win+=go(n-(n/i),j==0?1:0);
+                win|=go(n-i);
+                win|=go(n-(n/i));
             }
-            i++;
         }
-        if(i*i == n)
-            win+=go(n-i,j==0?1:0); 
-        int r = 0;
-        if(win>0)
-            r= 0;
-        if(win==0)
-            r= 1;
-        // debug(n);
-        // debug(r);
-        // debug(win);
-        // return r;
-        dp[n]=r;
-        // dp[n][j==0?1:0]=win==0?1:0;
+        dp[n]=!win;
     }
     return dp[n];
-}
-string my(int n){
-    int x=go(n,0);
-    return x==0?"John":"Brus";
-}
-int a[1111];
-map<int,int>memo;
-bool win(int n){
-    for (int d = n-1; d>1; d--)
-    {
-        if(n%d==0){
-            map<int,int>::iterator it = memo.find(n-d);
-            int WIN=0;
-            if(it!=memo.end()){
-                WIN = it->second;
-            }
-            else
-                WIN = win(n-d);
-            if(!WIN){
-                memo[n]=1;
-                return true;
-            }
-        }
-    }
-    memo[n]=0;
-    return false;
-}
-string yours(int n){
-    memo.clear();
-    string john="John",brus="Brus";
-    string ans[2]={john,brus};
-    return ans[(win(n)+1)%2];
 }
 class TheNumberGameDivTwo {
 public:
     string find(int n) {
-        string res;
-        
-        // cerr<<isPrime(2)<<endl;
-        // cerr<<isPrime(4)<<endl;
-        // cerr<<isPrime(6)<<endl;
-        for (int i = 1; i <= 1000; ++i)
-        {
-            fill(dp,-1);
-            if(my(i)!=yours(i)){
-                cerr<<i<<" do it"<<endl;
-            }
-        }
         fill(dp,-1);
-        return my(n);
+        return !go(n)?"John":"Brus";
     }
 };
 
@@ -229,7 +153,7 @@ int main( int argc, char* argv[] ) {
         TheNumberGameDivTwo theObject;
         eq(3, theObject.find(6),"John");
     }
-    if(1)return 1;
+    // if(1)return 1;
     {
         TheNumberGameDivTwo theObject;
         eq(1, theObject.find(2),"Brus");
