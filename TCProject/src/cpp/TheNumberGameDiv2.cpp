@@ -18,11 +18,10 @@ using namespace std;
 #define debuga(b) cerr << #b << ":\n"; for(int countvec = 0; countvec < sizeof(b)/sizeof(int); countvec++) {cerr << b[countvec] << "    ";} cerr << endl;
 #define debugm(c) cerr << #c << ":\n"; for(int countmat = 0; countmat < c.size(); countmat++) {for(int countbb = 0; countbb < c[countmat].size(); countbb++) { cerr << c[countmat][countbb] << "    "; } cerr << endl; }
 #define fill(a , value) memset(a , value , sizeof(a))
-#define FOREACH(i,c) for (typeof((c).end()) i = (c).begin(); i != (c).end(); ++i)
 string tos(int a) {ostringstream os(""); os << a; return os.str();}
 
 
-$BEGINCUT$
+// BEGIN CUT HERE
 vector<string> split( const string& s, const string& delim =" " ) {
     vector<string> res;
     string t;
@@ -49,9 +48,9 @@ vector<int> splitInt( const string& s, const string& delim =" " ) {
         res.push_back( atoi( tok[i].c_str() ) );
     return res;
 }
-$ENDCUT$
+// END CUT HERE
 
-$BEGINCUT$
+// BEGIN CUT HERE
 #define ARRSIZE(x) (sizeof(x)/sizeof(x[0]))
 
 template<typename T> void print( T a ) {
@@ -110,17 +109,59 @@ static void eq( int n, string have, string need ) {
         cerr << "." << endl;
     }
 }
-$ENDCUT$
-class $CLASSNAME$ {
+// END CUT HERE
+class TheNumberGameDiv2 {
 public:
-    $RC$ $METHODNAME$($METHODPARMS$) {
-        $RC$ res;
-        return res;
+    int minimumMoves(int A, int B) {
+        int res=0;
+        queue< pair<string,int> >Q;
+        Q.push(make_pair(tos(A),0));
+
+        set<string> set;
+        set.clear();
+        set.insert(tos(A));
+        while(!Q.empty()){
+            pair<string,int> p=Q.front();Q.pop();
+            if(p.first==tos(B)){
+                return p.second;
+            }
+            string son=p.first.substr(0,p.first.size()-1);
+            if(set.count(son)==0){
+                set.insert(son);
+                Q.push(make_pair(son,p.second+1));
+            }
+            string rev=p.first;
+            reverse(all(rev));
+            if(set.count(rev)==0){
+                set.insert(rev);
+                Q.push(make_pair(rev,p.second+1));
+            }
+        }
+        return -1;
     }
-$WRITERCODE$
+
 };
-$BEGINCUT$
+// BEGIN CUT HERE
 int main( int argc, char* argv[] ) {
-$MAINBODY$
+    {
+        TheNumberGameDiv2 theObject;
+        eq(0, theObject.minimumMoves(25, 5),2);
+    }
+    {
+        TheNumberGameDiv2 theObject;
+        eq(1, theObject.minimumMoves(5162, 16),4);
+    }
+    {
+        TheNumberGameDiv2 theObject;
+        eq(2, theObject.minimumMoves(334, 12),-1);
+    }
+    {
+        TheNumberGameDiv2 theObject;
+        eq(3, theObject.minimumMoves(218181918, 9181),6);
+    }
+    {
+        TheNumberGameDiv2 theObject;
+        eq(4, theObject.minimumMoves(9798147, 79817),-1);
+    }
 }
-$ENDCUT$
+// END CUT HERE

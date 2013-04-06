@@ -11,18 +11,8 @@
 #include <cctype>
 #include <cmath>
 using namespace std;
-#define all(v) (v).begin(),(v).end()
-#define rall(v) (v).rbegin(),(v).rend()
-#define debug(a) cerr << #a << ": " << a << endl;
-#define debugv(b) cerr << #b << ":\n"; for(int countvec = 0; countvec < b.size(); countvec++) {cerr << b[countvec] << "    ";} cerr << endl;
-#define debuga(b) cerr << #b << ":\n"; for(int countvec = 0; countvec < sizeof(b)/sizeof(int); countvec++) {cerr << b[countvec] << "    ";} cerr << endl;
-#define debugm(c) cerr << #c << ":\n"; for(int countmat = 0; countmat < c.size(); countmat++) {for(int countbb = 0; countbb < c[countmat].size(); countbb++) { cerr << c[countmat][countbb] << "    "; } cerr << endl; }
-#define fill(a , value) memset(a , value , sizeof(a))
-#define FOREACH(i,c) for (typeof((c).end()) i = (c).begin(); i != (c).end(); ++i)
-string tos(int a) {ostringstream os(""); os << a; return os.str();}
 
-
-$BEGINCUT$
+// BEGIN CUT HERE
 vector<string> split( const string& s, const string& delim =" " ) {
     vector<string> res;
     string t;
@@ -49,9 +39,9 @@ vector<int> splitInt( const string& s, const string& delim =" " ) {
         res.push_back( atoi( tok[i].c_str() ) );
     return res;
 }
-$ENDCUT$
+// END CUT HERE
 
-$BEGINCUT$
+// BEGIN CUT HERE
 #define ARRSIZE(x) (sizeof(x)/sizeof(x[0]))
 
 template<typename T> void print( T a ) {
@@ -110,17 +100,29 @@ static void eq( int n, string have, string need ) {
         cerr << "." << endl;
     }
 }
-$ENDCUT$
-class $CLASSNAME$ {
+// END CUT HERE
+class Stick {
 public:
-    $RC$ $METHODNAME$($METHODPARMS$) {
-        $RC$ res;
-        return res;
+    int pieces(int x) {
+        int res=0;
+        return __builtin_popcount(x);
+        // return res;
     }
-$WRITERCODE$
+
 };
-$BEGINCUT$
+// BEGIN CUT HERE
 int main( int argc, char* argv[] ) {
-$MAINBODY$
+    {
+        Stick theObject;
+        eq(0, theObject.pieces(32),1);
+    }
+    {
+        Stick theObject;
+        eq(1, theObject.pieces(48),2);
+    }
+    {
+        Stick theObject;
+        eq(2, theObject.pieces(23),4);
+    }
 }
-$ENDCUT$
+// END CUT HERE

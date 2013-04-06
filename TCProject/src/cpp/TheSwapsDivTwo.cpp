@@ -22,7 +22,7 @@ using namespace std;
 string tos(int a) {ostringstream os(""); os << a; return os.str();}
 
 
-$BEGINCUT$
+// BEGIN CUT HERE
 vector<string> split( const string& s, const string& delim =" " ) {
     vector<string> res;
     string t;
@@ -49,9 +49,9 @@ vector<int> splitInt( const string& s, const string& delim =" " ) {
         res.push_back( atoi( tok[i].c_str() ) );
     return res;
 }
-$ENDCUT$
+// END CUT HERE
 
-$BEGINCUT$
+// BEGIN CUT HERE
 #define ARRSIZE(x) (sizeof(x)/sizeof(x[0]))
 
 template<typename T> void print( T a ) {
@@ -110,17 +110,69 @@ static void eq( int n, string have, string need ) {
         cerr << "." << endl;
     }
 }
-$ENDCUT$
-class $CLASSNAME$ {
+// END CUT HERE
+class TheSwapsDivTwo {
 public:
-    $RC$ $METHODNAME$($METHODPARMS$) {
-        $RC$ res;
+    int find(vector <int> sequence) {
+        int res=0;
+        set<string>S;
+        // S.insert(s(sequence));
+        for (int i = 0; i < sequence.size(); ++i)
+        {
+            for (int j = i+1; j < sequence.size(); ++j)
+            {
+                swap(sequence[i],sequence[j]);
+                string sss = s(sequence);
+                if(S.count(sss)==0){
+                    S.insert(sss);
+                    res++;
+                }
+                swap(sequence[j],sequence[i]);
+            }
+        }
         return res;
     }
-$WRITERCODE$
+    string s(vector<int> s){
+        string sx="";
+        for (int i = 0; i < s.size(); ++i)
+        {
+            sx+=tos(s[i])+" ";
+        }
+        return sx;
+    }
+
 };
-$BEGINCUT$
+// BEGIN CUT HERE
 int main( int argc, char* argv[] ) {
-$MAINBODY$
+    {
+        int sequenceARRAY[] = {4, 7, 4};
+        vector <int> sequence( sequenceARRAY, sequenceARRAY+ARRSIZE(sequenceARRAY) );
+        TheSwapsDivTwo theObject;
+        eq(0, theObject.find(sequence),3);
+    }
+    {
+        int sequenceARRAY[] = {1, 47};
+        vector <int> sequence( sequenceARRAY, sequenceARRAY+ARRSIZE(sequenceARRAY) );
+        TheSwapsDivTwo theObject;
+        eq(1, theObject.find(sequence),1);
+    }
+    {
+        int sequenceARRAY[] = {1, 2, 3};
+        vector <int> sequence( sequenceARRAY, sequenceARRAY+ARRSIZE(sequenceARRAY) );
+        TheSwapsDivTwo theObject;
+        eq(1, theObject.find(sequence),1);
+    }
+    {
+        int sequenceARRAY[] = {9, 9, 9, 9};
+        vector <int> sequence( sequenceARRAY, sequenceARRAY+ARRSIZE(sequenceARRAY) );
+        TheSwapsDivTwo theObject;
+        eq(2, theObject.find(sequence),1);
+    }
+    {
+        int sequenceARRAY[] = {22, 16, 36, 35, 14, 9, 33, 6, 28, 12, 18, 14, 47, 46, 29, 22, 14, 17, 4, 15, 28, 6, 39, 24, 47, 37};
+        vector <int> sequence( sequenceARRAY, sequenceARRAY+ARRSIZE(sequenceARRAY) );
+        TheSwapsDivTwo theObject;
+        eq(3, theObject.find(sequence),319);
+    }
 }
-$ENDCUT$
+// END CUT HERE

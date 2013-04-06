@@ -22,7 +22,8 @@ using namespace std;
 string tos(int a) {ostringstream os(""); os << a; return os.str();}
 
 
-$BEGINCUT$
+
+// BEGIN CUT HERE
 vector<string> split( const string& s, const string& delim =" " ) {
     vector<string> res;
     string t;
@@ -49,9 +50,9 @@ vector<int> splitInt( const string& s, const string& delim =" " ) {
         res.push_back( atoi( tok[i].c_str() ) );
     return res;
 }
-$ENDCUT$
+// END CUT HERE
 
-$BEGINCUT$
+// BEGIN CUT HERE
 #define ARRSIZE(x) (sizeof(x)/sizeof(x[0]))
 
 template<typename T> void print( T a ) {
@@ -110,17 +111,52 @@ static void eq( int n, string have, string need ) {
         cerr << "." << endl;
     }
 }
-$ENDCUT$
-class $CLASSNAME$ {
+// END CUT HERE
+class PolygonTraversal2 {
 public:
-    $RC$ $METHODNAME$($METHODPARMS$) {
-        $RC$ res;
-        return res;
+    int count(int N, vector <int> points) {
+        map<int,int> M;
+        M.insert(make_pair(1,2));
+        // M[1]++;
+        FOREACH(it,M){
+            debug(it->first);
+            debug(it->first);
+        }
+        return 1;
     }
-$WRITERCODE$
+
 };
-$BEGINCUT$
+// BEGIN CUT HERE
 int main( int argc, char* argv[] ) {
-$MAINBODY$
+    {
+        int pointsARRAY[] = {1, 3, 5};
+        vector <int> points( pointsARRAY, pointsARRAY+ARRSIZE(pointsARRAY) );
+        PolygonTraversal2 theObject;
+        eq(0, theObject.count(5, points),1);
+    }
+    {
+        int pointsARRAY[] = {1, 4, 2};
+        vector <int> points( pointsARRAY, pointsARRAY+ARRSIZE(pointsARRAY) );
+        PolygonTraversal2 theObject;
+        eq(1, theObject.count(6, points),1);
+    }
+    {
+        int pointsARRAY[] = {2, 4, 7};
+        vector <int> points( pointsARRAY, pointsARRAY+ARRSIZE(pointsARRAY) );
+        PolygonTraversal2 theObject;
+        eq(2, theObject.count(7, points),2);
+    }
+    {
+        int pointsARRAY[] = {1, 2, 3, 4, 6, 5};
+        vector <int> points( pointsARRAY, pointsARRAY+ARRSIZE(pointsARRAY) );
+        PolygonTraversal2 theObject;
+        eq(3, theObject.count(7, points),0);
+    }
+    {
+        int pointsARRAY[] = {1, 5, 10};
+        vector <int> points( pointsARRAY, pointsARRAY+ARRSIZE(pointsARRAY) );
+        PolygonTraversal2 theObject;
+        eq(4, theObject.count(11, points),1412);
+    }
 }
-$ENDCUT$
+// END CUT HERE

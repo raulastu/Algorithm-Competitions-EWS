@@ -18,11 +18,10 @@ using namespace std;
 #define debuga(b) cerr << #b << ":\n"; for(int countvec = 0; countvec < sizeof(b)/sizeof(int); countvec++) {cerr << b[countvec] << "    ";} cerr << endl;
 #define debugm(c) cerr << #c << ":\n"; for(int countmat = 0; countmat < c.size(); countmat++) {for(int countbb = 0; countbb < c[countmat].size(); countbb++) { cerr << c[countmat][countbb] << "    "; } cerr << endl; }
 #define fill(a , value) memset(a , value , sizeof(a))
-#define FOREACH(i,c) for (typeof((c).end()) i = (c).begin(); i != (c).end(); ++i)
 string tos(int a) {ostringstream os(""); os << a; return os.str();}
 
 
-$BEGINCUT$
+// BEGIN CUT HERE
 vector<string> split( const string& s, const string& delim =" " ) {
     vector<string> res;
     string t;
@@ -49,9 +48,9 @@ vector<int> splitInt( const string& s, const string& delim =" " ) {
         res.push_back( atoi( tok[i].c_str() ) );
     return res;
 }
-$ENDCUT$
+// END CUT HERE
 
-$BEGINCUT$
+// BEGIN CUT HERE
 #define ARRSIZE(x) (sizeof(x)/sizeof(x[0]))
 
 template<typename T> void print( T a ) {
@@ -110,17 +109,94 @@ static void eq( int n, string have, string need ) {
         cerr << "." << endl;
     }
 }
-$ENDCUT$
-class $CLASSNAME$ {
+// END CUT HERE
+class CityMap {
 public:
-    $RC$ $METHODNAME$($METHODPARMS$) {
-        $RC$ res;
+    string getLegend(vector <string> cityMap, vector <int> POIs) {
+        string res="";
+        stringstream ss;
+        int count = POIs.size();
+        int map[26];
+        fill(map,0);
+        // debuga(map);
+        for (int i = 0; i < cityMap.size(); ++i)
+        {
+
+            for (int j = 0; j < cityMap[i].length(); ++j)
+            {
+                if(cityMap[i][j]!='.'){
+                    // debug((int)cityMap[i][j]-'A');
+                    // debug(cityMap[i][j]);
+                    map[cityMap[i][j]-'A']++;
+                }
+                    // map[]++;
+            }
+        }
+        // debuga(map);
+        for (int i = 0; i < count; ++i)
+        {
+            for (int j = 0; j < 26; ++j)
+            {
+                if(map[j]==POIs[i]){
+                    // ss<<;
+                    res+=(j+'A');
+                    // ss>>res;
+                }
+            }
+        }
         return res;
     }
-$WRITERCODE$
+
 };
-$BEGINCUT$
+// BEGIN CUT HERE
 int main( int argc, char* argv[] ) {
-$MAINBODY$
+    {
+        string cityMapARRAY[] = {"M....M",
+            "...R.M",
+            "R..R.R"};
+        vector <string> cityMap( cityMapARRAY, cityMapARRAY+ARRSIZE(cityMapARRAY) );
+        int POIsARRAY[] = {3, 4};
+        vector <int> POIs( POIsARRAY, POIsARRAY+ARRSIZE(POIsARRAY) );
+        CityMap theObject;
+        eq(0, theObject.getLegend(cityMap, POIs),"MR");
+    }
+    {
+        string cityMapARRAY[] = {"XXXXXXXZXYYY"};
+        vector <string> cityMap( cityMapARRAY, cityMapARRAY+ARRSIZE(cityMapARRAY) );
+        int POIsARRAY[] = {1, 8, 3};
+        vector <int> POIs( POIsARRAY, POIsARRAY+ARRSIZE(POIsARRAY) );
+        CityMap theObject;
+        eq(1, theObject.getLegend(cityMap, POIs),"ZXY");
+    }
+    {
+        string cityMapARRAY[] = {"...........",
+            "...........",
+            "...........",
+            "..........T"};
+        vector <string> cityMap( cityMapARRAY, cityMapARRAY+ARRSIZE(cityMapARRAY) );
+        int POIsARRAY[] = {1};
+        vector <int> POIs( POIsARRAY, POIsARRAY+ARRSIZE(POIsARRAY) );
+        CityMap theObject;
+        eq(2, theObject.getLegend(cityMap, POIs),"T");
+    }
+    {
+        string cityMapARRAY[] = {"AIAAARRI.......GOAI.",
+            ".O..AIIGI.OAAAGI.A.I",
+            ".A.IAAAARI..AI.AAGR.",
+            "....IAI..AOIGA.GAIA.",
+            "I.AIIIAG...GAR.IIAGA",
+            "IA.AOA....I....I.GAA",
+            "IOIGRAAAO.AI.AA.RAAA",
+            "AI.AAA.AIR.AGRIAAG..",
+            "AAAAIAAAI...AAG.RGRA",
+            ".J.IA...G.A.AA.II.AA"}
+           ;
+        vector <string> cityMap( cityMapARRAY, cityMapARRAY+ARRSIZE(cityMapARRAY) );
+        int POIsARRAY[] = {16,7,1,35,11,66}
+           ;
+        vector <int> POIs( POIsARRAY, POIsARRAY+ARRSIZE(POIsARRAY) );
+        CityMap theObject;
+        eq(3, theObject.getLegend(cityMap, POIs),"GOJIRA");
+    }
 }
-$ENDCUT$
+// END CUT HERE
