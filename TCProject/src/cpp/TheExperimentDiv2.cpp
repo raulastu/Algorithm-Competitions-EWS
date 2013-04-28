@@ -111,59 +111,66 @@ static void eq( int n, string have, string need ) {
     }
 }
 // END CUT HERE
-class TheSwapsDivTwo {
+class TheExperimentDiv2 {
 public:
-    int find(vector <int> sequence) {
-        int res=0;
-        set<vector<int> >S;
-        // S.insert(s(sequence));
-        for (int i = 0; i < sequence.size(); ++i)
+    vector <int> determineHumidity(vector <int> intensity, int L, vector <int> leftEnd) {
+        vector <int> res;
+        for (int i = 0; i < leftEnd.size(); ++i)
         {
-            for (int j = i+1; j < sequence.size(); ++j)
+            int r=0;
+            for (int j = leftEnd[i]; j < leftEnd[i]+L; ++j)
             {
-                if(i==j)continue;
-                swap(sequence[i], sequence[j]);
-                if(S.count(sequence)==0){
-                    S.insert(sequence);
-                    res++;
-                }
-                swap(sequence[j], sequence[i]);
+                // if()
+                r+=intensity[j];
+                intensity[j]=0;
             }
+            res.push_back(r);
         }
         return res;
     }
+
 };
 // BEGIN CUT HERE
 int main( int argc, char* argv[] ) {
     {
-        int sequenceARRAY[] = {4, 7, 4};
-        vector <int> sequence( sequenceARRAY, sequenceARRAY+ARRSIZE(sequenceARRAY) );
-        TheSwapsDivTwo theObject;
-        eq(0, theObject.find(sequence),3);
+        int intensityARRAY[] = {3, 4, 1, 1, 5, 6};
+        vector <int> intensity( intensityARRAY, intensityARRAY+ARRSIZE(intensityARRAY) );
+        int leftEndARRAY[] = {3, 1, 0};
+        vector <int> leftEnd( leftEndARRAY, leftEndARRAY+ARRSIZE(leftEndARRAY) );
+        int retrunValueARRAY[] = {12, 5, 3 };
+        vector <int> retrunValue( retrunValueARRAY, retrunValueARRAY+ARRSIZE(retrunValueARRAY) );
+        TheExperimentDiv2 theObject;
+        eq(0, theObject.determineHumidity(intensity, 3, leftEnd),retrunValue);
     }
     {
-        int sequenceARRAY[] = {1, 47};
-        vector <int> sequence( sequenceARRAY, sequenceARRAY+ARRSIZE(sequenceARRAY) );
-        TheSwapsDivTwo theObject;
-        eq(1, theObject.find(sequence),1);
+        int intensityARRAY[] = {5, 5};
+        vector <int> intensity( intensityARRAY, intensityARRAY+ARRSIZE(intensityARRAY) );
+        int leftEndARRAY[] = {0, 0};
+        vector <int> leftEnd( leftEndARRAY, leftEndARRAY+ARRSIZE(leftEndARRAY) );
+        int retrunValueARRAY[] = {10, 0 };
+        vector <int> retrunValue( retrunValueARRAY, retrunValueARRAY+ARRSIZE(retrunValueARRAY) );
+        TheExperimentDiv2 theObject;
+        eq(1, theObject.determineHumidity(intensity, 2, leftEnd),retrunValue);
     }
     {
-        int sequenceARRAY[] = {1, 2, 3};
-        vector <int> sequence( sequenceARRAY, sequenceARRAY+ARRSIZE(sequenceARRAY) );
-        TheSwapsDivTwo theObject;
-        eq(1, theObject.find(sequence),3);
+        int intensityARRAY[] = {92, 11, 1000, 14, 3};
+        vector <int> intensity( intensityARRAY, intensityARRAY+ARRSIZE(intensityARRAY) );
+        int leftEndARRAY[] = {0, 3};
+        vector <int> leftEnd( leftEndARRAY, leftEndARRAY+ARRSIZE(leftEndARRAY) );
+        int retrunValueARRAY[] = {103, 17 };
+        vector <int> retrunValue( retrunValueARRAY, retrunValueARRAY+ARRSIZE(retrunValueARRAY) );
+        TheExperimentDiv2 theObject;
+        eq(2, theObject.determineHumidity(intensity, 2, leftEnd),retrunValue);
     }
     {
-        int sequenceARRAY[] = {9, 9, 9, 9};
-        vector <int> sequence( sequenceARRAY, sequenceARRAY+ARRSIZE(sequenceARRAY) );
-        TheSwapsDivTwo theObject;
-        eq(2, theObject.find(sequence),1);
-    }
-    {
-        int sequenceARRAY[] = {22, 16, 36, 35, 14, 9, 33, 6, 28, 12, 18, 14, 47, 46, 29, 22, 14, 17, 4, 15, 28, 6, 39, 24, 47, 37};
-        vector <int> sequence( sequenceARRAY, sequenceARRAY+ARRSIZE(sequenceARRAY) );
-        TheSwapsDivTwo theObject;
-        eq(3, theObject.find(sequence),319);
+        int intensityARRAY[] = {2, 6, 15, 10, 8, 11, 99, 2, 4, 4, 4, 13};
+        vector <int> intensity( intensityARRAY, intensityARRAY+ARRSIZE(intensityARRAY) );
+        int leftEndARRAY[] = {1, 7, 4, 5, 8, 0};
+        vector <int> leftEnd( leftEndARRAY, leftEndARRAY+ARRSIZE(leftEndARRAY) );
+        int retrunValueARRAY[] = {39, 14, 110, 0, 13, 2 };
+        vector <int> retrunValue( retrunValueARRAY, retrunValueARRAY+ARRSIZE(retrunValueARRAY) );
+        TheExperimentDiv2 theObject;
+        eq(3, theObject.determineHumidity(intensity, 4, leftEnd),retrunValue);
     }
 }
 // END CUT HERE

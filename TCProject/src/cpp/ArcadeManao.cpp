@@ -111,59 +111,104 @@ static void eq( int n, string have, string need ) {
     }
 }
 // END CUT HERE
-class TheSwapsDivTwo {
+class ArcadeManao {
 public:
-    int find(vector <int> sequence) {
-        int res=0;
-        set<vector<int> >S;
-        // S.insert(s(sequence));
-        for (int i = 0; i < sequence.size(); ++i)
+    int shortestLadder(vector <string> level, int coinRow, int coinColumn) {
+        int res;
+
+        if(coinRow==level.size()-1){
+            return 0;
+        }
+        vector<int> di;
+        vector<int> dj;
+        int N=level.size();
+        int M=level[0].size();
+        for (int i = 1; i <= 50; ++i)
         {
-            for (int j = i+1; j < sequence.size(); ++j)
-            {
-                if(i==j)continue;
-                swap(sequence[i], sequence[j]);
-                if(S.count(sequence)==0){
-                    S.insert(sequence);
-                    res++;
+            di.push_back(i);
+            di.push_back(-i);
+            di.push_back(0);
+            di.push_back(0);
+
+            dj.push_back(0);
+            dj.push_back(0);
+            dj.push_back(i);
+            dj.push_back(-i);
+            
+            queue<pair<int,int> > Q;
+            Q.push(make_pair(coinRow-1,coinColumn-1));
+            bool memo[N][M];
+            while(!Q.empty()){
+                pair<int,int> p = Q.front();Q.pop();
+                if(p.first==level.size()-1){
+                    return i;
                 }
-                swap(sequence[j], sequence[i]);
+                for (int j = 0; j < di.size(); ++j)
+                {
+                    int X = p.first+di[j];
+                    int Y = p.second+dj[j];
+                    if(X>=0 && X<N && Y>=0 && Y<M && !memo[X][Y] && level[X][Y]=='X'){
+                        memo[X][Y]=true;
+                        Q.push(make_pair(X,Y));
+                    }
+                }
+
             }
         }
+        // debug(res);
         return res;
     }
+
 };
 // BEGIN CUT HERE
 int main( int argc, char* argv[] ) {
     {
-        int sequenceARRAY[] = {4, 7, 4};
-        vector <int> sequence( sequenceARRAY, sequenceARRAY+ARRSIZE(sequenceARRAY) );
-        TheSwapsDivTwo theObject;
-        eq(0, theObject.find(sequence),3);
+        string levelARRAY[] = {"XXXX....",
+            "...X.XXX",
+            "XXX..X..",
+            "......X.",
+            "XXXXXXXX"};
+        vector <string> level( levelARRAY, levelARRAY+ARRSIZE(levelARRAY) );
+        ArcadeManao theObject;
+        eq(0, theObject.shortestLadder(level, 2, 4),2);
     }
     {
-        int sequenceARRAY[] = {1, 47};
-        vector <int> sequence( sequenceARRAY, sequenceARRAY+ARRSIZE(sequenceARRAY) );
-        TheSwapsDivTwo theObject;
-        eq(1, theObject.find(sequence),1);
+        string levelARRAY[] = {"XXXX",
+            "...X",
+            "XXXX"};
+        vector <string> level( levelARRAY, levelARRAY+ARRSIZE(levelARRAY) );
+        ArcadeManao theObject;
+        eq(1, theObject.shortestLadder(level, 1, 1),1);
     }
     {
-        int sequenceARRAY[] = {1, 2, 3};
-        vector <int> sequence( sequenceARRAY, sequenceARRAY+ARRSIZE(sequenceARRAY) );
-        TheSwapsDivTwo theObject;
-        eq(1, theObject.find(sequence),3);
+        string levelARRAY[] = {"..X..",
+            ".X.X.",
+            "X...X",
+            ".X.X.",
+            "..X..",
+            "XXXXX"};
+        vector <string> level( levelARRAY, levelARRAY+ARRSIZE(levelARRAY) );
+        ArcadeManao theObject;
+        eq(2, theObject.shortestLadder(level, 1, 3),4);
     }
     {
-        int sequenceARRAY[] = {9, 9, 9, 9};
-        vector <int> sequence( sequenceARRAY, sequenceARRAY+ARRSIZE(sequenceARRAY) );
-        TheSwapsDivTwo theObject;
-        eq(2, theObject.find(sequence),1);
+        string levelARRAY[] = {"X"};
+        vector <string> level( levelARRAY, levelARRAY+ARRSIZE(levelARRAY) );
+        ArcadeManao theObject;
+        eq(3, theObject.shortestLadder(level, 1, 1),0);
     }
     {
-        int sequenceARRAY[] = {22, 16, 36, 35, 14, 9, 33, 6, 28, 12, 18, 14, 47, 46, 29, 22, 14, 17, 4, 15, 28, 6, 39, 24, 47, 37};
-        vector <int> sequence( sequenceARRAY, sequenceARRAY+ARRSIZE(sequenceARRAY) );
-        TheSwapsDivTwo theObject;
-        eq(3, theObject.find(sequence),319);
+        string levelARRAY[] = {"XXXXXXXXXX",
+            "...X......",
+            "XXX.......",
+            "X.....XXXX",
+            "..XXXXX..X",
+            ".........X",
+            ".........X",
+            "XXXXXXXXXX"};
+        vector <string> level( levelARRAY, levelARRAY+ARRSIZE(levelARRAY) );
+        ArcadeManao theObject;
+        eq(4, theObject.shortestLadder(level, 1, 1),2);
     }
 }
 // END CUT HERE

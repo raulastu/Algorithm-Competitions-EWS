@@ -110,60 +110,78 @@ static void eq( int n, string have, string need ) {
         cerr << "." << endl;
     }
 }
+
 // END CUT HERE
-class TheSwapsDivTwo {
-public:
-    int find(vector <int> sequence) {
-        int res=0;
-        set<vector<int> >S;
-        // S.insert(s(sequence));
-        for (int i = 0; i < sequence.size(); ++i)
+
+    int gcd(int a, int b) {
+        if (b == 0) {
+            return a;
+        }
+        return gcd(b, a % b);
+    }
+    int get(int a, int b){
+        for (int i = a+1; i <b; ++i)
         {
-            for (int j = i+1; j < sequence.size(); ++j)
-            {
-                if(i==j)continue;
-                swap(sequence[i], sequence[j]);
-                if(S.count(sequence)==0){
-                    S.insert(sequence);
-                    res++;
-                }
-                swap(sequence[j], sequence[i]);
+            if(gcd(i,a)==1 && gcd(i,b)==1){
+                return 1;
+            }
+        }
+        return 2;
+    }
+class EllysCoprimesDiv2 {
+public:
+    int getCount(vector <int> numbers) {
+        int res=0;
+        sort(all(numbers));
+        for (int i = 1; i < numbers.size(); ++i)
+        {
+            int a = numbers[i-1];
+            int b = numbers[i];
+            if(gcd(a,b)!=1){
+                res+=get(a,b);
             }
         }
         return res;
     }
 };
+
 // BEGIN CUT HERE
 int main( int argc, char* argv[] ) {
     {
-        int sequenceARRAY[] = {4, 7, 4};
-        vector <int> sequence( sequenceARRAY, sequenceARRAY+ARRSIZE(sequenceARRAY) );
-        TheSwapsDivTwo theObject;
-        eq(0, theObject.find(sequence),3);
+        int numbersARRAY[] = {2200, 42, 2184, 17};
+        vector <int> numbers( numbersARRAY, numbersARRAY+ARRSIZE(numbersARRAY) );
+        EllysCoprimesDiv2 theObject;
+        eq(0, theObject.getCount(numbers),3);
     }
     {
-        int sequenceARRAY[] = {1, 47};
-        vector <int> sequence( sequenceARRAY, sequenceARRAY+ARRSIZE(sequenceARRAY) );
-        TheSwapsDivTwo theObject;
-        eq(1, theObject.find(sequence),1);
+        int numbersARRAY[] = {13, 1, 6, 20, 33};
+        vector <int> numbers( numbersARRAY, numbersARRAY+ARRSIZE(numbersARRAY) );
+        EllysCoprimesDiv2 theObject;
+        eq(1, theObject.getCount(numbers),0);
     }
     {
-        int sequenceARRAY[] = {1, 2, 3};
-        vector <int> sequence( sequenceARRAY, sequenceARRAY+ARRSIZE(sequenceARRAY) );
-        TheSwapsDivTwo theObject;
-        eq(1, theObject.find(sequence),3);
+        int numbersARRAY[] = {7, 42};
+        vector <int> numbers( numbersARRAY, numbersARRAY+ARRSIZE(numbersARRAY) );
+        EllysCoprimesDiv2 theObject;
+        eq(2, theObject.getCount(numbers),1);
     }
     {
-        int sequenceARRAY[] = {9, 9, 9, 9};
-        vector <int> sequence( sequenceARRAY, sequenceARRAY+ARRSIZE(sequenceARRAY) );
-        TheSwapsDivTwo theObject;
-        eq(2, theObject.find(sequence),1);
+        int numbersARRAY[] = {55780, 44918, 55653, 4762, 41536, 40083, 79260, 7374, 24124, 91858, 7856,
+            12999, 64025, 12706, 19770, 71495, 32817, 79309, 53779, 8421, 97984, 34586,
+            893, 64549, 77792, 12143, 52732, 94416, 54207, 51811, 80845, 67079, 14829,
+            25350, 22976, 23932, 62273, 58871, 82358, 13283, 33667, 64263, 1337, 42666};
+        vector <int> numbers( numbersARRAY, numbersARRAY+ARRSIZE(numbersARRAY) );
+        EllysCoprimesDiv2 theObject;
+        eq(3, theObject.getCount(numbers),15);
     }
-    {
-        int sequenceARRAY[] = {22, 16, 36, 35, 14, 9, 33, 6, 28, 12, 18, 14, 47, 46, 29, 22, 14, 17, 4, 15, 28, 6, 39, 24, 47, 37};
-        vector <int> sequence( sequenceARRAY, sequenceARRAY+ARRSIZE(sequenceARRAY) );
-        TheSwapsDivTwo theObject;
-        eq(3, theObject.find(sequence),319);
+        {
+        int numbersARRAY[] = {55780, 44918, 55653, 4762, 41536, 40083, 79260, 7374, 24124, 91858, 7856,
+            12999, 64025, 12706, 19770, 71495, 32817, 79309, 53779, 8421, 97984, 34586,
+            893, 64549, 77792, 12143, 52732, 94416, 54207, 51811, 80845, 67079, 14829,
+            25350, 22976, 23932, 62273, 58871, 82358, 13283, 33667, 64263, 1337, 100000};
+        vector <int> numbers( numbersARRAY, numbersARRAY+ARRSIZE(numbersARRAY) );
+        EllysCoprimesDiv2 theObject;
+        eq(3, theObject.getCount(numbers),15);
     }
 }
 // END CUT HERE

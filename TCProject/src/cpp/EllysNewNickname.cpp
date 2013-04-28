@@ -111,59 +111,52 @@ static void eq( int n, string have, string need ) {
     }
 }
 // END CUT HERE
-class TheSwapsDivTwo {
+class EllysNewNickname {
 public:
-    int find(vector <int> sequence) {
+    int getLength(string nickname) {
         int res=0;
-        set<vector<int> >S;
-        // S.insert(s(sequence));
-        for (int i = 0; i < sequence.size(); ++i)
+        string v="aeiouy";
+        // char c =nickname[0];
+        int x=0;
+        for (int i = 1; i < nickname.size(); ++i)
         {
-            for (int j = i+1; j < sequence.size(); ++j)
-            {
-                if(i==j)continue;
-                swap(sequence[i], sequence[j]);
-                if(S.count(sequence)==0){
-                    S.insert(sequence);
-                    res++;
-                }
-                swap(sequence[j], sequence[i]);
+            if(v.find(nickname[i])!=string::npos
+                && v.find(nickname[i-1])!=string::npos){
+                res++;
+                // x='x';
             }
         }
-        return res;
+        // debug(res);
+        // debug(v.find('e'));
+        return nickname.size()-res;
     }
+
 };
 // BEGIN CUT HERE
 int main( int argc, char* argv[] ) {
     {
-        int sequenceARRAY[] = {4, 7, 4};
-        vector <int> sequence( sequenceARRAY, sequenceARRAY+ARRSIZE(sequenceARRAY) );
-        TheSwapsDivTwo theObject;
-        eq(0, theObject.find(sequence),3);
+        EllysNewNickname theObject;
+        eq(0, theObject.getLength("tourist"),6);
     }
     {
-        int sequenceARRAY[] = {1, 47};
-        vector <int> sequence( sequenceARRAY, sequenceARRAY+ARRSIZE(sequenceARRAY) );
-        TheSwapsDivTwo theObject;
-        eq(1, theObject.find(sequence),1);
+        EllysNewNickname theObject;
+        eq(1, theObject.getLength("eagaeoppooaaa"),6);
     }
     {
-        int sequenceARRAY[] = {1, 2, 3};
-        vector <int> sequence( sequenceARRAY, sequenceARRAY+ARRSIZE(sequenceARRAY) );
-        TheSwapsDivTwo theObject;
-        eq(1, theObject.find(sequence),3);
+        EllysNewNickname theObject;
+        eq(2, theObject.getLength("esprit"),6);
     }
     {
-        int sequenceARRAY[] = {9, 9, 9, 9};
-        vector <int> sequence( sequenceARRAY, sequenceARRAY+ARRSIZE(sequenceARRAY) );
-        TheSwapsDivTwo theObject;
-        eq(2, theObject.find(sequence),1);
+        EllysNewNickname theObject;
+        eq(3, theObject.getLength("ayayayayayaya"),1);
     }
     {
-        int sequenceARRAY[] = {22, 16, 36, 35, 14, 9, 33, 6, 28, 12, 18, 14, 47, 46, 29, 22, 14, 17, 4, 15, 28, 6, 39, 24, 47, 37};
-        vector <int> sequence( sequenceARRAY, sequenceARRAY+ARRSIZE(sequenceARRAY) );
-        TheSwapsDivTwo theObject;
-        eq(3, theObject.find(sequence),319);
+        EllysNewNickname theObject;
+        eq(4, theObject.getLength("wuuut"),3);
+    }
+    {
+        EllysNewNickname theObject;
+        eq(5, theObject.getLength("naaaaaaaanaaaanaananaaaaabaaaaaaaatmaaaaan"),16);
     }
 }
 // END CUT HERE
