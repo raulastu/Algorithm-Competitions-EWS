@@ -7,19 +7,31 @@ import static java.util.Collections.*;
 import java.util.*;
 
 
-public class $CLASSNAME$ {
-    public $RC$ $METHODNAME$($METHODPARMS$) {
-        $RC$ res;
-        return res;
+public class EllysNewNickname {
+    public int getLength(String nickname) {
+        int res=0;
+        String v="aoeiuy";
+        for (int i = 1; i < nickname.length(); i++) {
+			if(v.contains(nickname.charAt(i)+"")  &&
+					v.contains(nickname.charAt(i-1)+""))
+				res++;
+		}
+        
+        return nickname.length()-res;
     }
-$WRITERCODE$
-$BEGINCUT$
+
+// BEGIN CUT HERE
 
 
 
     public static void main(String[] args) {
         try {
-$MAINBODY$
+            eq(0,(new EllysNewNickname()).getLength("tourist"),6);
+            eq(1,(new EllysNewNickname()).getLength("eagaeoppooaaa"),6);
+            eq(2,(new EllysNewNickname()).getLength("esprit"),6);
+            eq(3,(new EllysNewNickname()).getLength("ayayayayayaya"),1);
+            eq(4,(new EllysNewNickname()).getLength("wuuut"),3);
+            eq(5,(new EllysNewNickname()).getLength("naaaaaaaanaaaanaananaaaaabaaaaaaaatmaaaaan"),16);
         } catch( Exception exx) {
             System.err.println(exx);
             exx.printStackTrace(System.err);
@@ -151,9 +163,5 @@ $MAINBODY$
     
     static String expected = "  expe";
     static String received = "  rc";
-$ENDCUT$
+// END CUT HERE
 }
-
-$BEGINCUT$
-$PROBLEMDESC$
-$ENDCUT$

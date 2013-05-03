@@ -136,7 +136,7 @@ public:
         if(count%20==0){
             R=count/20;
         }
-        else R = count/20+1;
+        else R = count/20+1;    
         std::vector<int>::iterator idx= find(all(v),elly);
         double ac=0,partial=0;
         int group = 0;

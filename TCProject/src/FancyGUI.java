@@ -9,7 +9,7 @@ import java.util.*;
 
 public class FancyGUI {
     public int totalDarkArea(int N, int[] x1, int[] y1, int[] x2, int[] y2) {
-        int res;
+        int res=1;
         return res;
     }
 
