@@ -5,25 +5,32 @@ import java.util.Scanner;
 import static java.lang.Math.*;
 
 public class Acronimo {
-	static String solve(String line) {
-		String[] l = line.split(" +");
-		String res="";
-		for (String string : l) {
-			if(string.equals("the")||
-					string.equals("of") ||
-					string.equals("and") ||
-					string.equals("")){
-				
-			}else{
-				res+=(string.toCharArray()[0]+"").toUpperCase();
-			}
-		}
-				
-		return res;
+	static String solve(String line) {		
+		return convertirEsperantos(Integer.parseInt(line));
 	}
-
+	static String[] esperantos = {
+	        "unu", "du", "tri", "kvar", "kvin", "ses", "sep", "ok", "nau", "dek"};
+	   static  String convertirEsperantos(int n) {
+	        String numero = "";
+	        if (n > 0 && n < 100) {
+	            int pr = n / 10;
+	            if (n > 10) {
+	                if (pr != 1) {
+	                    numero += esperantos[pr - 1]+esperantos[9]+" ";
+	                }
+	                if (pr == 1) {
+	                    numero += esperantos[9]+" ";
+	                }
+	                n = n - 10 * pr;
+	            }
+	            if (n > 0) {
+	                numero += esperantos[n - 1];
+	            }
+	        }
+	        return numero;
+	    }
 	public static void main(String[] args) throws Exception {
-		Scanner sc = new Scanner(new File("/Users/rc/test1/acr.txt"));
+		Scanner sc = new Scanner(new File("/Users/rc/test1/Esperanto Numbers_in.txt"));
 //		Scanner sc = new Scanner(new File("/Users/rc/git/TCProject/src/Judges_HuaHCoding/input_temp_case"));
 //		Scanner sc = new Scanner(System.in);
 		String writtenFile = "/Users/rc/test1/out.txt";
@@ -32,8 +39,6 @@ public class Acronimo {
 		for (int i = 0; i < n; i++) {
 //			String sx [] = split(" "); 
 			String s = solve(sc.nextLine())+"";
-			System.err.println("-----------------Case #"+(i+1)+"");
-//			System.err.println("output ");
 			System.err.println(s);
 			pw.println(s);
 		}

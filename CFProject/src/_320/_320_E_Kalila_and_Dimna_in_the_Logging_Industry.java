@@ -1,3 +1,4 @@
+package _320;
 import java.util.*;
 import java.util.regex.*;
 import static java.lang.Math.*;
@@ -7,64 +8,15 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _300_B_Coach {
+public class _320_E_Kalila_and_Dimna_in_the_Logging_Industry {
 	//->solution screencast http://youtu.be/oHg5SJYRHA0
 	public void solve() {
-		int n = ni(), t=ni();
-		int [][] graph= new int[50][50];
-		for (int i = 0; i < t; i++) {
-			int a = ni(), b=ni();
-			graph[a][b]=1;
-			graph[b][a]=1;
-		}  
-		ArrayList<Integer> free = new ArrayList<Integer>();
-		ArrayList<ArrayList<Integer>> ar2 = new ArrayList<ArrayList<Integer>>();
-		HashSet<Integer> taken = new HashSet<Integer>();
-		String res="";
-		for (int i = 1; i <= n; i++) {
-			ArrayList<Integer>ar = new ArrayList<Integer>();
-			ar.add(i);
-			if(taken.contains(i))continue;
-			len(graph,i,ar);
-			taken.addAll(ar);
-			if(ar.size()==2){
-				ar2.add(ar);
-			}else if(ar.size()==1){
-				free.add(i);
-			}else if(ar.size()==3){
-				res+=(ar.get(0)+" "+ar.get(1)+" "+ar.get(2))+"\n";
-			}else{//size>3
-				out.println(-1);
-				return;
-			}
-		}
-//		pr(arr);
-		if(ar2.size()>free.size()){
-			out.print(-1);
-			return;
-		}
-		for (int i = 0; i < ar2.size(); i++) {
-			ArrayList<Integer>ar = ar2.get(i);
-			res+=(ar.get(0)+" "+ar.get(1)+" "+free.remove(0))+"\n";
-		}
-//		pr(res);
-		for (int i = 0; i < free.size(); i+=3) {
-			res+=(free.get(i)+" "+free.get(i+1)+" "+free.get(i+2))+"\n";
-		}
-		out.print(res);
+		int n = ni();
+		long res = 0;
+		
+		out.println(res);
 	}
-	int len(int G[][], int x, ArrayList<Integer>ar){
-		int r=0;
-		for (int i = 0; i < G.length; i++) {
-			if(i==x)continue;
-			if(ar.contains(i))continue;
-			if(G[x][i]==1 || G[i][x]==1){
-				ar.add(i);
-				r=1+max(r,len(G,i,ar));
-			}
-		}
-		return r;
-	}
+	
 	
 	// IO methods
 		
@@ -74,7 +26,7 @@ public class _300_B_Coach {
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
-	public static void main(String[] args) throws Exception {new _300_B_Coach().run();}
+	public static void main(String[] args) throws Exception {new _320_E_Kalila_and_Dimna_in_the_Logging_Industry().run();}
 
 	InputStream in=System.in;
 	PrintWriter out=new PrintWriter(System.out);

@@ -7,10 +7,30 @@ import static java.util.Collections.*;
 import java.util.*;
 
 
-public class FancyGUI {
-    public int totalDarkArea(int N, int[] x1, int[] y1, int[] x2, int[] y2) {
-        int res=1;
-        return res;
+public class NumberMagicEasy {
+    public int theNumber(String answer) {
+        int res;
+        int [][]a={
+        		{1, 2, 3, 4, 5, 6, 7,8},
+        {1, 2, 3, 4, 9, 10, 11,12},
+        { 1, 2, 5, 6, 9, 10, 13,14},
+        {1, 3, 5, 7, 9, 11, 13,15}};
+        HashSet<Integer> s= new  HashSet<Integer>();
+        for (int i = 1; i <= 16; i++) {
+			s.add(i);
+		}
+        for (int i = 0; i < answer.length(); i++) {
+			if(answer.charAt(i)=='N'){
+				for (int j = 0; j < a[i].length; j++) {
+					s.remove(a[i][j]);
+				}
+			}
+		}
+//        pr(s);
+        for (Integer integer : s) {
+        	return integer;
+		}
+        return -1;
     }
 
 // BEGIN CUT HERE
@@ -19,10 +39,11 @@ public class FancyGUI {
 
     public static void main(String[] args) {
         try {
-            eq(0,(new FancyGUI()).totalDarkArea(1, new int[] {21, 41, 71}, new int[] {21, 41, 71}, new int[] {80, 60, 90}, new int[] {80, 60, 90}),500);
-            eq(1,(new FancyGUI()).totalDarkArea(2, new int[] {1, 21, 41}, new int[] {1, 21, 41}, new int[] {100, 80, 60}, new int[] {100, 80, 60}),400);
-            eq(2,(new FancyGUI()).totalDarkArea(0, new int[] {10}, new int[] {20}, new int[] {19}, new int[] {29}),100);
-            eq(3,(new FancyGUI()).totalDarkArea(1, new int[] {}, new int[] {}, new int[] {}, new int[] {}),0);
+            eq(0,(new NumberMagicEasy()).theNumber("YNYY"),5);
+            eq(1,(new NumberMagicEasy()).theNumber("YNNN"),8);
+            eq(2,(new NumberMagicEasy()).theNumber("NNNN"),16);
+            eq(3,(new NumberMagicEasy()).theNumber("YYYY"),1);
+            eq(4,(new NumberMagicEasy()).theNumber("NYNY"),11);
         } catch( Exception exx) {
             System.err.println(exx);
             exx.printStackTrace(System.err);
@@ -156,7 +177,3 @@ public class FancyGUI {
     static String received = "  rc";
 // END CUT HERE
 }
-
-// BEGIN CUT HERE
-
-// END CUT HERE

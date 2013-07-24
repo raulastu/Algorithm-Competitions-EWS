@@ -1,66 +1,27 @@
+package _320;
 import java.io.*;
-public class _300_A {
+public class _320_C {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 //		Case 0
 		input=
-		"3 "+
-		"-1 2 0 ";
+		"11 ";
 		runTest(input,
-		"1 -1 "+
-		"1 2 "+
-		"1 0 ");
+		"6 ");
 
 //		Case 1
 		input=
-		"4 "+
-		"-1 -2 -3 0 ";
+		"01 ";
 		runTest(input,
-		"1 -1 "+
-		"2 -3 -2 "+
-		"1 0 ");
-		
-//		Case 1
-		input=
-		"5 "+
-		"-1 -2 -3 0 0 ";
-		runTest(input,
-		"1 -1 "+
-		"2 -3 -2 "+
-		"1 0 0");
+		"2 ");
 
-//		Case 1
+//		Case 2
 		input=
-		"6 "+
-		"-1 -3 -1 -1 0 2 ";
+		"1 ";
 		runTest(input,
-		"1 -1 "+
-		"2 -3 -2 "+
-		"1 0 0");
-		
-		input=
-		"6 "+
-		"-1 -3 -1 -1 0 -1 ";
-		runTest(input,
-		"1 -1 "+
-		"2 -3 -2 "+
-		"1 0 0");
+		"1 ");
 
-		input=
-		"4 "+
-		"-1 1 1 0 ";
-		runTest(input,
-		"1 -1 "+
-		"2 -3 -2 "+
-		"1 0 0");
-		
-		input=
-		"8 "+
-		"-1 1 0 0 0 0 0 0 ";
-		runTest(input,
-		"1 -1 "+
-		"2 -3 -2 "+
-		"1 0 0");
+
 	}
 	
 	public void compare(String rcAnswer, String realAnswer){
@@ -89,10 +50,10 @@ public class _300_A {
 		baos.reset();
 //		r.in.
 	}
-	_300_A_Array r;
+	_320_C_Malek_Dance_Club r;
 	ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	private void init() throws Exception{
-		r = new _300_A_Array();
+		r = new _320_C_Malek_Dance_Club();
 		r.out = new PrintWriter(baos);
 		runTestCases();
 		if(testOutput && !failed){
@@ -103,7 +64,7 @@ public class _300_A {
 	private int nroCases=1;
 	private boolean failed=false;
 	public static void main(String[] args) throws Exception {
-		new _300_A().init();
+		new _320_C().init();
 	}
 	
 }

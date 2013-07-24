@@ -1,3 +1,4 @@
+package _330;
 import java.util.*;
 import java.util.regex.*;
 import static java.lang.Math.*;
@@ -7,12 +8,32 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _300_D_Painting_Square {
+public class _330_A_Cakeminator {
 	//->solution screencast http://youtu.be/oHg5SJYRHA0
 	public void solve() {
-		int n = ni();
+		int r = ni(),c=ni();
+		char [][]x=new char[r][c];
+		for (int i = 0; i < r; i++) {
+			x[i]=ns(c);
+		}
 		long res = 0;
-		
+		int nr=0;
+		for (int i = 0; i < r; i++) {
+			if(!new String(x[i]).contains("S")){
+				res+=c;
+				nr++;
+			}
+		}
+		pr(res);
+		for (int i = 0; i < c; i++) {
+			String s="";
+			for (int j = 0; j < r; j++) {
+				s+=x[j][i];
+			}
+			if(!s.contains("S")){
+				res=res+r-nr;
+			}	
+		}
 		out.println(res);
 	}
 	
@@ -25,7 +46,7 @@ public class _300_D_Painting_Square {
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
-	public static void main(String[] args) throws Exception {new _300_D_Painting_Square().run();}
+	public static void main(String[] args) throws Exception {new _330_A_Cakeminator().run();}
 
 	InputStream in=System.in;
 	PrintWriter out=new PrintWriter(System.out);

@@ -1,27 +1,23 @@
+package _320;
 import java.io.*;
-public class _300_D {
+public class _320_E {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 //		Case 0
 		input=
-		"8 "+
-		"1 0 "+
-		"1 1 "+
-		"3 0 "+
-		"3 1 "+
-		"2 0 "+
-		"2 1 "+
-		"3 2 "+
-		"7 2 ";
+		"5 "+
+		"1 2 3 4 5 "+
+		"5 4 3 2 0 ";
 		runTest(input,
-		"1 "+
-		"0 "+
-		"1 "+
-		"1 "+
-		"1 "+
-		"0 "+
-		"0 "+
-		"4 ");
+		"25 ");
+
+//		Case 1
+		input=
+		"6 "+
+		"1 2 3 10 20 30 "+
+		"6 5 4 3 2 0 ";
+		runTest(input,
+		"138 ");
 
 
 	}
@@ -52,10 +48,10 @@ public class _300_D {
 		baos.reset();
 //		r.in.
 	}
-	_300_D_Painting_Square r;
+	_320_E_Kalila_and_Dimna_in_the_Logging_Industry r;
 	ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	private void init() throws Exception{
-		r = new _300_D_Painting_Square();
+		r = new _320_E_Kalila_and_Dimna_in_the_Logging_Industry();
 		r.out = new PrintWriter(baos);
 		runTestCases();
 		if(testOutput && !failed){
@@ -66,7 +62,7 @@ public class _300_D {
 	private int nroCases=1;
 	private boolean failed=false;
 	public static void main(String[] args) throws Exception {
-		new _300_D().init();
+		new _320_E().init();
 	}
 	
 }

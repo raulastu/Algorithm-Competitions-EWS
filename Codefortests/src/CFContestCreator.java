@@ -30,7 +30,7 @@ public class CFContestCreator {
 	
 	public void start() throws Exception{
 		String resourcesPath="/Users/rc/Eclipse-Workspaces/Algorithm-Competitions-EWS/CFProject/src/";
-		createContest(resourcesPath, 300);
+		createContest(resourcesPath, 332);
 //		System.err.println(getIOTests("http://codeforces.com/contest/282/problem/A"));;
 		new AutoCompiler(resourcesPath);
 	}
@@ -157,6 +157,8 @@ public class CFContestCreator {
 	private void fixNames(String[] names){
 		for (int i = 0; i < names.length; i++) {
 			names[i]=names[i].replace(" ", "_");
+			names[i]=names[i].replaceAll("[^A-Za-z_]", "");
+			System.err.println(names[i]);
 		}
 	}
 	
@@ -172,7 +174,9 @@ public class CFContestCreator {
 			}
 			if(inTable && line.trim().contains("</table>")){
 				inTable=false;
-				line = line.replace("&nbsp;", " ");
+				
+				line = line.replaceAll("&nbsp;", " ");
+				
 				rc+="</tr>";
 				rc+=line+"\n";
 				break;
@@ -203,7 +207,6 @@ public class CFContestCreator {
 		String[] rc= new String[list.getLength()];
 		for(int i =0; i<list.getLength();i++){
 			rc[i]=list.item(i).getTextContent();
-			System.err.println(list.item(i).getTextContent());
 		}
 //		System.err.println(list);
 		return rc;

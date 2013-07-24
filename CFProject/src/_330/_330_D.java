@@ -1,18 +1,23 @@
+package _330;
 import java.io.*;
-public class _300_E {
+public class _330_D {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 //		Case 0
 		input=
-		"2 "+
-		"1000 1000 ";
+		"5 7 "+
+		"000E0T3 "+
+		"T0TT0T0 "+
+		"010T0T0 "+
+		"2T0T0T0 "+
+		"0T0S000 ";
 		runTest(input,
-		"2000 ");
+		"3 ");
 
 //		Case 1
 		input=
-		"1 "+
-		"2 ";
+		"1 4 "+
+		"SE23 ";
 		runTest(input,
 		"2 ");
 
@@ -45,10 +50,10 @@ public class _300_E {
 		baos.reset();
 //		r.in.
 	}
-	_300_E_Empire_Strikes_Back r;
+	_330_D_Biridian_Forest r;
 	ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	private void init() throws Exception{
-		r = new _300_E_Empire_Strikes_Back();
+		r = new _330_D_Biridian_Forest();
 		r.out = new PrintWriter(baos);
 		runTestCases();
 		if(testOutput && !failed){
@@ -59,7 +64,7 @@ public class _300_E {
 	private int nroCases=1;
 	private boolean failed=false;
 	public static void main(String[] args) throws Exception {
-		new _300_E().init();
+		new _330_D().init();
 	}
 	
 }

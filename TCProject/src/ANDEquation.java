@@ -7,10 +7,23 @@ import static java.util.Collections.*;
 import java.util.*;
 
 
-public class TwoWords {
-    public String howMany(String statement, String word1, String word2) {
-        String res;
-        return res;
+public class ANDEquation {
+    public int restoreY(int[] A) {
+    	for (int i = 0; i < A.length; i++) {
+    		int r=-1;
+    		if(i==0)
+    			r=A[1];
+    		else 
+    			r=A[0];
+			for (int j = 1; j < A.length; j++) {
+				if(j==i)continue;
+				if(i==0 && j==1)continue;
+				r&=A[j];
+			}
+			if(A[i]==r)
+				return r;
+		}
+        return -1;
     }
 
 // BEGIN CUT HERE
@@ -19,15 +32,24 @@ public class TwoWords {
 
     public static void main(String[] args) {
         try {
-            eq(0,(new TwoWords()).howMany("yello??taxi", "yellow", "taxi"),"both");
-            eq(1,(new TwoWords()).howMany("?ellowtaxi", "yell", "l?w"),"one");
-            eq(2,(new TwoWords()).howMany("tha?isunbelievable", "han?y", "?th?"),"none");
-            eq(3,(new TwoWords()).howMany("secondfirst", "second", "first"),"both");
-            eq(4,(new TwoWords()).howMany("me?sa?e", "?ceage", "essay"),"one");
-            eq(5,(new TwoWords()).howMany("?", "??", "???"),"none");
-            eq(6,(new TwoWords()).howMany("hello", "h?", "ll?"),"both");
+            eq(0,(new ANDEquation()).restoreY(new int[] {1, 3, 5}
+               ),1);
+            eq(0,(new ANDEquation()).restoreY(new int[] {1, 1}
+                    ),1);
+            eq(1,(new ANDEquation()).restoreY(new int[] {31, 7}
+               ),-1);
+            eq(2,(new ANDEquation()).restoreY(new int[] {31, 7, 7}
+               ),7);
+            eq(3,(new ANDEquation()).restoreY(new int[] {1,0,0,1,0,1,0,1,0,0,0,0,0,0,0,1,0,0,
+                0,0,0,0,0,0,1,0,1,0,1,1,0,0,0,1}),0);
+            eq(4,(new ANDEquation()).restoreY(new int[] {191411,256951,191411,191411,191411,256951,195507,191411,192435,191411,
+                191411,195511,191419,191411,256947,191415,191475,195579,191415,191411,
+                191483,191411,191419,191475,256947,191411,191411,191411,191419,256947,
+                191411,191411,191411}),191411);
+            eq(5,(new ANDEquation()).restoreY(new int[] {1362,1066,1659,2010,1912,1720,1851,1593,1799,1805,1139,1493,1141,1163,1211}),-1);
+            eq(6,(new ANDEquation()).restoreY(new int[] {2, 3, 7, 19}),-1);
         } catch( Exception exx) {
-            System.err.println(exx);d
+            System.err.println(exx);
             exx.printStackTrace(System.err);
         }
     }
@@ -158,8 +180,7 @@ public class TwoWords {
     static String expected = "  expe";
     static String received = "  rc";
 // END CUT HERE
-}
 
-// BEGIN CUT HERE
+}
 
 // END CUT HERE

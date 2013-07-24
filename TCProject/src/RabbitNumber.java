@@ -7,10 +7,10 @@ import static java.util.Collections.*;
 import java.util.*;
 
 
-public class TransformArray {
-    public int doTransform(int[] elements) {
+public class RabbitNumber {
+    public int theCount(int low, int high) {
         int res;
-        return res;
+        return 1;
     }
 
 // BEGIN CUT HERE
@@ -19,10 +19,11 @@ public class TransformArray {
 
     public static void main(String[] args) {
         try {
-            eq(0,(new TransformArray()).doTransform(new int[] {3,2,3,2}),5);
-            eq(1,(new TransformArray()).doTransform(new int[] {3}),0);
-            eq(2,(new TransformArray()).doTransform(new int[] {1,2,3,4}),4);
-            eq(3,(new TransformArray()).doTransform(new int[] {10,6,3,7,7,9,5,1,8,4}),27);
+            eq(0,(new RabbitNumber()).theCount(22, 22),1);
+            eq(1,(new RabbitNumber()).theCount(484, 484),0);
+            eq(2,(new RabbitNumber()).theCount(1, 58),12);
+            eq(3,(new RabbitNumber()).theCount(58, 484),24);
+            eq(4,(new RabbitNumber()).theCount(1000000000, 1000000000),1);
         } catch( Exception exx) {
             System.err.println(exx);
             exx.printStackTrace(System.err);
@@ -156,7 +157,3 @@ public class TransformArray {
     static String received = "  rc";
 // END CUT HERE
 }
-
-// BEGIN CUT HERE
-
-// END CUT HERE

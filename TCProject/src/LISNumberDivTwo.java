@@ -7,10 +7,15 @@ import static java.util.Collections.*;
 import java.util.*;
 
 
-public class TraditionalMarriage {
-    public int getLuckyItems(String[] properties, int[] weight) {
-        int res;
-        return res;
+public class LISNumberDivTwo {
+    public int calculate(int[] seq) {
+        int res=0;
+        for (int i = 1; i < seq.length; i++) {
+			if(seq[i]<=seq[i-1]){
+				res++;
+			}
+		}
+        return res+1;
     }
 
 // BEGIN CUT HERE
@@ -19,10 +24,11 @@ public class TraditionalMarriage {
 
     public static void main(String[] args) {
         try {
-            eq(0,(new TraditionalMarriage()).getLuckyItems(new String[] {"blue,suede,old","red","white,borrowed","new,white,cool,good,anything","new"}, new int[] {10,4,15,3,4}),28);
-            eq(1,(new TraditionalMarriage()).getLuckyItems(new String[] {"new,borrowed,blue,old,nice"}, new int[] {1}),1);
-            eq(2,(new TraditionalMarriage()).getLuckyItems(new String[] {"old","new","borrowed","blue","old,new,borrowed,blue"}, new int[] {1,1,1,1,5}),4);
-            eq(3,(new TraditionalMarriage()).getLuckyItems(new String[] {"new","old,red","borrowed"}, new int[] {1,2,3}),-1);
+            eq(0,(new LISNumberDivTwo()).calculate(new int[] {1, 4, 4, 2, 6, 3}),4);
+            eq(1,(new LISNumberDivTwo()).calculate(new int[] {5, 8, 9, 12, 16, 32, 50}),1);
+            eq(2,(new LISNumberDivTwo()).calculate(new int[] {1, 1, 9, 9, 2, 2, 3, 3}),6);
+            eq(3,(new LISNumberDivTwo()).calculate(new int[] {50, 40, 30, 20, 10}),5);
+            eq(4,(new LISNumberDivTwo()).calculate(new int[] {42}),1);
         } catch( Exception exx) {
             System.err.println(exx);
             exx.printStackTrace(System.err);
@@ -156,7 +162,3 @@ public class TraditionalMarriage {
     static String received = "  rc";
 // END CUT HERE
 }
-
-// BEGIN CUT HERE
-
-// END CUT HERE

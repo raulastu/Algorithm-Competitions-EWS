@@ -1,3 +1,4 @@
+package _320;
 import java.util.*;
 import java.util.regex.*;
 import static java.lang.Math.*;
@@ -7,40 +8,13 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _300_C_Beautiful_Numbers {
+public class _320_C_Malek_Dance_Club {
 	//->solution screencast http://youtu.be/oHg5SJYRHA0
 	public void solve() {
-		int a = ni(), b= ni(), n=ni();
-		pr(isGood(11,a,b));
-		pr(ise(111,a,b));
-		for (int i = 1; i <= 11111; i++) {
-			if(ise(i,a,b)){
-				pr(i);
-			}
-		}
+		int n = ni();
 		long res = 0;
 		
 		out.println(res);
-	}
-	int sum(int x){
-		int r=0;
-		while(x>0){
-			r+=x%10;
-			x/=10;
-		}
-		return r;
-	}
-	boolean ise(int x,int a, int b){
-		return isGood(sum(x),a,b);
-	}
-	
-	boolean isGood(int x, int a, int b){
-		while(x>0){
-			if(x%10!=a && x%10!=b)
-				return false;
-			x/=10;
-		}
-		return true;
 	}
 	
 	
@@ -52,7 +26,7 @@ public class _300_C_Beautiful_Numbers {
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
-	public static void main(String[] args) throws Exception {new _300_C_Beautiful_Numbers().run();}
+	public static void main(String[] args) throws Exception {new _320_C_Malek_Dance_Club().run();}
 
 	InputStream in=System.in;
 	PrintWriter out=new PrintWriter(System.out);

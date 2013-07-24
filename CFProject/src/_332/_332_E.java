@@ -1,18 +1,23 @@
+package _332;
 import java.io.*;
-public class _300_C {
+public class _332_E {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 //		Case 0
 		input=
-		"1 3 3 ";
+		"abacaba "+
+		"aba "+
+		"6 ";
 		runTest(input,
-		"1 ");
+		"100001 ");
 
 //		Case 1
 		input=
-		"2 3 10 ";
+		"abacaba "+
+		"aba "+
+		"3 ";
 		runTest(input,
-		"165 ");
+		"0 ");
 
 
 	}
@@ -43,10 +48,10 @@ public class _300_C {
 		baos.reset();
 //		r.in.
 	}
-	_300_C_Beautiful_Numbers r;
+	_332_E_Binary_Key r;
 	ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	private void init() throws Exception{
-		r = new _300_C_Beautiful_Numbers();
+		r = new _332_E_Binary_Key();
 		r.out = new PrintWriter(baos);
 		runTestCases();
 		if(testOutput && !failed){
@@ -57,7 +62,7 @@ public class _300_C {
 	private int nroCases=1;
 	private boolean failed=false;
 	public static void main(String[] args) throws Exception {
-		new _300_C().init();
+		new _332_E().init();
 	}
 	
 }

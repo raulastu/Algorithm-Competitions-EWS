@@ -1,5 +1,5 @@
+package _330;
 import java.util.*;
-
 import java.util.regex.*;
 import static java.lang.Math.*;
 import static java.util.Arrays.*;
@@ -8,51 +8,52 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _300_A_Array {
+public class _330_C_Purification {
 	//->solution screencast http://youtu.be/oHg5SJYRHA0
 	public void solve() {
 		int n = ni();
-		int []ar=na(n);
-		int z=0;
-		int negatives=0,pos=0;
-		ArrayList<Integer> ar2 = new ArrayList<Integer>();
-		for (int i = 0; i < ar.length; i++) {
-			if(ar[i]==0)
-				z++;
-			else
-				ar2.add(ar[i]);
-			if(ar[i]<0)
-				negatives++;
+		char [][]grid= new char[n][n];
+		for (int i = 0; i < n; i++) {
+			grid[i]=ns(n);
 		}
-		ar = new int[ar2.size()];
-		for (int i = 0; i < ar2.size(); i++) {
-			ar[i]=ar2.get(i);
-		}
-		sort(ar);
-		out.print(1+" ");
-		out.println(ar[0]);
-		
-		if(negatives%2==0){
-			out.print(ar.length-2);
-			for (int i = 2; i < ar.length; i++) {
-				out.print(" "+ar[i]);
+		String s="";
+		int r = 1;
+		for (int i = 0; i < n; i++) {
+			int ok=0;
+			for (int j = 0; j < n; j++) {
+				if(grid[i][j]=='.'){
+					s+=(i+1)+" "+(j+1)+"\n";
+					ok=1;
+					break;
+				}
 			}
-		}else{
-			out.print(ar.length-1);
-			for (int i = 1; i < ar.length; i++) {
-				out.print(" "+ar[i]);
+			r&=ok;
+		}
+//		pr(r);
+		if(r==1){
+			out.print(s);
+			return;
+		}
+		r=1;
+		s="";
+		for (int i = 0; i < n; i++) {
+			int ok=0;
+			for (int j = 0; j < n; j++) {
+				if(grid[j][i]=='.'){
+					s+=(j+1)+" "+(i+1)+"\n";
+					ok=1;
+					break;
+				}
 			}
+			r&=ok;
 		}
-		out.println();
-		out.print(z+(negatives%2==0?1:0));
-		if(negatives%2==0)
-			out.print(" "+ar[1]);
-		for (int i = 0; i < z; i++) {
-			out.print(" "+0);
+//		pr(s);
+		if(r==1){
+			out.print(s);
+			return;
 		}
-		out.println();
+		out.print(-1);
 	}
-	
 	
 	// IO methods
 		
@@ -62,7 +63,7 @@ public class _300_A_Array {
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
-	public static void main(String[] args) throws Exception {new _300_A_Array().run();}
+	public static void main(String[] args) throws Exception {new _330_C_Purification().run();}
 
 	InputStream in=System.in;
 	PrintWriter out=new PrintWriter(System.out);
