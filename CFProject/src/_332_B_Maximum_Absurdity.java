@@ -1,4 +1,3 @@
-package _332;
 import java.util.*;
 import java.util.regex.*;
 import static java.lang.Math.*;
@@ -13,78 +12,50 @@ public class _332_B_Maximum_Absurdity {
 	public void solve() {
 		int n = ni(), k=ni();
 		int []s= na(n);
-		pr(s);
-		node [] totals = new node [n-k+1];
-		long first = 0;
-		for (int i = n-1; i >=n-k; i--) {
-			first+=s[i];
-		}
-		totals[n-k]=new node(first,n-k);
-//		pr(totals);
-		for (int i = n-k-1; i>=0; i--) {
-//			pr(i);
-			totals[i]= new node(totals[i+1].a+s[i]-s[i+k],i);
-		}
-		shuffle(totals);
-		Arrays.sort(totals, new Comparator<node>() {
-			@Override
-			public int compare(node o1, node o2) {
-				if(o1.a==o2.a){
-					return o1.idx-o2.idx;
-				}
-				if(o1.a>o2.a)
-					return -1;
-				else 
-					return 1;
-//				return ;
-			}
-		});
-		pr(totals);
-		long max=0;
-		int a=1;
-		int b=k+1;
-		node ax = totals[0];
-		for (int i = 1; i < totals.length; i++) {
-			node bx = totals[i];
-			if(abs(ax.idx-bx.idx)>=k){
-				out.println((min(ax.idx,bx.idx)+1)+" "+(max(ax.idx,bx.idx)+1));
-				return;
-			} 
-		}
 		
-		pr(totals);
-//		for (int i = 0; i < totals.length; i++) {
-////			totals[i];
-//			for (int j = i+k; j < totals.length; j++) {
-//				long ss = totals[i]+totals[j];
-////				pr(ss);
-//				if(ss>max){
-//					max=ss;
-//					a=i+1;
-//					b=j+1;
-//				}
-//			}
-//		}
-		out.println(a+" "+b);
+		long [] cum = new long [n];
+		cum[0]=s[0];
+		for (int i = 1; i< n; i++) {
+			cum[i] = cum[i-1]+s[i];
+		}
+		pr(cum);
+		this.cum=cum;
+		node ansIdx = new node(n-2*k,n-k);
+		node ansCum = new node(sum(n-2*k, n-k-1),sum(n-k,n-1));
+		long cumb= cum[n-1]-cum[n-k-1];
+		node max=new node(sum(n-k,n-1),n-k);//val,idx
+//		long maxB=ansCum.b;
+		pr(cum, ansIdx, ansCum, max);
+		for (int i = n-k-1; i >=k; i--) {
+			long cur = sum(i,i+k-1);
+			if(cur>=max.a){
+				max.a=cur;
+				max.b=i;
+			}
+			pr(max);
+			if(ansCum.a+ansCum.b <= sum(i-k,i-1)+max.a){
+				ansCum.a=sum(i-k,i-1);
+				ansCum.b=max.a;
+				ansIdx.a=i-k;
+				ansIdx.b=max.b;
+			}
+		}
+		out.println((ansIdx.a+1)+" "+(ansIdx.b+1));
 	}
-	void shuffle(node ar[]){
-        for (int i = ar.length-1; i>=0;i--){
-                int j = (int)(Math.random()*i);
-                	node t = ar[i];
-	      	      ar[i]=ar[j];
-	      	      ar[j]=t;
-        }    
-    }
+	long[] cum;
+	long sum( int a, int b){
+		return a<=0?cum[b]:cum[b]-cum[a-1];
+	}
 	class node {
-		long a; int idx;
-		public node(long a, int b) {
+		long a; long b;
+		public node(long a, long b) {
 			this.a=a;
-			this.idx=b;
+			this.b=b;
 		}
 		@Override
 		public String toString() {
 			// TODO Auto-generated method stub
-			return a+" "+idx;
+			return a+" "+b;
 		}
 		
 	}
