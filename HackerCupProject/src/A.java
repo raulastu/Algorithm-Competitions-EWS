@@ -15,64 +15,74 @@ public class A {
 	long mod=1000000007;
 	long[]fact;
 	public void solve() {
-		fact=new long[10001];
-		fact[1]=fact[0]=1;
-		for (int i = 2; i < fact.length; i++) {
-			fact[i]=(i*fact[i-1])%mod;
-		}
-		print(fact);
-		int r = readInt();
-		for (int n = 1; n <= r; n++) {
-			int []rc=readIntArray();
-			int N=rc[0];
-			int K=rc[1];
-//			int N=10000;
-//			int K=5000-1;
-			arr=readIntArray();
-//			arr=readIntArray2();
-			sort(arr);
-			int xi=1;
-			long res=0;
-			
-			memo=new int[N+1][K+1];
-			for (int i = arr.length-1; i>=0; i--) {
-				long rx=fact(N-xi,K-1);
-				res=(res+arr[i]*rx)%mod;
-				if(N-xi==K-1)
-					break;
-				xi++;
+		int N  = parseInt(in.nextLine());
+		for (int i = 0; i < N; i++) {
+			int C = parseInt(in.nextLine());
+			int a[][]=new int[C*3][C*3];
+			char ax[][]=new char[C][C];
+			int start=-1, rows=0, row=-1;
+			for (int j = 0; j < C; j++) {
+				ax[j] = in.nextLine().toCharArray();
+				if(start!=-1 && rows!=-1){
+					continue;
+				}
+				for (int k = 0; k < ax.length; k++) {
+					if(ax[j][k]=='#' && start==-1){
+						row=j;
+						start=k;
+						rows=1;
+					}else if(ax[j][k]=='#'){
+						rows++;
+					}else{
+						
+					}
+				}
+
 			}
-			out.println("Case #"+n+": "+res);
-			System.out.println("Case #"+n+": "+res);
+//			if(rows>C-j){
+//				out.print("NO");
+//			}
+			pr(start,rows,row);
+			for (int j = row; j < rows; j++) {
+				for (int ix = start; ix < start+rows; ix++) {
+					a[j][ix]=1;
+				}
+			}
+			for (int j = 0; j < ax.length; j++) {
+				for (int k = 0; k < ax.length; k++) {
+					if(ax[j][k]=='#'){
+						a[j][k]=a[j][k]==1?0:1;
+					}
+				}
+			}
+			boolean no=false;
+			for (int j = 0; j < a.length; j++) {
+				for (int j2 = 0; j2 < ax.length; j2++) {
+					if(a[j][j2]==1){
+						no=true;
+				
+						j=a.length;
+						break;
+					}
+				}
+			}
+			if(no){
+				out.format("Case #%d: %s\n",(i+1),"NO");
+			}else{
+				out.format("Case #%d: %s\n",(i+1),"YES");
+			}
+//			pr(0^1)
+			pr(a);
+			
 		}
 	}
-	long fact(int N,int M){
-		if(N==M)return 1;
-		long r = fact[N]/((fact[M]*(fact[N-M]))%mod);
-		return r;
-	}
-	int memo[][];
-	int arr[];
 	
-	long bin(int N, int K, int i){
-		if(memo[N][K]==-1){
-			if(N==K)return arr[i]%mod;
-			if(K==1)return (((long)N)*(long)arr[i])%mod;
-			long r = bin(N-1,K-1,i)+bin(N-1,K,i);
-//			print(N,K,i,r);
-			memo[N][K]=(int)(r%mod);
-		}
-//		r=r*number;
-//			return r;
-		return memo[N][K];
-	}
 	A(){
-//		in = new Scanner(System.in);
-//		out = new PrintWriter(System.out);
 		try {
 			
-//			in = new Scanner(new File("A_in.txt"));
-			in = new Scanner(new File("card_game (3).txt"));
+//			in = new Scanner(new File("a_in.txt"));
+			in = new Scanner(new File("square_detector.txt"));
+			
 			out = new PrintWriter(new File("A_out.txt"));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -110,7 +120,7 @@ public class A {
 		return r;
 	}
 	
-	static void print(Object... ob) {
+	static void pr(Object... ob) {
 		System.out.println(Arrays.deepToString(ob).replace("],", "],\n"));
 	}
 }

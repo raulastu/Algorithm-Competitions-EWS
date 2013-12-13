@@ -12,6 +12,6 @@ public class Fastexpo {
 	}
 
 	public static void main(String[] args) {
-
+		
 	}
 }

@@ -81,7 +81,7 @@ public class BIT {
 		}
 		return ix;
 	}
-	static void pr(Object... ob) {
+	public static void pr(Object... ob) {
 			System.out.println(Arrays.deepToString(ob).replace("],", "],\n"));
 	}
 
