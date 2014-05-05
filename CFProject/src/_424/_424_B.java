@@ -1,20 +1,44 @@
+package _424;
 import java.io.*;
-public class _369_E {
+public class _424_B {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 //		Case 0
 		input=
-		"3 3 "+
-		"1 3 "+
-		"4 5 "+
-		"6 7 "+
-		"3 1 4 7 "+
-		"2 4 5 "+
-		"1 8 ";
+		"4 999998 "+
+		"1 1 1 "+
+		"2 2 1 "+
+		"3 3 1 "+
+		"2 -2 1 ";
 		runTest(input,
-		"3 "+
-		"1 "+
-		"0 ");
+		"2.8284271 ");
+
+//		Case 1
+		input=
+		"4 999998 "+
+		"1 1 2 "+
+		"2 2 1 "+
+		"3 3 1 "+
+		"2 -2 1 ";
+		runTest(input,
+		"1.4142136 ");
+
+//		Case 2
+		input=
+		"2 1 "+
+		"1 1 999997 "+
+		"2 2 1 ";
+		runTest(input,
+		"-1 ");
+		
+//		Case 2
+		input=
+		"2 1 "+
+		"1000 1000 999999 "+
+		"2 2 1 ";
+		runTest(input,
+		"-1 ");
+
 
 
 	}
@@ -45,10 +69,10 @@ public class _369_E {
 		baos.reset();
 //		r.in.
 	}
-	_369_E_Valera_and_Queries r;
+	_424_B_Megacity r;
 	ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	private void init() throws Exception{
-		r = new _369_E_Valera_and_Queries();
+		r = new _424_B_Megacity();
 		r.out = new PrintWriter(baos);
 		runTestCases();
 		if(testOutput && !failed){
@@ -59,7 +83,7 @@ public class _369_E {
 	private int nroCases=1;
 	private boolean failed=false;
 	public static void main(String[] args) throws Exception {
-		new _369_E().init();
+		new _424_B().init();
 	}
 	
 }

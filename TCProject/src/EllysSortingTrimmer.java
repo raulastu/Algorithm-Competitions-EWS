@@ -7,23 +7,14 @@ import static java.util.Collections.*;
 import java.util.*;
 
 
-public class ErasingCharacters {
-    public String simulate(String s) {
+public class EllysSortingTrimmer {
+    public String getMin(String S, int L) {
         String res;
-        StringBuilder sb = new StringBuilder(s);
-        boolean ok = true;
-        while(ok){
-        	ok=false;
-        	for (int i = 0; i +1 < sb.length(); i++) {
-				if(sb.charAt(i)==sb.charAt(i+1)){
-					sb = sb.replace(i, i+2,"");
-					ok = true;
-//					pr(sb);
-					break;
-				}
-			}
-        }
-        return sb.toString();
+        char [] a = S.toCharArray();
+        for (int i = S.length()-L; i >=0; i--) {
+			Arrays.sort(a,i,i+L);
+		}
+        return new String(a).substring(0,L);
     }
 
 // BEGIN CUT HERE
@@ -32,13 +23,13 @@ public class ErasingCharacters {
 
     public static void main(String[] args) {
         try {
-            eq(0,(new ErasingCharacters()).simulate("cieeilll"),"cl");
-            eq(1,(new ErasingCharacters()).simulate("topcoder"),"topcoder");
-            eq(2,(new ErasingCharacters()).simulate("abcdefghijklmnopqrstuvwxyyxwvutsrqponmlkjihgfedcba"),"");
-            eq(3,(new ErasingCharacters()).simulate("bacaabaccbaaccabbcabbacabcbba"),"bacbaca");
-            eq(4,(new ErasingCharacters()).simulate("eel"),"l");
-            eq(4,(new ErasingCharacters()).simulate("ee"),"");
-            eq(4,(new ErasingCharacters()).simulate("eleeele"),"");
+            eq(0,(new EllysSortingTrimmer()).getMin("ABRACADABRA", 5),"AAAAA");
+            eq(1,(new EllysSortingTrimmer()).getMin("ESPRIT", 3),"EIP");
+            eq(2,(new EllysSortingTrimmer()).getMin("BAZINGA", 7),"AABGINZ");
+            eq(3,(new EllysSortingTrimmer()).getMin("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 13),"ABCDEFGHIJKLM");
+            eq(4,(new EllysSortingTrimmer()).getMin("GOODLUCKANDHAVEFUN", 10),"AACDDEFGHK");
+            eq(5,(new EllysSortingTrimmer()).getMin("AAAWDIUAOIWDESBEAIWODJAWDBPOAWDUISAWDOOPAWD", 21),"AAAAAAAAABBDDDDDDDEEI");
+            eq(6,(new EllysSortingTrimmer()).getMin("TOPCODER", 3),"CDT");
         } catch( Exception exx) {
             System.err.println(exx);
             exx.printStackTrace(System.err);

@@ -7,13 +7,23 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _369_D_Valera_and_Fools {
+public class _426_A_Sereja_and_Mugs {
 	//->solution screencast http://youtu.be/oHg5SJYRHA0
 	public void solve() {
-		int n = ni();
-		long res = 0;
+		int n = ni(), k=ni();
+		int ar[] = na(n);
+		sort(ar);
+		int x=0;
+		for (int i = 0; i < n-1; i++) {
+			x+=ar[i];
+		}
+		if(x<=k)
+			out.println("YES");
+		else
+			out.println("NO");
+//		long res = 0;
 		
-		out.println(res);
+		
 	}
 	
 	
@@ -25,7 +35,7 @@ public class _369_D_Valera_and_Fools {
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
-	public static void main(String[] args) throws Exception {new _369_D_Valera_and_Fools().run();}
+	public static void main(String[] args) throws Exception {new _426_A_Sereja_and_Mugs().run();}
 
 	InputStream in=System.in;
 	PrintWriter out=new PrintWriter(System.out);

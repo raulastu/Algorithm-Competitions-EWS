@@ -1,34 +1,31 @@
+package _424;
 import java.io.*;
-public class _369_D {
+public class _424_A {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 //		Case 0
 		input=
-		"3 3 "+
-		"50 50 50 ";
+		"4 "+
+		"xxXx ";
 		runTest(input,
-		"7 ");
+		"1 "+
+		"XxXx ");
 
 //		Case 1
 		input=
-		"1 1 "+
-		"100 ";
+		"2 "+
+		"XX ";
 		runTest(input,
-		"1 ");
+		"1 "+
+		"xX ");
 
 //		Case 2
 		input=
-		"2 1 "+
-		"100 100 ";
+		"6 "+
+		"xXXxXx ";
 		runTest(input,
-		"2 ");
-
-//		Case 3
-		input=
-		"3 3 "+
-		"0 0 0 ";
-		runTest(input,
-		"1 ");
+		"0 "+
+		"xXXxXx ");
 
 
 	}
@@ -59,10 +56,10 @@ public class _369_D {
 		baos.reset();
 //		r.in.
 	}
-	_369_D_Valera_and_Fools r;
+	_424_A_Squats r;
 	ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	private void init() throws Exception{
-		r = new _369_D_Valera_and_Fools();
+		r = new _424_A_Squats();
 		r.out = new PrintWriter(baos);
 		runTestCases();
 		if(testOutput && !failed){
@@ -73,7 +70,7 @@ public class _369_D {
 	private int nroCases=1;
 	private boolean failed=false;
 	public static void main(String[] args) throws Exception {
-		new _369_D().init();
+		new _424_A().init();
 	}
 	
 }

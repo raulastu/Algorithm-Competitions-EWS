@@ -1,34 +1,27 @@
 import java.io.*;
-public class _369_A {
+public class _426_A {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 //		Case 0
 		input=
-		"3 1 1 "+
-		"1 2 1 ";
+		"3 4 "+
+		"1 1 1 ";
 		runTest(input,
-		"1 ");
+		"YES ");
 
 //		Case 1
 		input=
-		"4 3 1 "+
-		"1 1 1 1 ";
+		"3 4 "+
+		"3 1 3 ";
 		runTest(input,
-		"1 ");
+		"YES ");
 
 //		Case 2
 		input=
-		"3 1 2 "+
-		"2 2 2 ";
+		"3 4 "+
+		"4 4 4 ";
 		runTest(input,
-		"0 ");
-
-//		Case 3
-		input=
-		"8 2 2 "+
-		"1 2 1 2 1 2 1 2 ";
-		runTest(input,
-		"4 ");
+		"NO ");
 
 
 	}
@@ -59,10 +52,10 @@ public class _369_A {
 		baos.reset();
 //		r.in.
 	}
-	_369_A_Valera_and_Plates r;
+	_426_A_Sereja_and_Mugs r;
 	ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	private void init() throws Exception{
-		r = new _369_A_Valera_and_Plates();
+		r = new _426_A_Sereja_and_Mugs();
 		r.out = new PrintWriter(baos);
 		runTestCases();
 		if(testOutput && !failed){
@@ -73,7 +66,7 @@ public class _369_A {
 	private int nroCases=1;
 	private boolean failed=false;
 	public static void main(String[] args) throws Exception {
-		new _369_A().init();
+		new _426_A().init();
 	}
 	
 }

@@ -1,28 +1,20 @@
+package _424;
 import java.io.*;
-public class _369_B {
+public class _424_E {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 //		Case 0
 		input=
-		"5 3 1 3 13 9 ";
+		"6 "+
+		"RGB "+
+		"GRG "+
+		"BBB "+
+		"GGR "+
+		"BRG "+
+		"BRB ";
 		runTest(input,
-		"2 3 2 3 3  ");
+		"17.119213696601992 ");
 
-//		Case 1
-		input=
-		"5 3 1 3 15 9 ";
-		runTest(input,
-		"3 3 3 3 3  ");
-//		Case 1
-		input=
-		"1 1 1 200 100 100 ";
-		runTest(input,
-		"100 ");
-		
-		input=
-		"2 1 1 200 102 90 ";
-		runTest(input,
-		"100 1");
 
 	}
 	
@@ -52,10 +44,10 @@ public class _369_B {
 		baos.reset();
 //		r.in.
 	}
-	_369_B_Valera_and_Contest r;
+	_424_E_Colored_Jenga r;
 	ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	private void init() throws Exception{
-		r = new _369_B_Valera_and_Contest();
+		r = new _424_E_Colored_Jenga();
 		r.out = new PrintWriter(baos);
 		runTestCases();
 		if(testOutput && !failed){
@@ -66,7 +58,7 @@ public class _369_B {
 	private int nroCases=1;
 	private boolean failed=false;
 	public static void main(String[] args) throws Exception {
-		new _369_B().init();
+		new _424_E().init();
 	}
 	
 }

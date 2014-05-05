@@ -7,25 +7,13 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _369_B_Valera_and_Contest {
+public class _426_E_Sereja_and_Two_Sequences {
 	//->solution screencast http://youtu.be/oHg5SJYRHA0
 	public void solve() {
-		int n = ni(), k= ni(), l=ni(), r=ni(), sall=ni(),sk=ni();
+		int n = ni();
+		long res = 0;
 		
-		r=sall-sk;
-		int ri=n-k;
-		for (int i = 0; i < k; i++) {
-			int x = sk/(k-i);
-			sk-=x;
-			out.print(x+" ");
-		}
-		for (int i = 0; i < n-k; i++) {
-			int x = r/(ri-i);
-			r-=x;
-			out.print(x+" ");
-		}
-		
-//		out.println();
+		out.println(res);
 	}
 	
 	
@@ -37,7 +25,7 @@ public class _369_B_Valera_and_Contest {
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
-	public static void main(String[] args) throws Exception {new _369_B_Valera_and_Contest().run();}
+	public static void main(String[] args) throws Exception {new _426_E_Sereja_and_Two_Sequences().run();}
 
 	InputStream in=System.in;
 	PrintWriter out=new PrintWriter(System.out);

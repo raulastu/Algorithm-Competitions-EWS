@@ -1,3 +1,4 @@
+package _424;
 import java.util.*;
 import java.util.regex.*;
 import static java.lang.Math.*;
@@ -7,26 +8,39 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _369_A_Valera_and_Plates {
+public class _424_C_Magic_Formulas {
 	//->solution screencast http://youtu.be/oHg5SJYRHA0
 	public void solve() {
-		int n = ni(), m=ni(),k=ni();
-		int ab[]=new int[3];
-		for (int i = 0; i < n; i++) {
-			int xx = ni();
-			if(xx==2){
-				if(ab[1]<ab[2]){
-					ab[1]++;
-				}else
-					ab[2]++;
-			}else
-				ab[xx]++;
-			
+		int n = ni();
+		int []ar = na(n);
+		int []arr=new int[n];
+		for (int i = 0; i < arr.length; i++) {
+			arr[i]=q(ar[i],i+1,n);
 		}
-		pr(ab);
-		int r = max(0,ab[1]-m)+max(0,ab[2]-k);
-		
+		pr(arr);
+		int r=arr[0];
+		String rr="";
+		for (int i = 1; i < ar.length; i++) {
+			String a=r+"^"+arr[i];
+			r^=arr[i];
+			rr+=a+"="+r+", ";
+		}
+		pr(rr);
 		out.println(r);
+	}
+	int q(int x, int i, int n){
+		int r=x;
+		String s = "";
+		int rr=-1;
+		for (int j = 1; j <= n; j++) {
+			String a=r+"^"+"("+i+"%"+j+")"+(i%j);
+			if(rr==-1)
+			r^=(i%j);
+//			if
+			s+=a+"="+r+" ";
+		}
+		pr(x,s,r);
+		return r;
 	}
 	
 	
@@ -38,7 +52,7 @@ public class _369_A_Valera_and_Plates {
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
-	public static void main(String[] args) throws Exception {new _369_A_Valera_and_Plates().run();}
+	public static void main(String[] args) throws Exception {new _424_C_Magic_Formulas().run();}
 
 	InputStream in=System.in;
 	PrintWriter out=new PrintWriter(System.out);

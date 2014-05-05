@@ -7,19 +7,46 @@ import static java.util.Collections.*;
 import java.util.*;
 
 
-public class FoxAndFencingEasy {
-    public String WhoCanWin(int mov1, int mov2, int d) {
+public class EllysScrabble {
+    public String getMin(String letters, int maxDistance) {
         String res;
-//        pr(mov1*2);
-        if(d<=mov1)
-        	return "Ciel";
-        if(mov1>2*mov2)
-        	return "Ciel";
-//        if(mov1==mov2)
-//        	return "Draw";
-        if(mov1*2<mov2)
-        	return "Liss";
-        return "Draw";
+        int [] r=new int[letters.length()];
+        fill(r,0);
+        char[] c=letters.toCharArray();
+        for (int ll = 0; ll < 26; ll++) {
+			char l = (char)('A'+ll);
+			for (int i = 0; i < c.length; i++) {
+				if(c[i]==l){
+					for (int j = max(0,i-maxDistance-r[i]); j < i; j++) {
+						if(c[j]>c[i]){
+							boolean possible=true;
+							for (int j2 = j; j2 < i; j2++) {
+								if(r[j2]==maxDistance)
+									possible=false;
+							}
+							if(!possible)continue;
+							
+							char my=c[i];
+							int myscore=r[i];
+							for (int k = i; k > j; k--) {
+								c[k]=c[k-1];
+								r[k]=r[k-1];
+								r[k]++;
+							}
+							c[j]=my;
+							r[j]=myscore;
+							r[j]-=i-j;
+							
+							break;
+						}
+					}
+					pr(c,l);
+					pr(r);
+				}
+			}
+			
+		}
+        return new String(c);
     }
 
 // BEGIN CUT HERE
@@ -28,14 +55,13 @@ public class FoxAndFencingEasy {
 
     public static void main(String[] args) {
         try {
-//            eq(0,(new FoxAndFencingEasy()).WhoCanWin(1, 58, 1),"Ciel");
-            eq(1,(new FoxAndFencingEasy()).WhoCanWin(100, 100, 100000000),"Draw");
-            eq(2,(new FoxAndFencingEasy()).WhoCanWin(100, 150, 100000000),"Draw");
-            eq(3,(new FoxAndFencingEasy()).WhoCanWin(100, 250, 100000000),"Liss");
-            eq(3,(new FoxAndFencingEasy()).WhoCanWin(100000000, 100000000, 100000000),"Liss");
-            eq(3,(new FoxAndFencingEasy()).WhoCanWin(2685, 1800, 7007),"Draw");
-            
-//            eq(0,(new FoxAndFencingEasy()).WhoCanWin(1, 1, 1),"Ciel");
+            eq(0,(new EllysScrabble()).getMin("TOPCODER", 3),"CODTEPOR");
+            eq(1,(new EllysScrabble()).getMin("ESPRIT", 3),"EIPRST");
+            eq(2,(new EllysScrabble()).getMin("BAZINGA", 8),"AABGINZ");
+            eq(3,(new EllysScrabble()).getMin("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 9),"ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+            eq(4,(new EllysScrabble()).getMin("GOODLUCKANDHAVEFUN", 7),"CADDGAHEOOFLUKNNUV");
+            eq(5,(new EllysScrabble()).getMin("AAAWDIUAOIWDESBEAIWODJAWDBPOAWDUISAWDOOPAWD", 6),"AAAADDEIBWAEUIODWADSBIAJWODIAWDOPOAWDUOSPWW");
+            eq(6,(new EllysScrabble()).getMin("ABRACADABRA", 2),"AABARACBDAR");
         } catch( Exception exx) {
             System.err.println(exx);
             exx.printStackTrace(System.err);

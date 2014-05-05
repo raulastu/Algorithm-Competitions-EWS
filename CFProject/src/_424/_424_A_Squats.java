@@ -1,3 +1,4 @@
+package _424;
 import java.util.*;
 import java.util.regex.*;
 import static java.lang.Math.*;
@@ -7,51 +8,28 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _369_C_Valera_and_Elections {
+public class _424_A_Squats {
 	//->solution screencast http://youtu.be/oHg5SJYRHA0
 	public void solve() {
 		int n = ni();
-//		long res = 0;
-		int g[]= new int[n+1];
-		int pts[]= new int[n+1];
-//		HashSet<Integer> set = new HashSet<Integer>();
-		int count=0;
-		for (int i = 0; i < n-1; i++) {
-			int a = ni(), b = ni(), t = ni();
-			g[b]=a;
-			if(t==2){
-//				pts[b]=1;
-//				if(pts[a]==1)
-					
-				pts[b]=1;
-				int x=a;
-				count++;
-//				while(x!=1){
-////					pr(x);
-//					if(pts[x]==1){
-//						pts[x]=0;
-//						count--;
-//						break;
-//					}	
-//					x = g[x];
-//				}
+		char[] s = ns(n);
+		int ix=0;
+		for (int i = 0; i < s.length; i++) {
+			if(s[i]=='x'){
+//				s[i]='X';
+				ix++;
 			}
-//			pr(g,pts);
 		}
-		out.println(count);
-		for (int i = 1; i <=n; i++) {
-			if(pts[i]==1)
-				out.print(i+" ");
+		int r = abs(s.length/2-ix);
+//		String
+		for (int i = 0; i < r; i++) {
+			if(s[i]=='x')
+				s[i]='X';
+			else
+				s[i]='x';	
 		}
-		out.println();
-	}
-	
-	class node{
-		ArrayList<node> chidren;
-		int i;
-		public node(int i) {
-			this.i=i;
-		}
+		out.println(r);
+		out.println(new String(s));
 	}
 	
 	
@@ -63,7 +41,7 @@ public class _369_C_Valera_and_Elections {
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
-	public static void main(String[] args) throws Exception {new _369_C_Valera_and_Elections().run();}
+	public static void main(String[] args) throws Exception {new _424_A_Squats().run();}
 
 	InputStream in=System.in;
 	PrintWriter out=new PrintWriter(System.out);

@@ -7,7 +7,7 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _369_E_Valera_and_Queries {
+public class _426_B_Sereja_and_Mirroring {
 	//->solution screencast http://youtu.be/oHg5SJYRHA0
 	public void solve() {
 		int n = ni();
@@ -25,7 +25,7 @@ public class _369_E_Valera_and_Queries {
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
-	public static void main(String[] args) throws Exception {new _369_E_Valera_and_Queries().run();}
+	public static void main(String[] args) throws Exception {new _426_B_Sereja_and_Mirroring().run();}
 
 	InputStream in=System.in;
 	PrintWriter out=new PrintWriter(System.out);
