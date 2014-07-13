@@ -1,20 +1,34 @@
 import java.io.*;
-public class _426_C {
+public class _445_D {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 //		Case 0
 		input=
-		"10 2 "+
-		"10 -1 2 2 2 2 2 2 -1 10 ";
+		"3 1 1 ";
 		runTest(input,
-		"32 ");
+		"1 "+
+		"3 "+
+		"2 ");
 
 //		Case 1
 		input=
-		"5 10 "+
-		"-1 -1 -1 -1 -1 ";
+		"5 4 2 ";
 		runTest(input,
-		"-1 ");
+		"2 "+
+		"2 "+
+		"4 "+
+		"5 "+
+		"5 ");
+
+//		Case 2
+		input=
+		"5 4 3 ";
+		runTest(input,
+		"5 "+
+		"5 "+
+		"5 "+
+		"5 "+
+		"4 ");
 
 
 	}
@@ -45,10 +59,10 @@ public class _426_C {
 		baos.reset();
 //		r.in.
 	}
-	_426_C_Sereja_and_Swaps r;
+	_445_D_DZY_Loves_FFT r;
 	ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	private void init() throws Exception{
-		r = new _426_C_Sereja_and_Swaps();
+		r = new _445_D_DZY_Loves_FFT();
 		r.out = new PrintWriter(baos);
 		runTestCases();
 		if(testOutput && !failed){
@@ -59,7 +73,7 @@ public class _426_C {
 	private int nroCases=1;
 	private boolean failed=false;
 	public static void main(String[] args) throws Exception {
-		new _426_C().init();
+		new _445_D().init();
 	}
 	
 }

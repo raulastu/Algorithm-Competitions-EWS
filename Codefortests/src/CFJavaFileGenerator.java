@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class CFJavaFileGenerator {
 	public CFJavaFileGenerator() throws Exception {
 		String resourcesPath="/Users/rc/Eclipse-Workspaces/Algorithm-Competitions-EWS/CFProject/src/";
-		ArrayList<Problem> problemsData = new CFContestWebScrapper().getProblemsFromCF(resourcesPath, 426);
+		ArrayList<Problem> problemsData = new CFContestWebScrapper().getProblemsFromCF(resourcesPath, 445);
 		createFilesForJava(problemsData, resourcesPath);
 		// watchs for changes and run changed files
 		new JavaAutoCompiler(resourcesPath);

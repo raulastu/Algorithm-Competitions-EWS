@@ -1,22 +1,28 @@
+package _430;
 import java.io.*;
-public class _426_E {
+public class _430_A {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 //		Case 0
 		input=
-		"5 5 100000 1000 "+
-		"1 2 3 4 5 "+
-		"3 2 4 5 1 ";
+		"3 3 "+
+		"3 7 14 "+
+		"1 5 "+
+		"6 10 "+
+		"11 15 ";
 		runTest(input,
-		"3 ");
+		"0 0 0 ");
 
 //		Case 1
 		input=
-		"3 4 3006 1000 "+
+		"3 4 "+
 		"1 2 3 "+
-		"1 2 4 3 ";
+		"1 2 "+
+		"2 3 "+
+		"5 6 "+
+		"2 2 ";
 		runTest(input,
-		"2 ");
+		"1 0 1  ");
 
 
 	}
@@ -47,10 +53,10 @@ public class _426_E {
 		baos.reset();
 //		r.in.
 	}
-	_426_E_Sereja_and_Two_Sequences r;
+	_430_A_Points_and_Segments_easy r;
 	ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	private void init() throws Exception{
-		r = new _426_E_Sereja_and_Two_Sequences();
+		r = new _430_A_Points_and_Segments_easy();
 		r.out = new PrintWriter(baos);
 		runTestCases();
 		if(testOutput && !failed){
@@ -61,7 +67,7 @@ public class _426_E {
 	private int nroCases=1;
 	private boolean failed=false;
 	public static void main(String[] args) throws Exception {
-		new _426_E().init();
+		new _430_A().init();
 	}
 	
 }

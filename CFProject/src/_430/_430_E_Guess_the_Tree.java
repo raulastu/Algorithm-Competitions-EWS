@@ -1,3 +1,4 @@
+package _430;
 import java.util.*;
 import java.util.regex.*;
 import static java.lang.Math.*;
@@ -7,23 +8,13 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _426_A_Sereja_and_Mugs {
+public class _430_E_Guess_the_Tree {
 	//->solution screencast http://youtu.be/oHg5SJYRHA0
 	public void solve() {
-		int n = ni(), k=ni();
-		int ar[] = na(n);
-		sort(ar);
-		int x=0;
-		for (int i = 0; i < n-1; i++) {
-			x+=ar[i];
-		}
-		if(x<=k)
-			out.println("YES");
-		else
-			out.println("NO");
-//		long res = 0;
+		int n = ni();
+		long res = 0;
 		
-		
+		out.println(res);
 	}
 	
 	
@@ -35,7 +26,7 @@ public class _426_A_Sereja_and_Mugs {
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
-	public static void main(String[] args) throws Exception {new _426_A_Sereja_and_Mugs().run();}
+	public static void main(String[] args) throws Exception {new _430_E_Guess_the_Tree().run();}
 
 	InputStream in=System.in;
 	PrintWriter out=new PrintWriter(System.out);

@@ -7,13 +7,73 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _426_B_Sereja_and_Mirroring {
+public class _445_C_DZY_Loves_Physics {
 	//->solution screencast http://youtu.be/oHg5SJYRHA0
 	public void solve() {
-		int n = ni();
-		long res = 0;
-		
-		out.println(res);
+		int n = ni(), m=ni();
+		int ar[]= na(n);
+		int [][] edges=new int[n+1][n+1];
+		HashMap<Integer,ArrayList<Integer>> map = new HashMap<Integer, ArrayList<Integer>>();
+		for (int i = 0; i < n; i++) {
+			map.put(i+1,new ArrayList<Integer>());
+		}
+		for (int i = 0; i < m; i++) {
+			int a =ni();
+			int b= ni();
+			int c=ni();
+			edges[a][b]=c;
+			edges[b][a]=c;
+//			if(!map.containsKey(a)){
+//				map.put(a,new ArrayList<Integer>());
+//			}
+			map.get(a).add(b);
+			map.get(b).add(a);
+		}
+//		pr(map);
+		double max=0;
+		boolean done[]=new boolean[n+1];
+		for (int i = 0; i < n; i++) {
+			LinkedList<state> Q = new LinkedList<_445_C_DZY_Loves_Physics.state>();
+			Q.add(new state(i+1,ar[i],0));
+			boolean memo[][]=new boolean[n+1][n+1];
+			while(!Q.isEmpty()){
+				state p = Q.poll();
+				if(p.e!=0){
+					max = max(max, p.v/(double)p.e);
+				}
+				ArrayList<Integer> child=map.get(p.p);
+				for (Integer kid: child) {
+					if(kid<=i+1)continue;
+					if(!memo[p.p][kid]){
+						memo[p.p][kid]=true;
+						Q.add(new state(kid, p.v+ar[kid-1], p.e+edges[p.p][kid]));
+					}
+				} 
+			}
+		}
+		out.println(max);
+	}
+	class state{
+		int p, v,e;
+		public state(int p,int v, int e) {
+			this.p=p;
+			this.v=v;
+			this.e=e;
+		}
+		@Override
+		public String toString() {
+			// TODO Auto-generated method stub
+			return v+" "+e;
+		}
+	}
+	class node{
+		int v;
+		ArrayList<node> edges = new ArrayList<_445_C_DZY_Loves_Physics.node>();
+	}
+	
+	class edge{
+		node a,b;
+		int v;
 	}
 	
 	
@@ -25,7 +85,7 @@ public class _426_B_Sereja_and_Mirroring {
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
-	public static void main(String[] args) throws Exception {new _426_B_Sereja_and_Mirroring().run();}
+	public static void main(String[] args) throws Exception {new _445_C_DZY_Loves_Physics().run();}
 
 	InputStream in=System.in;
 	PrintWriter out=new PrintWriter(System.out);

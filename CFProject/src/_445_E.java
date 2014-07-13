@@ -1,35 +1,39 @@
 import java.io.*;
-public class _426_D {
+public class _445_E {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 //		Case 0
 		input=
-		"5 5 2 "+
-		"1 1 1 1 1 "+
-		"1 1 1 1 1 "+
-		"1 1 0 1 1 "+
-		"1 1 1 1 1 "+
-		"1 1 1 1 1 ";
+		"3 3 "+
+		"1 1 2 4 "+
+		"1 2 3 5 "+
+		"2 1 3 ";
 		runTest(input,
-		"1 ");
+		"8 ");
 
 //		Case 1
 		input=
-		"3 4 1 "+
-		"1 0 0 0 "+
-		"0 1 1 1 "+
-		"1 1 1 0 ";
+		"3 4 "+
+		"1 1 3 4 "+
+		"2 1 1 "+
+		"2 2 2 "+
+		"2 3 3 ";
 		runTest(input,
-		"-1 ");
+		"3 "+
+		"2 "+
+		"1 ");
 
 //		Case 2
 		input=
-		"3 4 1 "+
-		"1 0 0 1 "+
-		"0 1 1 0 "+
-		"1 0 0 1 ";
+		"10 6 "+
+		"1 1 5 3 "+
+		"1 2 7 9 "+
+		"1 10 10 11 "+
+		"1 3 8 12 "+
+		"1 1 10 3 "+
+		"2 1 10 ";
 		runTest(input,
-		"0 ");
+		"129 ");
 
 
 	}
@@ -60,10 +64,10 @@ public class _426_D {
 		baos.reset();
 //		r.in.
 	}
-	_426_D_Sereja_and_Table_ r;
+	_445_E_DZY_Loves_Colors r;
 	ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	private void init() throws Exception{
-		r = new _426_D_Sereja_and_Table_();
+		r = new _445_E_DZY_Loves_Colors();
 		r.out = new PrintWriter(baos);
 		runTestCases();
 		if(testOutput && !failed){
@@ -74,7 +78,7 @@ public class _426_D {
 	private int nroCases=1;
 	private boolean failed=false;
 	public static void main(String[] args) throws Exception {
-		new _426_D().init();
+		new _445_E().init();
 	}
 	
 }

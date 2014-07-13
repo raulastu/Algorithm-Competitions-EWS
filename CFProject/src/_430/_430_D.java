@@ -1,27 +1,16 @@
+package _430;
 import java.io.*;
-public class _426_A {
+public class _430_D {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 //		Case 0
 		input=
-		"3 4 "+
-		"1 1 1 ";
+		"3 3 "+
+		"100 100 100 "+
+		"100 1 100 "+
+		"100 100 100 ";
 		runTest(input,
-		"YES ");
-
-//		Case 1
-		input=
-		"3 4 "+
-		"3 1 3 ";
-		runTest(input,
-		"YES ");
-
-//		Case 2
-		input=
-		"3 4 "+
-		"4 4 4 ";
-		runTest(input,
-		"NO ");
+		"800 ");
 
 
 	}
@@ -52,10 +41,10 @@ public class _426_A {
 		baos.reset();
 //		r.in.
 	}
-	_426_A_Sereja_and_Mugs r;
+	_430_D_Working_out r;
 	ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	private void init() throws Exception{
-		r = new _426_A_Sereja_and_Mugs();
+		r = new _430_D_Working_out();
 		r.out = new PrintWriter(baos);
 		runTestCases();
 		if(testOutput && !failed){
@@ -66,7 +55,7 @@ public class _426_A {
 	private int nroCases=1;
 	private boolean failed=false;
 	public static void main(String[] args) throws Exception {
-		new _426_A().init();
+		new _430_D().init();
 	}
 	
 }

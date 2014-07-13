@@ -7,87 +7,15 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _426_C_Sereja_and_Swaps {
+public class _445_D_DZY_Loves_FFT {
 	//->solution screencast http://youtu.be/oHg5SJYRHA0
 	public void solve() {
-		int n = ni(), k=ni();
-		ar=na(n);
-		dp = new int[n+1][k+1];
-		maxx=-1000;
-		for (int i = 0; i < ar.length; i++) {
-			if(ar[i]<0)
-				maxx=max(maxx,ar[i]);
-		}
-		for (int i = 0; i < dp.length; i++) {
-			fill(dp[i],-1001);
-		}
-		int x = go(0,k);
-		out.println(x);
+		int n = ni();
+		long res = 0;
+		
+		out.println(res);
 	}
-	int maxx;
-	int []ar;
-	int dp[][];
 	
-	int go(int i,int k){
-		pr(i,k);
-		if(i==ar.length || k<=0){
-			return maxx;
-		}
-		int maxa=-1000,maxb=-1000,max=-1000;
-//		if(dp[i][k]==-1001){
-			
-			if(ar[i]<0 ){
-				go(i+1, k);
-			}else{
-				max=getMax(ar);
-				go(i+1, k);
-				if(i-1>=0 && ar[i-1]<0){
-					pr("back",i-1,i);
-					int a = ar[i];
-					ar[i]=ar[i-1];
-					ar[i-1]=a;
-					pr(ar);
-					maxa=getMax(ar);
-					pr("ahead",i-1,i,maxb);
-					go(0, k-1);
-					a = ar[i];
-					ar[i]=ar[i-1];
-					ar[i-1]=a;
-				}
-				if(i+1<ar.length && ar[i+1]<0){
-					int a = ar[i];
-					ar[i]=ar[i+1];
-					ar[i+1]=a;
-					maxb=getMax(ar);
-					pr(ar);
-					pr("ahead",i+1,i,maxb);
-					go(0, k-1);
-					a = ar[i];
-					ar[i]=ar[i+1];
-					ar[i+1]=a;
-				}
-			}
-//		}
-		return dp[i][k]=max(max,max(maxa,maxb));
-	}
-	int getMax(int ar[]){
-		int maxb=maxx, s=maxx;
-		for (int j = 0; j < ar.length; j++) {
-			if(ar[j]<0){
-				maxb=max(s,maxb);
-				s=maxx;
-//				if(s!=-1001){
-//					s=0;
-//				}
-			}else{
-				if(s==maxx)
-					s=0;
-				s+=ar[j];
-			}	
-		}
-		maxb=max(s,maxb);
-		return maxb;
-	}
 	
 	// IO methods
 		
@@ -97,7 +25,7 @@ public class _426_C_Sereja_and_Swaps {
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
-	public static void main(String[] args) throws Exception {new _426_C_Sereja_and_Swaps().run();}
+	public static void main(String[] args) throws Exception {new _445_D_DZY_Loves_FFT().run();}
 
 	InputStream in=System.in;
 	PrintWriter out=new PrintWriter(System.out);

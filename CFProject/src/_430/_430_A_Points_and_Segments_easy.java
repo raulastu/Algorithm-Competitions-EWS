@@ -1,3 +1,4 @@
+package _430;
 import java.util.*;
 import java.util.regex.*;
 import static java.lang.Math.*;
@@ -5,15 +6,35 @@ import static java.util.Arrays.*;
 import static java.lang.Integer.*;
 import static java.lang.Double.*;
 import static java.util.Collections.*;
+
+import java.awt.Point;
 import java.io.*;
 
-public class _426_E_Sereja_and_Two_Sequences {
+public class _430_A_Points_and_Segments_easy {
 	//->solution screencast http://youtu.be/oHg5SJYRHA0
 	public void solve() {
-		int n = ni();
-		long res = 0;
-		
-		out.println(res);
+		int n = ni(),m=ni();
+//		na(n);
+		ArrayList<Point> p = new ArrayList<Point>();
+		for (int i = 0; i < n; i++) {
+			p.add(new Point(ni(),i));
+		}
+		sort(p, new Comparator<Point>() {
+			@Override
+			public int compare(Point o1, Point o2) {
+				return o1.x-o2.x;
+			}
+		});
+		int res[]=new int[n];
+		for (int i = 0; i < p.size(); i++) {
+			res[p.get(i).y]=i&1;
+		}
+		for (int i = 0; i < m; i++) {
+			ni();ni();
+		}
+		for (int i = 0; i < n; i++) {
+			out.print(res[i]+" ");
+		}
 	}
 	
 	
@@ -25,7 +46,7 @@ public class _426_E_Sereja_and_Two_Sequences {
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
-	public static void main(String[] args) throws Exception {new _426_E_Sereja_and_Two_Sequences().run();}
+	public static void main(String[] args) throws Exception {new _430_A_Points_and_Segments_easy().run();}
 
 	InputStream in=System.in;
 	PrintWriter out=new PrintWriter(System.out);

@@ -1,39 +1,34 @@
 import java.io.*;
-public class _426_B {
+public class _445_A {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 //		Case 0
 		input=
-		"4 3 "+
-		"0 0 1 "+
-		"1 1 0 "+
-		"1 1 0 "+
-		"0 0 1 ";
+		"1 1 "+
+		". ";
 		runTest(input,
-		"2 ");
+		"B ");
 
 //		Case 1
 		input=
-		"3 3 "+
-		"0 0 0 "+
-		"0 0 0 "+
-		"0 0 0 ";
+		"2 2 "+
+		".. "+
+		".. ";
 		runTest(input,
-		"3 ");
+		"BW "+
+		"WB ");
 
 //		Case 2
 		input=
-		"8 1 "+
-		"0 "+
-		"1 "+
-		"1 "+
-		"0 "+
-		"0 "+
-		"1 "+
-		"1 "+
-		"0 ";
+		"3 3 "+
+		".-. "+
+		"--- "+
+		"--. ";
 		runTest(input,
-		"2 ");
+		"3 3 "+
+		"B-B "+
+		"--- "+
+		"--B ");
 
 
 	}
@@ -64,10 +59,10 @@ public class _426_B {
 		baos.reset();
 //		r.in.
 	}
-	_426_B_Sereja_and_Mirroring r;
+	_445_A_DZY_Loves_Chessboard r;
 	ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	private void init() throws Exception{
-		r = new _426_B_Sereja_and_Mirroring();
+		r = new _445_A_DZY_Loves_Chessboard();
 		r.out = new PrintWriter(baos);
 		runTestCases();
 		if(testOutput && !failed){
@@ -78,7 +73,7 @@ public class _426_B {
 	private int nroCases=1;
 	private boolean failed=false;
 	public static void main(String[] args) throws Exception {
-		new _426_B().init();
+		new _445_A().init();
 	}
 	
 }

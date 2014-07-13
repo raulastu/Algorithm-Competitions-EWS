@@ -10,7 +10,7 @@ def valUser(user):
         return 0
     return 1
 
-sys.stdin = open("B.in", "r")
+# sys.stdin = open("B.in", "r")
 
 
 def solve():
@@ -58,10 +58,10 @@ def solve():
     print("YES")
 
 
-N = int(raw_input())
+# N = int(raw_input())
 
-while(N>0):
+# while(N>0):
 
-    solve();
-    N -= 1
+solve();
+#     N -= 1
     
