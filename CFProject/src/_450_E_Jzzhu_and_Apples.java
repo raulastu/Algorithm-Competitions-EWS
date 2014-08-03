@@ -7,31 +7,13 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _445_A_DZY_Loves_Chessboard {
+public class _450_E_Jzzhu_and_Apples {
 	//->solution screencast http://youtu.be/oHg5SJYRHA0
 	public void solve() {
-		int n = ni(),m=ni();
-		char chess[][]=new char[n][m];
-		for (int i = 0; i < n; i++) {
-			chess[i]=ns(m);
-		}
-		pr(chess);
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < m; j++) {
-				if(chess[i][j]=='-')continue;
-				if((j+i)%2==0){
-					chess[i][j]='B';
-				}else
-					chess[i][j]='W';
-			}
-			
-		}
-//		long res = 0;
+		int n = ni();
+		long res = 0;
 		
-		for (int i = 0; i < n; i++) {
-			out.println(new String(chess[i]));
-		}
-		
+		out.println(res);
 	}
 	
 	
@@ -43,7 +25,7 @@ public class _445_A_DZY_Loves_Chessboard {
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
-	public static void main(String[] args) throws Exception {new _445_A_DZY_Loves_Chessboard().run();}
+	public static void main(String[] args) throws Exception {new _450_E_Jzzhu_and_Apples().run();}
 
 	InputStream in=System.in;
 	PrintWriter out=new PrintWriter(System.out);

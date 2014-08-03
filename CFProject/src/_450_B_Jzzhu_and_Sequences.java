@@ -7,13 +7,37 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _445_E_DZY_Loves_Colors {
+public class _450_B_Jzzhu_and_Sequences {
 	//->solution screencast http://youtu.be/oHg5SJYRHA0
 	public void solve() {
-		int n = ni();
-		long res = 0;
+		int x = ni(), y=ni(), n=ni();
+		int MOD=1000000007;
+		int a[]={-x,-y,y-x,-(y-x),x,y};
+		int xx=y;
+//		int xxx=2000000000;
+		int dx=0;
+		n=n%8;
+		int n2=n;
+		while(n-->2){
+			xx+=a[dx++%6]%MOD;
+		}
+		xx=(xx%MOD + MOD)%MOD;
 		
-		out.println(res);
+		int xx2=y;
+		n2=n2%8;
+		dx=0;
+		while(n2-->2){
+			xx2+=a[dx++%6]%MOD;
+		}
+		xx2=(xx2%MOD + MOD)%MOD;
+		
+		if(xx!=xx2){
+			pr("ERROR"+" ");
+			pr(x,y,n);
+			pr(xx,xx2);
+		}
+//		
+		out.println(xx2);
 	}
 	
 	
@@ -25,7 +49,7 @@ public class _445_E_DZY_Loves_Colors {
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
-	public static void main(String[] args) throws Exception {new _445_E_DZY_Loves_Colors().run();}
+	public static void main(String[] args) throws Exception {new _450_B_Jzzhu_and_Sequences().run();}
 
 	InputStream in=System.in;
 	PrintWriter out=new PrintWriter(System.out);

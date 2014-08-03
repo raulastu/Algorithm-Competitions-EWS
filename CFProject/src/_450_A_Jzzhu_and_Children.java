@@ -7,15 +7,40 @@ import static java.lang.Double.*;
 import static java.util.Collections.*;
 import java.io.*;
 
-public class _445_D_DZY_Loves_FFT {
+public class _450_A_Jzzhu_and_Children {
 	//->solution screencast http://youtu.be/oHg5SJYRHA0
 	public void solve() {
-		int n = ni();
-		long res = 0;
+		int n = ni(), m=ni();
+		int []ar=na(n);
 		
-		out.println(res);
+		LinkedList<xx> p =new LinkedList<xx>();
+		for (int i = 0; i < ar.length; i++) {
+			p.add(new xx(i,ar[i]));
+		}
+		int x=0;
+		int last=0;
+		
+		while(!p.isEmpty()){
+			last=p.getFirst().x;
+			if(p.getFirst().y-m<=0){
+				p.remove();
+			}else{
+				int x1=p.getFirst().x;
+				int x2=p.getFirst().y-m;
+				p.add(new xx(x1,x2));
+				p.remove();
+			}
+			
+		}
+		out.println(last+1);
 	}
-	
+	class xx{
+		int x; int y;
+		public xx(int x, int y) {
+			this.x=x;
+			this.y=y;
+		}
+	}
 	
 	// IO methods
 		
@@ -25,7 +50,7 @@ public class _445_D_DZY_Loves_FFT {
 		out.flush();
 		pr(System.currentTimeMillis() - s + "ms");
 	}
-	public static void main(String[] args) throws Exception {new _445_D_DZY_Loves_FFT().run();}
+	public static void main(String[] args) throws Exception {new _450_A_Jzzhu_and_Children().run();}
 
 	InputStream in=System.in;
 	PrintWriter out=new PrintWriter(System.out);

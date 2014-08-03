@@ -1,34 +1,31 @@
 import java.io.*;
-public class _445_D {
+public class _450_D {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 //		Case 0
 		input=
-		"3 1 1 ";
+		"5 5 3 "+
+		"1 2 1 "+
+		"2 3 2 "+
+		"1 3 3 "+
+		"3 4 4 "+
+		"1 5 5 "+
+		"3 5 "+
+		"4 5 "+
+		"5 5 ";
 		runTest(input,
-		"1 "+
-		"3 "+
 		"2 ");
 
 //		Case 1
 		input=
-		"5 4 2 ";
+		"2 2 3 "+
+		"1 2 2 "+
+		"2 1 3 "+
+		"2 1 "+
+		"2 2 "+
+		"2 3 ";
 		runTest(input,
-		"2 "+
-		"2 "+
-		"4 "+
-		"5 "+
-		"5 ");
-
-//		Case 2
-		input=
-		"5 4 3 ";
-		runTest(input,
-		"5 "+
-		"5 "+
-		"5 "+
-		"5 "+
-		"4 ");
+		"2 ");
 
 
 	}
@@ -59,10 +56,10 @@ public class _445_D {
 		baos.reset();
 //		r.in.
 	}
-	_445_D_DZY_Loves_FFT r;
+	_450_D_Jzzhu_and_Cities r;
 	ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	private void init() throws Exception{
-		r = new _445_D_DZY_Loves_FFT();
+		r = new _450_D_Jzzhu_and_Cities();
 		r.out = new PrintWriter(baos);
 		runTestCases();
 		if(testOutput && !failed){
@@ -73,7 +70,7 @@ public class _445_D {
 	private int nroCases=1;
 	private boolean failed=false;
 	public static void main(String[] args) throws Exception {
-		new _445_D().init();
+		new _450_D().init();
 	}
 	
 }

@@ -1,34 +1,24 @@
 import java.io.*;
-public class _445_C {
+public class _450_C {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 //		Case 0
 		input=
-		"1 0 "+
-		"1 ";
+		"3 4 1 ";
 		runTest(input,
-		"0.000000000000000 ");
+		"6 ");
 
 //		Case 1
 		input=
-		"2 1 "+
-		"1 2 "+
-		"1 2 1 ";
+		"6 4 2 ";
 		runTest(input,
-		"3.000000000000000 ");
+		"8 ");
 
 //		Case 2
 		input=
-		"5 6 "+
-		"13 56 73 98 17 "+
-		"1 2 56 "+
-		"1 3 29 "+
-		"1 4 42 "+
-		"2 3 95 "+
-		"2 4 88 "+
-		"3 4 63 ";
+		"2 3 4 ";
 		runTest(input,
-		"2.965517241379311 ");
+		"-1 ");
 
 
 	}
@@ -59,10 +49,10 @@ public class _445_C {
 		baos.reset();
 //		r.in.
 	}
-	_445_C_DZY_Loves_Physics r;
+	_450_C_Jzzhu_and_Chocolate r;
 	ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	private void init() throws Exception{
-		r = new _445_C_DZY_Loves_Physics();
+		r = new _450_C_Jzzhu_and_Chocolate();
 		r.out = new PrintWriter(baos);
 		runTestCases();
 		if(testOutput && !failed){
@@ -73,7 +63,7 @@ public class _445_C {
 	private int nroCases=1;
 	private boolean failed=false;
 	public static void main(String[] args) throws Exception {
-		new _445_C().init();
+		new _450_C().init();
 	}
 	
 }

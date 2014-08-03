@@ -1,39 +1,20 @@
 import java.io.*;
-public class _445_E {
+public class _450_A {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 //		Case 0
 		input=
-		"3 3 "+
-		"1 1 2 4 "+
-		"1 2 3 5 "+
-		"2 1 3 ";
+		"5 2 "+
+		"1 3 1 4 2 ";
 		runTest(input,
-		"8 ");
+		"4 ");
 
 //		Case 1
 		input=
-		"3 4 "+
-		"1 1 3 4 "+
-		"2 1 1 "+
-		"2 2 2 "+
-		"2 3 3 ";
+		"6 4 "+
+		"1 1 2 2 3 3 ";
 		runTest(input,
-		"3 "+
-		"2 "+
-		"1 ");
-
-//		Case 2
-		input=
-		"10 6 "+
-		"1 1 5 3 "+
-		"1 2 7 9 "+
-		"1 10 10 11 "+
-		"1 3 8 12 "+
-		"1 1 10 3 "+
-		"2 1 10 ";
-		runTest(input,
-		"129 ");
+		"6 ");
 
 
 	}
@@ -64,10 +45,10 @@ public class _445_E {
 		baos.reset();
 //		r.in.
 	}
-	_445_E_DZY_Loves_Colors r;
+	_450_A_Jzzhu_and_Children r;
 	ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	private void init() throws Exception{
-		r = new _445_E_DZY_Loves_Colors();
+		r = new _450_A_Jzzhu_and_Children();
 		r.out = new PrintWriter(baos);
 		runTestCases();
 		if(testOutput && !failed){
@@ -78,7 +59,7 @@ public class _445_E {
 	private int nroCases=1;
 	private boolean failed=false;
 	public static void main(String[] args) throws Exception {
-		new _445_E().init();
+		new _450_A().init();
 	}
 	
 }

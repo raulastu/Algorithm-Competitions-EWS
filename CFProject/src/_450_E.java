@@ -1,34 +1,29 @@
 import java.io.*;
-public class _445_A {
+public class _450_E {
 	boolean testOutput=true;
 	public void runTestCases() throws Exception{
 //		Case 0
 		input=
-		"1 1 "+
-		". ";
+		"6 ";
 		runTest(input,
-		"B ");
+		"2 "+
+		"6 3 "+
+		"2 4 ");
 
 //		Case 1
 		input=
-		"2 2 "+
-		".. "+
-		".. ";
+		"9 ";
 		runTest(input,
-		"BW "+
-		"WB ");
+		"3 "+
+		"9 3 "+
+		"2 4 "+
+		"6 8 ");
 
 //		Case 2
 		input=
-		"3 3 "+
-		".-. "+
-		"--- "+
-		"--. ";
+		"2 ";
 		runTest(input,
-		"3 3 "+
-		"B-B "+
-		"--- "+
-		"--B ");
+		"0 ");
 
 
 	}
@@ -59,10 +54,10 @@ public class _445_A {
 		baos.reset();
 //		r.in.
 	}
-	_445_A_DZY_Loves_Chessboard r;
+	_450_E_Jzzhu_and_Apples r;
 	ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	private void init() throws Exception{
-		r = new _445_A_DZY_Loves_Chessboard();
+		r = new _450_E_Jzzhu_and_Apples();
 		r.out = new PrintWriter(baos);
 		runTestCases();
 		if(testOutput && !failed){
@@ -73,7 +68,7 @@ public class _445_A {
 	private int nroCases=1;
 	private boolean failed=false;
 	public static void main(String[] args) throws Exception {
-		new _445_A().init();
+		new _450_E().init();
 	}
 	
 }
