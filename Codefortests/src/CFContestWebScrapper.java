@@ -46,10 +46,11 @@ public class CFContestWebScrapper {
 		fixNames(no);
 		ArrayList<Problem> problems = new ArrayList<>();
 		for (int i = 0; i < no.length; i++) {
-			String problemFileName = contestNumber+"_"+(char)('A'+i)+"_"+no[i];
-//			createClass(folderName,"templateCLass",problemFileName );
-//			createClass(folderName,"templateCLass",(char)('A'+i)+"");
-			ArrayList<IO> l = getIOTests("http://codeforces.com/contest/"+contestNumber+"/problem/"+(char)('A'+i));
+			String id  = no[i].substring(0,no[i].indexOf("_"));
+			String problemFileName = contestNumber+"_"+id+"_"+no[i];
+			String url = "http://codeforces.com/contest/"+contestNumber+"/problem/"+id;
+			System.err.println("fetching" + url);
+			ArrayList<IO> l = getIOTests(url);
 			problems.add(new Problem(problemFileName,l, contestNumber));
 //			createClassRunner(folderName,"templateRunner",contestNumber+"_"+(char)('A'+i)+"", problemFileName, l);
 //			createClassRunner(folderName,"templateRunner",(char)('A'+i)+"",l);
@@ -90,7 +91,7 @@ public class CFContestWebScrapper {
 	private void fixNames(String[] names){
 		for (int i = 0; i < names.length; i++) {
 			names[i]=names[i].replace(" ", "_");
-			names[i]=names[i].replaceAll("[^A-Za-z_]", "");
+//			names[i]=names[i].replaceAll("[^A-Za-z_]", "");
 			System.err.println(names[i]);
 		}
 	}
@@ -141,6 +142,26 @@ public class CFContestWebScrapper {
 		for(int i =0; i<list.getLength();i++){
 			rc[i]=list.item(i).getTextContent();
 		}
+		
+		
+//		
+		
+		
+		factory = DocumentBuilderFactory.newInstance();
+		builder = factory.newDocumentBuilder();
+		 doc = builder.parse(new ByteArrayInputStream(html.getBytes()));
+		 xPathfactory = XPathFactory.newInstance();
+		 xpath = xPathfactory.newXPath();
+		expr = xpath.compile("/table/tr/td[@class='id']/a");
+//		XPathExpression expr = xpath.compile("/howto/topic[@name='PowerBuilder']/url");
+		list = (NodeList)expr.evaluate(doc, XPathConstants.NODESET);
+//		String[] rc= new String[list.getLength()];
+		for(int i =0; i<list.getLength();i++){
+			String id = list.item(i).getTextContent();
+			id = id.replace(" ","");
+			id = id.replace("\n","");
+			rc[i] =  id+"_"+ rc[i];
+		}
 //		System.err.println(list);
 		return rc;
 	}
@@ -168,6 +189,7 @@ public class CFContestWebScrapper {
 		    try {
 		        is.close();
 		    } catch (IOException ioe) {
+		    	ioe.printStackTrace();
 		        // nothing to see here
 		    }
 		}

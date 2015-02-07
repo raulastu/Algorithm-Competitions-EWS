@@ -7,17 +7,20 @@ import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 
 public class CFJavaFileGenerator {
 	public CFJavaFileGenerator() throws Exception {
 		String resourcesPath="/Users/rc/Eclipse-Workspaces/Algorithm-Competitions-EWS/CFProject/src/";
-		ArrayList<Problem> problemsData = new CFContestWebScrapper().getProblemsFromCF(resourcesPath, 450);
+		ArrayList<Problem> problemsData = new CFContestWebScrapper().getProblemsFromCF(resourcesPath, 513);
+		pr(problemsData);
 		createFilesForJava(problemsData, resourcesPath);
 		// watchs for changes and run changed files
 		new JavaAutoCompiler(resourcesPath);
 	}
+	void pr(Object... ob) {if (true)System.out.println(Arrays.deepToString(ob).replace("],", "],\n"));}
 	
 	private void createFilesForJava(ArrayList<Problem> problems, String folderName) throws Exception{
 		for (int i = 0; i<problems.size(); i++) {
