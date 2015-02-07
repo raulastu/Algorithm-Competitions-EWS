@@ -37,7 +37,7 @@ public class CFContestWebScrapper {
 	}
 	
 	
-	public ArrayList<Problem> getProblemsFromCF(String folderName, int contestNumber) throws Exception{
+	static public ArrayList<Problem> getProblemsFromCF(String folderName, int contestNumber) throws Exception{
 		String html = getHTML("http://codeforces.com/contest/"+contestNumber);
 //		System.err.println(html);
 		String table= getProblemsTable(html);
@@ -49,16 +49,28 @@ public class CFContestWebScrapper {
 			String id  = no[i].substring(0,no[i].indexOf("_"));
 			String problemFileName = contestNumber+"_"+id+"_"+no[i];
 			String url = "http://codeforces.com/contest/"+contestNumber+"/problem/"+id;
-			System.err.println("fetching" + url);
-			ArrayList<IO> l = getIOTests(url);
-			problems.add(new Problem(problemFileName,l, contestNumber));
+			System.err.println("fetching " + url);
+			try{
+				ArrayList<IO> l = getIOTests(url);
+				problems.add(new Problem(problemFileName, id, l, contestNumber));
+//				TODO create files async. not wait until all problems are scrapped
+				
+				CFJavaFileGenerator.createClass(folderName,"templateCLass", problemFileName);
+				CFJavaFileGenerator.createClassRunner(folderName,
+						"templateRunner",
+						problemFileName,
+						contestNumber+"_"+id+"__Tests", 
+						l);
+			}catch (java.net.SocketException e){
+				e.printStackTrace();
+			}
 //			createClassRunner(folderName,"templateRunner",contestNumber+"_"+(char)('A'+i)+"", problemFileName, l);
 //			createClassRunner(folderName,"templateRunner",(char)('A'+i)+"",l);
 		}
 		return problems;
 	}
 	
-	private ArrayList<IO> getIOTests(String contestURL) throws Exception{
+	static ArrayList<IO> getIOTests(String contestURL) throws Exception{
 		String html = getHTML(contestURL);
 //		System.err.println(html);
 		//Getting Input
@@ -88,7 +100,7 @@ public class CFContestWebScrapper {
 		return ios;
 	}
 	
-	private void fixNames(String[] names){
+	static void fixNames(String[] names){
 		for (int i = 0; i < names.length; i++) {
 			names[i]=names[i].replace(" ", "_");
 //			names[i]=names[i].replaceAll("[^A-Za-z_]", "");
@@ -96,7 +108,7 @@ public class CFContestWebScrapper {
 		}
 	}
 	
-	private String getProblemsTable(String html){
+	static String getProblemsTable(String html){
 		Scanner in = new Scanner(new ByteArrayInputStream(html.getBytes()));
 		String rc="";
 		boolean inTable=false;
@@ -129,7 +141,7 @@ public class CFContestWebScrapper {
 		}
 		return rc;
 	}
-	public String[] getProblemNames(String html) throws Exception{
+	public static String[] getProblemNames(String html) throws Exception{
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		Document doc = builder.parse(new ByteArrayInputStream(html.getBytes()));
@@ -166,7 +178,7 @@ public class CFContestWebScrapper {
 		return rc;
 	}
 	
-	public String getHTML(String urlString){
+	static public String getHTML(String urlString){
 		URL url;
 		InputStream is = null;
 		DataInputStream dis;

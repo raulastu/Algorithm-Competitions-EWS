@@ -14,9 +14,9 @@ import java.util.Scanner;
 public class CFJavaFileGenerator {
 	public CFJavaFileGenerator() throws Exception {
 		String resourcesPath="/Users/rc/Eclipse-Workspaces/Algorithm-Competitions-EWS/CFProject/src/";
-		ArrayList<Problem> problemsData = new CFContestWebScrapper().getProblemsFromCF(resourcesPath, 513);
+		ArrayList<Problem> problemsData = CFContestWebScrapper.getProblemsFromCF(resourcesPath, 513);
 		pr(problemsData);
-		createFilesForJava(problemsData, resourcesPath);
+//		createFilesForJava(problemsData, resourcesPath);
 		// watchs for changes and run changed files
 		new JavaAutoCompiler(resourcesPath);
 	}
@@ -29,13 +29,13 @@ public class CFJavaFileGenerator {
 			createClass(folderName,"templateCLass", problemFileName);
 			createClassRunner(folderName,
 					"templateRunner",
-					problem.getContestNumber()+"_"+(char)('A'+i)+"",
+					problem.getContestNumber()+"_"+problem.getProblemName(),
 					problemFileName, 
 					problem.getProblemTestCases());
 		}
 	}
 	
-	private void createClassRunner(String path, String templatePath, String className, String problemClassName, ArrayList<IO> inputCases) throws Exception{
+	static void createClassRunner(String path, String templatePath, String className, String problemClassName, ArrayList<IO> inputCases) throws Exception{
 		Scanner sc = new Scanner(new File("src/"+templatePath));
 		String rc="";
 		int casenr=0;
@@ -71,7 +71,7 @@ public class CFJavaFileGenerator {
 		sc.close();
 	}
 
-	String splitIO(String i_or_o){
+	static String splitIO(String i_or_o){
 		 String [] res = i_or_o.split("\n");
 		 String ri="";
 		 for (int i = 0; i < res.length; i++) {
@@ -81,7 +81,7 @@ public class CFJavaFileGenerator {
 	}
 	
 
-	private void createClass(String path, String templatePath, String className) throws Exception{
+	protected static void createClass(String path, String templatePath, String className) throws Exception{
 		Scanner sc = new Scanner(new File("src/"+templatePath));
 		String rc="";
 		while(sc.hasNextLine()){
