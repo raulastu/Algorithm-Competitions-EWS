@@ -207,6 +207,7 @@ public class CFContestWebScrapper {
 		}
 		return rc;
 	}
+	
 	public static void main(String[] args) throws Exception {
 		CFContestWebScrapper ob = new CFContestWebScrapper();
 		ob.start();
